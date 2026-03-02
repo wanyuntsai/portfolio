@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+
+
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #FAF7F2;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@theme {
+  /* font */
+  --font-hand: "Caveat", cursive;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Noto Sans", sans-serif;
+  
+  /* color */
+  --color-brand-green: #2B4A1A;
+  --color-brand-green-light: #E8EDD8;
+  --color-brand-green-button: #3F6B2A;
+  --color-accent-green: #7BE849;
+  --color-brand-cream: #FAF7F2;
+  --color-brand-white: #FAFAFA;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #5C5C5C;
+  --color-border: #E5E5E5;
+  --color-filter-active: #345D21;
+  --color-filter-inactive: #FDFFFB;
+}
+
+/* font */
+.font-mono {
+  /* letter-spacing: -0.02em; */
+}
+
+/* HOME */
+/* Hero gradient animation */
+.hero-gradient {
+  background: radial-gradient(circle at 20% 30%, #88A300 0%, transparent 50%),
+  linear-gradient(135deg, #FAF7F2 0%, #F2E076 100%);
+              /* radial-gradient(circle at 80% 70%, #f5e6c8 0%, transparent 40%), #FAF7F2; */
+    ;
+}
+
+/* arrow animation */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* tools */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Swiper dots */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #E5E5E5;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2B4A1A !important;
+}
+
+/* ABOUT */
+/* photo */
+@keyframes marquee-photos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-photos {
+  animation: marquee-photos 25s linear infinite;
+}
+
+/* Contact button directional fill */
+.fill-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.fill-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #2B4A1A;
+  border-radius: inherit;
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  z-index: 0;
+}
+
+.fill-btn[data-from="right"]::before {
+  transform: translateX(100%);
+}
+
+.fill-btn:hover::before {
+  transform: translateX(0) !important;
+}
+
+.fill-btn > * {
+  position: relative;
+  z-index: 1;
+}
