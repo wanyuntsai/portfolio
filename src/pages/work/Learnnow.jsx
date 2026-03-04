@@ -108,45 +108,45 @@ function Learnnow() {
       {/* ===== The Problem ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">The Problem</h2>
           
           <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6">
             Online learning platforms push for immediate conversion, but learners need time to explore and compare before committing.
           </p>
 
-          {/* 痛點視覺化 */}
+          {/* pain points */}
           <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8">
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 md:p-4 text-center">
+            <div className="p-3 md:p-4 text-center">
               <EyeOff className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-600" />
               <p className="text-xs md:text-sm text-text-primary font-medium">Hard to discover</p>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 md:p-4 text-center">
+            <div className="p-3 md:p-4 text-center">
               <BookmarkX className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-600" />
               <p className="text-xs md:text-sm text-text-primary font-medium">No save feature</p>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 md:p-4 text-center">
+            <div className="p-3 md:p-4 text-center">
               <TrendingDown className="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-amber-600" />
               <p className="text-xs md:text-sm text-text-primary font-medium">Unclear progress</p>
             </div>
           </div>
 
           {/* Design Goal */}
-          <div className="bg-brand-green-light rounded-lg p-4 md:p-6">
-            <p className="font-mono text-xs md:text-sm text-brand-green mb-3">Design Goal</p>
+          <div className="bg-[#f5f5f5] rounded-lg p-4 md:p-6">
+            <p className="font-mono text-xs md:text-sm text-[#1e3a5f] mb-3">Design Goal</p>
             <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
               <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 md:px-4 md:py-3 flex-1 justify-center">
-                <Search className="w-5 h-5 md:w-6 md:h-6 text-brand-green" />
+                <Search className="w-5 h-5 md:w-6 md:h-6 text-[#1e3a5f]" />
                 <span className="text-xs md:text-sm font-medium">Browse with Ease</span>
               </div>
-              <span className="text-brand-green text-lg md:text-xl rotate-90 md:rotate-0">→</span>
+              <span className="text-[#1e3a5f] text-lg md:text-xl rotate-90 md:rotate-0">→</span>
               <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 md:px-4 md:py-3 flex-1 justify-center">
-                <Bookmark className="w-5 h-5 md:w-6 md:h-6 text-brand-green" />
+                <Bookmark className="w-5 h-5 md:w-6 md:h-6 text-[#1e3a5f]" />
                 <span className="text-xs md:text-sm font-medium">Save & Compare</span>
               </div>
-              <span className="text-brand-green text-lg md:text-xl rotate-90 md:rotate-0">→</span>
+              <span className="text-[#1e3a5f] text-lg md:text-xl rotate-90 md:rotate-0">→</span>
               <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 md:px-4 md:py-3 flex-1 justify-center">
-                <BarChart3 className="w-5 h-5 md:w-6 md:h-6 text-brand-green" />
+                <BarChart3 className="w-5 h-5 md:w-6 md:h-6 text-[#1e3a5f]" />
                 <span className="text-xs md:text-sm font-medium">Track Progress</span>
               </div>
             </div>
@@ -158,41 +158,41 @@ function Learnnow() {
       {/* ===== Design Process ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">Design Process</h2>
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-brand-green-light rounded-full flex items-center justify-center mb-2">
-                <Search className="w-5 h-5 text-brand-green" />
+              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
+                <Search className="w-5 h-5 text-[#1e3a5f]" />
               </div>
               <p className="text-sm font-medium text-text-primary">Research</p>
             </div>
             <div className="hidden md:block text-text-secondary">→</div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-brand-green-light rounded-full flex items-center justify-center mb-2">
-                <Lightbulb className="w-5 h-5 text-brand-green" />
+              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
+                <Lightbulb className="w-5 h-5 text-[#1e3a5f]" />
               </div>
               <p className="text-sm font-medium text-text-primary">Define</p>
             </div>
             <div className="hidden md:block text-text-secondary">→</div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-brand-green-light rounded-full flex items-center justify-center mb-2">
-                <Pencil className="w-5 h-5 text-brand-green" />
+              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
+                <Pencil className="w-5 h-5 text-[#1e3a5f]" />
               </div>
               <p className="text-sm font-medium text-text-primary">Design</p>
             </div>
             <div className="hidden md:block text-text-secondary">→</div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-brand-green-light rounded-full flex items-center justify-center mb-2">
-                <FlaskConical className="w-5 h-5 text-brand-green" />
+              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
+                <FlaskConical className="w-5 h-5 text-[#1e3a5f]" />
               </div>
               <p className="text-sm font-medium text-text-primary">Test</p>
             </div>
             <div className="hidden md:block text-text-secondary">→</div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-brand-green-light rounded-full flex items-center justify-center mb-2">
-                <RefreshCw className="w-5 h-5 text-brand-green" />
+              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
+                <RefreshCw className="w-5 h-5 text-[#1e3a5f]" />
               </div>
               <p className="text-sm font-medium text-text-primary">Iterate</p>
             </div>
@@ -292,10 +292,10 @@ function Learnnow() {
           
           {/* 3 cols layout */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-brand-green-light rounded-lg p-4 md:p-6 text-center">
-              <FolderTree className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-brand-green" />
-              <p className="text-brand-green font-mono text-xs mb-2">01</p>
-              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
+            <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6 text-center">
+              <FolderTree className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-[#1e3a5f]" />
+              <p className="text--[#1e3a5f] font-mono text-xs mb-2">01</p>
+              <h3 className="font-mono text-base md:text-lg text-text-primary mb-2">
                 Three-Tier Navigation
               </h3>
               <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
@@ -303,9 +303,9 @@ function Learnnow() {
               </p>
             </div>
 
-            <div className="bg-brand-green-light rounded-lg p-4 md:p-6 text-center">
-              <Bookmark className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-brand-green" />
-              <p className="text-brand-green font-mono text-xs mb-2">02</p>
+            <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6 text-center">
+              <Bookmark className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-[#1e3a5f]" />
+              <p className="text-[#1e3a5f] font-mono text-xs mb-2">02</p>
               <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
                 Save & Compare
               </h3>
@@ -314,9 +314,9 @@ function Learnnow() {
               </p>
             </div>
 
-            <div className="bg-brand-green-light rounded-lg p-4 md:p-6 text-center">
-              <LayoutDashboard className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-brand-green" />
-              <p className="text-brand-green font-mono text-xs mb-2">03</p>
+            <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6 text-center">
+              <LayoutDashboard className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-[#1e3a5f]" />
+              <p className="text-[#1e3a5f] font-mono text-xs mb-2">03</p>
               <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
                 Progress Dashboard
               </h3>
@@ -338,7 +338,7 @@ function Learnnow() {
             The complete journey from discovery to enrollment.
           </p>
           
-          <div className="bg-brand-green-light rounded-lg p-4 md:p-6">
+          <div className="bg-[#f5f5f5] rounded-lg p-4 md:p-6">
             <img
               src="/images/Learnnow_UserFlow.png"
               alt="LearnNow User Flow"
@@ -379,7 +379,7 @@ function Learnnow() {
           ))}
         </div>
 
-        {/* 桌面：Bento Grid（上排大圖+右圖，下排三小圖） */}
+        {/* desktop：Bento Grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-4">
 
           {/* Row 1：CourseDetailed (col-span-2) + CourseCard */}
@@ -395,7 +395,7 @@ function Learnnow() {
             </div>
           </div>
 
-          {/* Row 2：三張等寬小圖 */}
+          {/* Row 2 */}
           <div onClick={() => setLightboxImage(finalDesigns[2])} className="group cursor-pointer">
             <div className="overflow-hidden rounded-lg shadow-md bg-white h-44">
               <img src="/images/ExploreCourses.png" alt="Explore Courses" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
@@ -444,7 +444,7 @@ function Learnnow() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Task 1 */}
             <div className="border border-border rounded-lg overflow-hidden">
-                <div className="bg-brand-green-light px-4 py-3 border-b border-border">
+                <div className="bg-[#8aacda]/20 px-4 py-3 border-b border-border">
                     <h3 className="font-serif text-base md:text-lg text-text-primary">Task 1: Save a Course</h3>
                 </div>
                 <div className="p-4">
@@ -478,7 +478,7 @@ function Learnnow() {
 
             {/* Task 2 */}
             <div className="border border-border rounded-lg overflow-hidden">
-                <div className="bg-brand-green-light px-4 py-3 border-b border-border">
+                <div className="bg-[#8aacda]/20 px-4 py-3 border-b border-border">
                     <h3 className="font-serif text-base md:text-lg text-text-primary">Task 2: Enroll in Saved Course</h3>
                 </div>
                 <div className="p-4">

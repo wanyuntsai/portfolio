@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
 
 
 function About() {
     const [isHovered, setIsHovered] = useState(false);
     const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+    const [isPhotoRevealed, setIsPhotoRevealed] = useState(false);
+    const [hasClickedPhoto, setHasClickedPhoto] = useState(false);
 
     // photo with descriptions
     const photos = [
         { src: 'images/about1.webp', desc: 'Morning coffee ritual' },
         { src: 'images/star.webp', desc: '' },
         { src: 'images/about2.webp', desc: 'Exploring new places' },
-        { src: 'images/about3.webp', desc: 'Chasing golden hour' },
         { src: 'images/about4.webp', desc: 'Finding calm in nature' },
         { src: 'images/sunset.webp', desc: 'Music & late nights' },
     ]
@@ -19,6 +20,46 @@ function About() {
     const handleEnvelopeClick = () => {
         setIsEnvelopeOpen(!isEnvelopeOpen)
     }
+
+    // Photo strip drag-to-scroll + auto-scroll
+    const scrollRef = useRef(null);
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const startScrollLeft = useRef(0);
+    const isPausedByUser = useRef(false);
+    const animFrameRef = useRef(null);
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        const tick = () => {
+            if (!isPausedByUser.current) {
+                el.scrollLeft += 0.6;
+                if (el.scrollLeft >= el.scrollWidth / 2) {
+                    el.scrollLeft = 0;
+                }
+            }
+            animFrameRef.current = requestAnimationFrame(tick);
+        };
+        animFrameRef.current = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(animFrameRef.current);
+    }, []);
+
+    const onDragStart = (clientX) => {
+        isDragging.current = true;
+        isPausedByUser.current = true;
+        startX.current = clientX;
+        startScrollLeft.current = scrollRef.current.scrollLeft;
+    };
+    const onDragMove = (clientX) => {
+        if (!isDragging.current) return;
+        scrollRef.current.scrollLeft = startScrollLeft.current - (clientX - startX.current);
+    };
+    const onDragEnd = () => {
+        isDragging.current = false;
+        isPausedByUser.current = false;
+    };
 
     return (
         <PageTransition>
@@ -87,28 +128,53 @@ function About() {
                         language
                     </span>
 
-                    {/* 手機版 - 預設顯示 */}
+                    {/* mobile - default display */}
                     <div className="md:hidden absolute -bottom-12 flex gap-3">
-                        <span className="font-hand text-sm text-brand-green">coffee</span>
+                        <span className="font-hand text-sm text-brand-green">design</span>
                         <span className="text-brand-green">•</span>
                         <span className="font-hand text-sm text-brand-green">music</span>
                         <span className="text-brand-green">•</span>
-                        <span className="font-hand text-sm text-brand-green">design</span>
+                        <span className="font-hand text-sm text-brand-green">nature</span>
                     </div>
                 </div>
             </section>
 
             {/* Profile Photo */}
             <FadeInSection>
-            <section className="px-5 md:px-20 py-6 flex justify-center">
-                <div className="w-48 h-60 md:w-64 md:h-80 rounded-lg overflow-hidden ">
-                    <img 
-                    // placeholder
-                        src="https://picsum.photos/400/400?random=profile" 
-                        alt="Yun working"
-                        className="w-full h-full object-cover"
-                    />
+            <section className="relative px-5 md:px-20 py-6 flex flex-col items-center gap-3">
+                <div className="relative">
+                    {/* Pulsing ring — disappears after first click */}
+                    {!hasClickedPhoto && (
+                        <span className="absolute -inset-1 rounded-xl border-2 border-brand-green/40 animate-pulse pointer-events-none" />
+                    )}
+                    <div
+                        className="relative w-48 h-60 md:w-64 md:h-80 rounded-lg overflow-hidden cursor-pointer group"
+                        onClick={() => {
+                            setIsPhotoRevealed(v => !v);
+                            setHasClickedPhoto(true);
+                        }}
+                    >
+                        <img
+                            src="images/about3.webp"
+                            alt="Yun"
+                            className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isPhotoRevealed ? 'brightness-40 scale-105' : 'brightness-100'}`}
+                        />
+                        <div className={`absolute inset-0 flex flex-col items-center justify-center px-5 text-center transition-all duration-500 ${isPhotoRevealed ? 'opacity-100' : 'opacity-0'}`}>
+                            <p className="font-hand text-white text-lg md:text-xl leading-relaxed">
+                                thanks for stopping by!
+                            </p>
+                            <p className="font-hand text-white/80 text-base md:text-lg mt-2 leading-relaxed">
+                                you will get to know me more here :)
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
+                {/* Hint text — desktop: click me / mobile: tap me — disappears after first click */}
+                <span className={`text-xs font-mono text-brand-green/50 transition-opacity duration-500 ${hasClickedPhoto ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                    <span className="hidden md:inline">✨ click me ✨</span>
+                    <span className="md:hidden">✨ tap me ✨</span>
+                </span>
             </section>
             </FadeInSection>
 
@@ -196,10 +262,10 @@ function About() {
             </FadeInSection>
 
 
-            {/* Outside Design 對話框 */}
+            {/* Outside Design Chat */}
             <FadeInSection>
             <section className="px-5 md:px-20 py-8 md:py-12">
-                {/* 問題 - 靠左 */}
+                {/* Q. - align left */}
                 <div className="flex justify-start mb-6 max-w-3xl">
                     <div 
                         className="bg-white border border-border px-5 py-3 shadow-sm"
@@ -209,7 +275,7 @@ function About() {
                     </div>
                 </div>
                 
-                {/* 回答 - 靠右 */}
+                {/* A. - align right */}
                 <div className="flex justify-end mb-6 font-mono text-sm">
                     <div 
                         className="bg-brand-green px-5 py-4 max-w-[85%]"
@@ -236,10 +302,21 @@ function About() {
 
             {/* photo */}
             <FadeInSection>
-            <section className="overflow-hidden py-4">
-                <div className="flex gap-3 md:gap-6 animate-marquee-photos">
+            <section className="py-4">
+                <div
+                    ref={scrollRef}
+                    className="flex gap-3 md:gap-6 overflow-x-auto cursor-grab active:cursor-grabbing select-none"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    onMouseDown={(e) => onDragStart(e.clientX)}
+                    onMouseMove={(e) => onDragMove(e.clientX)}
+                    onMouseUp={onDragEnd}
+                    onMouseLeave={onDragEnd}
+                    onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
+                    onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
+                    onTouchEnd={onDragEnd}
+                >
                     {[...photos, ...photos].map((photo, index) => (
-                        <div 
+                        <div
                             key={index}
                             className="relative group shrink-0"
                         >
@@ -248,9 +325,10 @@ function About() {
                                 alt={photo.desc}
                                 loading='lazy'
                                 decoding='async'
+                                draggable={false}
                                 className="w-[168px] h-[285px] md:w-[268px] md:h-[456px] object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
                             />
-                            {/* Hover 文字框 */}
+                            {/* Hover text box */}
                             <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                                 <p className="font-hand text-sm text-text-primary">{photo.desc}</p>
                             </div>
