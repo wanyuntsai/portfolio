@@ -4,22 +4,18 @@ import { FadeInSection, PageTransition } from '../components/AnimatedSection';
 
 function About() {
     const [isHovered, setIsHovered] = useState(false);
-    const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
     const [isPhotoRevealed, setIsPhotoRevealed] = useState(false);
     const [hasClickedPhoto, setHasClickedPhoto] = useState(false);
 
     // photo with descriptions
     const photos = [
-        { src: 'images/about1.webp', desc: 'Morning coffee ritual' },
-        { src: 'images/star.webp', desc: '' },
-        { src: 'images/about2.webp', desc: 'Exploring new places' },
-        { src: 'images/about4.webp', desc: 'Finding calm in nature' },
-        { src: 'images/sunset.webp', desc: 'Music & late nights' },
-    ]
+        { src: 'images/about1.webp', desc: 'Grampians National Park, Australia — 2024' },
+        { src: 'images/star.webp', desc: 'Great Ocean Rd, Australia — 2024' },
+        { src: 'images/about2.webp', desc: 'Joffre Lakes, Canada — 2023' },
+        { src: 'images/about4.webp', desc: 'Krimml Waterfalls, Austria — 2024' },
+        { src: 'images/sunset.webp', desc: 'White Rock, Canada — 2025' },
 
-    const handleEnvelopeClick = () => {
-        setIsEnvelopeOpen(!isEnvelopeOpen)
-    }
+    ]
 
     // Photo strip drag-to-scroll + auto-scroll
     const scrollRef = useRef(null);
@@ -185,32 +181,6 @@ function About() {
             </section>
             </FadeInSection>
 
-            {/* intro */}
-            <FadeInSection delay={0.1}>
-            <section className="px-5 md:px-20 py-8 justify-center">
-                <div className="space-y-6 max-w-5xl mx-auto">
-                    {/* 1. */}
-                    <div className="border border-border rounded-lg p-6 font-mono text-sm bg-brand-white">
-                        <p className="text-brand-green font-mono text-sm mb-2">1.</p>
-                        <p className="text-text-primary leading-relaxed">I approach design through deep user understanding, transforming needs and motivations into meaningful digital experiences.</p>
-                    </div>
-
-                    {/* 2. */}
-                    <div className="border border-border rounded-lg p-6 font-mono text-sm bg-brand-white">
-                        <p className="text-brand-green font-mono text-sm mb-2">2.</p>
-                        <p className="text-text-primary leading-relaxed">Living across cultures taught me to stay curious and see things from different angles. I bring this perspective to every design decision I make.</p>
-                    </div>
-
-                    {/* 3. */}
-                    <div className="border border-border rounded-lg p-6 font-mono text-sm bg-brand-white">
-                        <p className="text-brand-green font-mono text-sm mb-2">3.</p>
-                        <p className="text-text-primary leading-relaxed">I'm drawn to thoughtful design that prioritizes clarity and usability. My goal is to create products that feel effortless to use and genuinely make people's everyday experiences a little easier.</p>
-                    </div>
-                </div>
-            </section>
-            </FadeInSection>
-
-
             {/* Core Values */}
             <FadeInSection>
             <section className="px-5 md:px-20 py-8 md:py-12">
@@ -222,12 +192,7 @@ function About() {
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
                             <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">Empathetic</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                Living in Japan introduced me to <em>kuuki wo yomu</em> — literally,
-                                "reading the air." It's the practice of sensing what's unspoken in a room:
-                                the mood, the hesitation, what someone means beneath what they actually say.
-                                That cultural training sharpened something I already felt naturally.
-                                In design, it means I don't wait for users to articulate a problem —
-                                I'm already paying attention to where they pause, hesitate, or quietly give up.
+                                I tune into others’ perspectives and notice subtle cues. I listen deeply, offer support, and adjust my approach as needed.
                             </p>
                         </div>
 
@@ -235,11 +200,7 @@ function About() {
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
                             <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">Adaptive</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                I left home in high school, spent time living in Japan, and eventually chose
-                                Vancouver as the place to build something new. Each move brought a different
-                                way of seeing the world — and I found I was genuinely excited by that, not
-                                unsettled. Encountering different perspectives doesn't feel like friction to me.
-                                It feels like information.
+                                Moving across different places and environments has shaped who I am. I embrace each change with curiosity and openness.
                             </p>
                         </div>
 
@@ -247,12 +208,7 @@ function About() {
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
                             <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">Reflective</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                Friends often come to me when they need someone who will genuinely sit with
-                                all sides of a situation before weighing in. I naturally think about the
-                                <em> why</em> behind things — what someone really means, what a decision
-                                is actually solving for. In design, this shows up as a habit of questioning
-                                assumptions, including my own, and returning to earlier choices not to
-                                second-guess, but to understand more deeply.
+                                I learn from every experience and refine my thinking. Life is a constant opportunity to gain new perspectives from people with different backgrounds.
                             </p>
                         </div>
 
@@ -264,7 +220,7 @@ function About() {
 
             {/* Outside Design Chat */}
             <FadeInSection>
-            <section className="px-5 md:px-20 py-8 md:py-12">
+            <section className="pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
                 {/* Q. - align left */}
                 <div className="flex justify-start mb-6 max-w-3xl">
                     <div 
@@ -302,7 +258,7 @@ function About() {
 
             {/* photo */}
             <FadeInSection>
-            <section className="py-4">
+            <section className="py-4 pt-16 md:pt-24 pb-12">
                 <div
                     ref={scrollRef}
                     className="flex gap-3 md:gap-6 overflow-x-auto cursor-grab active:cursor-grabbing select-none"

@@ -4,6 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [showContact, setShowContact] = useState(false);
+    const [copied, setCopied] = useState(false);
+
+    const copyEmail = () => {
+        navigator.clipboard.writeText('yuntsaica@gmail.com');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
     const location = useLocation();
 
     // background color by page
@@ -60,16 +67,13 @@ function Navbar() {
 
                             {/* Email */}
                             <button
-                                onClick={() => {
-                                    navigator.clipboard.writeText('yuntsaica@gmail.com');
-                                    alert('Email copied! ☕');
-                                }}
+                                onClick={copyEmail}
                                 className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-brand-green-light transition-colors w-full text-left"
                             >
                                 <svg className="w-5 h-5 stroke-brand-green" fill="none" viewBox="0 0 24 24" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                 </svg>
-                                <span className="font-mono text-sm text-text-primary">Copy Email</span>
+                                <span className="font-mono text-sm text-text-primary">{copied ? 'Email copied! ☻' : 'Copy Email'}</span>
                             </button>
 
                         </div>
@@ -133,14 +137,10 @@ function Navbar() {
                                     LinkedIn
                                 </a>
                                 <button
-                                    onClick={() => {
-                                        navigator.clipboard.writeText('yuntsaica@gmail.com');
-                                        alert('Email copied! ☕');
-                                        setIsOpen(false);
-                                    }}
+                                    onClick={() => { copyEmail(); setIsOpen(false); }}
                                     className="text-lg text-text-secondary hover:text-[#9BBF6A] transition-colors font-mono"
                                 >
-                                    Copy Email
+                                    {copied ? 'Email copied! ☻' : 'Copy Email'}
                                 </button>
                             </div>
                         )}

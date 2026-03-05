@@ -33,7 +33,7 @@ function Projects() {
             title: "VANLINK",
             subtitle: "Transit app",
             description: "A transit app designed to help Vancouver commuters plan their journeys, top up balances, and activate monthly passes with ease.",
-            image: "/images/vanlink-hero.png",
+            image: "/images/Vanlink_mkup.png",
             tags: ["UX/UI", "Figma", "Maze"],
             link: "/work/vanlink",
             category: "UX/UI Design"

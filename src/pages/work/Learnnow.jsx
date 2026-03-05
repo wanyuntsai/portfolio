@@ -295,7 +295,7 @@ function Learnnow() {
             <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6 text-center">
               <FolderTree className="w-8 h-8 md:w-10 md:h-10 mx-auto mb-3 text-[#1e3a5f]" />
               <p className="text--[#1e3a5f] font-mono text-xs mb-2">01</p>
-              <h3 className="font-mono text-base md:text-lg text-text-primary mb-2">
+              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
                 Three-Tier Navigation
               </h3>
               <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
@@ -359,7 +359,7 @@ function Learnnow() {
           </p>
           
     <FadeInSection>
-        {/* 手機：橫向滑動卡片 */}
+        {/* mobile：scroll img */}
         <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 md:hidden">
           {finalDesigns.map((img, i) => (
             <div
@@ -437,7 +437,7 @@ function Learnnow() {
         </div>
 
         <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6">
-            Tested with 3 participants on Maze.
+            Tested with 5 participants on Maze.
         </p>
 
         {/* Task results */}
@@ -550,7 +550,7 @@ function Learnnow() {
         
         <div className="space-y-4">
             <div className="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
-                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">1</div>
+                <div className="w-8 h-8 bg-[#1e3a5f]  rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">1</div>
                 <div>
                     <p className="text-sm md:text-base text-text-primary font-medium">Surfaced key metadata on course cards</p>
                     <p className="text-xs md:text-sm text-text-secondary mt-1">Moved duration, rating, and price from hover-only to always visible</p>
@@ -558,7 +558,7 @@ function Learnnow() {
             </div>
             
             <div className="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
-                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">2</div>
+                <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">2</div>
                 <div>
                     <p className="text-sm md:text-base text-text-primary font-medium">Revised "My Learning" menu colors</p>
                     <p className="text-xs md:text-sm text-text-secondary mt-1">Changed from grey to active color to signal interactivity</p>
@@ -566,7 +566,7 @@ function Learnnow() {
             </div>
             
             <div className="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
-                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">3</div>
+                <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">3</div>
                 <div>
                     <p className="text-sm md:text-base text-text-primary font-medium">Added "Save to compare later" hint</p>
                     <p className="text-xs md:text-sm text-text-secondary mt-1">Clarified the save button's purpose on course detail pages</p>
@@ -587,25 +587,16 @@ function Learnnow() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Compare */}
             <div className="group relative border border-dashed border-brand-green rounded-lg p-4 md:p-6 cursor-pointer overflow-hidden">
-                <Scale className="w-6 h-6 md:w-8 md:h-8 mb-3 text-brand-green" />
+                <Scale className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
                 <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">Compare Courses</h3>
                 <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
                     Side-by-side comparison of saved courses — duration, price, ratings, and syllabus at a glance.
                 </p>
-                
-                {/* Hover wireframe */}
-                <div className="absolute inset-0 bg-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                    <img 
-                        src="/images/learnnow-compare-wireframe.png" 
-                        alt="Compare Feature Wireframe"
-                        className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
-                    />
-                </div>
             </div>
             
             {/* Mobile App */}
             <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
-                <Smartphone className="w-6 h-6 md:w-8 md:h-8 mb-3 text-brand-green" />
+                <Smartphone className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
                 <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">Mobile App</h3>
                 <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
                     Track progress, manage schedules, and receive reminders on the go.
@@ -614,7 +605,7 @@ function Learnnow() {
             
             {/* Course Catalog */}
             <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
-                <Globe className="w-6 h-6 md:w-8 md:h-8 mb-3 text-brand-green" />
+                <Globe className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
                 <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">Course Catalog</h3>
                 <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
                     Full browsable catalog with search and filters — addressing the homepage CTA expectation.
@@ -633,9 +624,9 @@ function Learnnow() {
         
         <div className="space-y-4">
             {/* Takeaway 1 */}
-            <div className="bg-brand-green-light rounded-lg p-4 md:p-6">
+            <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6">
                 <div className="flex items-start gap-4">
-                    <Lightbulb className="w-6 h-6 text-brand-green flex-shrink-0 mt-1" />
+                    <Lightbulb className="w-6 h-6 text-[#1e3a5f] flex-shrink-0 mt-1" />
                     <div>
                         <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
                             Visual cues set expectations
@@ -650,9 +641,9 @@ function Learnnow() {
             </div>
             
             {/* Takeaway 2 */}
-            <div className="bg-brand-green-light rounded-lg p-4 md:p-6">
+            <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6">
                 <div className="flex items-start gap-4">
-                    <LayoutDashboard className="w-6 h-6 text-brand-green flex-shrink-0 mt-1" />
+                    <LayoutDashboard className="w-6 h-6 text-[#1e3a5f] flex-shrink-0 mt-1" />
                     <div>
                         <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
                             Essential info should be visible at first glance
@@ -667,9 +658,9 @@ function Learnnow() {
             </div>
 
             {/* Takeaway 3 */}
-            <div className="bg-brand-green-light rounded-lg p-4 md:p-6">
+            <div className="bg-[#8aacda]/20 rounded-lg p-4 md:p-6">
                 <div className="flex items-start gap-4">
-                    <FlaskConical className="w-6 h-6 text-brand-green flex-shrink-0 mt-1" />
+                    <FlaskConical className="w-6 h-6 text-[#1e3a5f] flex-shrink-0 mt-1" />
                     <div>
                         <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">
                             Distinguish design flaws from scope gaps
