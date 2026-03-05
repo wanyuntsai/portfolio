@@ -10,7 +10,7 @@ import About from './pages/About';
 // projects page
 // import CloudAir from './pages/work/CloudAir'
 import LearnNow from './pages/work/Learnnow'
-import VanLink from './pages/work/VanLink';
+// import VanLink from './pages/work/VanLink';
 // import MissBean from './pages/work/MissBean'
 
 function AppContent() {
@@ -27,7 +27,7 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           {/* project routes */}
           <Route path="/work/Learnnow" element={<LearnNow />} />
-          <Route path="/work/Vanlink" element={<VanLink />} />
+          {/* <Route path="/work/Vanlink" element={<VanLink />} /> */}
           {/* <Route path="/work/Cloudair" element={<CloudAir/>} /> */}
         </Routes>
       </main>
