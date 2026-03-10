@@ -31,7 +31,7 @@ function Footer() {
             </div>
             <div className="text-center text-xs font-mono mt-5">
                 <p>&copy; 2026 Yun Tsai. </p>
-                <p>{t('Designed & built with lots of coffee :)', '在滿滿咖啡加持下完成的 :)')}</p>
+                <p>Designed & built with lots of coffee :)</p>
             </div>
         </footer>
     )
