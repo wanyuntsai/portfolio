@@ -10,8 +10,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 function Home() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -131,14 +132,26 @@ const renderProjectCard = (project) => (
         <div>
             {/* hero title */}
         <section className="min-h-screen px-5 md:px-10 flex flex-col justify-center relative pt-24">
-      <motion.h1
-        initial={{opacity:0, y:30}}
-        animate={{opacity:1, y:0}}
-        transition={{duration: 0.8, ease: "easeOut"}}
-        className="font-serif text-4xl lg:text-6xl text-text-primary leading-tight text-left lg:max-w-2xl">
-          {t('Creating digital experiences where users feel understood and interactions feel', '打造讓使用者被理解、互動自然流暢的數位體驗')}{' '}
-          <span className="underline decoration-brand-green decoration-2 underline-offset-4">{t('natural', '自然')}</span>{t('.', '。')}
-        </motion.h1>
+      <h1 className={`font-serif ${language === 'zh' ? 'text-3xl lg:text-5xl' : 'text-4xl lg:text-6xl'} text-text-primary leading-tight text-left lg:max-w-2xl`} style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>
+          <motion.span
+            key={language + '-line1'}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+            className="block">
+            {t('Creating digital experiences', '打造讓使用者被理解、')}
+          </motion.span>
+          <motion.span
+            key={language + '-line2'}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
+            className="block">
+            {t('where users feel understood and interactions feel ', '互動')}
+            <span className="underline decoration-brand-green decoration-2 underline-offset-4">{t('natural', '自然')}</span>
+            {t('.', '流暢的數位體驗。')}
+          </motion.span>
+        </h1>
 
        <motion.div
         initial={{opacity:0, y:20}}

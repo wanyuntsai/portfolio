@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 
 function About() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [isHovered, setIsHovered] = useState(false);
     const [isPhotoRevealed, setIsPhotoRevealed] = useState(false);
     const [hasClickedPhoto, setHasClickedPhoto] = useState(false);
@@ -59,6 +59,52 @@ function About() {
         isPausedByUser.current = false;
     };
 
+    // Chat typewriter
+    const chatRef = useRef(null);
+    const [chatVisible, setChatVisible] = useState(false);
+    const [typingStarted, setTypingStarted] = useState(false);
+    const [typedChars, setTypedChars] = useState(0);
+
+    const p1 = t("I'm someone who finds balance between quiet, unhurried moments and the occasional urge to go explore somewhere new.", '我享受寧靜，也享受偶爾出走探索的自由，喜歡兩者並存的生活。');
+    const p2 = t("In my downtime, you'll find me watching the skies, going for a walk, vibing to indie folk, trying out new recipes, or diving into creative content online.", '休閒時，我喜歡看看天空、散散步、聽獨立民謠、嘗試新食譜，或探索網路上的各種創意內容。');
+    const p3 = t("I'm all about staying curious, keeping things interesting, and never stopping the learning process. Life's a journey, and I'm just trying to enjoy the ride.", '我熱衷於保持好奇心、讓生活充滿趣味，並持續學習。人生是一段旅程，每段經歷對我來說都是養分。');
+    const totalChars = p1.length + p2.length + p3.length;
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) { setChatVisible(true); observer.disconnect(); }
+        }, { threshold: 0.4 });
+        if (chatRef.current) observer.observe(chatRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!chatVisible) return;
+        const delay = setTimeout(() => setTypingStarted(true), 1000);
+        return () => clearTimeout(delay);
+    }, [chatVisible]);
+
+    useEffect(() => {
+        if (!typingStarted) return;
+        setTypedChars(0);
+        const speed = language === 'zh' ? 90 : 42;
+        const id = setInterval(() => {
+            setTypedChars(prev => {
+                if (prev >= totalChars) { clearInterval(id); return prev; }
+                return prev + 1;
+            });
+        }, speed);
+        return () => clearInterval(id);
+    }, [typingStarted, language]);
+
+    const getParaText = (index) => {
+        const offsets = [0, p1.length, p1.length + p2.length];
+        const paras = [p1, p2, p3];
+        return paras[index].slice(0, Math.max(0, typedChars - offsets[index]));
+    };
+    const activePara = typedChars < p1.length ? 0 : typedChars < p1.length + p2.length ? 1 : typedChars < totalChars ? 2 : -1;
+    const cursor = <span className="inline-block w-0.5 h-[1em] bg-white align-middle ml-px animate-pulse" />;
+
     return (
         <PageTransition>
         <div className="bg-brand-cream flex-1">
@@ -68,7 +114,7 @@ function About() {
                 <div className='relative flex flex-col justify-center items-center'
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                    <h1 className='font-serif text-4xl text-text-primary cursor-default'>{t("Hi! I'm Yun", '嗨！我是 Yun')}</h1>
+                    <h1 className='font-serif text-4xl text-text-primary cursor-default' style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t("Hi! I'm Yun", '嗨！我是 Yun')}</h1>
 
                     {/* desktop - hover me message */}
                     <span className={`hidden md:block text-xs font-mono text-brand-green/50 mt-3 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
@@ -162,7 +208,7 @@ function About() {
                                 {t('thanks for stopping by!', '謝謝你來逛逛！')}
                             </p>
                             <p className="font-hand text-white/80 text-base md:text-lg mt-2 leading-relaxed">
-                                {t('you will get to know me more here :)', '在這裡，你可以更認識我 :)')}
+                                {t('you will get to know me more here :)', '在這裡，你可以更認識我一點 :)')}
                             </p>
                         </div>
                     </div>
@@ -192,7 +238,7 @@ function About() {
 
                         {/* Empathetic */}
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
-                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">{t('Empathetic', '同理心')}</h3>
+                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Empathetic', '同理心')}</h3>
                             <p className="text-text-secondary leading-relaxed">
                                 {t("I tune into others' perspectives and notice subtle cues. I listen deeply, offer support, and adjust my approach as needed.", '我善於理解他人的觀點，細心察覺細微的線索，深入聆聽並適時調整自己的方式。')}
                             </p>
@@ -200,7 +246,7 @@ function About() {
 
                         {/* Adaptive */}
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
-                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">{t('Adaptive', '適應力')}</h3>
+                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Adaptive', '適應力')}</h3>
                             <p className="text-text-secondary leading-relaxed">
                                 {t('Moving across different places and environments has shaped who I am. I embrace each change with curiosity and openness.', '在不同地方與環境中生活，塑造了現在的我。我以好奇與開放的心態迎接每一次變化。')}
                             </p>
@@ -208,9 +254,9 @@ function About() {
 
                         {/* Reflective */}
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
-                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">{t('Reflective', '反思力')}</h3>
+                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Reflective', '反思力')}</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                {t('I learn from every experience and refine my thinking. Life is a constant opportunity to gain new perspectives from people with different backgrounds.', '我從每一次經驗中學習，不斷精進自己的思維。生活中，每個人都能帶來新的觀點與啟發，每個人都是值得學習的對象。')}
+                                {t('I learn from every experience and refine my thinking. Life is a constant opportunity to gain new perspectives from people with different backgrounds.', '我從每一次經驗中學習，不斷精進自己的思維。生活中，每個人都能帶來新的觀點與啟發，也都是值得學習的對象。')}
                             </p>
                         </div>
 
@@ -221,37 +267,52 @@ function About() {
 
 
             {/* Outside Design Chat */}
-            <FadeInSection>
-            <section className="pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
+            <section ref={chatRef} className="pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
                 {/* Q. - align left */}
-                <div className="flex justify-start mb-6 max-w-3xl">
+                <div className={`flex justify-start mb-6 max-w-3xl transition-all duration-500 ${chatVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                     <div
                         className="bg-white border border-border px-5 py-3 shadow-sm"
                         style={{ borderRadius: '20px 20px 20px 4px' }}
                     >
-                        <p className="text-text-primary font-mono text-sm">{t('Who is Yun, outside design?', '設計之外的 Yun')}</p>
+                        <p className="text-text-primary font-mono text-sm">{t('Who is Yun, outside design?', '設計之外的 Yun 是怎麼樣的？')}</p>
                     </div>
                 </div>
 
-                {/* A. - align right */}
-                <div className="flex justify-end mb-6 font-mono text-sm">
-                    <div
-                        className="bg-brand-green px-5 py-4 max-w-[85%]"
-                        style={{ borderRadius: '20px 20px 4px 20px' }}
-                    >
-                        <p className="text-white leading-relaxed">
-                            {t("I'm someone who finds balance between quiet moments and a good dose of adventure.", '我享受寧靜，也熱愛冒險，喜歡兩者並存的生活。')}
-                        </p>
-                        <p className="text-white leading-relaxed mt-4">
-                            {t("In my downtime, you'll find me watching the skies, going for a walk, vibing to indie folk, or diving into creative content online.", '休閒時，我喜歡看看天空、散散步、聽獨立民謠，或探索網路上的各種創意內容。')}
-                        </p>
-                        <p className="text-white leading-relaxed mt-4">
-                            {t("I'm all about staying curious, keeping things interesting, and never stopping the learning process. Life's a journey, and I'm just trying to enjoy the ride.", '我熱衷於保持好奇心、讓生活充滿趣味，並持續學習。人生是一段旅程，我只想盡情享受沿途風景。')}
-                        </p>
+                {/* Typing indicator */}
+                {chatVisible && !typingStarted && (
+                    <div className="flex justify-end mb-6">
+                        <div className="bg-brand-green px-5 py-4 flex gap-1.5 items-center" style={{ borderRadius: '20px 20px 4px 20px' }}>
+                            <span className="w-2 h-2 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                            <span className="w-2 h-2 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                            <span className="w-2 h-2 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        </div>
                     </div>
-                </div>
+                )}
+
+                {/* A. - align right */}
+                {typingStarted && (
+                    <div className="flex justify-end mb-6 font-mono text-sm">
+                        <div
+                            className="bg-brand-green px-5 py-4 max-w-[85%]"
+                            style={{ borderRadius: '20px 20px 4px 20px' }}
+                        >
+                            <p className="text-white leading-relaxed">
+                                {getParaText(0)}{activePara === 0 && cursor}
+                            </p>
+                            {typedChars > p1.length && (
+                                <p className="text-white leading-relaxed mt-4">
+                                    {getParaText(1)}{activePara === 1 && cursor}
+                                </p>
+                            )}
+                            {typedChars > p1.length + p2.length && (
+                                <p className="text-white leading-relaxed mt-4">
+                                    {getParaText(2)}{activePara === 2 && cursor}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                )}
             </section>
-            </FadeInSection>
 
             {/* photo */}
             <FadeInSection>

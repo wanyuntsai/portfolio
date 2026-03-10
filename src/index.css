@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap');
 
 
 
@@ -10,7 +10,7 @@ html, body, #root {
 }
 
 body {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
     background-color: #FAF7F2;
 }
 
@@ -23,9 +23,9 @@ body {
 @theme {
   /* font */
   --font-hand: "Caveat", cursive;
-  --font-serif: "Cormorant Garamond", serif;
+  --font-serif: "Cormorant Garamond", "Noto Serif TC", serif;
   --font-mono: "JetBrains Mono", monospace;
-  --font-sans: "Noto Sans", sans-serif;
+  --font-sans: "Noto Sans TC", sans-serif;
   
   /* color */
   --color-brand-green: #2B4A1A;
@@ -44,6 +44,10 @@ body {
 /* font */
 .font-mono {
   /* letter-spacing: -0.02em; */
+}
+
+.font-serif {
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
 }
 
 /* HOME */

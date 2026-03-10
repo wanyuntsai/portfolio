@@ -144,7 +144,11 @@ function Navbar() {
                                     LinkedIn
                                 </a>
                                 <button
-                                    onClick={() => { copyEmail(); setIsOpen(false); }}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText('yuntsaica@gmail.com');
+                                        setCopied(true);
+                                        setTimeout(() => { setCopied(false); setIsOpen(false); }, 1500);
+                                    }}
                                     className="text-base text-text-secondary hover:text-[#9BBF6A] transition-colors"
                                 >
                                     {copied ? t('Email copied! ☻', '已複製! ☻') : t('Copy Email', '複製信箱')}

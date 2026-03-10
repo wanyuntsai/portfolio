@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 function LanguageToggleButton({ className = '' }) {
     const { language, setLanguage } = useLanguage();
     const next = language === 'en' ? 'zh' : 'en';
-    const label = language === 'en' ? 'EN' : '中';
+    const label = language === 'en' ? '中' : 'EN';
 
     return (
         <button
