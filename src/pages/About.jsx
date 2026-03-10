@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
+import { useLanguage } from '../context/LanguageContext';
 
 
 function About() {
+    const { t } = useLanguage();
     const [isHovered, setIsHovered] = useState(false);
     const [isPhotoRevealed, setIsPhotoRevealed] = useState(false);
     const [hasClickedPhoto, setHasClickedPhoto] = useState(false);
@@ -60,64 +62,64 @@ function About() {
     return (
         <PageTransition>
         <div className="bg-brand-cream flex-1">
-            
+
             {/* h1 */}
             <section className='px-5 md:px-20 py-12 md:py-16'>
                 <div className='relative flex flex-col justify-center items-center'
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                    <h1 className='font-serif text-4xl text-text-primary cursor-default'>Hi! I'm Yun</h1>
+                    <h1 className='font-serif text-4xl text-text-primary cursor-default'>{t("Hi! I'm Yun", '嗨！我是 Yun')}</h1>
 
                     {/* desktop - hover me message */}
                     <span className={`hidden md:block text-xs font-mono text-brand-green/50 mt-3 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-                        ✨ hover me ✨
+                        {t('✨ hover me ✨', '✨ hover me ✨')}
                     </span>
 
                     {/* desktop: appear when hover */}
-                    <span 
+                    <span
                         className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out
-                            ${isHovered 
-                                ? 'opacity-100 -top-6 left-[35%] -rotate-12' 
+                            ${isHovered
+                                ? 'opacity-100 -top-6 left-[35%] -rotate-12'
                                 : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
                             }`}
                     >
                         coffee
                     </span>
 
-                    <span 
+                    <span
                         className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-75
-                            ${isHovered 
-                                ? 'opacity-100 -top-4 right-[35%] rotate-6' 
+                            ${isHovered
+                                ? 'opacity-100 -top-4 right-[35%] rotate-6'
                                 : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
                             }`}
                     >
                         music
                     </span>
 
-                    <span 
+                    <span
                         className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-100
-                            ${isHovered 
-                                ? 'opacity-100 top-1/2 left-[30%] -translate-y-1/2 -rotate-6' 
+                            ${isHovered
+                                ? 'opacity-100 top-1/2 left-[30%] -translate-y-1/2 -rotate-6'
                                 : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
                             }`}
                     >
                         design
                     </span>
 
-                    <span 
+                    <span
                         className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-150
-                            ${isHovered 
-                                ? 'opacity-100 top-1/2 right-[30%] -translate-y-1/2 rotate-12' 
+                            ${isHovered
+                                ? 'opacity-100 top-1/2 right-[30%] -translate-y-1/2 rotate-12'
                                 : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
                             }`}
                     >
                         nature
                     </span>
 
-                    <span 
+                    <span
                         className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-200
-                            ${isHovered 
-                                ? 'opacity-100 -bottom-4 left-1/2 -translate-x-1/2 rotate-3' 
+                            ${isHovered
+                                ? 'opacity-100 -bottom-4 left-1/2 -translate-x-1/2 rotate-3'
                                 : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
                             }`}
                     >
@@ -157,10 +159,10 @@ function About() {
                         />
                         <div className={`absolute inset-0 flex flex-col items-center justify-center px-5 text-center transition-all duration-500 ${isPhotoRevealed ? 'opacity-100' : 'opacity-0'}`}>
                             <p className="font-hand text-white text-lg md:text-xl leading-relaxed">
-                                thanks for stopping by!
+                                {t('thanks for stopping by!', '謝謝你來逛逛！')}
                             </p>
                             <p className="font-hand text-white/80 text-base md:text-lg mt-2 leading-relaxed">
-                                you will get to know me more here :)
+                                {t('you will get to know me more here :)', '在這裡，你可以更認識我 :)')}
                             </p>
                         </div>
                     </div>
@@ -168,8 +170,8 @@ function About() {
 
                 {/* Hint text — desktop: click me / mobile: tap me — disappears after first click */}
                 <span className={`text-xs font-mono text-brand-green/50 transition-opacity duration-500 ${hasClickedPhoto ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <span className="hidden md:inline">✨ click me ✨</span>
-                    <span className="md:hidden">✨ tap me ✨</span>
+                    <span className="hidden md:inline">{t('✨ click me ✨', '✨ 點我 ✨')}</span>
+                    <span className="md:hidden">{t('✨ tap me ✨', '✨ 點我 ✨')}</span>
                 </span>
             </section>
             </FadeInSection>
@@ -177,7 +179,7 @@ function About() {
             {/* h2 */}
             <FadeInSection delay={0.1}>
             <section className='px-5 md:px-20 py-8 md:py-12 text-center'>
-                <h2 className='text-xl text-text-secondary font-mono'>UX/UI Designer | Vancouver</h2> 
+                <h2 className='text-xl text-text-secondary font-mono'>{t('UX/UI Designer | Vancouver', 'UX/UI 設計師 | 溫哥華')}</h2>
             </section>
             </FadeInSection>
 
@@ -185,30 +187,30 @@ function About() {
             <FadeInSection>
             <section className="px-5 md:px-20 py-8 md:py-12">
                 <div className="max-w-5xl mx-auto">
-                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-8">Core Values</p>
+                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-8">{t('Core Values', '核心價值')}</p>
                     <div className="divide-y divide-border">
 
                         {/* Empathetic */}
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
-                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">Empathetic</h3>
+                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">{t('Empathetic', '同理心')}</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                I tune into others’ perspectives and notice subtle cues. I listen deeply, offer support, and adjust my approach as needed.
+                                {t("I tune into others' perspectives and notice subtle cues. I listen deeply, offer support, and adjust my approach as needed.", '我善於理解他人的觀點，細心察覺細微的線索，深入聆聽並適時調整自己的方式。')}
                             </p>
                         </div>
 
                         {/* Adaptive */}
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
-                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">Adaptive</h3>
+                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">{t('Adaptive', '適應力')}</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                Moving across different places and environments has shaped who I am. I embrace each change with curiosity and openness.
+                                {t('Moving across different places and environments has shaped who I am. I embrace each change with curiosity and openness.', '在不同地方與環境中生活，塑造了現在的我。我以好奇與開放的心態迎接每一次變化。')}
                             </p>
                         </div>
 
                         {/* Reflective */}
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-12">
-                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">Reflective</h3>
+                            <h3 className="font-serif text-3xl md:text-4xl text-text-primary shrink-0 w-48">{t('Reflective', '反思力')}</h3>
                             <p className="text-text-secondary leading-relaxed">
-                                I learn from every experience and refine my thinking. Life is a constant opportunity to gain new perspectives from people with different backgrounds.
+                                {t('I learn from every experience and refine my thinking. Life is a constant opportunity to gain new perspectives from people with different backgrounds.', '我從每一次經驗中學習，不斷精進自己的思維。生活中，每個人都能帶來新的觀點與啟發，每個人都是值得學習的對象。')}
                             </p>
                         </div>
 
@@ -223,33 +225,28 @@ function About() {
             <section className="pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
                 {/* Q. - align left */}
                 <div className="flex justify-start mb-6 max-w-3xl">
-                    <div 
+                    <div
                         className="bg-white border border-border px-5 py-3 shadow-sm"
                         style={{ borderRadius: '20px 20px 20px 4px' }}
                     >
-                        <p className="text-text-primary font-mono text-sm">Who is Yun, outside design?</p>
+                        <p className="text-text-primary font-mono text-sm">{t('Who is Yun, outside design?', '設計之外的 Yun')}</p>
                     </div>
                 </div>
-                
+
                 {/* A. - align right */}
                 <div className="flex justify-end mb-6 font-mono text-sm">
-                    <div 
+                    <div
                         className="bg-brand-green px-5 py-4 max-w-[85%]"
                         style={{ borderRadius: '20px 20px 4px 20px' }}
                     >
                         <p className="text-white leading-relaxed">
-                            I'm someone who finds balance between quiet moments 
-                            and a good dose of adventure.
+                            {t("I'm someone who finds balance between quiet moments and a good dose of adventure.", '我享受寧靜，也熱愛冒險，喜歡兩者並存的生活。')}
                         </p>
                         <p className="text-white leading-relaxed mt-4">
-                            In my downtime, you'll find me watching the skies, 
-                            going for a walk, vibing to indie folk, or diving into 
-                            creative content online.
+                            {t("In my downtime, you'll find me watching the skies, going for a walk, vibing to indie folk, or diving into creative content online.", '休閒時，我喜歡看看天空、散散步、聽獨立民謠，或探索網路上的各種創意內容。')}
                         </p>
                         <p className="text-white leading-relaxed mt-4">
-                            I'm all about staying curious, keeping things interesting, 
-                            and never stopping the learning process. Life's a journey, 
-                            and I'm just trying to enjoy the ride.
+                            {t("I'm all about staying curious, keeping things interesting, and never stopping the learning process. Life's a journey, and I'm just trying to enjoy the ride.", '我熱衷於保持好奇心、讓生活充滿趣味，並持續學習。人生是一段旅程，我只想盡情享受沿途風景。')}
                         </p>
                     </div>
                 </div>

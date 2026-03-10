@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
+import { LanguageToggleDesktop, LanguageToggleMobile } from './LanguageToggle';
+
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [showContact, setShowContact] = useState(false);
     const [copied, setCopied] = useState(false);
+    const { t, language } = useLanguage();
+    const menuFont = language === 'zh' ? 'font-sans' : 'font-mono';
 
     const copyEmail = () => {
         navigator.clipboard.writeText('yuntsaica@gmail.com');
@@ -38,14 +43,14 @@ function Navbar() {
             <Link to="/" className="font-hand text-2xl">Yun Tsai</Link>
 
             {/* desktop menu */}
-            <div className="hidden md:flex gap-8 items-center font-mono">
-                <Link to="/work" className="py-2 px-4 text-text-secondary text-center hover:text-[#9BBF6A] transition-all hover:scale-105">Work</Link>
-                <Link to="/about" className="text-text-secondary text-center hover:text-[#9BBF6A] transition-colors hover:scale-105">About</Link>
+            <div className={`hidden md:flex gap-8 items-center ${menuFont}`}>
+                <Link to="/work" className="py-2 px-4 text-text-secondary text-center hover:text-[#9BBF6A] transition-all hover:scale-105">{t('Work', '作品')}</Link>
+                <Link to="/about" className="text-text-secondary text-center hover:text-[#9BBF6A] transition-colors hover:scale-105">{t('About', '關於我')}</Link>
 
                 {/* Contact with Dropdown */}
                 <div className="relative group">
                     <span className="py-2 px-4 hover:text-[#9BBF6A] hover:scale-105 transition-all cursor-pointer font-mono text-text-secondary inline-block">
-                        Contact
+                        {t('Contact', '聯絡我')}
                     </span>
 
                     {/* Dropdown */}
@@ -73,7 +78,7 @@ function Navbar() {
                                 <svg className="w-5 h-5 stroke-brand-green" fill="none" viewBox="0 0 24 24" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                 </svg>
-                                <span className="font-mono text-sm text-text-primary">{copied ? 'Email copied! ☻' : 'Copy Email'}</span>
+                                <span className="font-mono text-sm text-text-primary">{copied ? t('Email copied! ☻', '已複製! ☻') : t('Copy Email', '複製信箱')}</span>
                             </button>
 
                         </div>
@@ -85,8 +90,10 @@ function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 border border-gray-300 rounded-full text-sm hover:bg-gray-100"
-                >Resume
+                >{t('Resume', '履歷')}
                 </a>
+
+                <LanguageToggleDesktop />
             </div>
 
             {/* mobile hamburger */}
@@ -99,9 +106,9 @@ function Navbar() {
 
         {/* mobile menu overlay */}
         {isOpen && (
-            <div className="fixed inset-0 bg-brand-cream z-50 flex flex-col overflow-hidden font-mono">
+            <div className={`fixed inset-0 bg-brand-cream z-50 flex flex-col overflow-hidden ${menuFont}`}>
                 {/* logo */}
-                <div className="flex justify-between items-center p-6">
+                <div className="relative z-10 flex justify-between items-center p-6">
                     <Link to="/" className="font-hand text-2xl" onClick={() => setIsOpen(false)}>Yun Tsai</Link>
 
                     {/* close button */}
@@ -112,17 +119,17 @@ function Navbar() {
                 </div>
 
                 {/* Menu links */}
-                <div className="flex flex-col items-center justify-center gap-8 h-screen">
-                    <Link to="/work" onClick={() => setIsOpen(false)} className="text-2xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all">Work</Link>
-                    <Link to="/about" onClick={() => setIsOpen(false)} className="text-2xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all">About</Link>
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
+                    <Link to="/work" onClick={() => setIsOpen(false)} className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all">{t('Work', '作品')}</Link>
+                    <Link to="/about" onClick={() => setIsOpen(false)} className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all">{t('About', '關於我')}</Link>
 
                     {/* Contact - Mobile */}
                     <div className="flex flex-col items-center">
                         <span
-                            className="text-2xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all cursor-pointer"
+                            className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all cursor-pointer"
                             onClick={() => setShowContact(!showContact)}
                         >
-                            Contact
+                            {t('Contact', '聯絡我')}
                         </span>
 
                         {showContact && (
@@ -132,15 +139,15 @@ function Navbar() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={() => setIsOpen(false)}
-                                    className="text-lg text-text-secondary hover:text-[#9BBF6A] transition-colors font-mono"
+                                    className="text-base text-text-secondary hover:text-[#9BBF6A] transition-colors"
                                 >
                                     LinkedIn
                                 </a>
                                 <button
                                     onClick={() => { copyEmail(); setIsOpen(false); }}
-                                    className="text-lg text-text-secondary hover:text-[#9BBF6A] transition-colors font-mono"
+                                    className="text-base text-text-secondary hover:text-[#9BBF6A] transition-colors"
                                 >
-                                    {copied ? 'Email copied! ☻' : 'Copy Email'}
+                                    {copied ? t('Email copied! ☻', '已複製! ☻') : t('Copy Email', '複製信箱')}
                                 </button>
                             </div>
                         )}
@@ -151,10 +158,12 @@ function Navbar() {
                         href="/resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 px-8 py-2 border border-gray-300 rounded-full text-xl hover:bg-gray-100"
+                        className="px-8 py-2 border border-gray-300 rounded-full text-lg hover:bg-gray-100"
                         onClick={() => setIsOpen(false)}
-                    >Resume
+                    >{t('Resume', '履歷')}
                     </a>
+
+                    <LanguageToggleMobile />
                 </div>
             </div>
         )}

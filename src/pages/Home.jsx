@@ -4,11 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
+import { useLanguage } from '../context/LanguageContext';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 function Home() {
+    const { t } = useLanguage();
     const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
     useEffect(() => {
@@ -40,8 +42,8 @@ function Home() {
         {
             id: "learnnow",
             title: "LEARNNOW",
-            subtitle: "E-learning platform",
-            description: "An online learning platform designed to help users discover, save, and book courses while managing their learning progress in a clear and intuitive experience.",
+            subtitle: t('E-learning platform', '線上學習平台'),
+            description: t('An online learning platform designed to help users discover, save, and book courses while managing their learning progress in a clear and intuitive experience.', '一個線上學習平台，協助使用者探索、收藏及預約課程，並以清晰直覺的介面管理學習進度。'),
             image: "/images/learnnow_mkup1.png",
             imgFit: "object-contain",
             imgPosition: "object-center",
@@ -51,8 +53,8 @@ function Home() {
         {
             id: "cloudair",
             title: "CLOUDAIR",
-            subtitle: "Airline app",
-            description: "AI-powered travel inspiration app that helps users discover and plan their perfect trips.",
+            subtitle: t('Airline app', '航空應用程式'),
+            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
             image: "/cloudair.png",
             tags: ["UX/UI", "Illustrator"],
             link: "/projects/cloudair"
@@ -60,8 +62,8 @@ function Home() {
         {
             id: "VanLink",
             title: "VANLINK",
-            subtitle: "Transit app",
-            description: "A transit app designed to help Vancouver commuters plan their journeys,top up balances, and activate monthly passes with ease.",
+            subtitle: t('Transit app', '大溫地區統一通勤 App'),
+            description: t('A transit app designed to help Vancouver commuters plan their journeys,top up balances, and activate monthly passes with ease.', '專為溫哥華通勤者設計的交通 App，輕鬆規劃路線、儲值及啟用月票。'),
             image: "/images/Vanlink_mkup.png",
             tags: ["UX/UI", "Figma", "Maze"],
             link: "/projects/vanlink"
@@ -69,8 +71,8 @@ function Home() {
         {
             id: "missbean",
             title: "MISSBEAN",
-            subtitle: "Cafe website",
-            description: "A coffee shop website showcasing modern web development techniques with JavaScript libraries.",
+            subtitle: t('Cafe website', '咖啡廳網站'),
+            description: t('A coffee shop website showcasing modern web development techniques with JavaScript libraries.', '一個咖啡廳網站，展示現代網頁開發技術與 JavaScript 套件的應用。'),
             image: "/missbean.png",
             tags: ["Web Development", "JavaScript", "HTML", "CSS", "Figma"],
             link: "/projects/missbean"
@@ -90,7 +92,7 @@ function Home() {
         'Adobe After Effects',
         'Adobe Premiere Pro',
         ]
-        
+
 // project function
 const renderProjectCard = (project) => (
     <div className="rounded overflow-hidden h-full flex flex-col group">
@@ -118,7 +120,7 @@ const renderProjectCard = (project) => (
             <p className="text-sm text-text-secondary mb-6 font-mono">{project.description}</p>
 
             <Link to={project.link} className="text-text-primary text-sm font-medium inline-flex items-center gap-1 mb-2 hover:gap-2 transition-all mt-auto font-mono">
-                → View Case Study
+                {t('→ View Case Study', '→ 查看案例')}
             </Link>
         </div>
     </div>
@@ -134,8 +136,8 @@ const renderProjectCard = (project) => (
         animate={{opacity:1, y:0}}
         transition={{duration: 0.8, ease: "easeOut"}}
         className="font-serif text-4xl lg:text-6xl text-text-primary leading-tight text-left lg:max-w-2xl">
-          Creating digital experiences where users feel understood and interactions feel{' '}
-          <span className="underline decoration-brand-green decoration-2 underline-offset-4">natural</span>.
+          {t('Creating digital experiences where users feel understood and interactions feel', '打造讓使用者被理解、互動自然流暢的數位體驗')}{' '}
+          <span className="underline decoration-brand-green decoration-2 underline-offset-4">{t('natural', '自然')}</span>{t('.', '。')}
         </motion.h1>
 
        <motion.div
@@ -143,10 +145,10 @@ const renderProjectCard = (project) => (
         animate={{opacity:1, y:0}}
         transition={{duration:0.8, delay:0.3, ease:"easeOut"}}
         className='mt-6 flex flex-col items-start'>
-        <p className="text-text-secondary font-serif text-2xl italic">UX/UI Designer</p>
+        <p className="text-text-secondary font-serif text-2xl italic">{t('UX/UI Designer', 'UX/UI 設計師')}</p>
 
         {/* hero CTA btn */}
-        <Link to="/work" className="mt-6 text-white bg-brand-green-button rounded-full px-4 py-3 text-sm md:px-6 md:py-3 md:text-lg hover:opacity-90 hover:-translate-y-1 active:scale-95 font-mono shadow-lg transition-all">Explore My Work</Link>
+        <Link to="/work" className="mt-6 text-white bg-brand-green-button rounded-full px-4 py-3 text-sm md:px-6 md:py-3 md:text-lg hover:opacity-90 hover:-translate-y-1 active:scale-95 font-mono shadow-lg transition-all">{t('Explore My Work', '探索作品集')}</Link>
         </motion.div>
 
         {/* Arrow - centered at bottom */}
@@ -182,7 +184,7 @@ const renderProjectCard = (project) => (
 
 <span className="px-5 py-3 bg-white text-brand-green rounded-full text-sm flex items-center gap-2 font-mono border border-brand-green/30 shadow-sm">
   <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#7BE849' }}></span>
-  Open to internships, May 2026
+  {t('Open to internships, May 2026', '尋找 2026/5 實習機會')}
 </span>
 </motion.div>
 
@@ -202,7 +204,7 @@ const renderProjectCard = (project) => (
        {/* ===== PROJECTS SECTION ===== */}
       <FadeInSection>
       <section id="projects" className="px-5 md:px-28 py-12">
-        
+
         {/* mobile：Carousel */}
         <div className="md:hidden">
           <Swiper
@@ -231,7 +233,7 @@ const renderProjectCard = (project) => (
 
         <div className="mt-8 text-center">
           <Link to="/work" className="border border-text-primary px-6 py-3 rounded-full hover:bg-gray-50 transition-colors font-mono text-sm">
-            → View All Work
+            {t('→ View All Work', '→ 查看所有作品')}
           </Link>
         </div>
       </section>
@@ -239,13 +241,13 @@ const renderProjectCard = (project) => (
 
 
  {/* ===== CONTACT SECTION ===== */}
-    <FadeInSection> 
+    <FadeInSection>
       <section className="px-5 md:px-20 py-20 md:py-28">
-        <h2 className="text-4xl font-bold text-text-primary text-center font-serif">Let's Connect!</h2>
+        <h2 className="text-4xl font-bold text-text-primary text-center font-serif">{t("Let's Connect!", '歡迎聯繫！')}</h2>
         <p className="mt-4 text-text-secondary text-center font-mono">
-          I'm always open to new opportunities, conversations, or simply exchanging ideas. Feel free to reach out!
+          {t("I'm always open to new opportunities, conversations, or simply exchanging ideas. Feel free to reach out!", '歡迎任何合作、交流或想法分享！')}
         </p>
-        
+
         <div className="mt-8 flex flex-col gap-3 max-w-sm mx-auto">
           {/* LinkedIn */}
           <a
@@ -294,7 +296,7 @@ const renderProjectCard = (project) => (
           </a>
         </div>
       </section>
-    </FadeInSection> 
+    </FadeInSection>
     </div>
   </PageTransition>
   )

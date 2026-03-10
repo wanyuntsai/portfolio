@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 function Footer() {
+    const { t } = useLanguage();
     const [copied, setCopied] = useState(false);
 
     const copyEmail = () => {
@@ -13,8 +15,8 @@ function Footer() {
         <footer className="text-brand-green border-t border-border py-8 px-5 md:px-20 w-full mt-auto bg-transparent">
             <div className="flex justify-between items-start">
                 <div className="flex flex-col items-start">
-                    <p className="font-medium font-mono">Get in Touch!</p>
-                    <button onClick={copyEmail} className="text-sm mt-1 font-mono flex gap-2 cursor-pointer hover:opacity-80 transition-opacity">{copied ? 'Email copied! ☻' : 'yuntsaica@gmail.com'}
+                    <p className="font-medium font-mono">{t('Get in Touch!', '歡迎與我聯繫！')}</p>
+                    <button onClick={copyEmail} className="text-sm mt-1 font-mono flex gap-2 cursor-pointer hover:opacity-80 transition-opacity">{copied ? t('Email copied! ☻', '已複製! ☻') : 'yuntsaica@gmail.com'}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <rect x="9" y="9" width="13" height="13" rx="2" strokeWidth="2"/>
                         <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" strokeWidth="2"/>
@@ -27,9 +29,9 @@ function Footer() {
                     </svg>
                 </a>
             </div>
-            <div className="text-center text-sm font-mono">
+            <div className="text-center text-xs font-mono mt-5">
                 <p>&copy; 2026 Yun Tsai. </p>
-                <p>Designed & built with lots of coffee :)</p>
+                <p>{t('Designed & built with lots of coffee :)', '在滿滿咖啡加持下完成的 :)')}</p>
             </div>
         </footer>
     )
