@@ -114,7 +114,7 @@ function Vanlink() {
 
                     <div className="md:w-1/2 mt-2 md:mt-0">
                         <img
-                            src="/images/Vanlink_mkup.png"
+                            src="/images/Vanlink/Vanlink_mkup.png"
                             alt="VanLink Preview"
                             className="w-full h-auto"
                         />
@@ -459,14 +459,16 @@ function Vanlink() {
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {[
-                            t('Home / Balance', '主頁 / 餘額'),
+                            { label: t('Home / Balance', '主頁 / 餘額'), src: './images/Vanlink/Launch.png'}
                             t('Trip Planning', '行程規劃'),
                             t('Smart Route', '智慧路線'),
                             t('Top Up Card', '卡片充值'),
                             t('Renew U-Pass', '更新 U-Pass'),
                             t('Route Details', '路線詳情'),
                         ].map((label, i) => (
-                            <ImgPlaceholder key={i} label={label} className="h-40 md:h-56" />
+                            <ImgPlaceholder key={i} 
+                            src={item.src}
+                            label={item.label} className="h-40 md:h-56" />
                         ))}
                     </div>
                 </div>
