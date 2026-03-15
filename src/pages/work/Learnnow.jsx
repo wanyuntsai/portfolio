@@ -489,36 +489,37 @@ function Learnnow() {
       </section>
       </FadeInSection>
 
-      {/* ===== Design Execution ===== */}
+      {/* ===== Wireframes ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design Execution', '設計執行')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-            <div>
-              <h3 className="font-serif text-base md:text-lg text-text-primary mb-3">{t('Wireframes & UI', '線框圖與 UI')}</h3>
-              <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-                {t(
-                  'I started with wireframes to work out structure and flow, then moved to high-fidelity UI in Figma. The focus was on making actions clear and navigation feel familiar.',
-                  '我先用線框圖釐清結構和流程，再進入 Figma 製作高保真 UI。重點在於讓操作清晰，導航感覺直覺。'
-                )}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-serif text-base md:text-lg text-text-primary mb-3">{t('Key Interaction Decisions', '互動設計重點')}</h3>
-              <ul className="space-y-2">
-                {[
-                  t('Balancing the visual weight of Save vs. Enroll', '平衡收藏與報名按鈕的視覺重量'),
-                  t('Showing confirmation after a course is saved', '收藏課程後顯示明確的回饋'),
-                  t('Making it easy to return to saved courses from the dashboard', '讓使用者從儀表板輕鬆找回收藏的課程'),
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-text-secondary">
-                    <span className="text-[#1e3a5f] mt-1 shrink-0">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Wireframes', '低保真線框圖')}</h2>
+          <p className="text-sm text-text-secondary mb-6 font-mono">{t('Click to enlarge', '點擊放大')}</p>
+          <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory">
+            {[
+              { src: '/images/LEARNNOW/Home.png', alt: 'Home' },
+              { src: '/images/LEARNNOW/3-tiers Menu.png', alt: '3-tiers Menu' },
+              { src: '/images/LEARNNOW/Japanese Language Course.png', alt: 'Japanese Language Course' },
+              { src: '/images/LEARNNOW/Japanese Email Course-Detail Page.png', alt: 'Course Detail Page' },
+              { src: '/images/LEARNNOW/Business Japanese Course.png', alt: 'Business Japanese Course' },
+              { src: '/images/LEARNNOW/Saved Course.png', alt: 'Saved Course' },
+              { src: '/images/LEARNNOW/My Learning.png', alt: 'My Learning' },
+              { src: '/images/LEARNNOW/Checkout.png', alt: 'Checkout' },
+              { src: '/images/LEARNNOW/Payment Success.png', alt: 'Payment Success' },
+            ].map((img, i) => (
+              <div
+                key={i}
+                className="snap-start shrink-0 cursor-zoom-in"
+                onClick={() => setLightboxImage({ src: img.src, alt: img.alt })}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="h-64 w-auto rounded-lg border border-border object-cover hover:opacity-90 transition-opacity"
+                />
+                <p className="text-xs text-text-secondary mt-1 text-center font-mono">{img.alt}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

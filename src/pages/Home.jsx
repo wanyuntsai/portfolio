@@ -52,15 +52,6 @@ function Home() {
             link: "/work/learnnow"
         },
         {
-            id: "cloudair",
-            title: "CLOUDAIR",
-            subtitle: t('Airline app', '航空應用程式'),
-            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
-            image: "/cloudair.png",
-            tags: ["UX/UI", "Illustrator"],
-            link: "/projects/cloudair"
-        },
-        {
             id: "VanLink",
             title: "VANLINK",
             subtitle: t('Transit app', '大溫地區統一通勤 App'),
@@ -70,14 +61,14 @@ function Home() {
             link: "/work/Vanlink"
         },
         {
-            id: "missbean",
-            title: "MISSBEAN",
-            subtitle: t('Cafe website', '咖啡廳網站'),
-            description: t('A coffee shop website showcasing modern web development techniques with JavaScript libraries.', '一個咖啡廳網站，展示現代網頁開發技術與 JavaScript 套件的應用。'),
-            image: "/missbean.png",
-            tags: ["Web Development", "JavaScript", "HTML", "CSS", "Figma"],
-            link: "/projects/missbean"
-        }
+            id: "cloudair",
+            title: "CLOUDAIR",
+            subtitle: t('Airline app', '航空應用程式'),
+            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
+            tags: ["UX/UI", "Illustrator"],
+            link: "/projects/cloudair",
+            comingSoon: true
+        },
     ]
 
     // tools
@@ -96,9 +87,20 @@ function Home() {
 
 // project function
 const renderProjectCard = (project) => (
-    <div className="rounded overflow-hidden h-full flex flex-col group">
-        <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
-            <img src={project.image} alt={project.title} className="w-90 h-60 object-cover transition-transform duration-300 group-hover:scale-105" />
+    <div className={`rounded overflow-hidden h-full flex flex-col group ${project.comingSoon ? 'opacity-70' : ''}`}>
+        <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center relative">
+            {project.image ? (
+                <img src={project.image} alt={project.title} className={`w-90 h-60 object-cover transition-transform duration-300 ${!project.comingSoon ? 'group-hover:scale-105' : ''}`} />
+            ) : (
+                <div className="w-90 h-60 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <span className="text-text-secondary font-mono text-sm opacity-40">{project.title}</span>
+                </div>
+            )}
+            {project.comingSoon && (
+                <span className="absolute top-3 right-3 bg-text-primary text-white text-xs font-mono px-3 py-1 rounded-full">
+                    {t('Coming Soon', '即將推出')}
+                </span>
+            )}
         </div>
         <div className="bg-white p-8 flex flex-col flex-1">
             <h3 className="font-serif font-bold text-2xl text-text-primary">{project.title}</h3>
@@ -120,9 +122,13 @@ const renderProjectCard = (project) => (
 
             <p className="text-sm text-text-secondary mb-6 font-mono">{project.description}</p>
 
-            <Link to={project.link} className="text-text-primary text-sm font-medium inline-flex items-center gap-1 mb-2 hover:gap-2 transition-all mt-auto font-mono">
-                {t('→ View Case Study', '→ 查看案例')}
-            </Link>
+            {project.comingSoon ? (
+                <span className="text-text-secondary text-sm font-mono mt-auto opacity-50">{t('→ Case study in progress', '→ 案例撰寫中')}</span>
+            ) : (
+                <Link to={project.link} className="text-text-primary text-sm font-medium inline-flex items-center gap-1 mb-2 hover:gap-2 transition-all mt-auto font-mono">
+                    {t('→ View Case Study', '→ 查看案例')}
+                </Link>
+            )}
         </div>
     </div>
   )
@@ -235,11 +241,41 @@ const renderProjectCard = (project) => (
           </Swiper>
         </div>
 
-{/* desktop：2x2 Grid */}
-        <div className="hidden md:grid md:grid-cols-2 gap-6">
-          {projects.map(project => (
-            <div key={project.id}>
-              {renderProjectCard(project)}
+{/* desktop：2 + full-width layout */}
+        <div className="hidden md:block space-y-6">
+          {/* top row: first 2 projects */}
+          <div className="grid grid-cols-2 gap-6">
+            {projects.slice(0, 2).map(project => (
+              <div key={project.id}>
+                {renderProjectCard(project)}
+              </div>
+            ))}
+          </div>
+          {/* bottom: remaining projects full width horizontal */}
+          {projects.slice(2).map(project => (
+            <div key={project.id} className="rounded overflow-hidden flex flex-row group bg-white">
+              <div className="w-80 shrink-0 rounded-lg p-4 overflow-hidden flex justify-center items-center">
+                {project.image ? (
+                  <img src={project.image} alt={project.title} className="w-full h-60 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105" />
+                ) : (
+                  <div className="w-full h-60 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <span className="text-text-secondary font-mono text-sm opacity-40">{t('Coming Soon', '即將推出')}</span>
+                  </div>
+                )}
+              </div>
+              <div className="p-8 flex flex-col flex-1 justify-center">
+                <h3 className="font-serif font-bold text-2xl text-text-primary">{project.title}</h3>
+                <p className="text-text-secondary mb-3 font-serif">{project.subtitle}</p>
+                <div className="flex gap-2 flex-wrap mb-4">
+                  {project.tags?.map((tag, index) => (
+                    <span key={index} className="rounded-full px-5 py-2 text-xs font-mono" style={{ border: "1px solid #9BBF6A", background: "#F0F5E8", color: "#2B4A1A" }}>{tag}</span>
+                  ))}
+                </div>
+                <p className="text-sm text-text-secondary mb-6 font-mono">{project.description}</p>
+                <Link to={project.link} className="text-text-primary text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all font-mono">
+                  {t('→ View Case Study', '→ 查看案例')}
+                </Link>
+              </div>
             </div>
           ))}
         </div>
