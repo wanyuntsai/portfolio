@@ -12,7 +12,6 @@ import {
     FlaskConical,
     Navigation,
     Smartphone,
-    Map,
     Layers,
     Shapes,
     XCircle,
@@ -24,7 +23,6 @@ import {
 
 function Vanlink() {
     const { t } = useLanguage();
-    const [btn1View, setBtn1View] = useState('before');
     const [flowView, setFlowView] = useState('before');
     const [lightboxImg, setLightboxImg] = useState(null);
 
@@ -35,14 +33,6 @@ function Vanlink() {
         return () => window.removeEventListener('keydown', handleKey);
     }, [lightboxImg]);
 
-    const ImgPlaceholder = ({ label, className = "" }) => (
-        <div className={`bg-gray-100 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg ${className}`}>
-            <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <p className="text-xs md:text-sm text-gray-400 font-mono text-center px-2">{label}</p>
-        </div>
-    );
 
     return (
         <>
@@ -124,10 +114,11 @@ function Vanlink() {
 
             {/* ===== The Problem ===== */}
             <FadeInSection>
-            <section className="px-5 md:px-20 py-8 md:py-12">
+            <section className="px-5 md:px-20 py-8 md:py-12 mt-7">
                 <div className="max-w-5xl mx-auto">
                     <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('The Problem', '問題定義')}</h2>
-                    <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-3">
+
+                    <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6">
                         {t('There is currently no official mobile app for transit services in Metro Vancouver, so users must switch between multiple platforms to complete everyday commuting tasks. Checking Compass Card balances or purchasing passes requires visiting a physical ticket machine. Students must renew their U-Pass monthly through a website, while route planning and transit schedules are typically accessed through apps like Google Maps.This fragmented experience adds extra effort to everyday commuting and creates unnecessary friction for users.', '目前 VanLink 沒有官方行動 App，使用者必須在不同平台之間切換才能完成日常通勤操作。查詢 Compass Card 餘額或購買月票需要前往實體售票機；學生的 U-Pass 需要每月到官網手動更新；而查看時刻表與規劃路線則要使用 Google Maps 等其他 App。這些未整合的服務增加了使用者的操作負擔，也讓日常通勤流程變得更繁瑣。')}
                     </p>
 
@@ -423,26 +414,24 @@ function Vanlink() {
             {/* Design System */}
             <FadeInSection>
 <section className="px-5 md:px-20 py-8 md:py-12 bg-gray-200">
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
         <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">Design System</h2>
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <img
                 src="/images/Vanlink/Colors.png"
                 alt="VanLink Design System - Color Palette"
                 className="w-full rounded-lg"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <img
-                    src="/images/Vanlink/Typography.png"
-                    alt="VanLink Design System - Typography"
-                    className="w-full rounded-lg"
-                />
-                <img
-                    src="/images/Vanlink/Logo.png"
-                    alt="VanLink Design System - Logo"
-                    className="w-full rounded-lg"
-                />
-            </div>
+            <img
+                src="/images/Vanlink/Typography.png"
+                alt="VanLink Design System - Typography"
+                className="w-full rounded-lg"
+            />
+            <img
+                src="/images/Vanlink/Logo.png"
+                alt="VanLink Design System - Logo"
+                className="w-full rounded-lg"
+            />
         </div>
 
     </div>
@@ -451,24 +440,30 @@ function Vanlink() {
 
             {/* ===== Final Screens ===== */}
             <FadeInSection>
-            <section className="px-5 md:px-20 py-8 md:py-12 bg-gray-50">
+            <section className="px-5 md:px-20 py-4 md:py-6 bg-gray-50">
                 <div className="max-w-5xl mx-auto">
                     <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Final Screens', 'UI畫面')}</h2>
                     <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-8">
                         {t('Integrated transit navigation, Compass Card management, and pass renewal — with clear hierarchy and simplified interactions.', '整合通勤導航、Compass Card 管理與學生月票更新，清晰的層級與簡化的互動。')}
                     </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                         {[
-                            { label: t('Home / Balance', '主頁 / 餘額'), src: './images/Vanlink/Launch.png'}
-                            t('Trip Planning', '行程規劃'),
-                            t('Smart Route', '智慧路線'),
-                            t('Top Up Card', '卡片充值'),
-                            t('Renew U-Pass', '更新 U-Pass'),
-                            t('Route Details', '路線詳情'),
-                        ].map((label, i) => (
-                            <ImgPlaceholder key={i} 
-                            src={item.src}
-                            label={item.label} className="h-40 md:h-56" />
+                            { src: '/images/Vanlink/Launch.png',    label: t('Launch Screen', '啟動畫面') },
+                            { src: '/images/Vanlink/Dashboard1.png', label: t('Dashboard', '主頁') },
+                            { src: '/images/Vanlink/Refill.png',    label: t('Card Refill', '儲值') },
+                            { src: '/images/Vanlink/Renew.png',     label: t('Pass Renewal', '月票更新') },
+                            { src: '/images/Vanlink/Planner-1.png', label: t('Trip Planner', '行程規劃') },
+                            { src: '/images/Vanlink/Planner-2.jpg', label: t('Route Details', '路線詳情') },
+                        ].map((item, i) => (
+                            <div key={i} className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col">
+                                <img
+                                    src={item.src}
+                                    alt={item.label}
+                                    className="w-full h-80 object-contain bg-gray-50 cursor-zoom-in"
+                                    onClick={() => setLightboxImg(item.src)}
+                                />
+                                <p className="text-center text-xs text-text-secondary py-2.5 font-mono">{item.label}</p>
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -492,7 +487,7 @@ function Vanlink() {
                         {/* Task 1 */}
                         <div className="border border-border rounded-lg overflow-hidden">
                             <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border">
-                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 1: Top Up Card', '任務一：充值')}</h3>
+                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 1: Reload Card', '任務一：充值')}</h3>
                                 <p className="text-xs text-text-secondary mt-0.5">{t('Add $10 to your card', '將卡片充值 $10')}</p>
                             </div>
                             <div className="p-4">
@@ -516,8 +511,8 @@ function Vanlink() {
                         {/* Task 2 */}
                         <div className="border border-border rounded-lg overflow-hidden">
                             <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border">
-                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 2: Activate Pass', '任務二：啟用通行證')}</h3>
-                                <p className="text-xs text-text-secondary mt-0.5">{t("Activate next month's Monthly-Pass", '啟用下個月的月票')}</p>
+                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 2: Activate U-Pass', '任務二：啟用學生月票')}</h3>
+                                <p className="text-xs text-text-secondary mt-0.5">{t("Activate next month's U-Pass", '啟用下個月的月票')}</p>
                             </div>
                             <div className="p-4">
                                 <div className="flex justify-between mb-4">
@@ -578,60 +573,32 @@ function Vanlink() {
                             <div className="w-7 h-7 bg-[#1a4a8a] rounded-full flex items-center justify-center text-white text-sm shrink-0 mt-0.5">1</div>
                             <div>
                                 <p className="text-sm md:text-base text-text-primary font-medium">{t('Button Resize: Reload & Renew', '按鈕尺寸調整：Reload & Renew')}</p>
-                                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Users reported buttons felt too small. Resized from 95×40px to 112×47px to meet Apple HIG touch targets.', '使用者反映按鈕過小。從 95×40px 調整為 112×47px，符合 Apple HIG 最小觸控目標。')}</p>
+                                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Users reported buttons felt too small. Resized from 95×40px to 400×48px to meet Apple HIG touch targets.', '使用者反映按鈕過小。從 95×40px 調整為 400×48px，符合 Apple HIG 最小觸控目標。')}</p>
                             </div>
                         </div>
 
-                        <div className="rounded-xl overflow-hidden border border-border">
-                            {/* Toggle */}
-                            <div className="flex border-b border-border">
-                                <button
-                                    onClick={() => setBtn1View('before')}
-                                    className={`flex-1 py-2.5 text-xs md:text-sm font-mono transition-colors ${btn1View === 'before' ? 'bg-red-50 text-red-600 font-medium' : 'text-gray-500 hover:bg-gray-50'}`}
-                                >
-                                    Before
-                                </button>
-                                <div className="w-px bg-border" />
-                                <button
-                                    onClick={() => setBtn1View('after')}
-                                    className={`flex-1 py-2.5 text-xs md:text-sm font-mono transition-colors ${btn1View === 'after' ? 'bg-green-50 text-green-600 font-medium' : 'text-gray-500 hover:bg-gray-50'}`}
-                                >
-                                    After
-                                </button>
-                            </div>
-
-                            {/* Mockup */}
-                            <div className="p-6 md:p-10 bg-gray-50 flex flex-col items-center gap-5 min-h-[220px] justify-center">
-                                <div className="bg-white rounded-2xl shadow-md p-5 md:p-6 w-full max-w-xs">
-                                    <p className="font-mono text-xs text-gray-400 mb-1">Compass Card</p>
-                                    <p className="font-serif text-2xl text-[#1a4a8a] font-bold mb-4">$24.50</p>
-                                    <div className="flex gap-3">
-                                        <button
-                                            className="bg-[#1a4a8a] text-white rounded-lg font-medium flex-1 transition-all duration-300"
-                                            style={btn1View === 'before' ? { height: '40px', fontSize: '11px' } : { height: '47px', fontSize: '14px' }}
-                                        >
-                                            Reload
-                                        </button>
-                                        <button
-                                            className="border-2 border-[#1a4a8a] text-[#1a4a8a] rounded-lg font-medium flex-1 transition-all duration-300"
-                                            style={btn1View === 'before' ? { height: '40px', fontSize: '11px' } : { height: '47px', fontSize: '14px' }}
-                                        >
-                                            Renew
-                                        </button>
-                                    </div>
-                                    <p className="text-center text-xs text-gray-400 mt-3 font-mono">
-                                        {btn1View === 'before' ? '95 × 40px' : '112 × 47px  ✓ Apple HIG'}
-                                    </p>
+                        <div className="grid grid-cols-2 gap-3">
+                            <div className="rounded-xl overflow-hidden border border-border">
+                                <div className="bg-blue-50 py-2 text-center border-b border-border">
+                                    <span className="text-xs font-mono">CTA Buttons on Home</span>
                                 </div>
-                                <span className={`text-xs font-mono px-3 py-1 rounded-full ${btn1View === 'before' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
-                                    {btn1View === 'before' ? '✗ Before' : '✓ After'}
-                                </span>
+                                <img
+                                    src="/images/Vanlink/iteration1.png"
+                                    alt="Before - button resize"
+                                    className="w-full h-auto cursor-zoom-in"
+                                    onClick={() => setLightboxImg('/images/Vanlink/iteration1.png')}
+                                />
                             </div>
-
-                            <div className="px-4 md:px-6 py-3 bg-white border-t border-border">
-                                <p className="text-xs md:text-sm text-text-secondary text-center">
-                                    {t('Users reported buttons were too small, affecting accuracy. After resizing, touch targets improved usability.', '使用者反饋按鈕太小，影響操作。調整尺寸後，觸控更準確，改善可用性。')}
-                                </p>
+                            <div className="rounded-xl overflow-hidden border border-border">
+                                <div className="bg-blue-50 py-2 text-center border-b border-border">
+                                    <span className="text-xs font-mono font-medium">CTA Buttons on Reload / Renew Screens </span>
+                                </div>
+                                <img
+                                    src="/images/Vanlink/iteration2.png"
+                                    alt="After - button resize"
+                                    className="w-full h-auto cursor-zoom-in"
+                                    onClick={() => setLightboxImg('/images/Vanlink/iteration2.png')}
+                                />
                             </div>
                         </div>
                     </div>
@@ -651,73 +618,54 @@ function Vanlink() {
                             <div className="flex border-b border-border">
                                 <button
                                     onClick={() => setFlowView('before')}
-                                    className={`flex-1 py-2.5 text-xs md:text-sm font-mono transition-colors ${flowView === 'before' ? 'bg-red-50 text-red-600 font-medium' : 'text-gray-500 hover:bg-gray-50'}`}
+                                    className={`flex-1 py-2.5 text-xs md:text-sm font-mono transition-colors ${flowView === 'before' ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-500 hover:bg-gray-50'}`}
                                 >
                                     Before
                                 </button>
                                 <div className="w-px bg-border" />
                                 <button
                                     onClick={() => setFlowView('after')}
-                                    className={`flex-1 py-2.5 text-xs md:text-sm font-mono transition-colors ${flowView === 'after' ? 'bg-green-50 text-green-600 font-medium' : 'text-gray-500 hover:bg-gray-50'}`}
+                                    className={`flex-1 py-2.5 text-xs md:text-sm font-mono transition-colors ${flowView === 'after' ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-500 hover:bg-gray-50'}`}
                                 >
                                     After
                                 </button>
                             </div>
 
                             {/* Flow diagram */}
-                            <div className="p-6 md:p-10 bg-gray-50 min-h-[220px] flex flex-col items-center justify-center gap-5">
+                            <div className="p-4 bg-gray-50">
                                 {flowView === 'before' ? (
-                                    <div className="flex flex-col md:flex-row items-center gap-3 w-full max-w-lg justify-center">
-                                        {[t('Start', '開始'), t('Select Route Type', '選擇路線類型'), t('View Route Details', '查看路線詳情')].map((step, i, arr) => (
-                                            <div key={i} className="flex flex-col md:flex-row items-center gap-3">
-                                                <div className="bg-red-50 border border-red-200 rounded-lg px-3 py-2 md:px-4 md:py-3 text-center">
-                                                    <p className="text-xs md:text-sm text-red-700 font-mono whitespace-nowrap">{step}</p>
-                                                </div>
-                                                {i < arr.length - 1 && <span className="text-red-400 text-lg rotate-90 md:rotate-0">→</span>}
-                                            </div>
-                                        ))}
-                                    </div>
+                                    <img
+                                        src="/images/Vanlink/iteration3.png"
+                                        alt="Before - Smart Route Flow"
+                                        className="w-full h-auto cursor-zoom-in rounded-lg"
+                                        onClick={() => setLightboxImg('/images/Vanlink/iteration3.png')}
+                                    />
                                 ) : (
-                                    <div className="w-full max-w-lg flex flex-col gap-4">
-                                        {/* Path 1 */}
-                                        <div className="flex flex-col md:flex-row items-center gap-3">
-                                            <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center shrink-0">
-                                                <p className="text-xs font-mono text-green-700 font-medium">{t('Shortcut', 'Shortcut')}</p>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div className="overflow-hidden">
+                                            <div className=" py-2 text-center">
+                                                <span className="text-xs font-mono  font-medium">Path 1: Start with Smart Route Shortcut</span>
                                             </div>
-                                            <span className="text-green-500 text-lg rotate-90 md:rotate-0">→</span>
-                                            <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center flex-1">
-                                                <p className="text-xs font-mono text-green-700">{t('Route Details', '路線詳情')}</p>
-                                            </div>
+                                            <img
+                                                src="/images/Vanlink/iteration4.png"
+                                                alt="After - Smart Route Path 1"
+                                                className="w-full h-auto cursor-zoom-in"
+                                                onClick={() => setLightboxImg('/images/Vanlink/iteration4.png')}
+                                            />
                                         </div>
-                                        {/* OR divider */}
-                                        <div className="flex items-center gap-2">
-                                            <div className="flex-1 h-px bg-gray-200" />
-                                            <span className="text-xs text-gray-400 font-mono">OR</span>
-                                            <div className="flex-1 h-px bg-gray-200" />
-                                        </div>
-                                        {/* Path 2 */}
-                                        <div className="flex flex-col md:flex-row items-center gap-3">
-                                            <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center shrink-0">
-                                                <p className="text-xs font-mono text-green-700 font-medium">{t('Search Bar', '搜尋欄')}</p>
+                                        <div className=" overflow-hidden">
+                                            <div className="py-2 text-center ">
+                                                <span className="text-xs font-mono  font-medium">Path 2: Start with Search Bar</span>
                                             </div>
-                                            <span className="text-green-500 text-lg rotate-90 md:rotate-0">→</span>
-                                            <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center shrink-0">
-                                                <p className="text-xs font-mono text-green-700">{t('Step 1', '步驟 1')}</p>
-                                            </div>
-                                            <span className="text-green-500 text-lg rotate-90 md:rotate-0">→</span>
-                                            <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center shrink-0">
-                                                <p className="text-xs font-mono text-green-700">{t('Step 2', '步驟 2')}</p>
-                                            </div>
-                                            <span className="text-green-500 text-lg rotate-90 md:rotate-0">→</span>
-                                            <div className="bg-green-50 border border-green-300 rounded-lg px-3 py-2 text-center flex-1">
-                                                <p className="text-xs font-mono text-green-700">{t('Route Details', '路線詳情')}</p>
-                                            </div>
+                                            <img
+                                                src="/images/Vanlink/iteration5.png"
+                                                alt="After - Smart Route Path 2"
+                                                className="w-full h-auto cursor-zoom-in"
+                                                onClick={() => setLightboxImg('/images/Vanlink/iteration5.png')}
+                                            />
                                         </div>
                                     </div>
                                 )}
-                                <span className={`text-xs font-mono px-3 py-1 rounded-full ${flowView === 'before' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
-                                    {flowView === 'before' ? '✗ Before' : '✓ After'}
-                                </span>
                             </div>
 
                             <div className="px-4 md:px-6 py-3 bg-white border-t border-border">
@@ -731,45 +679,30 @@ function Vanlink() {
             </section>
             </FadeInSection>
 
-            {/* ===== Key Takeaways ===== */}
+            {/* ===== Reflection ===== */}
             <FadeInSection>
             <section className="px-5 md:px-20 py-8 md:py-12">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Key Takeaways', '關鍵心得')}</h2>
-                    <div className="space-y-4">
-                        <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6">
-                            <div className="flex items-start gap-4">
-                                <Map className="w-6 h-6 text-[#1a4a8a] shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Navigation flows can vary widely', '導航流程可以有很大差異')}</h3>
-                                    <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                                        {t('Designing for multiple entry points showed that users approach the same goal in different ways. ', '為多個進入點設計，讓我發現使用者以不同方式達成相同目標。')}<span className="font-medium text-text-primary">{t('Flexible paths reduce friction without sacrificing control.', '彈性路徑在不犧牲掌控感的前提下降低摩擦。')}</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6">
-                            <div className="flex items-start gap-4">
-                                <Lightbulb className="w-6 h-6 text-[#1a4a8a] shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Realistic scoping leads to meaningful outcomes', '實際界定範圍才能達成有意義的成果')}</h3>
-                                    <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                                        {t('Focusing on core pain points and defining an MVP helped the team tackle the most impactful problems. ', '聚焦核心痛點並定義 MVP，讓團隊能解決最有影響力的問題。')}<span className="font-medium text-text-primary">{t('A narrower scope done well beats a broad scope done poorly.', '範圍小而精，勝過範圍廣而疏。')}</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6">
-                            <div className="flex items-start gap-4">
-                                <FlaskConical className="w-6 h-6 text-[#1a4a8a] shrink-0 mt-1" />
-                                <div>
-                                    <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Touch targets matter more than they look', '觸控目標比視覺更重要')}</h3>
-                                    <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                                        {t('A button that looks fine on screen can feel frustrating in hand. ', '畫面上看起來可以的按鈕，實際操作時可能令人沮喪。')}<span className="font-medium text-text-primary">{t('Testing with real users — not just visual review — revealed the sizing issue.', '實際使用者測試（而非純視覺審查）才揭露了尺寸問題。')}</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                <div className="max-w-5xl mx-auto">
+                    <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Reflection', 'Reflection')}</h2>
+                    <div className="space-y-4 max-w-5xl">
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                            {t(
+                                'Through this project, I gained a deeper understanding of how map navigation flows and information architecture work in practice. Designing for multiple entry points showed me that users may begin their journey in different ways, which can lead to very different interaction flows.',
+                                '在這個專案中，我更深入理解了地圖導航流程與資訊架構在實際產品中的運作方式。當設計需要支援多個進入點時，我發現使用者可能會從不同方式開始操作，而這些不同的起點會導致完全不同的互動流程。'
+                            )}
+                        </p>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                            {t(
+                                'One of the biggest lessons was learning how to scope the project realistically. Our team initially considered building a fully functional app, but we realized the scope was too large for the timeline. Focusing on key user pain points and defining an MVP helped us stay focused on the most meaningful problems.',
+                                '這個專案最大的學習之一是如何更實際地設定專案範圍。團隊一開始曾考慮開發一個完整功能的 app，但很快發現這樣的範圍超出了專案時間。將重點放在核心使用者痛點並定義 MVP，讓我們能更專注於最重要的問題。'
+                            )}
+                        </p>
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                            {t(
+                                'This project also helped me strengthen my wireframing and prototyping skills. If I had more time, I would run A/B tests and continue refining the experience through additional rounds of user feedback.',
+                                '這個專案也讓我加強了 wireframing 和 prototyping 的能力。如果有更多時間，我會進行 A/B testing，並透過更多使用者回饋持續優化整體體驗。'
+                            )}
+                        </p>
                     </div>
                 </div>
             </section>
@@ -778,7 +711,7 @@ function Vanlink() {
             {/* ===== Navigation ===== */}
             <FadeInSection>
             <section className="px-5 md:px-20 py-8 md:py-12">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     <div className="flex justify-between items-center">
                         <Link to="/work" className="text-brand-green font-mono text-xs md:text-sm hover:underline">
                             {t('← Back to Projects', '← 返回作品集')}

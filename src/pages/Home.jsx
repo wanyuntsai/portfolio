@@ -65,7 +65,7 @@ function Home() {
             title: "VANLINK",
             subtitle: t('Transit app', '大溫地區統一通勤 App'),
             description: t('A transit app designed to help Vancouver commuters plan their journeys,top up balances, and activate monthly passes with ease.', '專為溫哥華通勤者設計的交通 App，輕鬆規劃路線、儲值及啟用月票。'),
-            image: "/images/Vanlink_mkup.png",
+            image: "/images/Vanlink/Vanlink_mkup.png",
             tags: ["UX/UI", "Figma", "Maze"],
             link: "/work/Vanlink"
         },
