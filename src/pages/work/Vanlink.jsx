@@ -86,7 +86,7 @@ function Vanlink() {
                         </div>
 
                         <a
-                            href="#"
+                            href="https://www.figma.com/design/kPGga8an4mCsdYCad6qXuy/VanLink_refined?node-id=0-1&t=1qO2oUuiTTyw1uK1-1"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-6 md:mt-8 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-lg text-sm font-mono hover:bg-brand-green/90 transition-colors"
