@@ -141,7 +141,7 @@ function Learnnow() {
               {t('Designing a Save-for-Later Flow to Support Thoughtful Learning Decisions', '透過「收藏」流程設計，支持使用者進行更謹慎的學習決策。')}
             </p>
 
-            <p className="text-sm md:text-base text-text-secondary mt-3 md:mt-6 leading-relaxed">
+            <p className="text-base text-text-secondary mt-3 md:mt-6 leading-relaxed">
               {t(
                 'Learning decisions often require time and reflection. A Save-for-Later feature allows users to bookmark courses and return when they are ready to commit, reducing decision pressure while preserving purchase intent.',
                 '學習決策往往需要時間與思考。課程的「收藏（Save）」功能讓使用者可以先收藏課程，並在準備好時再回來做出選擇，既能降低決策壓力，也能保留購買意圖。'
@@ -199,19 +199,19 @@ function Learnnow() {
         <div className="max-w-5xl mx-auto md:mt-35">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design Constraints', '設計限制')}</h2>
           <div className="space-y-4 max-w-5xl">
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+            <p className="text-base text-text-secondary leading-relaxed">
               {t(
                 'Given the limited scope and timeline of this school project, I intentionally scoped the work to focus on the save-and-return workflow for a single course — a Japanese Business Email course — rather than designing the full platform experience, including views like "All Courses" or personalized recommendations.',
                 '由於這個學校專案的時間與範圍有限，我將設計聚焦於單一課程（日文商業書信）的「從探索到收藏並返回報名的（save-and-return）」流程，而沒有設計完整平台功能，包含所有課程頁面或個人化推薦功能（personalized recommendations）。'
               )}
             </p>
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+            <p className="text-base text-text-secondary leading-relaxed">
               {t(
                 'This allowed me to spend more time on what mattered most: validating content hierarchy, ensuring interaction clarity, and making sure users felt confident and supported at key decision points.',
                 '這樣做讓我能將時間投入在最重要的部分：驗證內容層級（content hierarchy）、確保互動清晰度（interaction clarity），並讓使用者在關鍵決策點上感到自信與支持。'
               )}
             </p>
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+            <p className="text-base text-text-secondary leading-relaxed">
               {t(
                 'By narrowing the focus, I was able to deeply explore the core behavior this platform was built around, while still acknowledging the broader features that a complete e-learning platform would include.',
                 '透過縮小專注範圍，我能深入探索這個平台核心行為的設計價值，同時也保留對完整平台功能的認知與考量。'
@@ -227,7 +227,7 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Problem Definition', '問題定義')}</h2>
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6">
+          <p className="text-base text-text-secondary leading-relaxed mb-6">
             {t('Early exploration revealed two core issues:', '早期的研究揭示了兩個核心問題：')}
           </p>
 
@@ -236,7 +236,7 @@ function Learnnow() {
               <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
                 <div className="flex items-start gap-3 md:flex-1">
                   <span className="text-[#1e3a5f] font-mono text-sm shrink-0 mt-0.5">01</span>
-                  <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                  <p className="text-base text-text-secondary leading-relaxed">
                     {t(
                       <span>Some e-learning platforms present <strong className="text-text-primary">dense, complex interfaces</strong> that overwhelm users during course discovery — adding unnecessary pressure and forcing learners to spend excessive time navigating back and forth before finding what they need.</span>,
                       <span>市面上的 e-learning platform 有些<strong className="text-text-primary">介面複雜</strong>，資訊量龐大看了眼花撩亂，可能造成使用者在探索課程時有多餘的壓力和必須花費大量時間來回探索課程。</span>
@@ -260,7 +260,7 @@ function Learnnow() {
               <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
                 <div className="flex items-start gap-3 md:flex-1">
                   <span className="text-[#1e3a5f] font-mono text-sm shrink-0 mt-0.5">02</span>
-                  <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                  <p className="text-base text-text-secondary leading-relaxed">
                     {t(
                       <span>Learners typically browse and compare across platforms before committing to enrollment. Yet most competitors offer <strong className="text-text-primary">no save functionality</strong> — only a direct purchase path — leaving no room for this natural, deliberate decision-making process.</span>,
                       <span>消費者通常傾向於大方向探索並比較不同平台，深思熟慮後才會決定報名課程，而競品中存在<strong className="text-text-primary">沒有 save 功能</strong>、只有直接購買課程的選項，無法支援這個自然的決策過程。</span>
@@ -356,7 +356,7 @@ function Learnnow() {
         <div className="max-w-5xl mx-auto">
           <div className="bg-[#f0f5fb] rounded-lg p-4 md:p-6 border-l-4 border-[#1e3a5f]">
             <p className="font-mono text-xs text-[#1e3a5f] mb-2">{t('Key Insight', '關鍵洞察')}</p>
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+            <p className="text-base text-text-secondary leading-relaxed">
               {t(
                 'Many learners report that these platforms display too much content or unrelated courses, making exploration overwhelming and decision-making harder.',
                 '使用者反映，平台資訊量過大或出現非相關課程時，會在探索課程的過程中造成壓力與認知負荷。'
@@ -448,7 +448,7 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Core Flow & IA', '核心流程與資訊架構')}</h2>
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-3">
+          <p className="text-base text-text-secondary leading-relaxed mb-3">
             {t('The primary flow was designed as:', '主要流程設計如下：')}
           </p>
           <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -465,7 +465,7 @@ function Learnnow() {
               '使用者也可以從儀表板進入，直接回到已收藏的課程並報名。'
             )}
           </p>
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6">
+          <p className="text-base text-text-secondary leading-relaxed mb-6">
             {t(
               'The goal was to make it easy to pause and come back — not to rush users toward enrollment.',
               '目標是讓使用者可以隨時暫停並返回，而不是急著推動他們報名。'
@@ -523,7 +523,7 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design System & Consistency', '設計系統與一致性')}</h2>
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-4">
+          <p className="text-base text-text-secondary leading-relaxed mb-4">
             {t('The visual style was kept simple and consistent:', '視覺風格保持簡單一致：')}
           </p>
           <ul className="space-y-2 mb-6">
@@ -532,13 +532,13 @@ function Learnnow() {
               t('High contrast for primary actions so users know what to click', '主要操作使用高對比，讓使用者清楚知道可以點哪裡'),
               t('Consistent spacing and type sizing to make content easy to scan', '一致的間距與字級，讓內容容易快速掃讀'),
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm md:text-base text-text-secondary">
+              <li key={i} className="flex items-start gap-3 text-base text-text-secondary">
                 <span className="text-[#1e3a5f] mt-1 shrink-0">•</span>
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+          <p className="text-base text-text-secondary leading-relaxed">
             {t(
               'Components like buttons, course cards, and filters were designed to be reused across pages, making it easier to extend the platform later.',
               '按鈕、課程卡片和篩選器等元件都設計為可跨頁重複使用，方便日後擴展平台。'
@@ -553,7 +553,7 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12 bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Final Design', '主要畫面')}</h2>
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-8">
+          <p className="text-base text-text-secondary leading-relaxed mb-8">
             {t('Key screens from the LearnNow platform.', 'LearnNow 平台的主要畫面。')}
           </p>
 
@@ -625,7 +625,7 @@ function Learnnow() {
             </p>
           </div>
 
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6">
+          <p className="text-base text-text-secondary leading-relaxed mb-6">
             {t('Tested with 5 participants on Maze.', '使用 Maze 進行，共 5 位受測者。')}
           </p>
 
@@ -809,13 +809,13 @@ function Learnnow() {
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Reflection', '反思')}</h2>
           <div className="space-y-4 max-w-5xl">
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+            <p className="text-base text-text-secondary leading-relaxed">
               {t(
                 'This project showed me how much visual hierarchy shapes what users do — even when the logical flow is correct. If the interface draws attention to the wrong thing, users follow the visual cue, not the intended path.',
                 '這個專案讓我認知視覺層級對使用者行為的影響有多深，即使邏輯流程是對的，如果因介面設計不夠直覺，而引導使用者注意力到錯誤的地方，使用者就會跟著視覺走，而不是預設的路徑。'
               )}
             </p>
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+            <p className="text-base text-text-secondary leading-relaxed">
               {t(
                 'I also learned to make design decisions based on what I actually observed, not what I assumed — and to work honestly within project constraints rather than designing for an ideal scenario.',
                 '我也學到要根據實際觀察到的行為做設計決策，而不是憑假設，並且在專案限制內誠實地設計，而不是為理想情境設計。'
