@@ -166,7 +166,7 @@ function Learnnow() {
 
             {/* Figma CTA */}
             <a
-              href="https://www.figma.com/design/lcpUzALs58TW5oWySQcRAj/Learnnow?node-id=1-5556&t=6reYDruvB9yHZS0z-1"
+              href="https://www.figma.com/proto/lcpUzALs58TW5oWySQcRAj/Learnnow?node-id=1-3079&t=3M4AMwIGaUKTma75-1&scaling=min-zoom&content-scaling=fixed&page-id=1%3A2966&starting-point-node-id=1%3A3468"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 md:mt-8 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-lg text-sm font-mono hover:bg-brand-green/90 transition-colors"
@@ -197,12 +197,12 @@ function Learnnow() {
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto md:mt-35">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design Constraints & Trade-offs', '設計限制與取捨')}</h2>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design Constraints', '設計限制')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-sm md:text-base text-text-secondary leading-relaxed">
               {t(
                 'Given the limited scope and timeline of this school project, I intentionally scoped the work to focus on the save-and-return workflow for a single course — a Japanese Business Email course — rather than designing the full platform experience, including views like "All Courses" or personalized recommendations.',
-                '由於這個學校專案的時間與範圍有限，我將設計聚焦於單一課程（日文商業書信）的「收藏並回訪（save-and-return）」流程，而沒有設計完整平台的所有課程頁面，或個人化推薦功能（personalized recommendations）。'
+                '由於這個學校專案的時間與範圍有限，我將設計聚焦於單一課程（日文商業書信）的「從探索到收藏並返回報名的（save-and-return）」流程，而沒有設計完整平台功能，包含所有課程頁面或個人化推薦功能（personalized recommendations）。'
               )}
             </p>
             <p className="text-sm md:text-base text-text-secondary leading-relaxed">
@@ -281,13 +281,6 @@ function Learnnow() {
               </div>
             </div>
           </div>
-
-          <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-            {t(
-              'The problem was not a missing feature — it was a mismatch between what the interface communicated and what users were trying to do.',
-              '問題不在於缺少功能，而是介面傳達的訊息與使用者想做的事之間出現了落差。'
-            )}
-          </p>
         </div>
       </section>
       </FadeInSection>
@@ -425,12 +418,12 @@ function Learnnow() {
                 action: t('Designed a 3-tier filter that only surfaces courses within the selected category, keeping results focused.', '設計三層篩選器，確保搜尋結果僅顯示相關課程，減少冗餘資訊，維持介面簡潔。'),
               },
               {
-                insight: t('Key course info on platforms like Coursera requires hover or extra clicks, slowing down comparison.', '在 Coursera 等平台上，課程卡片的關鍵資訊需要點擊或懸停才能看到，增加了使用者反覆導覽的時間成本。'),
-                action: t('Made core details (duration, price, rating) visible directly on the card; hover reveals secondary info only.', '將核心資訊（時長、價格、評分）設定為直接可見，懸停僅顯示次要資訊，讓使用者能更快速進行初步篩選。'),
+                insight: t('Platform lacks a clear save function, pushing users to enroll before they\'re ready.', '平台缺乏直觀的收藏功能，迫使使用者在尚未準備好時就進入報名流程。'),
+                action: t('Positioned Save as a primary action throughout, enabling a "save now, decide later" browsing pattern.', '將「收藏」設為全流程的核心行為，讓使用者能安心「先儲存、後決定」，符合反覆比較的瀏覽習慣。'),
               },
               {
-                insight: t('Platforms like Coursera lack a clear save flow, pushing users to enroll before they\'re ready.', '部分平台（如 Coursera）缺乏直觀的收藏功能，迫使使用者在尚未準備好時就進入報名流程。'),
-                action: t('Positioned Save as a primary action throughout, enabling a "save now, decide later" browsing pattern.', '將「收藏」設為全流程的核心行為，讓使用者能安心「先儲存、後決定」，符合反覆比較的瀏覽習慣。'),
+                insight: t('','根據調查，使用者普遍認為若在報名後，沒有系統化的追蹤學習成效，會大幅降低學習者的動力與效率'),
+                action: t('','設計視覺話學習進度與學習狀態的儀表板頁面，以利報名後的後續追蹤和增加使用者持續的來訪'),
               },
             ].map((item, i) => (
               <div key={i} className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-3 md:gap-6 items-center bg-white rounded-lg p-4 md:p-6 border border-border">
@@ -697,11 +690,11 @@ function Learnnow() {
                 <div className="space-y-2 text-xs md:text-sm text-text-secondary leading-relaxed">
                   <div className="flex items-start gap-2">
                     <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('Grey menu color was perceived as ', '灰色選單顏色被視為')}<span className="font-medium text-text-primary">{t('disabled/inactive', '停用/不可互動')}</span></p>
+                    <p>{t('Grey menu color was perceived as ', '灰色選單顏色被誤認為')}<span className="font-medium text-text-primary">{t('disabled/inactive', '停用/不可互動')}</span></p>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('One user navigated via "Explore" instead of "My Learning" — ', '一位使用者透過「探索」而非「我的學習」進行導航 — ')}<span className="font-medium text-text-primary">{t('familiar patterns overrode new shortcuts', '熟悉的操作模式覆蓋了新的捷徑')}</span></p>
+                    <p>{t('One user navigated via "Explore" instead of "My Learning" — ', '一位使用者透過「探索」從頭開始了課程探索到報名的流程，而非從「我的學習選單中的已儲存課程」進行課程報名 — ')}<span className="font-medium text-text-primary">{t('familiar patterns overrode new shortcuts', '熟悉的操作模式覆蓋了新的捷徑')}</span></p>
                   </div>
                 </div>
               </div>
@@ -740,21 +733,20 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Iterations & Impact', '設計迭代與成效')}</h2>
-          <p className="text-sm text-text-secondary mb-6">{t('Changes made based on design issues identified in testing.', '根據測試中發現的設計問題所做的修改。')}</p>
 
           <div className="space-y-4 mb-8">
             <div className="flex items-start gap-4 bg-white rounded-lg p-4 border border-border">
               <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">1</div>
               <div>
-                <p className="text-sm md:text-base text-text-primary font-medium">{t('Made course card info visible without hovering', '讓課程卡片資訊不需懸停即可看見')}</p>
-                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Duration, rating, and price moved to always visible on the card. Hover now reveals secondary info only.', '時長、評分與價格改為直接顯示在卡片上；懸停後才顯示次要資訊。')}</p>
+                <p className="text-sm md:text-base text-text-primary font-medium">{t('Made important course info visible without hovering', '讓課程主要資訊不需懸停即可看見')}</p>
+                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Duration, rating, and price moved to always visible on the card. Hover now reveals secondary info only.', '課程簡介改為直接顯示在卡片上，懸停後才顯示次要資訊。')}</p>
               </div>
             </div>
             <div className="flex items-start gap-4 bg-white rounded-lg p-4 border border-border">
               <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">2</div>
               <div>
                 <p className="text-sm md:text-base text-text-primary font-medium">{t('Revised "My Learning" menu colors', '修改「我的學習」選單顏色')}</p>
-                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Changed from grey to active color to signal interactivity', '從灰色改為活躍色彩以表示可互動')}</p>
+                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Changed from grey to active color to signal interactivity', '從灰色字改為黑色字以表示可互動')}</p>
               </div>
             </div>
           </div>
@@ -763,8 +755,8 @@ function Learnnow() {
             <p className="font-mono text-xs text-[#1e3a5f] mb-3">{t('After Iterations', '迭代後')}</p>
             <ul className="space-y-2">
               {[
-                t('Course cards became easier to scan — key info visible without hovering', '課程卡片更容易瀏覽，關鍵資訊不需懸停即可看見'),
-                t('The menu felt interactive, reducing navigation hesitation', '選單感覺可互動，減少導航時的猶豫'),
+                t('Course cards became easier to scan — key info visible without hovering', '課程卡片更容易瀏覽，使用者不需懸停卡片就能藉由課程簡介理解課程大致方向，可更容易比較課程的差異。'),
+                t('The menu felt interactive, reducing navigation hesitation', '重新設計「我的學習」選單，以減少使用者在操作上的猶豫和不確定'),
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-text-secondary">
                   <span className="text-brand-green mt-0.5 shrink-0">✓</span>
@@ -772,9 +764,6 @@ function Learnnow() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs md:text-sm text-text-secondary leading-relaxed mt-4 italic">
-              {t('Small UI adjustments, grounded in testing insights, resulted in clearer decision-making and a more predictable experience.', '基於測試洞察的小型 UI 調整，帶來了更清晰的決策和更可預測的體驗。')}
-            </p>
           </div>
         </div>
       </section>
@@ -785,28 +774,28 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Future Improvements', '未來改善方向')}</h2>
-          <p className="text-sm text-text-secondary mb-6">{t('Features identified through testing and analysis for future development.', '透過測試與分析所識別的未來開發功能。')}</p>
+          <p className="text-sm text-text-secondary mb-6">{t('Features identified through testing and analysis for future development.', '透過易用性測試與分析定義未來的設計功能。')}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
-              <Scale className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
-              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Compare Courses', '課程比較')}</h3>
+              <Globe className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
+              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Course Catalog', '課程目錄')}</h3>
               <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                {t('Side-by-side comparison of saved courses — duration, price, ratings, and syllabus at a glance.', '並排比較已收藏的課程，一目了然地查看時長、價格、評分與課綱。')}
+                {t('Full browsable catalog with search and filters,  addressing the homepage CTA expectation.', '完整可瀏覽的目錄，含搜尋和篩選功能，回應首頁 CTA 的使用者期望。')}
               </p>
             </div>
             <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
               <Smartphone className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
               <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Mobile App', '行動應用程式')}</h3>
               <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                {t('Track progress, manage schedules, and receive reminders on the go.', '隨時追蹤進度、管理時程並接收提醒。')}
+                {t('Track progress, manage schedules, and receive reminders on the go.', '隨時追蹤進度、管理課程並接收提醒。')}
               </p>
             </div>
             <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
-              <Globe className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
-              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Course Catalog', '課程目錄')}</h3>
+              <Scale className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
+              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Compare Courses', '課程比較')}</h3>
               <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                {t('Full browsable catalog with search and filters — addressing the homepage CTA expectation.', '完整可瀏覽的目錄，含搜尋和篩選功能，回應首頁 CTA 的使用者期望。')}
+                {t('Side-by-side comparison of saved courses — duration, price, ratings, and syllabus at a glance.', '並排比較已收藏的課程，一目了然地查看時長、價格、評分與課綱。')}
               </p>
             </div>
           </div>
@@ -823,7 +812,7 @@ function Learnnow() {
             <p className="text-sm md:text-base text-text-secondary leading-relaxed">
               {t(
                 'This project showed me how much visual hierarchy shapes what users do — even when the logical flow is correct. If the interface draws attention to the wrong thing, users follow the visual cue, not the intended path.',
-                '這個專案讓我看到視覺層級對使用者行為的影響有多深——即使邏輯流程是對的，如果介面把注意力引導到錯誤的地方，使用者就會跟著視覺走，而不是預設的路徑。'
+                '這個專案讓我認知視覺層級對使用者行為的影響有多深，即使邏輯流程是對的，如果因介面設計不夠直覺，而引導使用者注意力到錯誤的地方，使用者就會跟著視覺走，而不是預設的路徑。'
               )}
             </p>
             <p className="text-sm md:text-base text-text-secondary leading-relaxed">
