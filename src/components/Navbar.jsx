@@ -86,7 +86,7 @@ function Navbar() {
                 </div>
 
                 <a
-                    href="/resume.pdf"
+                    href="/YunTsai_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 border border-gray-300 rounded-full text-sm hover:bg-gray-100"

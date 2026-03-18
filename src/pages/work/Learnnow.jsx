@@ -136,8 +136,8 @@ function Learnnow() {
 
             <p className="text-base text-text-secondary mt-3 md:mt-6 leading-relaxed">
               {t(
-                'LearnNow is an online learning platform offering courses across diverse fields for users with different learning goals. This project focuses on optimizing the journey from exploration → saving → returning → enrollment. By simplifying the interface and improving information architecture, the design reduces cognitive load, enabling users to explore more easily and return to enroll—ultimately improving conversion and retention.',
-                'LearnNow 是一個線上學習平台，提供多元領域的課程內容，服務具備不同學習目標的使用者。本專案聚焦於優化使用者從「探索 → 收藏 → 回訪 → 報名」的學習決策流程。設計上透過簡潔的介面與清晰的資訊架構，降低使用者在瀏覽與選擇課程時的認知負擔，使其能更輕鬆地探索內容，並在合適的時機自然回到平台完成報名，進而提升轉換率與使用者留存。'
+                `LearnNow is an e-learning platform offering a wide range of courses for users with diverse learning goals. This project focuses on simplifying the explore → save → return → enroll journey to reduce cognitive load and support flexible decision-making.`,
+                `LearnNow 是一個線上學習平台，提供多元領域的課程內容。本專案聚焦於簡化「探索 → 收藏 → 回訪 → 報名」的學習決策流程，以降低認知負擔並支援使用者以自己的節奏做出決策。`
               )}
             </p>
 
@@ -153,7 +153,7 @@ function Learnnow() {
               </div>
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Timeline', '時間軸')}</p>
-                <p className="font-mono text-xs md:text-sm text-text-secondary">4 Weeks · {t('Term Project', '學期專案')}</p>
+                <p className="font-mono text-xs md:text-sm text-text-secondary">7 Weeks · {t('Term Project', '學期專案')}</p>
               </div>
             </div>
 
@@ -194,20 +194,20 @@ function Learnnow() {
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'EN placeholder',
-                'E-learning 平台的使用者流失，除了課程本身吸引力外，也與探索過程的使用體驗有關。過多的資訊與複雜的介面，造成使用者在瀏覽課程時需要投入較高的時間與認知成本。'
+                'User drop-off in e-learning platforms is not only influenced by course quality, but also by the exploration experience. Excessive information and complex navigation increase the time and cognitive effort required to browse courses.',
+                'E-learning 平台的使用者流失，除了課程本身的吸引力外，也與探索過程的使用體驗密切相關。過多的資訊與複雜的導覽結構，讓使用者在瀏覽課程時需要投入較高的時間與認知成本。'
               )}
             </p>
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'EN placeholder',
-                '同時，使用者在選課時通常傾向先收藏、比較，再進一步報名。然而，部分平台缺乏直觀的收藏機制，迫使使用者反覆搜尋課程，或將課程加入購物車作為替代方案。'
+                'At the same time, users often prefer to save and compare options before committing to a course. However, some platforms lack intuitive save and revisit mechanisms, forcing users to repeatedly search for courses or misuse the cart as a temporary storage tool.',
+                '同時，使用者在選課時通常傾向先收藏與比較，再進一步做出報名決策。然而，部分平台缺乏直觀的收藏與回訪機制，迫使使用者反覆搜尋課程，或將課程加入購物車作為替代方案。'
               )}
             </p>
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'EN placeholder',
-                '這些設計未能有效支援使用者的自然決策流程，進而增加了決策過程中的摩擦，影響整體使用體驗。'
+                'Overall, current designs fail to support the natural progression from exploration to decision-making, creating unnecessary friction and negatively impacting user experience and conversion.',
+                '整體而言，現有設計未能有效支援使用者從探索到決策的自然流程，導致決策過程中產生額外摩擦，進而影響使用體驗與轉換表現。'
               )}
             </p>
           </div>
@@ -220,11 +220,17 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Solution', 'Solution')}</h2>
-          <div className="max-w-5xl">
+          <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'EN placeholder',
-                '我把設計重點放在「瀏覽 → 收藏 → 回來報名」這個使用者流程中的介面與導覽系統，讓使用者在任何階段都可以暫停、離開，之後再回來報名課程，而不是被推著在第一次瀏覽時就決定報名與否。'
+                'I identified that users experience high cognitive load due to complex navigation during course exploration.',
+                '我發現使用者在探索課程的過程中，因導覽系統複雜而產生較高的認知負擔。'
+              )}
+            </p>
+            <p className="text-base text-text-secondary leading-relaxed">
+              {t(
+                `To address this, I simplified the navigation system to make browsing more intuitive and structured. I also introduced a flexible "browse → save → return → enroll" flow, allowing users to make decisions at their own pace rather than feeling pressured to commit during their first visit.`,
+                `因此，我優先簡化整體導覽結構，使瀏覽過程更加直覺且有脈絡；同時設計「瀏覽 → 收藏 → 回來報名」的彈性流程，讓使用者可以依照自己的節奏做決定，而非在第一次瀏覽時就被迫立即報名。`
               )}
             </p>
           </div>
@@ -430,33 +436,33 @@ function Learnnow() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
             <div className="border border-border rounded-xl p-5 bg-white">
-              <p className="text-base font-medium text-text-secondary tracking-widest uppercase mb-4">
+              <p className="font-serif text-base text-text-primary mb-4">
                 {t('Task 1 · Save a Course', '任務一　收藏課程')}
               </p>
               <div className="flex gap-6">
                 <div>
                   <p className="text-3xl font-medium text-blue-600 leading-none">100%</p>
-                  <p className="text-base text-text-secondary mt-1">{t('Success', '成功率')}</p>
+                  <p className="text-xs font-mono text-text-secondary mt-1">{t('Success', '成功率')}</p>
                 </div>
                 <div>
                   <p className="text-3xl font-medium text-red-500 leading-none">31.9%</p>
-                  <p className="text-base text-text-secondary mt-1">{t('Misclick', '誤點率')}</p>
+                  <p className="text-xs font-mono text-text-secondary mt-1">{t('Misclick', '誤點率')}</p>
                 </div>
               </div>
             </div>
 
             <div className="border border-border rounded-xl p-5 bg-white">
-              <p className="text-base font-medium text-text-secondary tracking-widest uppercase mb-4">
+              <p className="font-serif text-base text-text-primary mb-4">
                 {t('Task 2 · Enroll in Saved Course', '任務二　報名已收藏課程')}
               </p>
               <div className="flex gap-6">
                 <div>
                   <p className="text-3xl font-medium text-blue-600 leading-none">100%</p>
-                  <p className="text-base text-text-secondary mt-1">{t('Success', '成功率')}</p>
+                  <p className="text-xs font-mono text-text-secondary mt-1">{t('Success', '成功率')}</p>
                 </div>
                 <div>
                   <p className="text-3xl font-medium text-text-secondary leading-none">0%</p>
-                  <p className="text-base text-text-secondary mt-1">{t('Misclick', '誤點率')}</p>
+                  <p className="text-xs font-mono text-text-secondary mt-1">{t('Misclick', '誤點率')}</p>
                 </div>
               </div>
             </div>
