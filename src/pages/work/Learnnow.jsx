@@ -3,15 +3,8 @@ import { Link } from "react-router-dom";
 import { FadeInSection, PageTransition } from "../../components/AnimatedSection";
 import { useLanguage } from '../../context/LanguageContext';
 import {
-    Search,
-    Lightbulb,
-    Pencil,
-    FlaskConical,
-    RefreshCw,
     Scale,
     Smartphone,
-    Globe,
-    ArrowRight,
 } from 'lucide-react';
 
 function Learnnow() {
@@ -143,8 +136,8 @@ function Learnnow() {
 
             <p className="text-base text-text-secondary mt-3 md:mt-6 leading-relaxed">
               {t(
-                'Learning decisions often require time and reflection. A Save-for-Later feature allows users to bookmark courses and return when they are ready to commit, reducing decision pressure while preserving purchase intent.',
-                '學習決策往往需要時間與思考。課程的「收藏（Save）」功能讓使用者可以先收藏課程，並在準備好時再回來做出選擇，既能降低決策壓力，也能保留購買意圖。'
+                'LearnNow is an online learning platform offering courses across diverse fields for users with different learning goals. This project focuses on optimizing the journey from exploration → saving → returning → enrollment. By simplifying the interface and improving information architecture, the design reduces cognitive load, enabling users to explore more easily and return to enroll—ultimately improving conversion and retention.',
+                'LearnNow 是一個線上學習平台，提供多元領域的課程內容，服務具備不同學習目標的使用者。本專案聚焦於優化使用者從「探索 → 收藏 → 回訪 → 報名」的學習決策流程。設計上透過簡潔的介面與清晰的資訊架構，降低使用者在瀏覽與選擇課程時的認知負擔，使其能更輕鬆地探索內容，並在合適的時機自然回到平台完成報名，進而提升轉換率與使用者留存。'
               )}
             </p>
 
@@ -152,7 +145,7 @@ function Learnnow() {
             <div className="flex gap-8 md:gap-16 mt-4 md:mt-8">
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Tools', '工具')}</p>
-                <p className="font-mono text-xs md:text-sm text-text-secondary">Figma, Maze</p>
+                <p className="font-mono text-xs md:text-sm text-text-secondary">Figma, Figma Make, Maze</p>
               </div>
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('My Role', '職位')}</p>
@@ -160,11 +153,11 @@ function Learnnow() {
               </div>
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Timeline', '時間軸')}</p>
-                <p className="font-mono text-xs md:text-sm text-text-secondary">BCIT · {t('Term Project', '學期專案')}</p>
+                <p className="font-mono text-xs md:text-sm text-text-secondary">4 Weeks · {t('Term Project', '學期專案')}</p>
               </div>
             </div>
 
-            {/* Figma CTA */}
+            {/* Figma */}
             <a
               href="https://www.figma.com/proto/lcpUzALs58TW5oWySQcRAj/Learnnow?node-id=1-3079&t=3M4AMwIGaUKTma75-1&scaling=min-zoom&content-scaling=fixed&page-id=1%3A2966&starting-point-node-id=1%3A3468"
               target="_blank"
@@ -193,28 +186,28 @@ function Learnnow() {
         </div>
       </section>
 
-      {/* ===== Design Constraints & Trade-offs ===== */}
+      {/* ===== Problem ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto md:mt-35">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design Constraints', '設計限制')}</h2>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Problem', 'Problem')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'Given the limited scope and timeline of this school project, I intentionally scoped the work to focus on the save-and-return workflow for a single course — a Japanese Business Email course — rather than designing the full platform experience, including views like "All Courses" or personalized recommendations.',
-                '由於這個學校專案的時間與範圍有限，我將設計聚焦於單一課程（日文商業書信）的「從探索到收藏並返回報名的（save-and-return）」流程，而沒有設計完整平台功能，包含所有課程頁面或個人化推薦功能（personalized recommendations）。'
+                'EN placeholder',
+                'E-learning 平台的使用者流失，除了課程本身吸引力外，也與探索過程的使用體驗有關。過多的資訊與複雜的介面，造成使用者在瀏覽課程時需要投入較高的時間與認知成本。'
               )}
             </p>
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'This allowed me to spend more time on what mattered most: validating content hierarchy, ensuring interaction clarity, and making sure users felt confident and supported at key decision points.',
-                '這樣做讓我能將時間投入在最重要的部分：驗證內容層級（content hierarchy）、確保互動清晰度（interaction clarity），並讓使用者在關鍵決策點上感到自信與支持。'
+                'EN placeholder',
+                '同時，使用者在選課時通常傾向先收藏、比較，再進一步報名。然而，部分平台缺乏直觀的收藏機制，迫使使用者反覆搜尋課程，或將課程加入購物車作為替代方案。'
               )}
             </p>
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'By narrowing the focus, I was able to deeply explore the core behavior this platform was built around, while still acknowledging the broader features that a complete e-learning platform would include.',
-                '透過縮小專注範圍，我能深入探索這個平台核心行為的設計價值，同時也保留對完整平台功能的認知與考量。'
+                'EN placeholder',
+                '這些設計未能有效支援使用者的自然決策流程，進而增加了決策過程中的摩擦，影響整體使用體驗。'
               )}
             </p>
           </div>
@@ -222,144 +215,16 @@ function Learnnow() {
       </section>
       </FadeInSection>
 
-      {/* ===== Problem Definition ===== */}
+      {/* ===== Solution ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Problem Definition', '問題定義')}</h2>
-          <p className="text-base text-text-secondary leading-relaxed mb-6">
-            {t('Early exploration revealed two core issues:', '早期的研究揭示了兩個核心問題：')}
-          </p>
-
-          <div className="space-y-4 mb-6">
-            <div className="bg-white rounded-lg p-4 md:p-6 border border-border">
-              <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
-                <div className="flex items-start gap-3 md:flex-1">
-                  <span className="text-[#1e3a5f] font-mono text-sm shrink-0 mt-0.5">01</span>
-                  <p className="text-base text-text-secondary leading-relaxed">
-                    {t(
-                      <span>Some e-learning platforms present <strong className="text-text-primary">dense, complex interfaces</strong> that overwhelm users during course discovery — adding unnecessary pressure and forcing learners to spend excessive time navigating back and forth before finding what they need.</span>,
-                      <span>市面上的 e-learning platform 有些<strong className="text-text-primary">介面複雜</strong>，資訊量龐大看了眼花撩亂，可能造成使用者在探索課程時有多餘的壓力和必須花費大量時間來回探索課程。</span>
-                    )}
-                  </p>
-                </div>
-                <div
-                  className="md:w-56 shrink-0 cursor-zoom-in"
-                  onClick={() => setLightboxImage({ src: '/images/coursera_menu.png', alt: 'Coursera navigation' })}
-                >
-                  <img
-                    src="/images/coursera_menu.png"
-                    alt="Coursera navigation example"
-                    className="w-full rounded-lg border border-border object-cover"
-                  />
-                  <p className="text-xs text-text-secondary mt-1 text-center font-mono">Complicated Menu</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg p-4 md:p-6 border border-border">
-              <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
-                <div className="flex items-start gap-3 md:flex-1">
-                  <span className="text-[#1e3a5f] font-mono text-sm shrink-0 mt-0.5">02</span>
-                  <p className="text-base text-text-secondary leading-relaxed">
-                    {t(
-                      <span>Learners typically browse and compare across platforms before committing to enrollment. Yet most competitors offer <strong className="text-text-primary">no save functionality</strong> — only a direct purchase path — leaving no room for this natural, deliberate decision-making process.</span>,
-                      <span>消費者通常傾向於大方向探索並比較不同平台，深思熟慮後才會決定報名課程，而競品中存在<strong className="text-text-primary">沒有 save 功能</strong>、只有直接購買課程的選項，無法支援這個自然的決策過程。</span>
-                    )}
-                  </p>
-                </div>
-                <div
-                  className="md:w-56 shrink-0 cursor-zoom-in"
-                  onClick={() => setLightboxImage({ src: '/images/coursera_enroll.png', alt: 'Coursera enroll flow' })}
-                >
-                  <img
-                    src="/images/coursera_enroll.png"
-                    alt="Coursera enroll flow example"
-                    className="w-full rounded-lg border border-border object-cover"
-                  />
-                  <p className="text-xs text-text-secondary mt-1 text-center font-mono">Without Save</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      </FadeInSection>
-
-      {/* ===== Design Process ===== */}
-      <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design Process', '設計流程')}</h2>
-
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
-                <Search className="w-5 h-5 text-[#1e3a5f]" />
-              </div>
-              <p className="text-sm font-medium text-text-primary">{t('Research', '研究')}</p>
-            </div>
-            <div className="hidden md:block text-text-secondary">→</div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
-                <Lightbulb className="w-5 h-5 text-[#1e3a5f]" />
-              </div>
-              <p className="text-sm font-medium text-text-primary">{t('Define', '定義')}</p>
-            </div>
-            <div className="hidden md:block text-text-secondary">→</div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
-                <Pencil className="w-5 h-5 text-[#1e3a5f]" />
-              </div>
-              <p className="text-sm font-medium text-text-primary">{t('Design', '設計')}</p>
-            </div>
-            <div className="hidden md:block text-text-secondary">→</div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
-                <FlaskConical className="w-5 h-5 text-[#1e3a5f]" />
-              </div>
-              <p className="text-sm font-medium text-text-primary">{t('Test', '測試')}</p>
-            </div>
-            <div className="hidden md:block text-text-secondary">→</div>
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 bg-[#8aacda]/20 rounded-full flex items-center justify-center mb-2">
-                <RefreshCw className="w-5 h-5 text-[#1e3a5f]" />
-              </div>
-              <p className="text-sm font-medium text-text-primary">{t('Iterate', '迭代')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      </FadeInSection>
-
-      {/* ===== Research & Key Insights ===== */}
-      <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Research & Key Insights', '研究與關鍵洞察')}</h2>
-          <div className="bg-white rounded-lg p-4 md:p-6 border border-border max-w-5xl">
-            <p className="font-mono text-xs text-[#1e3a5f] mb-2">01</p>
-            <h3 className="font-serif text-base md:text-lg text-text-primary mb-3">{t('Desk Research', '桌面研究')}</h3>
-            <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              {t(
-                'I reviewed platforms such as Coursera and Udemy to understand how course cards, saving behaviors, and browsing structures are commonly implemented.',
-                '我研究了 Coursera 和 Udemy，以了解課程卡片、收藏行為和瀏覽結構的常見實作方式。'
-              )}
-            </p>
-          </div>
-        </div>
-      </section>
-      </FadeInSection>
-
-      {/* ===== Key Insight ===== */}
-      <FadeInSection>
-      <section className="px-5 md:px-20 py-4 md:py-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-[#f0f5fb] rounded-lg p-4 md:p-6 border-l-4 border-[#1e3a5f]">
-            <p className="font-mono text-xs text-[#1e3a5f] mb-2">{t('Key Insight', '關鍵洞察')}</p>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Solution', 'Solution')}</h2>
+          <div className="max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'Many learners report that these platforms display too much content or unrelated courses, making exploration overwhelming and decision-making harder.',
-                '使用者反映，平台資訊量過大或出現非相關課程時，會在探索課程的過程中造成壓力與認知負荷。'
+                'EN placeholder',
+                '我把設計重點放在「瀏覽 → 收藏 → 回來報名」這個使用者流程中的介面與導覽系統，讓使用者在任何階段都可以暫停、離開，之後再回來報名課程，而不是被推著在第一次瀏覽時就決定報名與否。'
               )}
             </p>
           </div>
@@ -405,77 +270,16 @@ function Learnnow() {
       </section>
       </FadeInSection>
 
-      {/* ===== Design Action ===== */}
+      {/* ===== User Flow ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t(' Design Action', '設計執行')}</h2>
-
-          <div className="space-y-4">
-            {[
-              {
-                insight: t('Existing platforms overwhelm users with irrelevant content, making course discovery stressful.', '現有平台常出現非相關課程或資訊過載，導致使用者在探索階段感到壓力與挫折。'),
-                action: t('Designed a 3-tier filter that only surfaces courses within the selected category, keeping results focused.', '設計三層篩選器，確保搜尋結果僅顯示相關課程，減少冗餘資訊，維持介面簡潔。'),
-              },
-              {
-                insight: t('Platform lacks a clear save function, pushing users to enroll before they\'re ready.', '平台缺乏直觀的收藏功能，迫使使用者在尚未準備好時就進入報名流程。'),
-                action: t('Positioned Save as a primary action throughout, enabling a "save now, decide later" browsing pattern.', '將「收藏」設為全流程的核心行為，讓使用者能安心「先儲存、後決定」，符合反覆比較的瀏覽習慣。'),
-              },
-              {
-                insight: t('','根據調查，使用者普遍認為若在報名後，沒有系統化的追蹤學習成效，會大幅降低學習者的動力與效率'),
-                action: t('','設計視覺話學習進度與學習狀態的儀表板頁面，以利報名後的後續追蹤和增加使用者持續的來訪'),
-              },
-            ].map((item, i) => (
-              <div key={i} className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-3 md:gap-6 items-center bg-white rounded-lg p-4 md:p-6 border border-border">
-                <div>
-                  <p className="font-mono text-xs text-amber-600 mb-2">{t('Insight', '洞察')}</p>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed">{item.insight}</p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-[#1e3a5f] hidden md:block shrink-0" />
-                <div>
-                  <p className="font-mono text-xs text-[#1e3a5f] mb-2">{t('Design Action', '設計行動')}</p>
-                  <p className="text-xs md:text-sm text-text-secondary leading-relaxed">{item.action}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      </FadeInSection>
-
-      {/* ===== Core Flow & IA ===== */}
-      <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Core Flow & IA', '核心流程與資訊架構')}</h2>
-          <p className="text-base text-text-secondary leading-relaxed mb-3">
-            {t('The primary flow was designed as:', '主要流程設計如下：')}
-          </p>
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            {[t('Home', '首頁'), t('Browse', '瀏覽'), t('Course Detail', '課程詳情'), t('Save', '收藏'), t('Enroll', '報名'), t('Dashboard', '儀表板')].map((step, i, arr) => (
-              <div key={i} className="flex items-center gap-2">
-                <span className="bg-[#8aacda]/20 text-[#1e3a5f] text-xs md:text-sm font-mono px-3 py-1.5 rounded-lg">{step}</span>
-                {i < arr.length - 1 && <span className="text-[#1e3a5f] text-sm">→</span>}
-              </div>
-            ))}
-          </div>
-          <p className="text-xs md:text-sm text-text-secondary leading-relaxed mb-5 italic">
-            {t(
-              'Users can also enter from the Dashboard — returning to a saved course and enrolling directly.',
-              '使用者也可以從儀表板進入，直接回到已收藏的課程並報名。'
-            )}
-          </p>
-          <p className="text-base text-text-secondary leading-relaxed mb-6">
-            {t(
-              'The goal was to make it easy to pause and come back — not to rush users toward enrollment.',
-              '目標是讓使用者可以隨時暫停並返回，而不是急著推動他們報名。'
-            )}
-          </p>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('User Flow', '使用者流程')}</h2>
           <div className="bg-[#f5f5f5] rounded-lg p-4 md:p-6">
             <img
               src="/images/Learnnow_UserFlow.png"
               alt="LearnNow User Flow"
-              className="w-full max-h-80 object-contain"
+              className="w-full max-h-200 object-contain"
             />
           </div>
         </div>
@@ -518,32 +322,35 @@ function Learnnow() {
       </section>
       </FadeInSection>
 
-      {/* ===== Design System & Consistency ===== */}
+      {/* ===== Design System ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design System & Consistency', '設計系統與一致性')}</h2>
-          <p className="text-base text-text-secondary leading-relaxed mb-4">
-            {t('The visual style was kept simple and consistent:', '視覺風格保持簡單一致：')}
-          </p>
-          <ul className="space-y-2 mb-6">
-            {[
-              t('Soft blue tones to keep the browsing experience low-pressure', '柔和的藍色調，讓瀏覽體驗不帶壓力'),
-              t('High contrast for primary actions so users know what to click', '主要操作使用高對比，讓使用者清楚知道可以點哪裡'),
-              t('Consistent spacing and type sizing to make content easy to scan', '一致的間距與字級，讓內容容易快速掃讀'),
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-base text-text-secondary">
-                <span className="text-[#1e3a5f] mt-1 shrink-0">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-base text-text-secondary leading-relaxed">
-            {t(
-              'Components like buttons, course cards, and filters were designed to be reused across pages, making it easier to extend the platform later.',
-              '按鈕、課程卡片和篩選器等元件都設計為可跨頁重複使用，方便日後擴展平台。'
-            )}
-          </p>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design System', '設計系統')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              className="cursor-zoom-in"
+              onClick={() => setLightboxImage({ src: '/images/LEARNNOW/Learnnow_Color.png', alt: 'Color System' })}
+            >
+              <img
+                src="/images/LEARNNOW/Learnnow_Color.png"
+                alt="Color System"
+                className="w-full rounded-lg border border-border hover:opacity-90 transition-opacity"
+              />
+              <p className="text-xs text-text-secondary mt-2 text-center font-mono">{t('Color', '色彩系統')}</p>
+            </div>
+            <div
+              className="cursor-zoom-in"
+              onClick={() => setLightboxImage({ src: '/images/LEARNNOW/Learnnow_Typography.png', alt: 'Typography' })}
+            >
+              <img
+                src="/images/LEARNNOW/Learnnow_Typography.png"
+                alt="Typography"
+                className="w-full rounded-lg border border-border hover:opacity-90 transition-opacity"
+              />
+              <p className="text-xs text-text-secondary mt-2 text-center font-mono">{t('Typography', '字體系統')}</p>
+            </div>
+          </div>
         </div>
       </section>
       </FadeInSection>
@@ -614,156 +421,127 @@ function Learnnow() {
 
       {/* ===== Usability Testing ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12 bg-gray-50">
+      <section className="px-5 md:px-20 py-8 md:py-12 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Usability Testing', '可用性測試')}</h2>
-
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
-            <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-              <span className="font-medium text-text-primary">{t('Testing Scope: ', '測試範圍：')}</span>
-              {t('This test focused on validating two core tasks within the Japanese language course flow. Broader features like course catalog and search were outside the scope for this phase.', '本次測試專注於驗證日語課程流程中的兩個核心任務。課程目錄和搜尋等更廣泛的功能不在本階段的測試範圍內。')}
-            </p>
-          </div>
-
-          <p className="text-base text-text-secondary leading-relaxed mb-6">
-            {t('Tested with 5 participants on Maze.', '使用 Maze 進行，共 5 位受測者。')}
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Usability Testing', '可用性測試')}</h2>
+          <p className="text-base text-text-secondary mb-6">
+            {t('Remote testing via Maze · 5 participants · 2 core tasks', 'Maze 遠端測試・5 位受測者・2 項核心任務')}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {/* Task 1 */}
-            <div className="border border-border rounded-lg overflow-hidden">
-              <div className="bg-[#8aacda]/20 px-4 py-3 border-b border-border">
-                <h3 className="font-serif text-base md:text-lg text-text-primary">{t('Task 1: Save a Course', '任務一：收藏課程')}</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex justify-between mb-4">
-                  <div className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-brand-green">100%</p>
-                    <p className="text-xs text-text-secondary">{t('Success', '成功率')}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-brand-green">0%</p>
-                    <p className="text-xs text-text-secondary">{t('Drop-off', '放棄率')}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-amber-500">31.9%</p>
-                    <p className="text-xs text-text-secondary">{t('Misclick', '誤點率')}</p>
-                  </div>
-                </div>
-                <div className="space-y-2 text-xs md:text-sm text-text-secondary leading-relaxed">
-                  <div className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('Course card only showed name, price, rating, and duration — ', '課程卡片僅顯示名稱、價格、評分與時長 — ')}<span className="font-medium text-text-primary">{t('course description and other details required hover', '課程描述等資訊需懸停才能看見')}</span>{t(', leaving users wanting more context upfront', '，測試者希望一開始就能看到更多資訊')}</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('Most participants first clicked the homepage "Get Started" CTA — but with ', '多數測試者第一步點擊首頁「Get Started」CTA — 但由於')}<span className="font-medium text-text-primary">{t('no All Courses page in the prototype', '原型中未設計對應的課程列表頁')}</span>{t(', they were redirected unexpectedly and felt disoriented', '，點擊後未被導向預期頁面，感到困惑')}</p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('Some participants clicked into the ', '部分測試者直接點擊進入')}<span className="font-medium text-text-primary">{t('enrollment and checkout flow', '報名與結帳流程')}</span>{t(' instead of saving — and only realized the task was incomplete midway through', '，而非收藏課程，直到流程中途才發現任務尚未完成')}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Task 2 */}
-            <div className="border border-border rounded-lg overflow-hidden">
-              <div className="bg-[#8aacda]/20 px-4 py-3 border-b border-border">
-                <h3 className="font-serif text-base md:text-lg text-text-primary">{t('Task 2: Enroll in Saved Course', '任務二：報名已收藏課程')}</h3>
-              </div>
-              <div className="p-4">
-                <div className="flex justify-between mb-4">
-                  <div className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-brand-green">100%</p>
-                    <p className="text-xs text-text-secondary">{t('Success', '成功率')}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-brand-green">0%</p>
-                    <p className="text-xs text-text-secondary">{t('Drop-off', '放棄率')}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl md:text-3xl font-bold text-brand-green">0%</p>
-                    <p className="text-xs text-text-secondary">{t('Misclick', '誤點率')}</p>
-                  </div>
-                </div>
-                <div className="space-y-2 text-xs md:text-sm text-text-secondary leading-relaxed">
-                  <div className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('Grey menu color was perceived as ', '灰色選單顏色被誤認為')}<span className="font-medium text-text-primary">{t('disabled/inactive', '停用/不可互動')}</span></p>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-amber-500 mt-0.5">•</span>
-                    <p>{t('One user navigated via "Explore" instead of "My Learning" — ', '一位使用者透過「探索」從頭開始了課程探索到報名的流程，而非從「我的學習選單中的已儲存課程」進行課程報名 — ')}<span className="font-medium text-text-primary">{t('familiar patterns overrode new shortcuts', '熟悉的操作模式覆蓋了新的捷徑')}</span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="border border-red-200 bg-red-50 rounded-lg p-4">
-              <h4 className="font-serif text-sm md:text-base text-text-primary mb-3 flex items-center gap-2">
-                <span className="text-red-400">✗</span> {t('Design Issues', '設計問題')}
-              </h4>
-              <ul className="space-y-2 text-xs md:text-sm text-text-secondary">
-                <li>• {t('Course description and secondary info hidden behind hover — users wanted more context visible upfront without extra interaction', '課程描述與次要資訊藏於 hover 之後 — 測試者希望在不需額外操作的情況下，第一時間看到更多資訊')}</li>
-                <li>• {t('Grey menu color read as "disabled"', '灰色選單顏色被解讀為「停用」')}</li>
-              </ul>
-            </div>
-            <div className="border border-blue-200 bg-blue-50 rounded-lg p-4">
-              <h4 className="font-serif text-sm md:text-base text-text-primary mb-3 flex items-center gap-2">
-                <span className="text-blue-400">○</span> {t('Scope Gaps', '範圍缺口')}
-              </h4>
-              <ul className="space-y-2 text-xs md:text-sm text-text-secondary">
-                <li>• {t('Homepage "Get Started" CTA had no destination — no All Courses page was designed within the project scope', '首頁「Get Started」CTA 無對應頁面 — 所有課程列表頁不在此次專案範圍內')}</li>
-                <li>• {t('Some users entered enrollment / checkout flow instead of saving — indicating "Save" action needed stronger visual distinction from "Enroll"', '部分測試者進入報名 / 結帳流程而非收藏 — 顯示「收藏」需與「報名」有更清晰的視覺區隔')}</li>
-              </ul>
-              <p className="text-xs text-text-secondary mt-3 italic">
-                {t('These validate user expectations and inform future roadmap.', '這些發現驗證了使用者的期望，並為未來的路線圖提供參考。')}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+            <div className="border border-border rounded-xl p-5 bg-white">
+              <p className="text-base font-medium text-text-secondary tracking-widest uppercase mb-4">
+                {t('Task 1 · Save a Course', '任務一　收藏課程')}
               </p>
+              <div className="flex gap-6">
+                <div>
+                  <p className="text-3xl font-medium text-blue-600 leading-none">100%</p>
+                  <p className="text-base text-text-secondary mt-1">{t('Success', '成功率')}</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-medium text-red-500 leading-none">31.9%</p>
+                  <p className="text-base text-text-secondary mt-1">{t('Misclick', '誤點率')}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-border rounded-xl p-5 bg-white">
+              <p className="text-base font-medium text-text-secondary tracking-widest uppercase mb-4">
+                {t('Task 2 · Enroll in Saved Course', '任務二　報名已收藏課程')}
+              </p>
+              <div className="flex gap-6">
+                <div>
+                  <p className="text-3xl font-medium text-blue-600 leading-none">100%</p>
+                  <p className="text-base text-text-secondary mt-1">{t('Success', '成功率')}</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-medium text-text-secondary leading-none">0%</p>
+                  <p className="text-base text-text-secondary mt-1">{t('Misclick', '誤點率')}</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <p className="text-base text-text-secondary leading-relaxed mb-4">
+            {t(
+              'Both tasks achieved a 100% success rate, but several design issues surfaced along the way. In Task 2, the grey menu color was misread as a disabled state, and some users defaulted to re-exploring from scratch rather than using the saved course entry point.',
+              '兩項任務的成功率均為 100%，但過程中發現數個設計問題。任務二中，灰色選單色彩被誤認為停用狀態，部分使用者也因慣性操作模式而選擇重新探索，而非使用預設的收藏入口。'
+            )}
+          </p>
+          <p className="text-base text-text-secondary leading-relaxed">
+            {t(
+              'The high misclick rate in Task 1 was largely driven by three participants who expected the homepage "Get Started!" CTA to lead to a course list. This page was not designed in the original scope — the 3-tier navigation was treated as the platform\'s primary discovery feature, and the need for an "All Courses" entry point was underestimated. During iteration, a static All Courses page was added, providing an additional path to the target course (Japanese Email Etiquette).',
+              '任務一的誤點率偏高，主要來自三位測試者預期點擊主頁「Get Started!」CTA 後，會出現課程列表頁面。這個頁面在原始設計範圍內並未規劃，當時將三層篩選導航視為平台的主要探索功能，低估了「所有課程」入口的重要性。在迭代階段，我設計了一個靜態的 All Courses 頁面，提供另一條通往目標課程（Japanese Email Etiquette）的路徑。'
+            )}
+          </p>
         </div>
       </section>
       </FadeInSection>
 
-      {/* ===== Iterations & Impact ===== */}
+      {/* ===== Iterations ===== */}
       <FadeInSection>
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Iterations & Impact', '設計迭代與成效')}</h2>
+          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Iterations', '設計迭代')}</h2>
 
-          <div className="space-y-4 mb-8">
-            <div className="flex items-start gap-4 bg-white rounded-lg p-4 border border-border">
-              <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">1</div>
-              <div>
-                <p className="text-sm md:text-base text-text-primary font-medium">{t('Made important course info visible without hovering', '讓課程主要資訊不需懸停即可看見')}</p>
-                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Duration, rating, and price moved to always visible on the card. Hover now reveals secondary info only.', '課程簡介改為直接顯示在卡片上，懸停後才顯示次要資訊。')}</p>
+          <div className="space-y-6 mb-8">
+            <div className="bg-white rounded-lg p-4 border border-border">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">1</div>
+                <div>
+                  <p className="text-sm md:text-base text-text-primary font-medium">{t('Made important course info visible without hovering', '讓課程主要資訊不需懸停即可看見')}</p>
+                  <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Duration, rating, and price moved to always visible on the card. Hover now reveals secondary info only.', '課程簡介改為直接顯示在卡片上，懸停後才顯示次要資訊。')}</p>
+                </div>
+              </div>
+              <div
+                className="cursor-zoom-in"
+                onClick={() => setLightboxImage({ src: '/images/LEARNNOW/Learnnow_iteration1.png', alt: 'Iteration 1' })}
+              >
+                <img
+                  src="/images/LEARNNOW/Learnnow_iteration1.png"
+                  alt="Iteration 1"
+                  className="w-full rounded-lg border border-border hover:opacity-90 transition-opacity"
+                />
               </div>
             </div>
-            <div className="flex items-start gap-4 bg-white rounded-lg p-4 border border-border">
-              <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">2</div>
-              <div>
-                <p className="text-sm md:text-base text-text-primary font-medium">{t('Revised "My Learning" menu colors', '修改「我的學習」選單顏色')}</p>
-                <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Changed from grey to active color to signal interactivity', '從灰色字改為黑色字以表示可互動')}</p>
+            <div className="bg-white rounded-lg p-4 border border-border">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">2</div>
+                <div>
+                  <p className="text-sm md:text-base text-text-primary font-medium">{t('Revised "My Learning" menu colors', '修改「我的學習」選單顏色')}</p>
+                  <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Changed from grey to active color to signal interactivity', '從灰色字改為黑色字以表示可互動')}</p>
+                </div>
+              </div>
+              <div
+                className="cursor-zoom-in"
+                onClick={() => setLightboxImage({ src: '/images/LEARNNOW/Learnnow_iteration2.png', alt: 'Iteration 2' })}
+              >
+                <img
+                  src="/images/LEARNNOW/Learnnow_iteration2.png"
+                  alt="Iteration 2"
+                  className="w-full rounded-lg border border-border hover:opacity-90 transition-opacity"
+                />
               </div>
             </div>
-          </div>
-
-          <div className="bg-[#1e3a5f]/5 rounded-lg p-4 md:p-6 border border-[#1e3a5f]/10">
-            <p className="font-mono text-xs text-[#1e3a5f] mb-3">{t('After Iterations', '迭代後')}</p>
-            <ul className="space-y-2">
-              {[
-                t('Course cards became easier to scan — key info visible without hovering', '課程卡片更容易瀏覽，使用者不需懸停卡片就能藉由課程簡介理解課程大致方向，可更容易比較課程的差異。'),
-                t('The menu felt interactive, reducing navigation hesitation', '重新設計「我的學習」選單，以減少使用者在操作上的猶豫和不確定'),
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-text-secondary">
-                  <span className="text-brand-green mt-0.5 shrink-0">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="bg-white rounded-lg p-4 border border-border">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-8 h-8 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-sm shrink-0">3</div>
+                <div>
+                  <p className="text-sm md:text-base text-text-primary font-medium">{t('Designed a static All Courses page', '新增靜態 All Courses 頁面')}</p>
+                  <p className="text-xs md:text-sm text-text-secondary mt-1">{t('Added an entry point from the homepage CTA, providing an alternative path to reach the target course beyond the 3-tier navigation. Rapidly prototyped using Figma Make.', '新增從首頁 CTA 導入的入口，提供三層篩選導航以外的另一條路徑，讓使用者能更直覺地進入目標課程。使用 Figma Make 快速生成原型。')}</p>
+                </div>
+              </div>
+              <div
+                className="cursor-zoom-in"
+                onClick={() => setLightboxImage({ src: '/images/LEARNNOW/Learnnow_iteration3.png', alt: 'Iteration 3' })}
+              >
+                <img
+                  src="/images/LEARNNOW/Learnnow_iteration3.png"
+                  alt="Iteration 3"
+                  className="w-full rounded-lg border border-border hover:opacity-90 transition-opacity"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -776,14 +554,7 @@ function Learnnow() {
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Future Improvements', '未來改善方向')}</h2>
           <p className="text-sm text-text-secondary mb-6">{t('Features identified through testing and analysis for future development.', '透過易用性測試與分析定義未來的設計功能。')}</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
-              <Globe className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
-              <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Course Catalog', '課程目錄')}</h3>
-              <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                {t('Full browsable catalog with search and filters,  addressing the homepage CTA expectation.', '完整可瀏覽的目錄，含搜尋和篩選功能，回應首頁 CTA 的使用者期望。')}
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="border border-dashed border-brand-green rounded-lg p-4 md:p-6">
               <Smartphone className="w-6 h-6 md:w-8 md:h-8 mb-3 text-[#1e3a5f]" />
               <h3 className="font-serif text-base md:text-lg text-text-primary mb-2">{t('Mobile App', '行動應用程式')}</h3>
@@ -811,14 +582,8 @@ function Learnnow() {
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
-                'This project showed me how much visual hierarchy shapes what users do — even when the logical flow is correct. If the interface draws attention to the wrong thing, users follow the visual cue, not the intended path.',
-                '這個專案讓我認知視覺層級對使用者行為的影響有多深，即使邏輯流程是對的，如果因介面設計不夠直覺，而引導使用者注意力到錯誤的地方，使用者就會跟著視覺走，而不是預設的路徑。'
-              )}
-            </p>
-            <p className="text-base text-text-secondary leading-relaxed">
-              {t(
-                'I also learned to make design decisions based on what I actually observed, not what I assumed — and to work honestly within project constraints rather than designing for an ideal scenario.',
-                '我也學到要根據實際觀察到的行為做設計決策，而不是憑假設，並且在專案限制內誠實地設計，而不是為理想情境設計。'
+                `During usability testing, I noticed that most users went straight for the "Get Started" CTA instead of Explore. Upon analysis, I realized this was because "Get Started" was more visually prominent than the Explore flow entry, and users naturally followed the visuals rather than the intended flow. Based on this insight, I added an All Courses page as the next step after "Get Started," aligning the flow with user expectations. This taught me that even a well-designed flow must consider visual hierarchy to match user behavior.`,
+                `在可用性測試中，我發現大多數使用者直接點了首頁的「Get Started」CTA，跳過 Explore。分析後我意識到，這是因為「Get Started」比 Explore 流程入口更顯眼，使用者自然跟著視覺走，而非按我原先設計的流程。基於這個洞察，我新增了「所有課程」列表頁作為「Get Started」的下一步，讓流程更符合使用者心理預期。這讓我明白，即使流程設計正確，也必須確保視覺層級與使用者行為一致。`
               )}
             </p>
           </div>

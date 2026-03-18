@@ -83,10 +83,14 @@ function Vanlink() {
                                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('My Role', '職位')}</p>
                                 <p className="font-mono text-xs md:text-sm text-text-secondary">UX/UI Designer</p>
                             </div>
+                            <div>
+                                <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Timeline', '時間軸')}</p>
+                                <p className="font-mono text-xs md:text-sm text-text-secondary">7 Weeks · {t('Term Project', '學期專案')}</p>
+                            </div>
                         </div>
 
                         <a
-                            href="https://www.figma.com/design/kPGga8an4mCsdYCad6qXuy/VanLink_refined?node-id=0-1&t=1qO2oUuiTTyw1uK1-1"
+                            href="https://www.figma.com/proto/kPGga8an4mCsdYCad6qXuy/VanLink_refined?page-id=0%3A1&node-id=1-8&viewport=8%2C147%2C0.25&t=CPZa3FzAfNq8g3o9-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A8&show-proto-sidebar=1"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-6 md:mt-8 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-lg text-sm font-mono hover:bg-brand-green/90 transition-colors"

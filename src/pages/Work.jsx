@@ -25,16 +25,6 @@ function Projects() {
             category: "UX/UI Design"
         },
         {
-            id: "cloudair",
-            title: "CLOUDAIR",
-            subtitle: t('Airline app', '航空應用程式'),
-            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
-            image: "/images/cloudair-hero.png",
-            tags: ["UX/UI", "Illustrator"],
-            link: "/work/cloudair",
-            category: "UX/UI Design"
-        },
-        {
             id: "VanLink",
             title: "VANLINK",
             subtitle: t('Transit app', '交通應用程式'),
@@ -45,15 +35,25 @@ function Projects() {
             category: "UX/UI Design"
         },
         {
+            id: "cloudair",
+            title: "CLOUDAIR",
+            subtitle: t('Airline app', '航空應用程式'),
+            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
+            tags: ["UX/UI", "Illustrator"],
+            link: "/work/cloudair",
+            category: "UX/UI Design",
+            comingSoon: true
+        },
+        {
             id: "missbean",
             title: "MISSBEAN",
             subtitle: t('Cafe website', '咖啡廳網站'),
             description: t('A coffee shop website showcasing modern web development techniques with JavaScript libraries.', '一個咖啡廳網站，展示現代網頁開發技術與 JavaScript 套件的應用。'),
-            image: "/images/missbean-hero.png",
             tags: ["Web Development", "JavaScript", "HTML", "CSS", "Figma"],
             link: "/work/missbean",
-            category: "Web Development"
-        }
+            category: "Web Development",
+            comingSoon: true
+        },
     ]
 
     const filteredProjects = activeFilter === "All"
@@ -91,20 +91,34 @@ function Projects() {
                     <FadeInSection>
                     <Link
                         key={project.id}
-                        to={project.link}
-                        className="bg-white rounded-lg p-6 block hover:shadow-lg transition-all cursor-pointer group"
+                        to={project.comingSoon ? '#' : project.link}
+                        onClick={project.comingSoon ? e => e.preventDefault() : undefined}
+                        className={`bg-white rounded-lg p-6 block transition-all group h-full ${project.comingSoon ? 'cursor-default' : 'hover:shadow-lg cursor-pointer'}`}
                     >
                         {/* img */}
-                        <div className="rounded-lg p-4 mb-4 overflow-hidden  flex justify-center items-center">
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="w-90 h-60 object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
+                        <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
+                            {project.comingSoon ? (
+                                <div className="w-90 h-60 bg-gray-100 rounded-lg flex items-center justify-center">
+                                    <span className="text-text-secondary font-mono text-sm opacity-40">Coming Soon</span>
+                                </div>
+                            ) : (
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-90 h-60 object-cover transition-transform duration-300 group-hover:scale-105"
+                                />
+                            )}
                         </div>
 
                         {/* title */}
-                        <h3 className="font-serif text-xl md:text-2xl text-text-primary">{project.title}</h3>
+                        <div className="flex items-center gap-3 mb-1">
+                            <h3 className="font-serif text-xl md:text-2xl text-text-primary">{project.title}</h3>
+                            {project.comingSoon && (
+                                <span className="text-xs font-mono px-2 py-0.5 rounded-full border border-text-secondary text-text-secondary opacity-60">
+                                    {t('Coming Soon', '即將推出')}
+                                </span>
+                            )}
+                        </div>
                         <p className="text-text-secondary text-sm mb-3 font-serif">{project.subtitle}</p>
 
                         {/* tags */}
@@ -130,9 +144,11 @@ function Projects() {
                         </p>
 
                         {/* link */}
-                        <span className="text-brand-green text-sm font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                            {t('View Project →', '查看專案 →')}
-                        </span>
+                        {!project.comingSoon && (
+                            <span className="text-brand-green text-sm font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                                {t('View Project →', '查看專案 →')}
+                            </span>
+                        )}
                     </Link>
                 </FadeInSection>
                 ))}
