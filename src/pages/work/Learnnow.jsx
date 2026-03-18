@@ -281,11 +281,14 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('User Flow', '使用者流程')}</h2>
-          <div className="bg-[#f5f5f5] rounded-lg p-4 md:p-6">
+          <div
+            className="bg-[#f5f5f5] rounded-lg p-4 md:p-6 cursor-zoom-in"
+            onClick={() => setLightboxImage({ src: '/images/Learnnow_UserFlow.png', alt: 'LearnNow User Flow' })}
+          >
             <img
               src="/images/Learnnow_UserFlow.png"
               alt="LearnNow User Flow"
-              className="w-full max-h-200 object-contain"
+              className="w-full max-h-125 object-contain hover:opacity-90 transition-opacity"
             />
           </div>
         </div>
@@ -297,7 +300,6 @@ function Learnnow() {
       <section className="px-5 md:px-20 py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Wireframes', '低保真線框圖')}</h2>
-          <p className="text-sm text-text-secondary mb-6 font-mono">{t('Click to enlarge', '點擊放大')}</p>
           <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory">
             {[
               { src: '/images/LEARNNOW/Home.png', alt: 'Home' },
@@ -622,13 +624,11 @@ function Learnnow() {
           className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-8"
           onClick={() => setLightboxImage(null)}
         >
-          <div className="max-w-2xl w-full max-h-[70vh] rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src={lightboxImage.src}
-              alt={lightboxImage.alt}
-              className="w-full h-full object-contain"
-            />
-          </div>
+          <img
+            src={lightboxImage.src}
+            alt={lightboxImage.alt}
+            className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
+          />
         </div>
       )}
     </>
