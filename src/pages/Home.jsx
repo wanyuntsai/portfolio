@@ -60,15 +60,15 @@ function Home() {
             tags: ["UX/UI", "Figma", "Maze"],
             link: "/work/Vanlink"
         },
-        {
-            id: "cloudair",
-            title: "CLOUDAIR",
-            subtitle: t('Airline app', '航空應用程式'),
-            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
-            tags: ["UX/UI", "Illustrator"],
-            link: "/projects/cloudair",
-            comingSoon: true
-        },
+        // {
+        //     id: "cloudair",
+        //     title: "CLOUDAIR",
+        //     subtitle: t('Airline app', '航空應用程式'),
+        //     description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
+        //     tags: ["UX/UI", "Illustrator"],
+        //     link: "/projects/cloudair",
+        //     comingSoon: true
+        // },
     ]
 
     // tools

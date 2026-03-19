@@ -74,7 +74,7 @@ function Projects() {
                     <button
                         key={filter.value}
                         onClick={() => setActiveFilter(filter.value)}
-                        className={`px-4 py-2 rounded-full text-sm font-mono transition-colors ${
+                        className={`px-4 py-2 rounded-full text-base font-mono transition-colors ${
                             activeFilter === filter.value
                             ? 'bg-brand-green text-white'
                             : 'border border-text-primary text-text-primary hover:bg-brand-green-light'
@@ -99,7 +99,7 @@ function Projects() {
                         <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
                             {project.comingSoon ? (
                                 <div className="w-90 h-60 bg-gray-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-text-secondary font-mono text-sm opacity-40">Coming Soon</span>
+                                    <span className="text-text-secondary font-mono text-base opacity-40">Coming Soon</span>
                                 </div>
                             ) : (
                                 <img
@@ -114,19 +114,19 @@ function Projects() {
                         <div className="flex items-center gap-3 mb-1">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary">{project.title}</h3>
                             {project.comingSoon && (
-                                <span className="text-xs font-mono px-2 py-0.5 rounded-full border border-text-secondary text-text-secondary opacity-60">
+                                <span className="text-base font-mono px-2 py-0.5 rounded-full border border-text-secondary text-text-secondary opacity-60">
                                     {t('Coming Soon', '即將推出')}
                                 </span>
                             )}
                         </div>
-                        <p className="text-text-secondary text-sm mb-3 font-serif">{project.subtitle}</p>
+                        <p className="text-text-secondary text-base mb-3 font-serif">{project.subtitle}</p>
 
                         {/* tags */}
                         <div className="flex gap-2 flex-wrap mb-4">
                             {project.tags?.map((tag, index) => (
                                 <span
                                     key={index}
-                                    className="rounded-full px-3 py-1 text-xs font-mono"
+                                    className="rounded-full px-3 py-1 text-base font-mono"
                                     style={{
                                         border: "1px solid #9BBF6A",
                                         background: "#F0F5E8",
@@ -139,13 +139,13 @@ function Projects() {
                         </div>
 
                         {/* description - display only on desktop */}
-                        <p className="hidden md:block text-sm text-text-secondary mb-4 font-mono leading-relaxed line-clamp-2">
+                        <p className="hidden md:block text-base text-text-secondary mb-4 font-mono leading-relaxed line-clamp-2">
                             {project.description}
                         </p>
 
                         {/* link */}
                         {!project.comingSoon && (
-                            <span className="text-brand-green text-sm font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                            <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                                 {t('View Project →', '查看專案 →')}
                             </span>
                         )}
