@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap');
 
 
 
@@ -23,7 +23,7 @@ body {
 @theme {
   /* font */
   --font-hand: "Caveat", cursive;
-  --font-serif: "Cormorant Garamond", "Noto Serif TC", serif;
+  --font-serif: "Krona One", serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-sans: "Noto Sans TC", sans-serif;
   
@@ -47,7 +47,7 @@ body {
 }
 
 .font-serif {
-  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-family: "Krona One", serif;
 }
 
 /* HOME */
