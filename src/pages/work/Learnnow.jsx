@@ -12,6 +12,15 @@ function Learnnow() {
   const [lightboxImage, setLightboxImage] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [tocItems, setTocItems] = useState([]);
+  const [activeId, setActiveId] = useState('');
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 100;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +32,35 @@ function Learnnow() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // TOC: assign IDs to h2s and build items list
+  useEffect(() => {
+    const headings = Array.from(document.querySelectorAll('h2'));
+    const items = headings.map((h, i) => {
+      const id = `toc-${i}`;
+      h.id = id;
+      h.style.scrollMarginTop = '100px';
+      return { id, text: h.textContent.trim() };
+    });
+    setTocItems(items);
+  }, []);
+
+  // TOC: highlight active section
+  useEffect(() => {
+    if (!tocItems.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length > 0) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: '-10% 0% -80% 0%' }
+    );
+    tocItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [tocItems]);
 
   const finalDesigns = [
     { src: "/images/CourseDetailed Page.png", alt: "Course Detail" },
@@ -109,7 +147,6 @@ function Learnnow() {
 
     <PageTransition>
     <div className="bg-white">
-
       {/* ===== Breadcrumb ===== */}
       <nav className="px-5 md:px-20 pt-3 md:pt-6">
         <div className="flex items-center gap-2 text-xs md:text-sm font-mono">
@@ -162,7 +199,7 @@ function Learnnow() {
               href="https://www.figma.com/proto/lcpUzALs58TW5oWySQcRAj/Learnnow?node-id=1-3079&t=3M4AMwIGaUKTma75-1&scaling=min-zoom&content-scaling=fixed&page-id=1%3A2966&starting-point-node-id=1%3A3468"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 md:mt-8 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-lg text-sm font-mono hover:bg-brand-green/90 transition-colors"
+              className="mt-6 md:mt-8 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-full text-sm font-mono hover:bg-brand-green/90 transition-colors"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
@@ -185,6 +222,36 @@ function Learnnow() {
           </div>
         </div>
       </section>
+
+      <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12">
+
+      {/* ===== Table of Contents ===== */}
+      <aside className="hidden lg:block">
+        <div className="sticky" style={{ top: '80px' }}>
+          <ul className="space-y-0.5">
+            {tocItems.map((item, i) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left pl-5 pr-4 py-2 font-sans transition-all duration-200 rounded-sm ${
+                    activeId === item.id
+                      ? 'bg-brand-green text-white'
+                      : 'text-[#888] hover:text-brand-green hover:bg-[#F0F5E8]'
+                  }`}
+                >
+                  <span className={`block text-[9px] font-mono tracking-wider mb-0.5 ${activeId === item.id ? 'text-white/50' : 'text-[#BBB]'}`}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-[12px] leading-tight font-serif">{item.text}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      {/* ===== Main Content ===== */}
+      <div>
 
       {/* ===== Problem ===== */}
       <FadeInSection>
@@ -615,6 +682,8 @@ function Learnnow() {
       </section>
       </FadeInSection>
 
+      </div>{/* end main content */}
+      </div>{/* end lg:grid */}
     </div>
     </PageTransition>
 

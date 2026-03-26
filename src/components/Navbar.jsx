@@ -40,16 +40,16 @@ function Navbar() {
     return (
         <>
         <nav className={`flex justify-between items-center p-6 ${bgColor} ${navPosition}`}>
-            <Link to="/" className="font-hand text-2xl">Yun Tsai</Link>
+            <Link to="/" className="font-serif text-base transition-transform duration-200 hover:scale-110">Yun T.</Link>
 
             {/* desktop menu */}
             <div className={`hidden md:flex gap-8 items-center ${menuFont}`}>
-                <Link to="/work" className="py-2 px-4 text-text-secondary text-center hover:text-[#9BBF6A] transition-all hover:scale-105">{t('Work', '作品')}</Link>
-                <Link to="/about" className="text-text-secondary text-center hover:text-[#9BBF6A] transition-colors hover:scale-105">{t('About', '關於我')}</Link>
+                <Link to="/work" className="py-2 px-4 text-text-secondary text-center hover:text-brand-green-light transition-all hover:scale-105">{t('Work', '作品')}</Link>
+                <Link to="/about" className="py-2 px-4 text-text-secondary text-center hover:text-brand-green-light transition-all hover:scale-105">{t('About', '關於我')}</Link>
 
                 {/* Contact with Dropdown */}
                 <div className="relative group">
-                    <span className="py-2 px-4 hover:text-[#9BBF6A] hover:scale-105 transition-all cursor-pointer font-mono text-text-secondary inline-block">
+                    <span className="py-2 px-4 hover:text-brand-green-light hover:scale-105 transition-all cursor-pointer text-text-secondary inline-block">
                         {t('Contact', '聯絡我')}
                     </span>
 
@@ -89,15 +89,17 @@ function Navbar() {
                     href="/YunTsai_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border border-gray-300 rounded-full text-sm hover:bg-gray-100"
-                >{t('Resume', '履歷')}
+                    className="resume-ghost-btn group flex items-center gap-1 border border-text-primary rounded-full px-4 py-2 text-sm font-mono hover:bg-text-primary hover:text-white transition-all duration-300"
+                >
+                    {t('Resume', '履歷')}
+                    <span className="resume-arrow">↗</span>
                 </a>
 
                 <LanguageToggleDesktop />
             </div>
 
             {/* mobile hamburger */}
-            <button onClick={() => setIsOpen(!isOpen)} className="flex flex-col gap-1.5 md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="flex flex-col gap-1.5 md:hidden" aria-label="Open navigation menu">
                 <span className="w-6 h-0.5 bg-black"></span>
                 <span className="w-6 h-0.5 bg-black"></span>
                 <span className="w-6 h-0.5 bg-black"></span>
@@ -109,10 +111,10 @@ function Navbar() {
             <div className={`fixed inset-0 bg-brand-cream z-50 flex flex-col overflow-hidden ${menuFont}`}>
                 {/* logo */}
                 <div className="relative z-10 flex justify-between items-center p-6">
-                    <Link to="/" className="font-hand text-2xl" onClick={() => setIsOpen(false)}>Yun Tsai</Link>
+                    <Link to="/" className="font-serif text-base transition-transform duration-200 hover:scale-110" onClick={() => setIsOpen(false)}>Yun T.</Link>
 
                     {/* close button */}
-                    <button onClick={() => setIsOpen(false)} className="flex flex-col justify-center items-center w-6 h-6 relative">
+                    <button onClick={() => setIsOpen(false)} className="flex flex-col justify-center items-center w-6 h-6 relative" aria-label="Close Navigation menu">
                         <span className='w-6 h-[2px] bg-black absolute rotate-45'></span>
                         <span className='w-6 h-[2px] bg-black absolute -rotate-45'></span>
                     </button>
@@ -120,13 +122,15 @@ function Navbar() {
 
                 {/* Menu links */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
-                    <Link to="/work" onClick={() => setIsOpen(false)} className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all">{t('Work', '作品')}</Link>
-                    <Link to="/about" onClick={() => setIsOpen(false)} className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all">{t('About', '關於我')}</Link>
+                    <Link to="/work" onClick={() => setIsOpen(false)} className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-brand-green-light
+                    hover:text-brand-green-light hover:scale-105 transition-all">{t('Work', '作品')}</Link>
+                    <Link to="/about" onClick={() => setIsOpen(false)} className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-brand-green-light hover:text-brand-green-light hover:scale-105 transition-all">{t('About', '關於我')}</Link>
 
                     {/* Contact - Mobile */}
                     <div className="flex flex-col items-center">
                         <span
-                            className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent hover:border-[#9BBF6A] hover:text-[#9BBF6A] hover:scale-105 transition-all cursor-pointer"
+                            className="text-xl text-text-secondary px-8 py-3 rounded-full border-2 border-transparent  hover:border-brand-green-light  hover:text-brand-green-light 
+                             hover:scale-105 transition-all cursor-pointer"
                             onClick={() => setShowContact(!showContact)}
                         >
                             {t('Contact', '聯絡我')}
@@ -139,7 +143,7 @@ function Navbar() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={() => setIsOpen(false)}
-                                    className="text-base text-text-secondary hover:text-[#9BBF6A] transition-colors"
+                                    className="text-base text-text-secondary hover:text-brand-green-light transition-colors"
                                 >
                                     LinkedIn
                                 </a>
@@ -149,7 +153,7 @@ function Navbar() {
                                         setCopied(true);
                                         setTimeout(() => { setCopied(false); setIsOpen(false); }, 1500);
                                     }}
-                                    className="text-base text-text-secondary hover:text-[#9BBF6A] transition-colors"
+                                    className="text-base text-text-secondary hover:text-brand-green-light transition-colors"
                                 >
                                     {copied ? t('Email copied! ☻', '已複製! ☻') : t('Copy Email', '複製信箱')}
                                 </button>
@@ -159,12 +163,14 @@ function Navbar() {
 
                     {/* Resume */}
                     <a
-                        href="/resume.pdf"
+                        href="/YunTsai_Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-2 border border-gray-300 rounded-full text-lg hover:bg-gray-100"
+                        className="resume-ghost-btn group flex items-center gap-1.5 border border-text-primary rounded-full px-8 py-2 text-lg font-mono hover:bg-text-primary hover:text-white transition-all duration-300"
                         onClick={() => setIsOpen(false)}
-                    >{t('Resume', '履歷')}
+                    >
+                        {t('Resume', '履歷')}
+                        <span className="resume-arrow">↗</span>
                     </a>
 
                     <LanguageToggleMobile />

@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
 import { useLanguage } from '../context/LanguageContext';
 
+
+
 function Projects() {
+    useEffect(() => {
+        document.title = 'Work | Yun Tsai'
+    
+})
     const { t } = useLanguage();
     const [activeFilter, setActiveFilter] = useState("All");
 
@@ -139,7 +145,7 @@ function Projects() {
                         </div>
 
                         {/* description - display only on desktop */}
-                        <p className="hidden md:block text-base text-text-secondary mb-4 font-mono leading-relaxed line-clamp-2">
+                        <p className="hidden md:block text-base text-text-secondary mb-4 font-funnel leading-relaxed line-clamp-2">
                             {project.description}
                         </p>
 

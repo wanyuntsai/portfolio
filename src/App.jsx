@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 // projects page
 // import CloudAir from './pages/work/CloudAir'
@@ -30,6 +31,7 @@ function AppContent() {
           <Route path="/work/learnnow" element={<LearnNow />} />
           <Route path="/work/vanlink" element={<Vanlink />} />
           {/* <Route path="/work/Cloudair" element={<CloudAir/>} /> */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <div className={isWorkSubPage ? 'bg-white' : ''}>

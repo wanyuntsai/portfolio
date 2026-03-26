@@ -9,6 +9,7 @@ export default {
             'blue': '#1fb6ff',
             'purple': '#7e5bef',
             'pink': '#ff49db',
+            'brand-green-light': '#4A7A2A',
         },
         fontFamily: {
             sans: ['Graphik', 'sans-serif'],

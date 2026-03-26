@@ -10,9 +10,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 function Home() {
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
+    useEffect(()=> {
+      document.title = "Yun Tsai | Portfolio"
+    })
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -87,106 +90,174 @@ function Home() {
 
 // project function
 const renderProjectCard = (project) => (
-    <div className={`rounded overflow-hidden h-full flex flex-col group ${project.comingSoon ? 'opacity-70' : ''}`}>
-        <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center relative">
-            {project.image ? (
-                <img src={project.image} alt={project.title} className={`w-90 h-60 object-cover transition-transform duration-300 ${!project.comingSoon ? 'group-hover:scale-105' : ''}`} />
-            ) : (
+    <Link
+        to={project.comingSoon ? '#' : project.link}
+        onClick={project.comingSoon ? e => e.preventDefault() : undefined}
+        className={`bg-white rounded-lg p-6 block transition-all group h-full ${project.comingSoon ? 'cursor-default opacity-70' : 'hover:shadow-lg cursor-pointer'}`}
+    >
+        {/* img */}
+        <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
+            {project.comingSoon ? (
                 <div className="w-90 h-60 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="text-text-secondary font-mono text-sm opacity-40">{project.title}</span>
+                    <span className="text-text-secondary font-mono text-base opacity-40">{t('Coming Soon', '即將推出')}</span>
                 </div>
+            ) : (
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-90 h-60 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
             )}
+        </div>
+
+        {/* title */}
+        <div className="flex items-center gap-3 mb-1">
+            <h3 className="font-serif text-xl md:text-2xl text-text-primary">{project.title}</h3>
             {project.comingSoon && (
-                <span className="absolute top-3 right-3 bg-text-primary text-white text-xs font-mono px-3 py-1 rounded-full">
+                <span className="text-base font-mono px-2 py-0.5 rounded-full border border-text-secondary text-text-secondary opacity-60">
                     {t('Coming Soon', '即將推出')}
                 </span>
             )}
         </div>
-        <div className="bg-white p-8 flex flex-col flex-1">
-            <h3 className="font-serif font-bold text-2xl text-text-primary">{project.title}</h3>
-            <p className="text-text-secondary mb-3 font-serif">{project.subtitle}</p>
+        <p className="text-text-secondary text-base mb-3 font-serif">{project.subtitle}</p>
 
-            {/* tags */}
-            <div className="flex gap-2 flex-wrap mb-4">
-                {project.tags?.map((tag, index) => (
-                <span key={index}
-                    className="rounded-full px-5 py-2 text-xs font-mono" style={{
-                    border: "1px solid #9BBF6A",
-                    background: "#F0F5E8",
-                    color: "#2B4A1A"
-                }}>
+        {/* tags */}
+        <div className="flex gap-2 flex-wrap mb-4">
+            {project.tags?.map((tag, index) => (
+                <span key={index} className="rounded-full px-3 py-1 text-base font-mono" style={{ border: "1px solid #9BBF6A", background: "#F0F5E8", color: "#2B4A1A" }}>
                     {tag}
                 </span>
-                ))}
-            </div>
-
-            <p className="text-sm text-text-secondary mb-6 font-mono">{project.description}</p>
-
-            {project.comingSoon ? (
-                <span className="text-text-secondary text-sm font-mono mt-auto opacity-50">{t('→ Case study in progress', '→ 案例撰寫中')}</span>
-            ) : (
-                <Link to={project.link} className="text-text-primary text-sm font-medium inline-flex items-center gap-1 mb-2 hover:gap-2 transition-all mt-auto font-mono">
-                    {t('→ View Case Study', '→ 查看案例')}
-                </Link>
-            )}
+            ))}
         </div>
-    </div>
+
+        {/* description - desktop only */}
+        <p className="hidden md:block text-base text-text-secondary mb-4 font-funnel leading-relaxed line-clamp-2">
+            {project.description}
+        </p>
+
+        {!project.comingSoon && (
+            <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                {t('View Project →', '查看專案 →')}
+            </span>
+        )}
+    </Link>
   )
 
     return (
       <PageTransition>
         <div>
-            {/* hero title */}
+            {/* hero */}
         <section className="min-h-screen px-5 md:px-10 flex flex-col justify-center relative pt-24">
-      <h1 className={`font-serif ${language === 'zh' ? 'text-3xl lg:text-5xl' : 'text-4xl lg:text-6xl'} text-text-primary leading-tight text-left lg:max-w-2xl`} style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>
-          <motion.span
-            key={language + '-line1'}
-            initial={{ opacity: 0, y: 24 }}
+
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-            className="block">
-            {t('Creating digital experiences', '打造讓使用者被理解、')}
-          </motion.span>
-          <motion.span
-            key={language + '-line2'}
-            initial={{ opacity: 0, y: 24 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+            className="flex items-center gap-3 mb-12"
+          >
+            <div className="w-px h-4 bg-brand-green shrink-0" />
+            <span className="font-mono uppercase select-none text-[14px] md:text-[20px]" style={{ letterSpacing: '0.1em', color: '#888' }}>
+              UX / UI Designer
+            </span>
+          </motion.div>
+
+          {/* Name */}
+          <motion.h1
+            initial={{ opacity: 0, x: -28 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.5 }}
+            className="font-serif leading-[0.9] hero-name"
+          >
+            <span className='tsai-outline'>Yun </span>
+            <span className="tsai-outline">Tsai</span>
+          </motion.h1>
+
+          {/* Open to work badge */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.55 }}
+            className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full self-start"
+            style={{ background: '#E8EDD8', border: '1px solid #9BBF6A' }}
+          >
+            <span className="open-badge-dot" />
+            <span className="font-mono text-brand-green tracking-wide text-[12px] md:text-[14px]">
+              {t('Open to work', '尋找工作機會')}
+            </span>
+          </motion.div>
+
+          {/* 技能純文字列 */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
-            className="block">
-            {t('where users feel understood and interactions feel ', '互動')}
-            <span className="underline decoration-brand-green decoration-2 underline-offset-4">{t('natural', '自然')}</span>
-            {t('.', '流暢的數位體驗。')}
-          </motion.span>
-        </h1>
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.4 }}
+            className="flex items-center gap-2 mt-8 flex-wrap"
+          >
+            {[
+              { label: 'Interactive Design', tools: ['Figma'] },
+              { label: 'New Media Design', tools: ['Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Premiere Pro'] },
+              { label: 'Multilingual', tools: ['Mandarin', 'Japanese', 'English'] },
+            ].map((item, i, arr) => (
+              <span key={item.label} className="flex items-center gap-2">
+                <span className="hero-skill-item">
+                  {item.label}
+                  <span className="hero-skill-tooltip">{item.tools.join(' · ')}</span>
+                </span>
+                {i < arr.length - 1 && (
+                  <span className="font-mono opacity-30 select-none text-[13px] md:text-[16px]" style={{ color: '#888' }}>/</span>
+                )}
+              </span>
+            ))}
+          </motion.div>
 
-       <motion.div
-        initial={{opacity:0, y:20}}
-        animate={{opacity:1, y:0}}
-        transition={{duration:0.8, delay:0.3, ease:"easeOut"}}
-        className='mt-6 flex flex-col items-start'>
-        <p className="text-text-secondary font-serif text-2xl italic">{t('UX/UI Designer', 'UX/UI 設計師')}</p>
+          {/* 設計理念 */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.55 }}
+            className="font-mono mt-10 text-[15px] md:text-[20px]"
+            style={{ color: '#444', lineHeight: '1.7' }}
+          >
+            {t('Research-led. Detail-obsessed. Human-first.', '以研究為本，以人為核心。')}
+          </motion.p>
 
-        {/* hero CTA btn */}
-        <Link to="/work" className="mt-6 text-white bg-brand-green-button rounded-full px-4 py-3 text-sm md:px-6 md:py-3 md:text-lg hover:opacity-90 hover:-translate-y-1 active:scale-95 font-mono shadow-lg transition-all">{t('Explore My Work', '探索作品集')}</Link>
-        </motion.div>
+          {/* CTA 按鈕 */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.7 }}
+            className="mt-10 flex items-center gap-4 flex-wrap"
+          >
+            <Link
+              to="/work"
+              className="inline-flex items-center text-white bg-brand-green-button rounded-full px-6 py-3 font-mono shadow-md hover:opacity-90 hover:-translate-y-0.5 active:scale-95 transition-all text-[14px] md:text-[16px]"
+            >
+              {t('Explore My Work', '探索作品集')}
+            </Link>
+            <a
+              href="/YunTsai_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume-ghost-btn group inline-flex items-center gap-1.5 border border-text-primary rounded-full px-6 py-3 font-mono hover:bg-text-primary hover:text-white transition-all duration-300 text-[14px] md:text-[16px]"
+            >
+              {t('Resume', '履歷')}
+              <span className="resume-arrow">↗</span>
+            </a>
+          </motion.div>
 
-        {/* Arrow - centered at bottom */}
-        <motion.div
-          initial={{opacity:0}}
-          animate={{opacity:1}}
-          transition={{duration:0.8, delay:0.6}}
-          className="absolute bottom-10 inset-x-0 text-center">
+          {/* Arrow */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="absolute bottom-10 inset-x-0 text-center"
+          >
             <button
-             onClick={() => {
-              document.getElementById('projects')?.scrollIntoView({
-                behavior:'smooth'
-              });
-             }}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               className="text-2xl text-text-secondary animate-bounce-slow hover:text-brand-green transition-colors cursor-pointer"
-             >↓
-             </button>
-        </motion.div>
-    </section>
+            >↓</button>
+          </motion.div>
+        </section>
 
 {/* location */}
         <motion.div
@@ -211,11 +282,11 @@ const renderProjectCard = (project) => (
       <section className="py-4 border-y border-border overflow-hidden mt-16">
         <div className="flex gap-8 text-text-secondary animate-marquee">
           {tools.map((tool, index) => (
-            <span key={index} className="whitespace-nowrap">{tool}</span>
+            <span key={index} className="whitespace-nowrap flex items-center gap-8">{tool}<span className="text-border">·</span></span>
           ))}
           {/* repeate the animation */}
           {tools.map((tool, index) => (
-            <span key={`repeat-${index}`} className="whitespace-nowrap">{tool}</span>
+            <span key={`repeat-${index}`} className="whitespace-nowrap flex items-center gap-8">{tool}<span className="text-border">·</span></span>
           ))}
         </div>
       </section>
@@ -241,41 +312,11 @@ const renderProjectCard = (project) => (
           </Swiper>
         </div>
 
-{/* desktop：2 + full-width layout */}
-        <div className="hidden md:block space-y-6">
-          {/* top row: first 2 projects */}
-          <div className="grid grid-cols-2 gap-6">
-            {projects.slice(0, 2).map(project => (
-              <div key={project.id}>
-                {renderProjectCard(project)}
-              </div>
-            ))}
-          </div>
-          {/* bottom: remaining projects full width horizontal */}
-          {projects.slice(2).map(project => (
-            <div key={project.id} className="rounded overflow-hidden flex flex-row group bg-white">
-              <div className="w-80 shrink-0 rounded-lg p-4 overflow-hidden flex justify-center items-center">
-                {project.image ? (
-                  <img src={project.image} alt={project.title} className="w-full h-60 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105" />
-                ) : (
-                  <div className="w-full h-60 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="text-text-secondary font-mono text-sm opacity-40">{t('Coming Soon', '即將推出')}</span>
-                  </div>
-                )}
-              </div>
-              <div className="p-8 flex flex-col flex-1 justify-center">
-                <h3 className="font-serif font-bold text-2xl text-text-primary">{project.title}</h3>
-                <p className="text-text-secondary mb-3 font-serif">{project.subtitle}</p>
-                <div className="flex gap-2 flex-wrap mb-4">
-                  {project.tags?.map((tag, index) => (
-                    <span key={index} className="rounded-full px-5 py-2 text-xs font-mono" style={{ border: "1px solid #9BBF6A", background: "#F0F5E8", color: "#2B4A1A" }}>{tag}</span>
-                  ))}
-                </div>
-                <p className="text-sm text-text-secondary mb-6 font-mono">{project.description}</p>
-                <Link to={project.link} className="text-text-primary text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all font-mono">
-                  {t('→ View Case Study', '→ 查看案例')}
-                </Link>
-              </div>
+{/* desktop: 2-col grid */}
+        <div className="hidden md:grid grid-cols-2 gap-6">
+          {projects.map(project => (
+            <div key={project.id}>
+              {renderProjectCard(project)}
             </div>
           ))}
         </div>

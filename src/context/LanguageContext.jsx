@@ -9,6 +9,7 @@ export function LanguageProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem('language', language);
+        document.documentElement.lang = language;
     }, [language]);
 
     // t function: takes English and Chinese strings and returns the correct text based on the current language
