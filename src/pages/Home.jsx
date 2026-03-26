@@ -344,7 +344,7 @@ const renderProjectCard = (project) => (
             href="https://linkedin.com/in/yun-tsai"
             target="_blank"
             rel="noopener noreferrer"
-            className="fill-btn group flex items-center gap-4 bg-gray-100 rounded-xl py-4 px-5"
+            className="fill-btn group flex items-center gap-4 bg-transparent border border-[#C8C4BC] rounded-xl py-4 px-5"
             onMouseEnter={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               e.currentTarget.dataset.from = (e.clientX - rect.left) < rect.width / 2 ? 'left' : 'right';
@@ -366,7 +366,7 @@ const renderProjectCard = (project) => (
           {/* Email */}
           <a
             href="mailto:yuntsaica@gmail.com"
-            className="fill-btn group flex items-center gap-4 bg-gray-100 rounded-xl py-4 px-5"
+            className="fill-btn group flex items-center gap-4 bg-transparent border border-[#C8C4BC] rounded-xl py-4 px-5"
             onMouseEnter={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               e.currentTarget.dataset.from = (e.clientX - rect.left) < rect.width / 2 ? 'left' : 'right';
