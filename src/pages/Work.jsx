@@ -21,6 +21,16 @@ function Projects() {
 
     const projects = [
         {
+            id: "VanLink",
+            title: "VANLINK",
+            subtitle: t('Transit app', '交通應用程式'),
+            description: t('A transit app designed to help Vancouver commuters plan their journeys, top up balances, and activate monthly passes with ease.', '專為大溫地區通勤者設計的交通 App，輕鬆規劃路線、儲值及啟用月票。'),
+            image: "/images/Vanlink/Vanlink_mkup.png",
+            tags: ["UX/UI", "Figma", "Maze"],
+            link: "/work/vanlink",
+            category: "UX/UI Design"
+        },
+                {
             id: "learn-now",
             title: "LEARNNOW",
             subtitle: t('E-learning platform', '線上學習平台'),
@@ -31,14 +41,15 @@ function Projects() {
             category: "UX/UI Design"
         },
         {
-            id: "VanLink",
-            title: "VANLINK",
-            subtitle: t('Transit app', '交通應用程式'),
-            description: t('A transit app designed to help Vancouver commuters plan their journeys, top up balances, and activate monthly passes with ease.', '專為大溫地區通勤者設計的交通 App，輕鬆規劃路線、儲值及啟用月票。'),
-            image: "/images/Vanlink/Vanlink_mkup.png",
-            tags: ["UX/UI", "Figma", "Maze"],
-            link: "/work/vanlink",
-            category: "UX/UI Design"
+            id: "youtubemusic",
+            title: "YOUTUBE MUSIC",
+            subtitle: t('YouTube Music App Redesign', '重新設計 YouTube Music App'),
+            description: t('Redesigned the YouTube Music app to enhance user experience and streamline music discovery.', '重新設計 YouTube Music App，以提升使用者體驗並簡化音樂探索。'),
+            image: "/images/YouTubeMusic/youtubemkup.png",
+            tags: ["UX/UI", "Figma", "User Research"],
+            link: "/work/youtubemusic",
+            category: "UX/UI Design",
+            comingSoon: true
         },
         {
             id: "cloudair",
@@ -50,16 +61,6 @@ function Projects() {
             category: "UX/UI Design",
             comingSoon: true
         },
-        {
-            id: "missbean",
-            title: "MISSBEAN",
-            subtitle: t('Cafe website', '咖啡廳網站'),
-            description: t('A coffee shop website showcasing modern web development techniques with JavaScript libraries.', '一個咖啡廳網站，展示現代網頁開發技術與 JavaScript 套件的應用。'),
-            tags: ["Web Development", "JavaScript", "HTML", "CSS", "Figma"],
-            link: "/work/missbean",
-            category: "Web Development",
-            comingSoon: true
-        },
     ]
 
     const filteredProjects = activeFilter === "All"
@@ -68,7 +69,7 @@ function Projects() {
 
     return (
         <PageTransition>
-        <div className="px-5 md:px-20 py-8 bg-brand-cream min-h-screen">
+        <div className="px-5 md:px-20 pt-24 pb-8 bg-brand-cream min-h-screen">
 
             {/* Page Title */}
             <h1 className="font-serif text-3xl md:text-4xl text-text-primary mb-4">{t('My Work', '作品')}</h1>

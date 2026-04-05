@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { LanguageToggleDesktop, LanguageToggleMobile } from './LanguageToggle';
 
@@ -16,12 +16,7 @@ function Navbar() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
-    const location = useLocation();
-
-    // background color by page
-    const isHome = location.pathname === '/';
-    const isProjectDetail = location.pathname.startsWith('/work/') && location.pathname !== '/work';
-    const bgColor = isProjectDetail ? 'bg-white' : isHome ? 'bg-transparent' : 'bg-brand-cream';
+    const bgColor = 'bg-neutral-50/40 backdrop-blur-xl border-b border-white/20';
 
     // fix scroll lock when menu open
     useEffect(() => {
@@ -35,17 +30,17 @@ function Navbar() {
         }
     }, [isOpen])
 
-    const navPosition = isHome ? 'absolute inset-x-0 top-0 z-10' : '';
+    const navPosition = 'fixed inset-x-0 top-0 z-50';
 
     return (
         <>
-        <nav className={`flex justify-between items-center p-6 ${bgColor} ${navPosition}`}>
-            <Link to="/" className="font-serif text-base transition-transform duration-200 hover:scale-110">Yun T.</Link>
+        <nav className={`flex justify-between items-center py-6 px-5 md:px-20 ${bgColor} ${navPosition}`}>
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="font-serif text-base transition-transform duration-200 hover:scale-110">Yun Tsai</Link>
 
             {/* desktop menu */}
             <div className={`hidden md:flex gap-8 items-center ${menuFont}`}>
-                <Link to="/work" className="py-2 px-4 text-text-secondary text-center hover:text-brand-green-light transition-all hover:scale-105">{t('Work', '作品')}</Link>
-                <Link to="/about" className="py-2 px-4 text-text-secondary text-center hover:text-brand-green-light transition-all hover:scale-105">{t('About', '關於我')}</Link>
+                <Link to="/work" className="py-2 px-4 text-text-secondary text-center hover:text-brand-green-light transition-all hover:scale-105 text-base">{t('Work', '作品')}</Link>
+                <Link to="/about" className="py-2 px-4 text-text-secondary text-center hover:text-brand-green-light transition-all hover:scale-105 text-base">{t('About', '關於我')}</Link>
 
                 {/* Contact with Dropdown */}
                 <div className="relative group">

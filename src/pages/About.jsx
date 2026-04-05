@@ -2,13 +2,87 @@ import { useState, useRef, useEffect } from 'react';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
 import { useLanguage } from '../context/LanguageContext';
 
+// ── Language flip cell (mobile tap + desktop hover) ────────────────────────
+function LangFlipCell({ front, greeting }) {
+    const [flipped, setFlipped] = useState(false);
+    return (
+        <div
+            style={{ perspective: '600px', width: '148px', height: '64px', cursor: 'pointer' }}
+            onMouseEnter={() => setFlipped(true)}
+            onMouseLeave={() => setFlipped(false)}
+            onClick={() => setFlipped(f => !f)}
+        >
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                willChange: 'transform',
+            }}>
+                {/* Front */}
+                <div style={{
+                    position: 'absolute', inset: 0,
+                    backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    border: '0.5px solid #ccc', borderRadius: '10px',
+                    background: 'transparent',
+                }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '16px', color: '#666' }}>
+                        {front}
+                    </span>
+                </div>
+                {/* Back */}
+                <div style={{
+                    position: 'absolute', inset: 0,
+                    backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    border: '0.5px solid #9CAF6C', borderRadius: '10px',
+                    background: '#FAFAFA',
+                }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 400, color: '#3a5f1a' }}>
+                        {greeting}
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 
 function About() {
     useEffect (() => {
         document.title="About | Yun Tsai"
     })
     const { t, language } = useLanguage();
+    const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
     const [isHovered, setIsHovered] = useState(false);
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            setMousePosition({
+                x: (e.clientX / window.innerWidth)  * 100,
+                y: (e.clientY / window.innerHeight) * 100,
+            });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    useEffect(() => {
+        document.body.style.background = `
+            radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, #FFF5D6 0%, transparent 30%),
+            radial-gradient(circle at ${100 - mousePosition.x}% ${100 - mousePosition.y}%, rgba(255,212,160,0.45) 0%, transparent 35%),
+            #FAF7F2
+        `;
+        document.body.style.backgroundAttachment = 'fixed';
+        return () => {
+            document.body.style.background = '';
+            document.body.style.backgroundAttachment = '';
+        };
+    }, [mousePosition]);
     const [isPhotoRevealed, setIsPhotoRevealed] = useState(false);
     const [hasClickedPhoto, setHasClickedPhoto] = useState(false);
 
@@ -69,9 +143,9 @@ function About() {
     const [showTyping, setShowTyping] = useState(false);
 
     const messages = [
-        t("I'm someone who finds balance between quiet, unhurried moments and the occasional urge to go explore somewhere new.", '我享受寧靜，也享受偶爾出走探索的自由，喜歡兩者並存的生活。'),
-        t("In my downtime, you'll find me watching the skies, going for a walk, vibing to indie folk, trying out new recipes, or diving into creative content online.", '休閒時，我喜歡看看天空、散散步、聽獨立民謠、嘗試新食譜，或探索網路上的各種創意內容。'),
-        t("I'm all about staying curious, keeping things interesting, and never stopping the learning process. Life's a journey, and I'm just trying to enjoy the ride.", '我熱衷於保持好奇心、讓生活充滿趣味，並持續學習。人生是一段旅程，每段經歷對我來說都是養分。'),
+        t("I enjoy observing the world, discovering new ideas, and exploring creativity in everyday life.", '我喜歡觀察世界、發掘新想法，並在日常生活中探索創意。'),
+        t("In my downtime, you'll find me in nature, vibing to indie folk, or diving into creative content online.", '休閒時，我喜歡觀察大自然的變化、聽獨立民謠，或探索網路上的各種創意內容。'),
+        t("I'm driven by curiosity and continuous learning. Life, to me, is an ongoing process of iteration, where each experience refines how I think and understand the world.", '我充滿好奇心並享受持續學習的樂趣，對我來說，生活是一個不斷迭代的過程，每一次經驗都在精進我的思維與對世界的理解。'),
     ];
 
     useEffect(() => {
@@ -97,7 +171,7 @@ function About() {
 
     return (
         <PageTransition>
-        <div className="bg-brand-cream flex-1">
+        <div className="flex-1 pt-20">
 
             {/* h1 */}
             <section className='px-5 md:px-20 py-12 md:py-16'>
@@ -230,7 +304,7 @@ function About() {
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-16">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary shrink-0 md:w-44" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Empathetic', '同理心')}</h3>
                             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                                {t("I tune into others' perspectives and notice subtle cues. I listen deeply, offer support, and adjust my approach as needed.", '我善於理解他人的觀點，細心察覺細微的線索，深入聆聽並適時調整自己的方式。')}
+                                {t("My strength lies in understanding diverse perspectives and identifying subtle behavioral cues. I translate genuine user needs into meaningful digital experiences through deep listening and observation.", '我善於理解多元觀點，捕捉細微的行為線索。透過深入的傾聽與觀察，我將真實的使用者需求轉化為有意義的數位體驗。')}
                             </p>
                         </div>
 
@@ -238,7 +312,7 @@ function About() {
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-16">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary shrink-0 md:w-44" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Adaptive', '適應力')}</h3>
                             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                                {t('Moving across different places and environments has shaped who I am. I embrace each change with curiosity and openness.', '在不同地方與環境中生活，塑造了現在的我。我以好奇與開放的心態迎接每一次變化。')}
+                                {t('I embrace new challenges with an open mind, continuously adapting to dynamic design environments and evolving best practices.', '我以開放的心態迎接設計環境中的新挑戰，持續適應變化並探索最佳實踐。')}
                             </p>
                         </div>
 
@@ -246,7 +320,7 @@ function About() {
                         <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-16">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary shrink-0 md:w-44" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Reflective', '反思力')}</h3>
                             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                                {t('I learn from every experience and refine my thinking. Life is a constant opportunity to gain new perspectives from people with different backgrounds.', '我從每一次經驗中學習，不斷精進自己的思維。生活中，每個人都能帶來新的觀點與啟發，也都是值得學習的對象。')}
+                                {t('I reflect on experience and continuously refine my approach, ensuring that every design decision is supported by clear, well-reasoned logic.', '我會反思經驗並持續優化我的設計方法，確保每個設計決策都有清晰、合理的邏輯支持。')}
                             </p>
                         </div>
 
@@ -255,6 +329,80 @@ function About() {
             </section>
             </FadeInSection>
 
+
+            {/* Toolkits */}
+            <FadeInSection>
+            <section className="px-5 md:px-20 py-8 md:py-12">
+                <div className="max-w-5xl mx-auto">
+                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-10">{t('Toolkits', '工具包')}</p>
+
+                    {/* Design & Prototyping */}
+                    <div className="mb-10">
+                        <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">{t('Design & Prototyping', '設計與原型')}</p>
+                        <div className="flex flex-wrap gap-3">
+                            {[
+                                { src: '/images/icons/figma.svg',        name: 'Figma' },
+                                { src: '/images/icons/photoshop.svg',    name: 'Photoshop' },
+                                { src: '/images/icons/illustrator.svg',  name: 'Illustrator' },
+                                { src: '/images/icons/indesign.svg',     name: 'InDesign' },
+                                { src: '/images/icons/premiere.svg',     name: 'Premiere Pro' },
+                                { src: '/images/icons/aftereffects.svg', name: 'After Effects' },
+                            ].map(({ src, name }) => (
+                                <img
+                                    key={name}
+                                    src={src}
+                                    alt={name}
+                                    title={name}
+                                    className="w-9 h-9 transition-all duration-200 cursor-default hover:-translate-y-0.75"
+                                    style={{ filter: 'saturate(80%)' }}
+                                    onMouseEnter={e => e.currentTarget.style.filter = 'saturate(100%) brightness(1.05)'}
+                                    onMouseLeave={e => e.currentTarget.style.filter = 'saturate(80%)'}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Technical Familiarity */}
+                    <div className="mb-10">
+                        <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">{t('Technical Familiarity', '技術工具')}</p>
+                        <div className="flex flex-wrap gap-3">
+                            {[
+                                { src: '/images/icons/html.svg',        name: 'HTML5' },
+                                { src: '/images/icons/css.svg',         name: 'CSS3' },
+                                { src: '/images/icons/javascript.svg',  name: 'JavaScript' },
+                                { src: '/images/icons/react.svg',       name: 'React.js' },
+                                { src: '/images/icons/tailwind.svg',    name: 'Tailwind CSS' },
+                            ].map(({ src, name }) => (
+                                <img
+                                    key={name}
+                                    src={src}
+                                    alt={name}
+                                    title={name}
+                                    className="w-9 h-9 transition-all duration-200 cursor-default hover:-translate-y-0.75"
+                                    style={{ filter: 'saturate(80%)' }}
+                                    onMouseEnter={e => e.currentTarget.style.filter = 'saturate(100%) brightness(1.05)'}
+                                    onMouseLeave={e => e.currentTarget.style.filter = 'saturate(80%)'}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Languages — 3D greeting flip cells */}
+                    <div>
+                        <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">{t('Languages', '語言')}</p>
+                        <div className="flex flex-wrap gap-3">
+                            {[
+                                { front: 'English',  greeting: 'Hi!'       },
+                                { front: 'Japanese', greeting: 'こんにちは！' },
+                                { front: 'Mandarin', greeting: '嗨！'       },
+                            ].map(({ front, greeting }) => (
+                                <LangFlipCell key={front} front={front} greeting={greeting} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </FadeInSection>
 
             {/* Outside Design Chat */}
             <section ref={chatRef} className="pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
@@ -295,10 +443,11 @@ function About() {
                     ref={scrollRef}
                     className="flex gap-3 md:gap-6 overflow-x-auto cursor-grab active:cursor-grabbing select-none"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    onMouseEnter={() => { isPausedByUser.current = true; }}
+                    onMouseLeave={() => { onDragEnd(); }}
                     onMouseDown={(e) => onDragStart(e.clientX)}
                     onMouseMove={(e) => onDragMove(e.clientX)}
                     onMouseUp={onDragEnd}
-                    onMouseLeave={onDragEnd}
                     onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
                     onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
                     onTouchEnd={onDragEnd}

@@ -14,6 +14,8 @@ function Learnnow() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [tocItems, setTocItems] = useState([]);
   const [activeId, setActiveId] = useState('');
+  const [showToc, setShowToc] = useState(false);
+
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -49,18 +51,22 @@ function Learnnow() {
   useEffect(() => {
     if (!tocItems.length) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter(e => e.isIntersecting);
-        if (visible.length > 0) setActiveId(visible[0].target.id);
-      },
-      { rootMargin: '-10% 0% -80% 0%' }
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveId(entry.target.id);
+                    setShowToc(true);
+                }
+            });
+        },
+        { rootMargin: '0% 0% -50% 0%', threshold: 0.1 }
     );
     tocItems.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, [tocItems]);
+}, [tocItems]);
 
   const finalDesigns = [
     { src: "/images/CourseDetailed Page.png", alt: "Course Detail" },
@@ -86,8 +92,9 @@ function Learnnow() {
     {
       criteria: t('Category Navigation', '分類導航'),
       learnnow: { type: 'check', text: t('3-tier filter', '三層篩選') },
-      coursera: { type: 'neutral', text: t('Hard to discover via Explore', ' 難以透過 Explore 找到課程') },
-      udemy: { type: 'neutral', text: t('3-tier filter, but cluttered', '三層篩選，但分類混亂') },
+      coursera: { type: 'x', 
+      text: t('Hard to discover via Explore', ' 難以透過 Explore 找到課程') },
+      udemy: { type: 'x', text: t('3-tier filter, but cluttered', '三層篩選，但分類混亂') },
     },
     {
       criteria: t('Pricing', '定價'),
@@ -97,14 +104,14 @@ function Learnnow() {
     },
     {
       criteria: t('Course Card Info', '課程卡片資訊'),
-      learnnow: { type: 'check', text: t('Primary info visible; hover for details', '主要資訊直接可見，懸停顯示次要資訊') },
-      coursera: { type: 'neutral', text: t('Requires hover / click', '需點擊') },
-      udemy: { type: 'check', text: t('Partially visible', '部分可見') },
+      learnnow: { type: 'neutral', text: t('Primary info visible; hover for details', '主要資訊直接可見，懸停顯示次要資訊') },
+      coursera: { type: 'neutral', text: t('Requires click', '需點擊') },
+      udemy: { type: 'neutral', text: t('Partially visible', '部分可見') },
     },
     {
       criteria: t('Relevant Results Only', '只顯示相關課程'),
       learnnow: { type: 'check', text: t('Only shows courses within selected category', '只顯示所選分類內的課程') },
-      coursera: { type: 'neutral', text: t('May show unrelated content', '可能出現非相關課程') },
+      coursera: { type: 'x', text: t('May show unrelated content', '可能出現非相關課程') },
       udemy: { type: 'check', text: t('Only shows courses within selected category', '只顯示所選分類內的課程') },
     },
   ];
@@ -116,7 +123,12 @@ function Learnnow() {
         {cell.text && <span className="text-xs text-text-secondary text-center leading-tight">{cell.text}</span>}
       </div>
     );
-    if (cell.type === 'x') return <span className="text-red-400 text-lg">✗</span>;
+    if (cell.type === 'x') return (
+      <div className="flex flex-col items-center gap-1">
+        <span className="text-red-400 text-lg">✗</span>
+        {cell.text && <span className="text-xs text-text-secondary text-center leading-tight">{cell.text}</span>}
+      </div>
+    );
     if (cell.type === 'warn') return (
       <span className="text-xs text-amber-600 text-center leading-tight block">{cell.text}</span>
     );
@@ -131,14 +143,14 @@ function Learnnow() {
   return (
     <>
       {/* ===== Progress Bar ===== */}
-      <div className="fixed top-0 left-0 z-50 h-0.5 bg-[#8aacda] transition-all duration-100"
+      <div className="fixed top-0 left-0 z-60 h-0.5 bg-[#305E9A] transition-all duration-100"
         style={{ width: `${scrollProgress}%` }} />
 
       {/* ===== Back to Top ===== */}
       {showBackToTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 z-50 w-10 h-10 bg-[#1e3a5f] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#1e3a5f]/80 transition-colors"
+          className="fixed bottom-8 right-8 z-50 w-10 h-10 bg-[#305E9A] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#305E9A]/80 transition-colors"
           aria-label="Back to top"
         >
           ↑
@@ -146,10 +158,10 @@ function Learnnow() {
       )}
 
     <PageTransition>
-    <div className="bg-white">
+    <div className="bg-[#FAFAFA] pt-20">
       {/* ===== Breadcrumb ===== */}
       <nav className="px-5 md:px-20 pt-3 md:pt-6">
-        <div className="flex items-center gap-2 text-xs md:text-sm font-mono">
+        <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
           <Link to="/work" className="text-brand-green hover:underline">
             {t('Work', '作品')}
           </Link>
@@ -160,18 +172,18 @@ function Learnnow() {
 
       {/* ===== Header Section ===== */}
       <section className="px-5 md:px-20 py-4 md:py-10">
-        <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
+        <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-12">
 
           {/* left：title & overview */}
-          <div className="md:w-1/2">
-            <h1 className="font-serif text-3xl md:text-5xl text-text-primary">
-              LearnNow
-            </h1>
-            <p className="font-serif text-md md:text-xl text-text-secondary mt-1">
-              {t('Designing a Save-for-Later Flow to Support Thoughtful Learning Decisions', '透過「收藏」流程設計，支持使用者進行更謹慎的學習決策。')}
-            </p>
+          <div className="md:w-1/2 flex flex-col">
+            <div className="flex flex-col gap-y-1 min-h-30 md:min-h-40">
+              <h1 className="font-serif text-3xl md:text-5xl text-text-primary">LearnNow</h1>
+              <p className="font-serif text-lg md:text-2xl text-text-secondary">
+                {t('Designing a Save-for-Later Flow to Support Thoughtful Learning Decisions', '透過「收藏」流程設計，支持使用者進行更謹慎的學習決策。')}
+              </p>
+            </div>
 
-            <p className="text-base text-text-secondary mt-3 md:mt-6 leading-relaxed">
+            <p className="grow pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
               {t(
                 `LearnNow is an e-learning platform offering a wide range of courses for users with diverse learning goals. This project focuses on simplifying the explore → save → return → enroll journey to reduce cognitive load and support flexible decision-making.`,
                 `LearnNow 是一個線上學習平台，提供多元領域的課程內容。本專案聚焦於簡化「探索 → 收藏 → 回訪 → 報名」的學習決策流程，以降低認知負擔並支援使用者以自己的節奏做出決策。`
@@ -179,18 +191,18 @@ function Learnnow() {
             </p>
 
             {/* Tools & Role */}
-            <div className="flex gap-8 md:gap-16 mt-4 md:mt-8">
+            <div className="flex gap-8 md:gap-16 pt-4 md:pt-6">
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Tools', '工具')}</p>
-                <p className="font-mono text-xs md:text-sm text-text-secondary">Figma, Figma Make, Maze</p>
+                <p className="font-mono text-sm text-text-secondary">Figma, Figma Make, Maze</p>
               </div>
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('My Role', '職位')}</p>
-                <p className="font-mono text-xs md:text-sm text-text-secondary">UX/UI Designer</p>
+                <p className="font-mono text-sm text-text-secondary">UX/UI Designer</p>
               </div>
               <div>
                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Timeline', '時間軸')}</p>
-                <p className="font-mono text-xs md:text-sm text-text-secondary">7 Weeks · {t('Term Project', '學期專案')}</p>
+                <p className="font-mono text-sm text-text-secondary">7 Weeks</p>
               </div>
             </div>
 
@@ -199,7 +211,7 @@ function Learnnow() {
               href="https://www.figma.com/proto/lcpUzALs58TW5oWySQcRAj/Learnnow?node-id=1-3079&t=3M4AMwIGaUKTma75-1&scaling=min-zoom&content-scaling=fixed&page-id=1%3A2966&starting-point-node-id=1%3A3468"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 md:mt-8 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-full text-sm font-mono hover:bg-brand-green/90 transition-colors"
+              className="mt-4 inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-full text-sm font-mono hover:bg-brand-green/90 transition-colors w-fit"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
@@ -223,41 +235,47 @@ function Learnnow() {
         </div>
       </section>
 
-      <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12">
+      <div className="lg:flex lg:gap-16 px-5 md:px-20">
 
       {/* ===== Table of Contents ===== */}
-      <aside className="hidden lg:block">
-        <div className="sticky" style={{ top: '80px' }}>
+      <aside className="hidden lg:block w-70 shrink-0 mt-19">
+        <p className="text-sm tracking-widest text-neutral-400 uppercase mb-3">Case Study</p>
+        <div className={`sticky top-24 h-fit max-h-[calc(100vh-6rem)] overflow-y-auto transition-opacity duration-500 ${showToc ? 'opacity-100' : 'opacity-0'}`}>
           <ul className="space-y-0.5">
-            {tocItems.map((item, i) => (
+            {tocItems.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left pl-5 pr-4 py-2 font-sans transition-all duration-200 rounded-sm ${
+                  className={`flex items-start w-full text-left py-1.5 transition-all duration-200 text-base leading-snug ${
                     activeId === item.id
-                      ? 'bg-brand-green text-white'
-                      : 'text-[#888] hover:text-brand-green hover:bg-[#F0F5E8]'
+                      ? 'border-l-2 border-[#305E9A] pl-3 font-medium text-neutral-900'
+                      : 'pl-3 text-neutral-400 hover:text-neutral-600'
                   }`}
                 >
-                  <span className={`block text-[9px] font-mono tracking-wider mb-0.5 ${activeId === item.id ? 'text-white/50' : 'text-[#BBB]'}`}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-[12px] leading-tight font-serif">{item.text}</span>
+                  <span className="mr-1.5 text-neutral-400">-</span>
+                  <span className="font-sans">{item.text}</span>
                 </button>
               </li>
             ))}
           </ul>
+          <div className="bg-neutral-100 rounded-xl p-4 mt-8 mb-5">
+            <p className="text-sm font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
+            <p className="text-sm text-neutral-500 mb-3">{t('Explore other case studies.', '瀏覽其他作品。')}</p>
+            <Link to="/work" className="inline-flex items-center gap-1 text-sm font-mono text-[#305E9A] hover:underline">
+              {t('View all projects', '查看所有作品')} →
+            </Link>
+          </div>
         </div>
       </aside>
 
       {/* ===== Main Content ===== */}
-      <div>
+      <div className="flex-1 min-w-0">
 
-      {/* ===== Problem ===== */}
+      {/* ===== The Problem ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto md:mt-35">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Problem', 'Problem')}</h2>
+      <section className="py-8 md:py-12">
+        <div className="max-w-5xl mx-auto md:mt-7">
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('The Problem', '問題定義')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
@@ -284,9 +302,9 @@ function Learnnow() {
 
       {/* ===== Solution ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Solution', 'Solution')}</h2>
+      <section className="py-8 md:py-12">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Solution', 'Solution')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
@@ -307,9 +325,9 @@ function Learnnow() {
 
       {/* ===== Competitive Analysis ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Competitive Analysis', '競品分析')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('Competitive Analysis', '競品分析')}</h2>
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -345,12 +363,12 @@ function Learnnow() {
 
       {/* ===== User Flow ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('User Flow', '使用者流程')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('User Flow', '使用者流程')}</h2>
           <div
             className="bg-[#f5f5f5] rounded-lg p-4 md:p-6 cursor-zoom-in"
-            onClick={() => setLightboxImage({ src: '/images/Learnnow_UserFlow.png', alt: 'LearnNow User Flow' })}
+            onClick={() => setLightboxImage({ src: '/images/Learnnow_UserFlow.png', alt: 'LearnNow User Flow', scroll: true })}
           >
             <img
               src="/images/Learnnow_UserFlow.png"
@@ -364,9 +382,9 @@ function Learnnow() {
 
       {/* ===== Wireframes ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Wireframes', '低保真線框圖')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Wireframes', '低保真線框圖')}</h2>
           <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory">
             {[
               { src: '/images/LEARNNOW/Home.png', alt: 'Home' },
@@ -399,9 +417,9 @@ function Learnnow() {
 
       {/* ===== Design System ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Design System', '設計系統')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Design System', '設計系統')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
               className="cursor-zoom-in"
@@ -432,9 +450,9 @@ function Learnnow() {
 
       {/* ===== Final Design ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12 bg-gray-50">
+      <section className="py-8 md:py-12 bg-gray-50">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-4">{t('Final Design', '主要畫面')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('Final Design', '主要畫面')}</h2>
           <p className="text-base text-text-secondary leading-relaxed mb-8">
             {t('Key screens from the LearnNow platform.', 'LearnNow 平台的主要畫面。')}
           </p>
@@ -496,21 +514,21 @@ function Learnnow() {
 
       {/* ===== Usability Testing ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12 bg-white">
+      <section className="py-8 md:py-12 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Usability Testing', '可用性測試')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Usability Testing', '可用性測試')}</h2>
           <p className="text-base text-text-secondary mb-6">
             {t('Remote testing via Maze · 5 participants · 2 core tasks', 'Maze 遠端測試・5 位受測者・2 項核心任務')}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
             <div className="border border-border rounded-xl p-5 bg-white">
-              <p className="font-serif text-base text-text-primary mb-4">
+              <p className="font-serif text-base md:text-lg text-text-primary mb-4">
                 {t('Task 1 · Save a Course', '任務一　收藏課程')}
               </p>
               <div className="flex gap-6">
                 <div>
-                  <p className="text-3xl font-medium text-blue-600 leading-none">100%</p>
+                  <p className="font-serif text-2xl md:text-3xl font-bold text-[#305E9A] leading-none">100%</p>
                   <p className="text-xs font-mono text-text-secondary mt-1">{t('Success', '成功率')}</p>
                 </div>
                 <div>
@@ -521,12 +539,12 @@ function Learnnow() {
             </div>
 
             <div className="border border-border rounded-xl p-5 bg-white">
-              <p className="font-serif text-base text-text-primary mb-4">
+              <p className="font-serif text-base md:text-lg text-text-primary mb-4">
                 {t('Task 2 · Enroll in Saved Course', '任務二　報名已收藏課程')}
               </p>
               <div className="flex gap-6">
                 <div>
-                  <p className="text-3xl font-medium text-blue-600 leading-none">100%</p>
+                  <p className="font-serif text-2xl md:text-3xl font-bold text-[#305E9A] leading-none">100%</p>
                   <p className="text-xs font-mono text-text-secondary mt-1">{t('Success', '成功率')}</p>
                 </div>
                 <div>
@@ -555,9 +573,9 @@ function Learnnow() {
 
       {/* ===== Iterations ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Iterations', '設計迭代')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Iterations', '設計迭代')}</h2>
 
           <div className="space-y-6 mb-8">
             <div className="bg-white rounded-lg p-4 border border-border">
@@ -624,9 +642,9 @@ function Learnnow() {
 
       {/* ===== Future Improvements ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-2">{t('Future Improvements', '未來改善方向')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Future Improvements', '未來改善方向')}</h2>
           <p className="text-sm text-text-secondary mb-6">{t('Features identified through testing and analysis for future development.', '透過易用性測試與分析定義未來的設計功能。')}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -651,9 +669,9 @@ function Learnnow() {
 
       {/* ===== Reflection ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
+      <section className="py-8 md:py-12">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-xl md:text-3xl text-text-primary mb-6">{t('Reflection', '反思')}</h2>
+          <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Reflection', '反思')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
               {t(
@@ -668,16 +686,14 @@ function Learnnow() {
 
       {/* ===== Navigation ===== */}
       <FadeInSection>
-      <section className="px-5 md:px-20 py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex justify-between items-center">
-            <Link to="/work" className="text-brand-green font-mono text-xs md:text-sm hover:underline">
-              {t('← Back to Projects', '← 返回作品集')}
-            </Link>
-            <Link to="/work/cloudair" className="text-brand-green font-mono text-xs md:text-sm hover:underline">
-              {t('Next Project →', '下一個專案 →')}
-            </Link>
-          </div>
+      <section className="py-8 md:py-12">
+        <div className="flex justify-between items-center w-full">
+          <Link to="/work" className="text-brand-green font-mono text-sm hover:underline">
+            {t('← Back to Projects', '← 返回作品集')}
+          </Link>
+          <Link to="/home" className="text-brand-green font-mono text-sm hover:underline">
+            {t('Next Project →', '下一個專案 →')}
+          </Link>
         </div>
       </section>
       </FadeInSection>
@@ -689,16 +705,32 @@ function Learnnow() {
 
       {/* ===== Lightbox Modal ===== */}
       {lightboxImage && (
-        <div
-          className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-8"
-          onClick={() => setLightboxImage(null)}
-        >
-          <img
-            src={lightboxImage.src}
-            alt={lightboxImage.alt}
-            className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
-          />
-        </div>
+        lightboxImage.scroll ? (
+          <div
+            className="fixed inset-0 bg-black/75 z-50 overflow-y-auto cursor-zoom-out"
+            onClick={() => setLightboxImage(null)}
+          >
+            <div className="flex justify-center py-12.5">
+              <img
+                src={lightboxImage.src}
+                alt={lightboxImage.alt}
+                className="w-[90%] max-w-250 h-auto rounded-xl shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        ) : (
+          <div
+            className="fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-8"
+            onClick={() => setLightboxImage(null)}
+          >
+            <img
+              src={lightboxImage.src}
+              alt={lightboxImage.alt}
+              className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl"
+            />
+          </div>
+        )
       )}
     </>
   )

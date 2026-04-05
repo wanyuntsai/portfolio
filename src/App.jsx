@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 // import CloudAir from './pages/work/CloudAir'
 import LearnNow from './pages/work/Learnnow'
 import Vanlink from './pages/work/Vanlink'
+import YouTubeMusic from "./pages/work/YouTubeMusic";
 // import MissBean from './pages/work/MissBean'
 
 function AppContent() {
@@ -31,10 +32,11 @@ function AppContent() {
           <Route path="/work/learnnow" element={<LearnNow />} />
           <Route path="/work/vanlink" element={<Vanlink />} />
           {/* <Route path="/work/Cloudair" element={<CloudAir/>} /> */}
+          <Route path="/work/youtubemusic" element={<YouTubeMusic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <div className={isWorkSubPage ? 'bg-white' : ''}>
+      <div className={isWorkSubPage ? 'bg-neutral-50' : ''}>
         <Footer/>
       </div>
     </div>
