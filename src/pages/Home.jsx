@@ -103,14 +103,14 @@ function Home() {
         )}
       </div>
       <p className="text-text-secondary text-base mb-3 font-serif">{project.subtitle}</p>
-      <div className="flex gap-2 flex-wrap mb-4">
+      <p className="hidden md:block text-base text-text-secondary mb-3 font-funnel leading-relaxed line-clamp-2">{project.description}</p>
+      <div className="flex gap-1.5 flex-wrap mb-4">
         {project.tags?.map((tag, index) => (
-          <span key={index} className="rounded-full px-3 py-1 text-base font-mono" style={{ border: "1px solid #9BBF6A", background: "#F0F5E8", color: "#2B4A1A" }}>
+          <span key={index} className="rounded-full px-2 py-0.5 text-xs font-mono" style={{ border: "1px solid #C5DFA0", background: "#F0F5E8", color: "#4A7A2A" }}>
             {tag}
           </span>
         ))}
       </div>
-      <p className="hidden md:block text-base text-text-secondary mb-4 font-funnel leading-relaxed line-clamp-2">{project.description}</p>
       {!project.comingSoon && (
         <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
           {t('View Project →', '查看專案 →')}

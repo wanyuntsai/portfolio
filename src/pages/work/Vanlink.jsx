@@ -209,7 +209,7 @@ function Vanlink() {
                 <p className="text-base font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
                 <p className="text-sm text-neutral-500 mb-3">{t('View other case studies.', '瀏覽其他作品。')}</p>
                 <Link to="/work" className="inline-flex items-center gap-1 text-xs font-mono text-[#1a4a8a] hover:underline">
-                  {t('View all projects', '查看所有作品')} →
+                  {t('View all work', '查看所有作品')} →
                 </Link>
               </div>
             </div>

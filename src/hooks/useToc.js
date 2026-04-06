@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 export function useToc() {
     const [tocItems, setTocItems] = useState([]);
     const [activeId, setActiveId] = useState('');
     const [showToc, setShowToc] = useState(false);
+    const debounceRef = useRef(null);
 
     const scrollToSection = (id) => {
         const el = document.getElementById(id);
@@ -12,7 +13,7 @@ export function useToc() {
         window.scrollTo({ top, behavior: 'smooth' });
     };
 
-    useEffect(() => {
+    const scan = useCallback(() => {
         const headings = Array.from(document.querySelectorAll('h2'));
         const items = headings.map((h, i) => {
             const id = `toc-${i}`;
@@ -22,6 +23,23 @@ export function useToc() {
         });
         setTocItems(items);
     }, []);
+
+    useEffect(() => {
+        const debouncedScan = () => {
+            clearTimeout(debounceRef.current);
+            debounceRef.current = setTimeout(scan, 100);
+        };
+
+        debouncedScan();
+
+        const observer = new MutationObserver(debouncedScan);
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        return () => {
+            observer.disconnect();
+            clearTimeout(debounceRef.current);
+        };
+    }, [scan]);
 
     useEffect(() => {
         if (!tocItems.length) return;

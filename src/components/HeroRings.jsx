@@ -20,6 +20,7 @@ function HeroRings() {
   const innerTween    = useRef(null);
   const outerTween    = useRef(null);
   const boostResetRef = useRef(null);
+  const bubbleRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -46,6 +47,7 @@ function HeroRings() {
         gsap.set(welcome,                { opacity: 0, x: isDesktop ? -150 : 0, y: isDesktop ? 0 : 20 });
         gsap.set(photo,                  { opacity: 0, x: isDesktop ? 150 : 0, y: isDesktop ? 0 : -20 });
         gsap.set(leftCol,                { opacity: 0, x: isDesktop ? -30 : 0, y: isDesktop ? 0 : 20 });
+        gsap.set(bubbleRef.current, { opacity: 0,x: -10, scale: 0.85, transformOrigin: 'left center' });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -73,20 +75,21 @@ function HeroRings() {
           .to(photo,    { opacity: 1, x: 0, y: 0, scale: isDesktop ? 1 : 0.85, duration: 0.20, ease: 'power2.out' }, 0.25)
           .to(welcome,  { opacity: 1, x: 0, y: 0, duration: 0.22, ease: 'power2.out' }, 0.30)
           .to(subtitle, { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' }, 0.52)
-          .to([welcome, subtitle, photo], { opacity: 0, y: -40, duration: 0.08, ease: 'power2.in' }, 0.68)
+          .to(bubbleRef.current, { opacity: 1, x: 0, scale: 1, duration: 0.14, ease: 'back.out(1.4)' }, 0.35)
+          .to([welcome, subtitle, photo, bubbleRef.current], { opacity: 0, y: -40, duration: 0.10, ease: 'power2.in' }, 0.68)
           .to([innerRing, outerRing], {
-            opacity: isDesktop ? 0.55 : 0.4, 
-            scale: isDesktop ? 0.75 : 0.45, 
+            opacity: isDesktop ? 0.55 : 0.4,
+            scale: isDesktop ? 0.75 : 0.45,
             x: isDesktop ? '25vw' : '0',
-            y: isDesktop ? '0' : '-20vh', 
-            duration: 0.14, 
+            y: isDesktop ? '0' : '-20vh',
+            duration: 0.14,
             ease: 'power2.out',
           }, 0.76)
           .to(glow, {
-            opacity: isDesktop ? 0.25 : 0.15, 
-            scale: isDesktop ? 0.65 : 0.4, 
+            opacity: isDesktop ? 0.25 : 0.15,
+            scale: isDesktop ? 0.65 : 0.4,
             x: isDesktop ? '25vw' : '0',
-            y: isDesktop ? '0' : '-20vh', 
+            y: isDesktop ? '0' : '-20vh',
             duration: 0.14,
           }, 0.76)
           .to(leftCol, { opacity: 1, x: 0, y: isDesktop ? 0 : '10vh', duration: 0.12, ease: 'power2.out' }, 0.84);
@@ -122,12 +125,14 @@ function HeroRings() {
 
   .photo-filter:hover {
     filter: grayscale(0%) contrast(1) brightness(1) sepia(0%);
-    transform: scale(1.02); 
-        }
-        @keyframes scrollBreath {
-          0%, 100% { opacity: 0.2;  transform: translateY(0); }
-          50%       { opacity: 0.8;  transform: translateY(6px); }
-        }
+    transform: scale(1.02);
+  }
+}
+
+@keyframes scrollBreath {
+  0%, 100% { opacity: 0.2;  transform: translateY(0); }
+  50%       { opacity: 0.8;  transform: translateY(6px); }
+}
       `}</style>
 
       <section ref={sectionRef} className="relative h-screen w-full overflow-hidden" style={{ zIndex: 10 }}>
@@ -140,13 +145,14 @@ function HeroRings() {
               {t('Open to internships · May 2026', '尋找 2026/5 實習機會')}
             </span>
           </div>
-          <h1 className="font-serif text-[clamp(3rem,8vw,7rem)] leading-[0.95] text-center md:text-left" style={{ fontWeight: 300 }}>Yun Tsai</h1>
+          <h1 className="font-serif  leading-none mt-2 text-center md:text-left" style={{ fontSize: 'clamp(64px, 10vw, 108px)' }}>
+            {t('Yun\nTsai', 'Yun\nTsai').split('\n').map((line, i) => (
+              <span key={i} className="block">{line}</span>
+            ))}
+          </h1>
           <div className="mt-4 flex flex-col items-center md:items-start gap-2">
-            <span className="font-serif text-base md:text-lg uppercase text-[#999] tracking-[0.1em]">UX / UI Designer</span>
-            <div className="flex items-center gap-1.5 text-text-secondary">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              <span className="font-mono text-[12px] md:text-[13px]">Vancouver, CA</span>
-            </div>
+            <span className="font-mono text-base md:text-lg uppercase text-[#999] tracking-widest">UX / UI Designer</span>
+            
           </div>
           <p className="font-mono text-[14px] md:text-[15px] mt-6 text-center md:text-left max-w-[320px] md:max-w-md" style={{ color: '#555', lineHeight: '1.8' }}>
             {t('Research-driven design that solves real problems.', '以研究驅動設計，解決真實問題。')}
@@ -170,18 +176,58 @@ function HeroRings() {
 
         {/* Stage 2: Welcome Content */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-8 md:px-20" style={{ zIndex: 5 }}>
-          <div className="stage2-container flex items-center gap-12 md:gap-16 w-full max-w-4xl">
+          <div className="stage2-container flex items-center gap-12 md:gap-16 w-full max-w-5xl">
             <div ref={welcomeRef} style={{ opacity: 0 }}>
               <p className="font-mono text-[clamp(28px,5vw,60px)] font-bold leading-[1.1] text-transparent" style={{ WebkitTextStroke: '1.5px #555' }}>WELCOME TO<br />MY WEBSITE</p>
               <p ref={subtitleRef} className="font-mono text-[14px] md:text-[16px] text-[#666] mt-6 md:mt-9 opacity-0">Designed in Vancouver, built for everywhere.</p>
             </div>
-            {/* 這裡套用了 photo-filter 和 mobile-photo-color 類別 */}
+            {/* 套用了 photo-filter 和 mobile-photo-color 類別 */}
             <img 
               ref={photoRef} 
               src="/images/Wanyun_Tsai.png" 
               alt="" 
               className="photo-filter mobile-photo-color rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto" 
             />
+            {/* ── Speech bubble ── */}
+  <div
+  ref={bubbleRef}
+  style={{
+    position: 'relative',
+    alignSelf: 'center',
+    flexShrink: 0,
+    willChange: 'transform, opacity',
+  }}
+>
+  {/* 對話框主體 */}
+  <div style={{
+    background: 'white',
+    border: '1px solid #e0ddd5',
+    borderRadius: '16px',
+    padding: '10px 16px',
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '13px',
+    color: '#555',
+    letterSpacing: '0.05em',
+    whiteSpace: 'nowrap',
+    boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+  }}>
+    i speak English · Japanese · Mandarin
+  </div>
+
+  {/* 左側三角形 ← 指向頭像方向 */}
+  <div style={{
+    position: 'absolute',
+    left: '-8px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: 0,
+    height: 0,
+    borderTop: '7px solid transparent',
+    borderBottom: '7px solid transparent',
+    borderRight: '8px solid white',
+    filter: 'drop-shadow(-1px 0 0 #ddd)',
+  }} />
+</div>
           </div>
         </div>
 

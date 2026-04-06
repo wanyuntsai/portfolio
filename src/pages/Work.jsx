@@ -128,16 +128,21 @@ function Projects() {
                         </div>
                         <p className="text-text-secondary text-base mb-3 font-serif">{project.subtitle}</p>
 
+                        {/* description - display only on desktop */}
+                        <p className="hidden md:block text-base text-text-secondary mb-3 font-funnel leading-relaxed line-clamp-2">
+                            {project.description}
+                        </p>
+
                         {/* tags */}
-                        <div className="flex gap-2 flex-wrap mb-4">
+                        <div className="flex gap-1.5 flex-wrap mb-4">
                             {project.tags?.map((tag, index) => (
                                 <span
                                     key={index}
-                                    className="rounded-full px-3 py-1 text-base font-mono"
+                                    className="rounded-full px-2 py-0.5 text-xs font-mono"
                                     style={{
-                                        border: "1px solid #9BBF6A",
+                                        border: "1px solid #C5DFA0",
                                         background: "#F0F5E8",
-                                        color: "#2B4A1A"
+                                        color: "#4A7A2A"
                                     }}
                                 >
                                     {tag}
@@ -145,15 +150,10 @@ function Projects() {
                             ))}
                         </div>
 
-                        {/* description - display only on desktop */}
-                        <p className="hidden md:block text-base text-text-secondary mb-4 font-funnel leading-relaxed line-clamp-2">
-                            {project.description}
-                        </p>
-
                         {/* link */}
                         {!project.comingSoon && (
                             <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                                {t('View Project →', '查看專案 →')}
+                                {t('Case Study →', '查看案例 →')}
                             </span>
                         )}
                     </Link>

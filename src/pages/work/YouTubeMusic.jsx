@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FadeInSection, PageTransition } from "../../components/AnimatedSection";
 import { useLanguage } from '../../context/LanguageContext';
-import { CheckCircle, XCircle, AlertCircle, ChevronRight } from 'lucide-react';
+import { CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
 import { getIssues } from '../../data/youtubeMusicIssues';
 import { useToc } from '../../hooks/useToc';
@@ -17,6 +17,9 @@ function YouTubeMusic() {
     const issues = getIssues(t);
     const [scrollProgress, setScrollProgress] = useState(0);
     const [showBackToTop, setShowBackToTop] = useState(false);
+    const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+    const [showTooltip, setShowTooltip] = useState(false);
+    const [hoverImg, setHoverImg] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -70,12 +73,13 @@ function YouTubeMusic() {
                                 {t('Reducing friction in browsing & discovery', '降低瀏覽與探索流程的操作摩擦')}
                             </p>
                         </div>
-                        <p className="pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
-                            {t(
-                                "5 interviews. 3 friction points. Home reduced from 20+ sections to 4. A scrolling action bar fixed to 5 stable controls. Samples' abrupt autoplay replaced with an explicit Play button, putting control back in the user's hands.",
-                                '5 次訪談，3 個摩擦點。將主頁從 20 多個區塊減少到 4 個。播放頁 Action Bar 固定 5 個核心按鈕。Samples 的自動播放改為先瀏覽再播放。'
-                            )}
-                        </p>
+                        {/* ── hero description ── */}
+<p className="pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
+    {t(
+        "Based on informal interviews with active YouTube Music users, I identified 3 key friction points. The Home was simplified from 20+ sections to 4, the action bar was redesigned into 5 fixed controls, and the Samples experience was redesigned to restore user control.",
+        "本研究透過非正式使用者訪談（informal interviews），找出 3 個主要摩擦點。將首頁從 20 多個區塊簡化為 4 個，播放頁操作列固定為 5 個核心功能，並重新設計 Samples 體驗，讓使用者重新掌握控制權。"
+    )}
+</p>
                         <div className="flex justify-between pt-3 md:pt-4">
                             <div>
                                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Tools', '工具')}</p>
@@ -127,7 +131,7 @@ function YouTubeMusic() {
                         <p className="text-base font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
                         <p className="text-sm text-neutral-500 mb-3">{t('Explore other case studies.', '瀏覽其他作品。')}</p>
                         <Link to="/work" className="inline-flex items-center gap-1 text-sm font-mono text-[#CC0000] hover:underline">
-                            {t('View all projects', '查看所有作品')} →
+                            {t('View all work', '查看所有作品')} →
                         </Link>
                     </div>
                 </div>
@@ -140,12 +144,12 @@ function YouTubeMusic() {
 <section className="py-8 md:py-12">
   <div className="max-w-2xl mx-auto md:mt-7">
                         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-3">{t('Overview', '概覽')}</h2>
-                        <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6 max-w-2xl">
-                            {t(
-                                'YouTube Music blends music and video, which can create friction in the interface. I redesigned YouTube Music’s interface to fix 3 key pain points found from 5 user interviews, guided by UX principles.',
-                                'YouTube Music 結合了音樂與影片，這可能在介面上造成摩擦。我根據 5 個使用者訪談發現 3 個主要痛點，並以 UX 原則重新設計了 YouTube Music 的介面。'
-                            )}
-                        </p>
+ <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-6 max-w-2xl">
+    {t(
+        "YouTube Music combines music streaming with video content, which introduces additional complexity to the user experience. This project redesigns the Home and Playback experience based on informal user interviews and UX principles, aiming to reduce friction and improve user control during browsing and listening.",
+        "YouTube Music 結合音樂串流與影片內容，但這樣的整合也帶來操作上的複雜性。本專案透過非正式使用者訪談與 UX 原則，重新設計首頁與播放頁體驗，目標是降低操作摩擦，並提升使用者在瀏覽與播放過程中的控制感。"
+    )}
+</p>
                         <div className="grid grid-cols-3 gap-3 md:gap-4">
                             {issues.map((issue) => (
                                 <div key={issue.id} className="p-3 md:p-4 border border-gray-200 rounded-lg">
@@ -165,20 +169,20 @@ function YouTubeMusic() {
                 {/* ===== The Problem ===== */}
                 <FadeInSection>
                 <section className="py-8 md:py-12">
-                    <div className="max-w-5xl mx-auto">
+                    <div className="max-w-2xl mx-auto">
                         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('The Problem', '問題定義')}</h2>
-                        <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-8">
-                            {t(
-                                'Research included 5 user interviews (ages 20–28), supplemented by Reddit discussions and tech coverage. Three issues emerged consistently across all sources.',
-                                '研究包含 5 位使用者訪談（20-28 歲），輔以 Reddit 討論串與科技媒體報導。三個問題在所有來源中反覆出現。'
-                            )}
-                        </p>
+                       <p className="text-sm md:text-base text-text-secondary leading-relaxed mb-8">
+    {t(
+        "Research was based on informal interviews with 5 users (ages 20–28), supported by Research and secondary sources. Three issues consistently emerged across all inputs.",
+        "研究以 5 位使用者（20–28 歲）的非正式訪談為主，並輔以研究與次級資料。三個問題在不同來源中反覆出現。"
+    )}
+</p>
 
                         <div className="flex justify-center gap-4 mb-10">
                             {[
-                                { stat: '4 / 5', label: t('skip Home', '跳過 Home') },
-                                { stat: '3 / 5', label: t('accidental taps', '誤觸回報') },
-                                { stat: '5 / 5', label: t('startled by Samples', '被 Samples 嚇到') },
+                                { stat: '4 / 5', label: t('skip Home', '跳過主頁') },
+                                { stat: '3 / 5', label: t('buttons too small / unnoticed', '按鈕太小 / 不易察覺') },
+                                { stat: '5 / 5', label: t('dislike Samples', '不喜歡 Samples 功能') },
                             ].map(({ stat, label }) => (
                                 <div key={label} className="rounded-lg p-4 text-center w-36" style={{ backgroundColor: 'rgba(204,0,0,0.07)' }}>
                                     <p className="font-serif text-2xl md:text-3xl font-bold" style={{ color: RED }}>{stat}</p>
@@ -225,9 +229,9 @@ function YouTubeMusic() {
                 {/* ===== Competitive Analysis ===== */}
                 <FadeInSection>
                 <section className="py-8 md:py-12">
-                    <div className="max-w-5xl mx-auto">
+                    <div className="max-w-2xl mx-auto">
                         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Competitive Analysis', '競品分析')}</h2>
-                        <p className="font-mono text-sm text-text-secondary mb-3">{t('Action Bar · Music Apps', 'Action Bar · 音樂 App 比較')}</p>
+                        <p className="font-mono text-sm text-text-secondary mb-3">{t('Playback Page · Action Visibility', '播放頁 · 操作可見性比較')}</p>
 
                         {/* Table */}
                         <div className="w-full border border-gray-200 rounded-lg overflow-hidden mb-4">
@@ -235,8 +239,8 @@ function YouTubeMusic() {
                                 <thead>
                                     <tr className="bg-gray-50 border-b border-gray-200">
                                         <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('App', 'App')}</th>
-                                        <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Action Bar Approach', 'Action Bar 設計')}</th>
-                                        <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Assessment', '評估')}</th>
+                                        <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Where is Save', 'Save 位置')}</th>
+                                        <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Always Visible', '是否固定可見')}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -247,10 +251,31 @@ function YouTubeMusic() {
                                                 style={c.highlight ? { color: RED } : { color: '#333' }}>
                                                 {c.app}
                                             </td>
-                                            <td className="px-4 py-3 text-xs md:text-base text-text-secondary">{c.logic}</td>
+                                            <td className="px-4 py-3 text-xs md:text-base text-text-secondary relative">
+  {c.hoverImg ? (
+    <span
+      className="underline decoration-dashed cursor-help"
+      onMouseEnter={(e) => {
+        const rect = e.target.getBoundingClientRect();
+        setTooltipPos({ x: rect.right + 8, y: rect.top + rect.height / 2 });
+        setHoverImg(c.hoverImg);
+        setShowTooltip(true);
+      }}
+      onMouseLeave={() => { setShowTooltip(false); setHoverImg(null); }}
+    >
+      {c.logic}
+    </span>
+  ) : c.logic}
+</td>
                                             <td className="px-4 py-3 text-xs md:text-base text-text-secondary">{c.eval}</td>
                                         </tr>
                                     ))}
+                                    {showTooltip && (
+  <div className="fixed z-[999] w-56 rounded-xl overflow-hidden shadow-xl border border-gray-200 pointer-events-none"
+       style={{ left: tooltipPos.x, top: tooltipPos.y, transform: 'translateY(-50%)' }}>
+    <img src={hoverImg} alt="screenshot" className="w-full h-auto" />
+  </div>
+)}
                                 </tbody>
                             </table>
                         </div>
@@ -262,7 +287,7 @@ function YouTubeMusic() {
                 {/* ===== Solution ===== */}
                 <FadeInSection>
                 <section className="py-8 md:py-12">
-                    <div className="max-w-5xl mx-auto">
+                    <div className="max-w-2xl mx-auto">
                         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-8">{t('Solution', '解決方案')}</h2>
                         <div className="space-y-10">
                             {issues.map((issue, idx) => (
@@ -285,21 +310,21 @@ function YouTubeMusic() {
                 {/* ===== Final Design ===== */}
                 <FadeInSection>
                 <section className="py-8 md:py-12">
-                    <div className="max-w-5xl mx-auto">
+                    <div className="max-w-2xl mx-auto">
                         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-8">{t('Final Design', '最終設計')}</h2>
                         <div className="space-y-16">
                             {issues.map((issue, idx) => (
                                 <div key={issue.id} className={idx > 0 ? 'pt-12 border-t border-gray-200' : ''}>
                                     <span className="font-mono text-xs font-bold tracking-widest text-text-secondary">ISSUE {issue.id}</span>
                                     <h3 className="font-serif text-base md:text-lg font-semibold text-text-primary mt-1 mb-6">{issue.title}</h3>
-                                    <div className="grid grid-cols-2 gap-4 md:gap-8">
+                                    <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto">
                                         <div>
                                             <p className="font-mono text-xs text-text-secondary mb-3">Before</p>
-                                            <div className="rounded-xl overflow-hidden bg-gray-100 border border-gray-200 aspect-3/4 flex items-center justify-center cursor-zoom-in"
+                                            <div className="rounded-xl overflow-hidden bg-gray-100 border border-gray-200 aspect-9/19 flex items-center justify-center cursor-zoom-in"
                                                  onClick={() => issue.beforeImg && setLightboxImg(issue.beforeImg)}>
                                                 {issue.beforeImg
-                                                    ? <img src={issue.beforeImg} alt="Before" className="w-20 h-full object-cover" />
-                                                    : <p className="text-xs text-text-secondary font-mono text-center px-4">{t('Add Before screenshot', '加入 Before 截圖')}</p>
+                                                    ? <img src={issue.beforeImg} alt="Before" className="w-full h-full object-cover" />
+                                                    : <p className="text-base md:text-base text-text-secondary font-mono text-center px-4">{t('Add Before screenshot', '加入 Before 截圖')}</p>
                                                 }
                                             </div>
                                             <ul className="mt-3 space-y-1.5">
@@ -335,80 +360,39 @@ function YouTubeMusic() {
                 </section>
                 </FadeInSection>
 
-                {/* ===== Future Improvement ===== */}
-                <FadeInSection>
-                <section className="py-8 md:py-12">
-                    <div className="max-w-5xl mx-auto">
-                        <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Future Improvement', '未來改善方向')}</h2>
-                        <div className="space-y-3">
-                            {[
-                                t('A/B test the simplified Home — track session duration and Library redirect rate', 'A/B 測試精簡版 Home，追蹤 Session Duration 和 Library 跳轉率'),
-                                t('Recruit heavy Samples users to validate whether the transition screen fits their flow', '招募重度 Samples 使用者，驗證過渡頁是否符合其使用習慣'),
-                                t('Run usability testing to confirm no new friction was introduced', '進行可用性測試，確認沒有引入新的摩擦點'),
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-start gap-3 text-sm text-text-secondary">
-                                    <ChevronRight className="w-4 h-4 shrink-0 mt-0.5" style={{ color: RED }} />
-                                    <p>{item}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-                </FadeInSection>
-
                 {/* ===== Reflection ===== */}
                 <FadeInSection>
                 <section className="py-8 md:py-12">
-                    <div className="max-w-5xl mx-auto">
-                        <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-8">Reflection</h2>
+                    <div className="max-w-2xl mx-auto">
+                        <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-8">
+                            {t('Reflection ', '反思')}
+                        </h2>
 
-                        <div className="space-y-6 mb-10">
-                            {[
-                                {
-                                    label: t('Heuristics as diagnostic tools', '啟發式法則作為診斷工具'),
-                                    body: t(
-                                        "Naming the specific heuristic behind each issue changed how I communicated design decisions — from 'this feels wrong' to 'this violates X, here's why it matters.'",
-                                        '為每個問題對應具體的啟發式法則，讓我的設計決策溝通從「這感覺不對」變成「這違反了 X 原則，原因如下」。'
-                                    ),
-                                },
-                                {
-                                    label: t('Structure before surface', '先解決結構，再處理表面'),
-                                    body: t(
-                                        "The Home screen problem was architectural. No amount of visual polish would fix a layout with no hierarchy — IA decisions had to come first.",
-                                        'Home 的問題在架構層。沒有層次的版面無論如何視覺優化都無效——必須先確立 IA 決策。'
-                                    ),
-                                },
-                                {
-                                    label: t('Designing within platform constraints', '在平台限制內設計'),
-                                    body: t(
-                                        "Samples exists for business reasons — removing it was never realistic. The more useful question was how to give users control without dismantling the feature.",
-                                        'Samples 的存在有商業原因，移除從來不是選項。更有用的問題是：如何在不破壞功能的前提下給予使用者控制感。'
-                                    ),
-                                },
-                            ].map(({ label, body }) => (
-                                <div key={label} className="flex gap-4">
-                                    <div className="w-1 shrink-0 rounded-full mt-1" style={{ backgroundColor: 'rgba(204,0,0,0.2)' }} />
-                                    <div>
-                                        <p className="font-mono text-xs text-text-secondary mb-1">{label}</p>
-                                        <p className="text-sm md:text-base text-text-secondary leading-relaxed">{body}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="rounded-lg p-4 border border-gray-200">
-                            <p className="font-mono text-xs text-text-secondary mb-3">{t('Limitations', '侷限性')}</p>
-                            <div className="space-y-2">
-                                {[
-                                    t('n=5, ages 20–28 — findings may not generalise across demographics', '樣本數 5 人（20–28 歲），結果難以推論至其他族群'),
-                                    t('Designs were not validated through usability testing', '設計未經可用性測試驗證'),
-                                    t("Platform constraints (recommendation model, content licensing) were out of scope", '平台層級的限制（推薦模型、內容授權）未納入設計範疇'),
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-start gap-2 text-sm text-text-secondary">
-                                        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-yellow-500" /> {item}
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="space-y-6 text-text-secondary leading-relaxed">
+                            <p>
+                                {t(
+                                    "This project shifted my focus from visual improvements to structural problem-solving. I realized that many usability issues were not caused by visual design, but by unclear information architecture and mixed interaction logic.",
+                                    "這個專案讓我從視覺優化轉向結構性問題解決。我意識到許多使用性問題的根源不在視覺設計，而在於資訊架構不清晰與互動邏輯混雜。"
+                                )}
+                            </p>
+                            <p>
+                                {t(
+                                    "Working with informal user interviews also changed how I approached research. Instead of focusing on statistical validation, I focused on identifying recurring patterns in user behavior and perception.",
+                                    "透過非正式使用者訪談，我也改變了研究方式。我不再著重於統計驗證，而是聚焦於找出使用者行為與感受中反覆出現的模式。"
+                                )}
+                            </p>
+                            <p>
+                                {t(
+                                    "Designing within constraints was another key learning. Features like Samples exist for business reasons, so the challenge was not removing them, but redesigning them in a way that restores user control.",
+                                    "在限制條件下設計是另一個重要收穫。像 Samples 這類功能具有商業目的，挑戰不在於移除，而是重新設計以恢復使用者的控制感。"
+                                )}
+                            </p>
+                            <p>
+                                {t(
+                                    "Moving forward, I would conduct usability testing to evaluate whether the redesigned interfaces effectively reduce friction. I would also explore A/B testing for the simplified Home and redesigned Samples flow to better understand their impact on user behavior and engagement.",
+                                    "未來，我會進行可用性測試，評估重新設計的介面是否有效降低操作摩擦，並探索針對簡化首頁與重新設計的 Samples 流程進行 A/B 測試，以深入了解其對使用者行為與參與度的影響。"
+                                )}
+                            </p>
                         </div>
                     </div>
                 </section>

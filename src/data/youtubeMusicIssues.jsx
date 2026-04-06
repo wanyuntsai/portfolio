@@ -8,8 +8,8 @@ export function getIssues(t) {
             title: t('Overloaded Home Screen', 'Home 頁資訊過載'),
             insight: t('4 of 5 users skip Home and go straight to Library', '4/5 使用者直接跳過 Home，前往 Library'),
             problem: t(
-                '20+ sections load simultaneously with equal visual weight — no hierarchy, no signal. Most users bypass Home entirely; the scrolling cost outweighs any discovery value.',
-                'Home 同時載入 20+ 個等權重的 section，沒有層次可循。多數使用者完全跳過 Home，滾動成本遠高於探索價值。'
+                '30+ sections load simultaneously with equal visual weight — no hierarchy, no signal. Most users bypass Home entirely; the scrolling cost outweighs any discovery value.',
+                'Home 同時載入 30+ 個等權重的 section，沒有層次可循。多數使用者完全跳過 Home，滾動成本遠高於探索價值。'
             ),
             hmw: t(
                 "How might we reduce Home's cognitive load without removing discovery?",
@@ -20,10 +20,10 @@ export function getIssues(t) {
                 "Keep Speed Dial, Featured Playlists, New Releases, and Explore — four sections that cover every core usage pattern. Everything else collapses behind a 'Show More' CTA, preserving discovery without forcing it.",
                 '保留 Speed Dial、Featured Playlists、New Releases、Explore 四個涵蓋核心使用情境的 section，其餘收進「Show More」，保留探索功能的同時降低預設負擔。'
             ),
-            beforeImg: '/images/YouTubeMusic/home-before.png',
+            beforeImg: '/images/YouTubeMusic/HomeBefore.png',
             afterImg: '/images/YouTubeMusic/After1.png',
             beforePoints: [
-                t('20+ sections, no visual hierarchy', '20+ section，無視覺層次'),
+                t('30+ sections, no visual hierarchy', '30+ section，無視覺層次'),
                 t('Extensive scrolling to reach any target', '需大量滾動才能找到目標'),
                 t('4 of 5 users skip Home entirely', '4/5 使用者完全跳過 Home'),
             ],
@@ -39,33 +39,50 @@ export function getIssues(t) {
             title: t('Cluttered Action Bar', '播放頁 Action Bar 雜亂'),
             insight: t('3 of 5 users reported accidental taps due to inconsistent layout', '3/5 使用者因按鈕位置不固定而誤觸'),
             problem: t(
-                'Buttons scroll horizontally and shift position by song type, preventing muscle memory. YouTube-legacy controls add visual noise. Every icon carries the same visual weight.',
-                '按鈕橫向捲動且隨歌曲類型換位，使用者無法建立肌肉記憶。YouTube 遺留按鈕造成視覺噪音，所有圖示視覺權重完全相同。'
+                'Fixed five core music management functions (like, dislike, share, save, download) within a single view, removing the need for horizontal scrolling. Lyrics were redesigned as a swipe-up interaction to align with user expectations.',
+                '固定五個核心音樂管理功能（like、dislike、share、save、download），取消橫向滑動，讓所有操作維持在單一視野內。歌詞功能改為上滑顯示，建立更符合使用者直覺的互動方式。'
             ),
             hmw: t(
                 'How might we make high-frequency actions always visible and visually distinct?',
                 '我們如何讓高頻操作固定可見，並在視覺上清晰突出？'
             ),
             badges: ["Fitts's Law", "Jakob's Law", 'Visual Hierarchy'],
-            competitive: [
-                { app: 'YouTube Music', logic: t('Horizontal scroll', '橫向捲動'), eval: t('Feature-rich but fragmented', '功能豐富但零碎'), highlight: false },
-                { app: 'Spotify',       logic: t('Static layout', '靜態配置'), eval: t('Like + Save always fixed — intuitive', 'Like + Save 固定可見，直覺'), highlight: true },
-                { app: 'Apple Music',   logic: t('Three-dot menu', '三點選單'), eval: t('Clean but over-hides key actions', '乾淨但高頻操作隱藏過深'), highlight: false },
-            ],
-            competitiveSummary: t(
-                "Spotify's static layout is the clearest benchmark — fixed positions build muscle memory and keep high-frequency actions accessible without scrolling.",
-                'Spotify 的靜態版面是最清楚的參考基準——固定位置幫助建立肌肉記憶，高頻操作不需捲動即可取得。'
-            ),
+competitive: [
+  {
+    app: 'YouTube Music',
+    logic: t('Horizontal scroll bar, position shifts', '橫向滑動列，位置不固定'),
+    eval: t('Easy to miss, not persistent', '容易被忽略，非固定可見'),
+    highlight: false,
+  },
+  {
+    app: 'Spotify',
+    logic: t('Save button "＋" fixed next to song title', '加入歌單按鈕 “＋” 固定在歌名旁'),
+    eval: t('Consistent position, but icon meaning unclear', '位置一致，但圖示語意不直覺'),
+    highlight: true,
+    hoverImg: '/images/YouTubeMusic/Spotify.png', 
+
+  },
+  {
+    app: 'Apple Music',
+    logic: t('Fixed position on playback page', '固定在播放頁固定位置'),
+    eval: t('Always visible, low search cost', '固定可見，尋找成本低'),
+    highlight: false,
+  },
+],
+competitiveSummary: t(
+  'Apps with fixed action positions reduce the cognitive cost of locating controls. This supports designing a static 5-button action bar in the redesign.',
+  '操作位置固定的 App 能降低尋找控制項的認知成本，支持本次重設計採用靜態 5 按鈕 Action Bar 的決策。'
+),
             outcome: t(
-                "Fix Like, Dislike, Lyrics, Save, and Add to Playlist — removing all YouTube-legacy buttons. Like/Dislike receive stronger visual emphasis to distinguish primary actions from secondary ones.",
-                '固定 Like、Dislike、Lyrics、Save、Add to Playlist，移除所有 YouTube 遺留按鈕。Like/Dislike 視覺加強，區分主要與次要操作。'
+                "Fix Like, Dislike, Share, Save, and Download within a single view, removing the need for horizontal scrolling. Lyrics were redesigned as a swipe-up interaction to align with user expectations.",
+                '固定 Like、Dislike、Share、Save、Download，取消橫向滑動，讓所有操作維持在單一視野內。歌詞功能改為上滑顯示，建立更符合使用者直覺的互動方式。'
             ),
-            beforeImg: '/images/YouTubeMusic/action-before.png',
+            beforeImg: '/images/YouTubeMusic/ActionBarBefore.png',
             afterImg: '/images/YouTubeMusic/After2.png',
             beforePoints: [
-                t('Horizontal scroll hides functions', '橫向捲動隱藏功能'),
-                t('Button positions shift by song type', '按鈕位置隨歌曲類型變動'),
-                t('All icons share identical visual weight', '所有按鈕視覺權重相同'),
+                t('Horizontal scroll hides functions', '橫向捲動隱藏部分功能'),
+                t('Action bar contains too many horizontal buttons, mixing music management and social interaction logics, increasing cognitive load.', '播放頁操作列包含過多橫向按鈕，且混合音樂管理與社群互動兩種不同邏輯的功能，增加理解成本。'),
+                t('Users found the action bar buttons too small, and some did not notice the bar at all.', '使用者覺得操作列按鈕過小，有些甚至完全沒有注意到這個操作列。'),
             ],
             afterPoints: [
                 t('5 core buttons always visible', '5 個核心按鈕固定可見'),
@@ -91,7 +108,7 @@ export function getIssues(t) {
                 "A transition screen appears after tapping Samples — showing album art, song title, artist, and an explicit Play button. Users can browse before committing. This browse-before-play behaviour was completely absent in the original.",
                 '點擊 Samples 後進入過渡頁，顯示專輯封面、歌名、藝人名與明確的 Play 按鈕。使用者可先瀏覽再決定播放——這個機制在原版中完全不存在。'
             ),
-            beforeImg: '/images/YouTubeMusic/samples-before.png',
+            beforeImg: '/images/YouTubeMusic/SamplesBefore.png',
             afterImg: '/images/YouTubeMusic/After3-1.png',
             beforePoints: [
                 t('Tap → immediate full-volume playback', '點擊 → 立即全音量播放'),

@@ -262,7 +262,7 @@ function Learnnow() {
             <p className="text-sm font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
             <p className="text-sm text-neutral-500 mb-3">{t('Explore other case studies.', '瀏覽其他作品。')}</p>
             <Link to="/work" className="inline-flex items-center gap-1 text-sm font-mono text-[#305E9A] hover:underline">
-              {t('View all projects', '查看所有作品')} →
+              {t('View all work', '查看所有作品')} →
             </Link>
           </div>
         </div>
@@ -274,7 +274,7 @@ function Learnnow() {
       {/* ===== The Problem ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto md:mt-7">
+        <div className="max-w-2xl mx-auto md:mt-7">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('The Problem', '問題定義')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
@@ -326,7 +326,7 @@ function Learnnow() {
       {/* ===== Competitive Analysis ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('Competitive Analysis', '競品分析')}</h2>
 
           <div className="overflow-x-auto">
@@ -364,7 +364,7 @@ function Learnnow() {
       {/* ===== User Flow ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('User Flow', '使用者流程')}</h2>
           <div
             className="bg-[#f5f5f5] rounded-lg p-4 md:p-6 cursor-zoom-in"
@@ -383,7 +383,7 @@ function Learnnow() {
       {/* ===== Wireframes ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Wireframes', '低保真線框圖')}</h2>
           <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory">
             {[
@@ -418,7 +418,7 @@ function Learnnow() {
       {/* ===== Design System ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Design System', '設計系統')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
@@ -451,7 +451,7 @@ function Learnnow() {
       {/* ===== Final Design ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('Final Design', '主要畫面')}</h2>
           <p className="text-base text-text-secondary leading-relaxed mb-8">
             {t('Key screens from the LearnNow platform.', 'LearnNow 平台的主要畫面。')}
@@ -515,7 +515,7 @@ function Learnnow() {
       {/* ===== Usability Testing ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12 bg-white">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Usability Testing', '可用性測試')}</h2>
           <p className="text-base text-text-secondary mb-6">
             {t('Remote testing via Maze · 5 participants · 2 core tasks', 'Maze 遠端測試・5 位受測者・2 項核心任務')}
@@ -574,7 +574,7 @@ function Learnnow() {
       {/* ===== Iterations ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Iterations', '設計迭代')}</h2>
 
           <div className="space-y-6 mb-8">
@@ -643,7 +643,7 @@ function Learnnow() {
       {/* ===== Future Improvements ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Future Improvements', '未來改善方向')}</h2>
           <p className="text-sm text-text-secondary mb-6">{t('Features identified through testing and analysis for future development.', '透過易用性測試與分析定義未來的設計功能。')}</p>
 
@@ -670,7 +670,7 @@ function Learnnow() {
       {/* ===== Reflection ===== */}
       <FadeInSection>
       <section className="py-8 md:py-12">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">{t('Reflection', '反思')}</h2>
           <div className="space-y-4 max-w-5xl">
             <p className="text-base text-text-secondary leading-relaxed">
