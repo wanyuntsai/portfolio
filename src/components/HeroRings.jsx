@@ -75,7 +75,7 @@ function HeroRings() {
           .to(photo,    { opacity: 1, x: 0, y: 0, scale: isDesktop ? 1 : 0.85, duration: 0.20, ease: 'power2.out' }, 0.25)
           .to(welcome,  { opacity: 1, x: 0, y: 0, duration: 0.22, ease: 'power2.out' }, 0.30)
           .to(subtitle, { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' }, 0.52)
-          .to(bubbleRef.current, { opacity: 1, x: 0, scale: 1, duration: 0.14, ease: 'back.out(1.4)' }, 0.35)
+          .to(bubbleRef.current, { opacity: 1, x: 0, scale: 1, duration: 0.14, ease: 'back.out(1.4)' }, 0.58)
           .to([welcome, subtitle, photo, bubbleRef.current], { opacity: 0, y: -40, duration: 0.10, ease: 'power2.in' }, 0.68)
           .to([innerRing, outerRing], {
             opacity: isDesktop ? 0.55 : 0.4,
@@ -182,52 +182,28 @@ function HeroRings() {
               <p ref={subtitleRef} className="font-mono text-[14px] md:text-[16px] text-[#666] mt-6 md:mt-9 opacity-0">Designed in Vancouver, built for everywhere.</p>
             </div>
             {/* 套用了 photo-filter 和 mobile-photo-color 類別 */}
-            <img 
-              ref={photoRef} 
-              src="/images/Wanyun_Tsai.png" 
-              alt="" 
-              className="photo-filter mobile-photo-color rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto" 
+            <img
+              ref={photoRef}
+              src="/images/Wanyun_Tsai.png"
+              alt=""
+              className="photo-filter mobile-photo-color rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto"
             />
-            {/* ── Speech bubble ── */}
-  <div
-  ref={bubbleRef}
-  style={{
-    position: 'relative',
-    alignSelf: 'center',
-    flexShrink: 0,
-    willChange: 'transform, opacity',
-  }}
->
-  {/* 對話框主體 */}
-  <div style={{
-    background: 'white',
-    border: '1px solid #e0ddd5',
-    borderRadius: '16px',
-    padding: '10px 16px',
-    fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '13px',
-    color: '#555',
-    letterSpacing: '0.05em',
-    whiteSpace: 'nowrap',
-    boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-  }}>
-    i speak English · Japanese · Mandarin
-  </div>
-
-  {/* 左側三角形 ← 指向頭像方向 */}
-  <div style={{
-    position: 'absolute',
-    left: '-8px',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    width: 0,
-    height: 0,
-    borderTop: '7px solid transparent',
-    borderBottom: '7px solid transparent',
-    borderRight: '8px solid white',
-    filter: 'drop-shadow(-1px 0 0 #ddd)',
-  }} />
-</div>
+            {/* Speech Bubble */}
+            <div
+              ref={bubbleRef}
+              style={{
+                position: 'relative',
+                alignSelf: 'center',
+                flexShrink: 0,
+                willChange: 'transform, opacity',
+              }}
+            >
+              <img
+                src="/images/speechbubble.svg"
+                alt="language bubble"
+                style={{ width: '300px', height: 'auto', display: 'block' }}
+              />
+            </div>
           </div>
         </div>
 
