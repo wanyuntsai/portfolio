@@ -347,13 +347,16 @@ function About() {
                                 { src: '/images/icons/indesign.svg',     name: 'InDesign' },
                                 { src: '/images/icons/premiere.svg',     name: 'Premiere Pro' },
                                 { src: '/images/icons/aftereffects.svg', name: 'After Effects' },
+                                { src: '/images/dimension.png',          name: 'Adobe Dimension' },
+                                { src: '/images/Canva.png',              name: 'Canva' },
+                                { src: '/images/icons/wordpress.svg',    name: 'WordPress' },
                             ].map(({ src, name }) => (
                                 <img
                                     key={name}
                                     src={src}
                                     alt={name}
                                     title={name}
-                                    className="w-9 h-9 transition-all duration-200 cursor-default hover:-translate-y-0.75"
+                                    className="w-15 h-9 object-contain transition-all duration-200 cursor-default hover:-translate-y-0.75"
                                     style={{ filter: 'saturate(80%)' }}
                                     onMouseEnter={e => e.currentTarget.style.filter = 'saturate(100%) brightness(1.05)'}
                                     onMouseLeave={e => e.currentTarget.style.filter = 'saturate(80%)'}
