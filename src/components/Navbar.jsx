@@ -106,7 +106,7 @@ function Navbar() {
             <div className={`fixed inset-0 bg-brand-cream z-50 flex flex-col overflow-hidden ${menuFont}`}>
                 {/* logo */}
                 <div className="relative z-10 flex justify-between items-center p-6">
-                    <Link to="/" className="font-serif text-base transition-transform duration-200 hover:scale-110" onClick={() => setIsOpen(false)}>Yun T.</Link>
+                    <Link to="/" className="font-serif text-base transition-transform duration-200 hover:scale-110" onClick={() => setIsOpen(false)}>Yun Tsai</Link>
 
                     {/* close button */}
                     <button onClick={() => setIsOpen(false)} className="flex flex-col justify-center items-center w-6 h-6 relative" aria-label="Close Navigation menu">
