@@ -49,7 +49,6 @@ function Projects() {
             tags: ["UX/UI", "Figma", "User Research"],
             link: "/work/youtubemusic",
             category: "UX/UI Design",
-            comingSoon: true
         },
         {
             id: "cloudair",
