@@ -405,7 +405,7 @@ function YouTubeMusic() {
                         <Link to="/work" className="text-brand-green font-mono text-sm hover:underline">
                             {t('← Back to Projects', '← 返回作品集')}
                         </Link>
-                        <Link to="/work/vanlink" className="text-brand-green font-mono text-sm hover:underline">
+                        <Link to="/work/MindLog" className="text-brand-green font-mono text-sm hover:underline">
                             {t('Next Project →', '下一個專案 →')}
                         </Link>
                     </div>

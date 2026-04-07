@@ -51,14 +51,14 @@ function Projects() {
             category: "UX/UI Design",
         },
         {
-            id: "cloudair",
-            title: "CLOUDAIR",
-            subtitle: t('Airline app', '航空應用程式'),
-            description: t('AI-powered travel inspiration app that helps users discover and plan their perfect trips.', 'AI 驅動的旅遊靈感 App，協助使用者探索並規劃理想旅程。'),
-            tags: ["UX/UI", "Illustrator"],
-            link: "/work/cloudair",
+            id: "MindLog",
+            title: "MINDLOG",
+            subtitle: t('Mental health app', '心理健康應用程式'),
+            description: t('A mental health app that provides users with tools and resources to manage their well-being.', '一個心理健康應用程式，為使用者提供管理心理健康的工具和資源。'),
+            tags: ["UX/UI", "Figma", "User Research"],
+            link: "/work/mindlog",
             category: "UX/UI Design",
-            comingSoon: true
+            image: "/images/MindLog/MindLog_mkup.png",
         },
     ]
 
