@@ -10,12 +10,10 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 
 // projects page
-// import CloudAir from './pages/work/CloudAir'
 import LearnNow from './pages/work/Learnnow'
 import Vanlink from './pages/work/Vanlink'
 import YouTubeMusic from "./pages/work/YouTubeMusic";
 import MindLog from './pages/work/Mindlog';
-// import MissBean from './pages/work/MissBean'
 
 function AppContent() {
   const location = useLocation();
@@ -32,7 +30,6 @@ function AppContent() {
           {/* project routes */}
           <Route path="/work/learnnow" element={<LearnNow />} />
           <Route path="/work/vanlink" element={<Vanlink />} />
-          {/* <Route path="/work/Cloudair" element={<CloudAir/>} /> */}
           <Route path="/work/youtubemusic" element={<YouTubeMusic />} />
           <Route path="/work/mindlog" element={<MindLog />} />
           <Route path="*" element={<NotFound />} />
