@@ -56,7 +56,7 @@ function Projects() {
             subtitle: t('Mental health app', '心理健康應用程式'),
             description: t('A mental health app that provides users with tools and resources to manage their well-being.', '一個心理健康應用程式，為使用者提供管理心理健康的工具和資源。'),
             tags: ["UX/UI", "Figma", "User Research"],
-            link: "/work/mindlog",
+            link: "/work/MindLog",
             category: "UX/UI Design",
             image: "/images/MindLog/MindLog_mkup.png",
         },

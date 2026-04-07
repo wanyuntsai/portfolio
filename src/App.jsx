@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound';
 import LearnNow from './pages/work/Learnnow'
 import Vanlink from './pages/work/Vanlink'
 import YouTubeMusic from "./pages/work/YouTubeMusic";
-import MindLog from './pages/work/Mindlog';
+import MindLog from './pages/work/MindLog';
 
 function AppContent() {
   const location = useLocation();
