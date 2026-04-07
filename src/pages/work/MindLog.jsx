@@ -212,7 +212,8 @@ function MindLog() {
                                         </div>
                                     ))}
                                 </div>
-                                <a
+                                {/* figma CTA */}
+                                {/* <a
                                     href="https://www.figma.com/design/ibPQgpJozWbZf2eXgcN8Kd/MindLog"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -226,7 +227,7 @@ function MindLog() {
                                         <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
                                     </svg>
                                     {t('Figma Demo', 'Figma 原型')}
-                                </a>
+                                </a> */}
                             </div>
                             <div className="md:w-1/2 mt-2 md:mt-0">
                                 <img src="/images/MindLog/MindLog_mkup.png" alt="MindLog Preview" className="w-full h-auto" />
@@ -710,16 +711,10 @@ function MindLog() {
                                                         <span className="text-sm font-mono text-[#E07A65]">{group.label}</span>
                                                     </div>
                                                     <p className="text-sm text-text-secondary mb-6">{group.desc}</p>
-                                                    <div className="grid grid-cols-2 gap-6 md:gap-10">
+                                                    <div className="grid grid-cols-2 gap-6 md:gap-10 max-w-sm mx-auto md:max-w-none">
                                                         {group.screens.map((item, i) => (
                                                             <div key={i} className="flex flex-col items-center">
-                                                                <div className="relative w-fit mx-auto max-w-[48%] bg-gray-900 rounded-[2.2rem] p-1.25 shadow-xl">
-                                                                    <div className="relative rounded-[1.9rem] overflow-hidden bg-black">
-                                                                        <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-14 h-4.5 bg-black rounded-full z-10 pointer-events-none" />
-                                                                        <img src={item.src} alt={item.label} className="block max-w-full cursor-zoom-in" onClick={() => setLightboxImg(item.src)} />
-                                                                        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/30 rounded-full pointer-events-none" />
-                                                                    </div>
-                                                                </div>
+                                                                <img src={item.src} alt={item.label} className="w-full rounded-2xl cursor-zoom-in border border-border max-w-[160px] mx-auto" onClick={() => setLightboxImg(item.src)} />
                                                                 <p className="text-center text-sm text-text-secondary mt-3 font-mono">{item.label}</p>
                                                             </div>
                                                         ))}

@@ -780,21 +780,13 @@ function Vanlink() {
                                 <div className="grid grid-cols-2 gap-6 md:gap-10">
                                     {group.screens.map((item, i) => (
                                         <div key={i} className="flex flex-col items-center">
-                                            {/* Phone frame */}
-                                            <div className="relative w-fit mx-auto max-w-[48%] bg-gray-900 rounded-[2.2rem] p-1.25 shadow-xl">
-                                                <div className="relative rounded-[1.9rem] overflow-hidden bg-black">
-                                                    {/* Dynamic island */}
-                                                    <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-14 h-4.5 bg-black rounded-full z-10 pointer-events-none" />
-                                                    <img
-                                                        src={item.src}
-                                                        alt={item.label}
-                                                        className="block max-w-full cursor-zoom-in"
-                                                        onClick={() => setLightboxImg(item.src)}
-                                                    />
-                                                    {/* Home indicator */}
-                                                    <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-16 h-1 bg-white/30 rounded-full pointer-events-none" />
-                                                </div>
-                                            </div>
+
+<img
+    src={item.src}
+    alt={item.label}
+    className="w-50 rounded-2xl cursor-zoom-in border border-border"
+    onClick={() => setLightboxImg(item.src)}
+/>
                                             <p className="text-center text-sm text-text-secondary mt-3 font-mono">{item.label}</p>
                                         </div>
                                     ))}
