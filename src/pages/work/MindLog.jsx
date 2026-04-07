@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { FadeInSection, PageTransition } from "../../components/AnimatedSection";
 import { useLanguage } from '../../context/LanguageContext';
 import {
-    Heart, Brain, BarChart2, RefreshCw, Search, Lightbulb,
-    Pencil, FlaskConical, ShieldCheck, Sparkles, CalendarDays,
+    Heart, Brain, BarChart2, Search, Lightbulb,
+    Pencil, ShieldCheck, Sparkles, CalendarDays,
     Users, AlertCircle, Type, Palette, Grid,
 } from 'lucide-react';
 
@@ -327,20 +327,18 @@ function MindLog() {
                                         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">
                                             {t('Design Process', '設計流程')}
                                         </h2>
-                                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                                        <div className="flex items-center justify-center gap-4">
                                             {[
                                                 { icon: <Search className="w-5 h-5 text-[#2E2318]" />, label: t('Research', '研究') },
                                                 { icon: <Lightbulb className="w-5 h-5 text-[#2E2318]" />, label: t('Define', '定義') },
                                                 { icon: <Pencil className="w-5 h-5 text-[#2E2318]" />, label: t('Design', '設計') },
-                                                { icon: <FlaskConical className="w-5 h-5 text-[#2E2318]" />, label: t('Test', '測試') },
-                                                { icon: <RefreshCw className="w-5 h-5 text-[#2E2318]" />, label: t('Iterate', '迭代') },
                                             ].map((step, i, arr) => (
                                                 <div key={i} className="flex items-center gap-4">
                                                     <div className="flex flex-col items-center text-center">
                                                         <div className="w-12 h-12 bg-[#FDFCE8] rounded-full flex items-center justify-center mb-2">{step.icon}</div>
                                                         <p className="text-sm font-medium text-text-primary">{step.label}</p>
                                                     </div>
-                                                    {i < arr.length - 1 && <div className="hidden md:block text-text-secondary">→</div>}
+                                                    {i < arr.length - 1 && <div className="text-text-secondary">→</div>}
                                                 </div>
                                             ))}
                                         </div>
