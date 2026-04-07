@@ -761,11 +761,7 @@ function MindLog() {
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div className="border-l-4 border-[#F5EEE8] pl-4 mt-6">
-                                            <p className="text-sm text-text-secondary italic">
-                                                {t("Note: All AI features are represented as UX design decisions in the prototype — focus is on how AI should feel from the user's perspective.", '備註：所有 AI 功能皆以 UX 設計決策呈現於原型中，重點在於從用戶視角出發，AI 應給予什麼樣的感受。')}
-                                            </p>
-                                        </div>
+                                        
                                     </div>
                                 </section>
                             </FadeInSection>
@@ -779,9 +775,12 @@ function MindLog() {
                                         </h2>
                                         <div className="space-y-4 max-w-5xl">
                                             {[
-                                                t('Mental health design requires balancing warmth with clarity. Rotating backgrounds per screen was simple but effective — creating visual variety without losing system cohesion.', '心理健康 App 設計需要在溫暖與清晰之間取得平衡。每個畫面輪替背景色是個簡單但有效的技巧，在維持系統一致性的同時創造視覺變化。'),
-                                                t("The Safety Popup required the most careful thought — the copy, interaction model, and removing the close button were all deliberate to ensure users feel supported, not alarmed.", '安全彈窗需要最審慎的考量，文案、互動模式以及刻意省略關閉按鈕，都是為了確保用戶感到被支持而非驚嚇。'),
-                                                t("With more time I'd run usability testing with the target demographic, design a personalised onboarding flow, and conduct an accessibility audit for colour contrast and VoiceOver compatibility.", '若有更多時間，我會對目標族群進行可用性測試、設計個人化引導流程，並針對色彩對比和 VoiceOver 進行無障礙稽核。'),
+                                                t('The multi-colour background system was a decision I went back and forth on — my concern was whether different colours per screen would break the sense of a unified design system. I kept it in the end because the variety felt more emotionally honest than a single palette, and the colours map to different contexts rather than just being decorative.',
+                                                  '多色背景系統是考慮最久的決定，一直擔心每個頁面背景不同會破壞整體一致性。最後還是保留了，因為不同顏色對應不同的情境，不是純粹的裝飾，而是在設計語言上有意義的選擇。'),
+                                                t('The Safety Popup was intentionally CTA-only, no close button. The goal was to make sure that when someone is struggling and the app notices, that moment doesn\'t just get dismissed with one tap. It\'s a small interaction detail, but it changes what the popup actually means.',
+                                                  '安全彈窗刻意設計成純 CTA、沒有關閉按鈕。當使用者正在情緒低谷而 App 偵測到了，不想讓這個當下太容易被一個點擊帶過，讓彈窗真的有機會發揮作用。'),
+                                                t('If I could keep going, I\'d want to test whether the AI journaling prompts genuinely help people write — not just seem useful on paper. For a lot of people, the barrier to journaling isn\'t knowing what to write. It\'s finding a space that feels safe enough to say things they wouldn\'t say out loud.',
+                                                  '未來最想測試的是 AI 日記提示，想知道它在真實情境下有沒有幫助人們動筆，而不只是在案例說明裡看起來合理。對很多人來說，寫日記的障礙不是不知道寫什麼，而是有沒有一個夠安全的空間，去說那些說不出口的話。'),
                                             ].map((text, i) => (
                                                 <p key={i} className="text-sm md:text-base text-text-secondary leading-relaxed">{text}</p>
                                             ))}
