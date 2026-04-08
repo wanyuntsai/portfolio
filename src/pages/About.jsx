@@ -121,12 +121,12 @@ function About() {
     useEffect(() => {
         if (!chatVisible) return;
         const timers = [
-            setTimeout(() => setShowTyping(true), 400),
-            setTimeout(() => { setVisibleCount(1); setShowTyping(false); }, 1100),
-            setTimeout(() => setShowTyping(true), 1400),
-            setTimeout(() => { setVisibleCount(2); setShowTyping(false); }, 2100),
-            setTimeout(() => setShowTyping(true), 2400),
-            setTimeout(() => { setVisibleCount(3); setShowTyping(false); }, 3100),
+            setTimeout(() => setShowTyping(true), 200),
+            setTimeout(() => { setVisibleCount(1); setShowTyping(false); }, 700),
+            setTimeout(() => setShowTyping(true), 950),
+            setTimeout(() => { setVisibleCount(2); setShowTyping(false); }, 1450),
+            setTimeout(() => setShowTyping(true), 1700),
+            setTimeout(() => { setVisibleCount(3); setShowTyping(false); }, 2200),
         ];
         return () => timers.forEach(clearTimeout);
     }, [chatVisible]);
