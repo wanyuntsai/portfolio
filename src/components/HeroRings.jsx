@@ -130,8 +130,8 @@ function HeroRings() {
 }
 
 @keyframes scrollBreath {
-  0%, 100% { opacity: 0.2;  transform: translateY(0); }
-  50%       { opacity: 0.8;  transform: translateY(6px); }
+  0%, 100% { opacity: 0.55;  transform: translateY(0); }
+  50%       { opacity: 1;  transform: translateY(6px); }
 }
       `}</style>
 
@@ -169,7 +169,16 @@ function HeroRings() {
 
         {/* Rings */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div ref={glowRef} className="absolute rounded-full" style={{ width: 300, height: 300, background: 'radial-gradient(circle, #E2FFAD 0%, #9CAF6C 40%, transparent 70%)', filter: 'blur(55px)', zIndex: 1, willChange: 'transform, opacity' }} />
+          <div
+            ref={glowRef}
+            className="absolute rounded-full cursor-pointer"
+            style={{ width: 300, height: 300, background: 'radial-gradient(circle, #E2FFAD 0%, #9CAF6C 40%, transparent 70%)', filter: 'blur(55px)', zIndex: 1, willChange: 'transform, opacity', pointerEvents: 'auto', transition: 'transform 0.08s ease-out' }}
+            onMouseDown={e => e.currentTarget.style.transform = 'scale(1.28)'}
+            onMouseUp={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+            onTouchStart={e => e.currentTarget.style.transform = 'scale(1.28)'}
+            onTouchEnd={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+          />
           <img ref={innerRingRef} src="/images/InnerRing.svg" alt="" className="absolute w-[min(320px,82vw)] z-[2] will-change-transform" />
           <img ref={outerRingRef} src="/images/OuterRing.svg" alt="" className="absolute w-[min(420px,95vw)] z-[3] will-change-transform" />
         </div>
@@ -208,10 +217,11 @@ function HeroRings() {
         </div>
 
         {/* Scroll Hint */}
-        <div ref={scrollHintRef} className="absolute bottom-[9%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-[7] pointer-events-none">
-          <div className="w-[1px] h-9 bg-gradient-to-b from-transparent to-[#888] animate-[scrollBreath_2.2s_ease-in-out_infinite]" />
-          <span className="font-mono text-[9px] tracking-[0.25em] text-[#999] animate-[scrollBreath_2.2s_ease-in-out_infinite_0.4s]">SCROLL</span>
-        </div>
+<div ref={scrollHintRef} className="absolute bottom-[9%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-[7] pointer-events-none">
+  <div className="w-[1.5px] h-12 bg-gradient-to-b from-[#1a1a1a] to-transparent animate-[scrollBreath_2.2s_ease-in-out_infinite_0.4s]" />
+    <span className="font-mono text-[13px] tracking-[0.3em] text-[#1a1a1a] font-semibold animate-[scrollBreath_2.2s_ease-in-out_infinite]">SCROLL</span>
+
+</div>
       </section>
     </>
   );

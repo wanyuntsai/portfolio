@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 
 import Navbar from './components/Navbar';
@@ -18,6 +19,10 @@ import MindLog from './pages/work/MindLog';
 function AppContent() {
   const location = useLocation();
   const isWorkSubPage = location.pathname.startsWith('/work/');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className='min-h-screen w-full flex flex-col relative'>
