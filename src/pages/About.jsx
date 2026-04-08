@@ -96,44 +96,7 @@ function About() {
 
     ]
 
-    // Photo strip drag-to-scroll + auto-scroll
-    const scrollRef = useRef(null);
-    const isDragging = useRef(false);
-    const isHovering = useRef(false);
     const [activeCaptionIndex, setActiveCaptionIndex] = useState(null);
-    const startX = useRef(0);
-    const startScrollLeft = useRef(0);
-    const animFrameRef = useRef(null);
-
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
-
-        const tick = () => {
-            if (!isDragging.current && !isHovering.current) {
-                el.scrollLeft += 0.6;
-                if (el.scrollLeft >= el.scrollWidth / 2) {
-                    el.scrollLeft = 0;
-                }
-            }
-            animFrameRef.current = requestAnimationFrame(tick);
-        };
-        animFrameRef.current = requestAnimationFrame(tick);
-        return () => cancelAnimationFrame(animFrameRef.current);
-    }, []);
-
-    const onDragStart = (clientX) => {
-        isDragging.current = true;
-        startX.current = clientX;
-        startScrollLeft.current = scrollRef.current.scrollLeft;
-    };
-    const onDragMove = (clientX) => {
-        if (!isDragging.current) return;
-        scrollRef.current.scrollLeft = startScrollLeft.current - (clientX - startX.current);
-    };
-    const onDragEnd = () => {
-        isDragging.current = false;
-    };
 
     // Chat messages
     const chatRef = useRef(null);
@@ -438,22 +401,28 @@ function About() {
                 </div>
             </section>
 
-            {/* photo */}
+            {/* photo marquee */}
             <FadeInSection>
-            <section className="py-4 pt-16 md:pt-24 pb-12">
-                <div
-                    ref={scrollRef}
-                    className="flex gap-3 md:gap-6 overflow-x-auto cursor-grab active:cursor-grabbing select-none"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    onMouseEnter={() => { isHovering.current = true; }}
-                    onMouseLeave={() => { isHovering.current = false; onDragEnd(); }}
-                    onMouseDown={(e) => onDragStart(e.clientX)}
-                    onMouseMove={(e) => onDragMove(e.clientX)}
-                    onMouseUp={onDragEnd}
-                    onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
-                    onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
-                    onTouchEnd={onDragEnd}
-                >
+            <section className="py-4 pt-16 md:pt-24 pb-12 overflow-hidden">
+                <style>{`
+                    @keyframes marquee {
+                        0%   { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    .marquee-track {
+                        display: flex;
+                        gap: 12px;
+                        width: max-content;
+                        animation: marquee 30s linear infinite;
+                    }
+                    @media (min-width: 768px) {
+                        .marquee-track { gap: 24px; }
+                    }
+                    .marquee-track:hover {
+                        animation-play-state: paused;
+                    }
+                `}</style>
+                <div className="marquee-track">
                     {[...photos, ...photos].map((photo, index) => {
                         const isActive = activeCaptionIndex === index;
                         return (
@@ -468,12 +437,12 @@ function About() {
                                     loading='lazy'
                                     decoding='async'
                                     draggable={false}
-                                    className="w-[168px] h-[285px] md:w-[268px] md:h-[456px] object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
+                                    className="w-[168px] h-[285px] md:w-[268px] md:h-[456px] object-cover rounded-lg"
                                 />
                                 {/* Caption: hover on desktop, tap on mobile */}
                                 <div className={`absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md transition-all duration-300
                                     md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0
-                                    ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 md:opacity-0'}`}>
+                                    ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
                                     <p className="font-hand text-sm text-text-primary">{photo.desc}</p>
                                 </div>
                             </div>

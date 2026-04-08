@@ -54,7 +54,9 @@ function Projects() {
             id: "MindLog",
             title: "MINDLOG",
             subtitle: t('Mental health app', '心理健康應用程式'),
-            description: t('A mental health app that provides users with tools and resources to manage their well-being.', '一個心理健康應用程式，為使用者提供管理心理健康的工具和資源。'),
+            description: t('Designed a 0-to-1 mental wellness app for the Canadian market, bridging the gap between daily journaling and accessible mental health resources.',
+  '為加拿大市場從零設計心理健康 App，填補日記記錄與心理諮詢資訊管道之間的市場缺口。'),
+
             tags: ["UX/UI", "Figma", "User Research"],
             link: "/work/MindLog",
             category: "UX/UI Design",
@@ -111,7 +113,7 @@ function Projects() {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-90 h-60 object-cover transition-transform duration-300 group-hover:scale-105"
+                                    className="w-full h-48 md:h-60 object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                             )}
                         </div>
