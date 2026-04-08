@@ -56,7 +56,7 @@ function MindLog() {
             setTocItems(items);
         }, 300);
         return () => clearTimeout(timer);
-    }, []);
+    }, [t]);
 
     // TOC: highlight active section
     useEffect(() => {
@@ -368,7 +368,7 @@ function MindLog() {
                                                     </p>
                                                 </div>
                                                 <p className="text-sm text-text-secondary leading-relaxed">
-                                                    {t("Marketing Manager in Toronto. Struggles to disconnect after work. Knows she's stressed but can't see patterns. Therapy wait times are too long.", '多倫多行銷經理。下班後難以放鬆，知道自己有壓力但看不出規律，治療等待時間太長。')}
+                                                    {t("Marketing Manager in Vancouver. Struggles to disconnect after work. Knows she's stressed but can't see patterns. Therapy wait times are too long.", '溫哥華行銷經理。下班後難以放鬆，知道自己有壓力但看不出規律，治療等待時間太長。')}
                                                 </p>
                                             </div>
                                             <div className="bg-[#F5EEE8] border border-[#A09080] rounded-xl p-5">

@@ -53,9 +53,9 @@ function LangFlipCell({ front, greeting }) {
 
 
 function About() {
-    useEffect (() => {
-        document.title="About | Yun Tsai"
-    })
+    useEffect(() => {
+        document.title = "About | Yun Tsai";
+    }, []);
     const { t, language } = useLanguage();
     const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
     const [isHovered, setIsHovered] = useState(false);
@@ -99,9 +99,10 @@ function About() {
     // Photo strip drag-to-scroll + auto-scroll
     const scrollRef = useRef(null);
     const isDragging = useRef(false);
+    const isHovering = useRef(false);
+    const [activeCaptionIndex, setActiveCaptionIndex] = useState(null);
     const startX = useRef(0);
     const startScrollLeft = useRef(0);
-    const isPausedByUser = useRef(false);
     const animFrameRef = useRef(null);
 
     useEffect(() => {
@@ -109,7 +110,7 @@ function About() {
         if (!el) return;
 
         const tick = () => {
-            if (!isPausedByUser.current) {
+            if (!isDragging.current && !isHovering.current) {
                 el.scrollLeft += 0.6;
                 if (el.scrollLeft >= el.scrollWidth / 2) {
                     el.scrollLeft = 0;
@@ -123,7 +124,6 @@ function About() {
 
     const onDragStart = (clientX) => {
         isDragging.current = true;
-        isPausedByUser.current = true;
         startX.current = clientX;
         startScrollLeft.current = scrollRef.current.scrollLeft;
     };
@@ -133,7 +133,6 @@ function About() {
     };
     const onDragEnd = () => {
         isDragging.current = false;
-        isPausedByUser.current = false;
     };
 
     // Chat messages
@@ -446,8 +445,8 @@ function About() {
                     ref={scrollRef}
                     className="flex gap-3 md:gap-6 overflow-x-auto cursor-grab active:cursor-grabbing select-none"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    onMouseEnter={() => { isPausedByUser.current = true; }}
-                    onMouseLeave={() => { onDragEnd(); }}
+                    onMouseEnter={() => { isHovering.current = true; }}
+                    onMouseLeave={() => { isHovering.current = false; onDragEnd(); }}
                     onMouseDown={(e) => onDragStart(e.clientX)}
                     onMouseMove={(e) => onDragMove(e.clientX)}
                     onMouseUp={onDragEnd}
@@ -455,25 +454,31 @@ function About() {
                     onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
                     onTouchEnd={onDragEnd}
                 >
-                    {[...photos, ...photos].map((photo, index) => (
-                        <div
-                            key={index}
-                            className="relative group shrink-0"
-                        >
-                            <img
-                                src={photo.src}
-                                alt={photo.desc}
-                                loading='lazy'
-                                decoding='async'
-                                draggable={false}
-                                className="w-[168px] h-[285px] md:w-[268px] md:h-[456px] object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
-                            />
-                            {/* Hover text box */}
-                            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                                <p className="font-hand text-sm text-text-primary">{photo.desc}</p>
+                    {[...photos, ...photos].map((photo, index) => {
+                        const isActive = activeCaptionIndex === index;
+                        return (
+                            <div
+                                key={index}
+                                className="relative group shrink-0"
+                                onTouchStart={() => setActiveCaptionIndex(isActive ? null : index)}
+                            >
+                                <img
+                                    src={photo.src}
+                                    alt={photo.desc}
+                                    loading='lazy'
+                                    decoding='async'
+                                    draggable={false}
+                                    className="w-[168px] h-[285px] md:w-[268px] md:h-[456px] object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
+                                />
+                                {/* Caption: hover on desktop, tap on mobile */}
+                                <div className={`absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md transition-all duration-300
+                                    md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0
+                                    ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 md:opacity-0'}`}>
+                                    <p className="font-hand text-sm text-text-primary">{photo.desc}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </section>
             </FadeInSection>

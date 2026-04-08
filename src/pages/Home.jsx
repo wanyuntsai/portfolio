@@ -113,7 +113,7 @@ function Home() {
       </div>
       {!project.comingSoon && (
         <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-          {t('View Project →', '查看專案 →')}
+          {t('Case Study →', '案例研究 →')}
         </span>
       )}
     </Link>

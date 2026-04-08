@@ -514,7 +514,7 @@ function Learnnow() {
 
       {/* ===== Usability Testing ===== */}
       <FadeInSection>
-      <section className="py-8 md:py-12 bg-white">
+      <section className="py-8 md:py-12 ">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">{t('Usability Testing', '可用性測試')}</h2>
           <p className="text-base text-text-secondary mb-6">
@@ -714,7 +714,7 @@ function Learnnow() {
               <img
                 src={lightboxImage.src}
                 alt={lightboxImage.alt}
-                className="w-[90%] max-w-250 h-auto rounded-xl shadow-2xl"
+                className="w-[90%] max-w-250 h-auto rounded-xl shadow-2xl bg-white"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>
