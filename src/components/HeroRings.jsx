@@ -21,6 +21,7 @@ function HeroRings() {
   const outerTween    = useRef(null);
   const boostResetRef = useRef(null);
   const bubbleRef = useRef(null);
+  const stage2BgRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -48,6 +49,7 @@ function HeroRings() {
         gsap.set(photo,                  { opacity: 0, x: isDesktop ? 150 : 0, y: isDesktop ? 0 : -20 });
         gsap.set(leftCol,                { opacity: 0, x: isDesktop ? -30 : 0, y: isDesktop ? 0 : 20 });
         gsap.set(bubbleRef.current, { opacity: 0,x: -10, scale: 0.85, transformOrigin: 'left center' });
+        gsap.set(stage2BgRef.current, { opacity: 0 });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -72,11 +74,12 @@ function HeroRings() {
         tl
           .to(scrollHint, { opacity: 0, duration: 0.08 }, 0.00)
           .to([innerRing, outerRing, glow], { opacity: 0, scale: 0.5, duration: 0.17, ease: 'power2.inOut' }, 0.05)
+          .to(stage2BgRef.current, { opacity: 1, duration: 0.20, ease: 'power2.out' }, 0.22)
           .to(photo,    { opacity: 1, x: 0, y: 0, scale: isDesktop ? 1 : 0.85, duration: 0.20, ease: 'power2.out' }, 0.25)
           .to(welcome,  { opacity: 1, x: 0, y: 0, duration: 0.22, ease: 'power2.out' }, 0.30)
           .to(subtitle, { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' }, 0.52)
           .to(bubbleRef.current, { opacity: 1, x: 0, scale: 1, duration: 0.14, ease: 'back.out(1.4)' }, 0.58)
-          .to([welcome, subtitle, photo, bubbleRef.current], { opacity: 0, y: -40, duration: 0.10, ease: 'power2.in' }, 0.68)
+          .to([welcome, subtitle, photo, bubbleRef.current, stage2BgRef.current], { opacity: 0, y: -40, duration: 0.10, ease: 'power2.in' }, 0.68)
           .to([innerRing, outerRing], {
             opacity: isDesktop ? 0.55 : 0.4,
             scale: isDesktop ? 0.75 : 0.45,
@@ -117,14 +120,9 @@ function HeroRings() {
 
         @media (min-width: 769px) {
   .photo-filter {
-    
-    filter: grayscale(90%) contrast(1.1) brightness(1.1) sepia(10%);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    transition: transform 0.4s ease;
   }
-
   .photo-filter:hover {
-    filter: grayscale(0%) contrast(1) brightness(1) sepia(0%);
     transform: scale(1.02);
   }
 }
@@ -132,6 +130,14 @@ function HeroRings() {
 @keyframes scrollBreath {
   0%, 100% { opacity: 0.55;  transform: translateY(0); }
   50%       { opacity: 1;  transform: translateY(6px); }
+}
+@keyframes floatA {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(-18px, 22px) scale(1.05); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(20px, -16px) scale(1.04); }
 }
       `}</style>
 
@@ -183,6 +189,14 @@ function HeroRings() {
           <img ref={outerRingRef} src="/images/OuterRing.svg" alt="" className="absolute w-[min(420px,95vw)] z-[3] will-change-transform" />
         </div>
 
+        {/* Stage 2: Background */}
+        <div ref={stage2BgRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 4, backgroundColor: '#FBF9F1', opacity: 0 }}>
+          {/* 右上：薄荷藍 */}
+          <div style={{ position: 'absolute', top: '-10%', right: '-8%', width: '55%', height: '60%', borderRadius: '50%', background: 'rgba(186,230,253,0.40)', filter: 'blur(90px)', animation: 'floatA 10s ease-in-out infinite' }} />
+          {/* 左下：陽光黃 */}
+          <div style={{ position: 'absolute', bottom: '-8%', left: '-5%', width: '50%', height: '55%', borderRadius: '50%', background: 'rgba(254,243,199,0.60)', filter: 'blur(80px)', animation: 'floatB 13s ease-in-out infinite' }} />
+        </div>
+
         {/* Stage 2: Welcome Content */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-8 md:px-20" style={{ zIndex: 5 }}>
           <div className="stage2-container flex items-center gap-12 md:gap-16 w-full max-w-5xl">
@@ -195,7 +209,7 @@ function HeroRings() {
               ref={photoRef}
               src="/images/Wanyun_Tsai.png"
               alt=""
-              className="photo-filter mobile-photo-color rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto"
+              className="photo-filter rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto"
             />
             {/* Speech Bubble */}
             <div

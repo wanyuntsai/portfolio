@@ -257,13 +257,14 @@ function About() {
 
             {/* Core Values */}
             <FadeInSection>
-            <section className="px-5 md:px-20 py-8 md:py-12">
-                <div className="max-w-5xl mx-auto">
-                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-8">{t('Core Values', '核心價值')}</p>
+            <section className="px-5 md:px-20 pt-8 pb-16 md:pt-10 md:pb-20 min-h-[45vh] md:min-h-[55vh] flex flex-col">
+                <div className="max-w-5xl mx-auto w-full flex flex-col flex-1">
+                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase">{t('Core Values', '核心價值')}</p>
+                    <div className="flex-1" />
                     <div className="divide-y divide-border">
 
                         {/* Empathetic */}
-                        <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-16">
+                        <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-start gap-3 md:gap-16">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary shrink-0 md:w-44" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Empathetic', '同理心')}</h3>
                             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
                                 {t("My strength lies in understanding diverse perspectives and identifying subtle behavioral cues. I translate genuine user needs into meaningful digital experiences through deep listening and observation.", '我善於理解多元觀點，捕捉細微的行為線索。透過深入的傾聽與觀察，我將真實的使用者需求轉化為有意義的數位體驗。')}
@@ -271,7 +272,7 @@ function About() {
                         </div>
 
                         {/* Adaptive */}
-                        <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-16">
+                        <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-start gap-3 md:gap-16">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary shrink-0 md:w-44" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Adaptive', '適應力')}</h3>
                             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
                                 {t('I embrace new challenges with an open mind, continuously adapting to dynamic design environments and evolving best practices.', '我以開放的心態迎接設計環境中的新挑戰，持續適應變化並探索最佳實踐。')}
@@ -279,7 +280,7 @@ function About() {
                         </div>
 
                         {/* Reflective */}
-                        <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-baseline gap-3 md:gap-16">
+                        <div className="py-6 md:py-8 flex flex-col md:flex-row md:items-start gap-3 md:gap-16">
                             <h3 className="font-serif text-xl md:text-2xl text-text-primary shrink-0 md:w-44" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t('Reflective', '反思力')}</h3>
                             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
                                 {t('I reflect on experience and continuously refine my approach, ensuring that every design decision is supported by clear, well-reasoned logic.', '我會反思經驗並持續優化我的設計方法，確保每個設計決策都有清晰、合理的邏輯支持。')}
