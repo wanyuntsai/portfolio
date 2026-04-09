@@ -164,7 +164,7 @@ function Home() {
             </div>
             <div className="mt-8 text-center">
               <Link to="/work" className="border border-text-primary px-6 py-3 rounded-full hover:bg-gray-50 transition-colors font-mono text-sm">
-                {t('→ View All Work', '→ 查看所有作品')}
+                {t('View All Work →', '查看所有作品 → ')}
               </Link>
             </div>
           </section>
