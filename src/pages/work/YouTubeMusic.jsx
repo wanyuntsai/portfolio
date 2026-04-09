@@ -53,7 +53,7 @@ function YouTubeMusic() {
         <div className="bg-neutral-50 pt-20">
 
             {/* Breadcrumb */}
-            <nav className="px-5 md:px-20 pt-3 md:pt-6">
+            <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-3 md:pt-6">
                 <div className="flex items-center gap-2 text-xs md:text-base font-mono">
                     <Link to="/work" className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
                     <span className="text-text-secondary">{'>'}</span>
@@ -62,7 +62,7 @@ function YouTubeMusic() {
             </nav>
 
             {/* Header */}
-            <section className="px-5 md:px-20 py-4 md:py-10">
+            <section className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 py-4 md:py-10">
                 <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-12">
                     <div className="md:w-1/2 flex flex-col">
                         <div className="flex flex-col gap-y-1 min-h-30 md:min-h-40">
@@ -106,7 +106,7 @@ function YouTubeMusic() {
                 </div>
             </section>
 
-            <div className="lg:flex lg:gap-16 px-5 md:px-20">
+            <div className="lg:flex lg:gap-16 max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
 
             {/* TOC */}
             <aside className="hidden lg:block w-70 shrink-0 mt-15">

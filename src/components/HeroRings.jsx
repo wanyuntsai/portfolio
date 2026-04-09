@@ -83,7 +83,7 @@ function HeroRings() {
           .to([innerRing, outerRing], {
             opacity: isDesktop ? 0.55 : 0.4,
             scale: isDesktop ? 0.75 : 0.45,
-            x: isDesktop ? '25vw' : '0',
+            x: isDesktop ? '360px' : '0',
             y: isDesktop ? '0' : '-20vh',
             duration: 0.14,
             ease: 'power2.out',
@@ -91,7 +91,7 @@ function HeroRings() {
           .to(glow, {
             opacity: isDesktop ? 0.25 : 0.15,
             scale: isDesktop ? 0.65 : 0.4,
-            x: isDesktop ? '25vw' : '0',
+            x: isDesktop ? '360px' : '0',
             y: isDesktop ? '0' : '-20vh',
             duration: 0.14,
           }, 0.76)
@@ -142,54 +142,8 @@ function HeroRings() {
       `}</style>
 
       <section ref={sectionRef} className="relative h-screen w-full overflow-hidden" style={{ zIndex: 10 }}>
-        
-        {/* Stage 3: Content */}
-        <div ref={leftColRef} className="absolute inset-0 flex flex-col justify-center items-center md:items-start px-5 md:px-20 z-10 w-full" style={{ paddingTop: '10vh', pointerEvents: 'none' }}>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm self-center md:self-start mb-6">
-            <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
-            <span className="font-mono text-[#555555] tracking-wide text-[12px] md:text-[13px]">
-              {t('Open to internships · May 2026', '尋找 2026/5 實習機會')}
-            </span>
-          </div>
-          <h1 className="font-serif  leading-none mt-2 text-center md:text-left" style={{ fontSize: 'clamp(64px, 10vw, 108px)' }}>
-            {t('Yun\nTsai', 'Yun\nTsai').split('\n').map((line, i) => (
-              <span key={i} className="block">{line}</span>
-            ))}
-          </h1>
-          <div className="mt-4 flex flex-col items-center md:items-start gap-2">
-            <span className="font-mono text-base md:text-lg uppercase text-[#999] tracking-widest">UX / UI Designer</span>
-            
-          </div>
-          <p className="font-mono text-[14px] md:text-[15px] mt-6 text-center md:text-left max-w-[320px] md:max-w-md" style={{ color: '#555', lineHeight: '1.8' }}>
-            {t('Research-driven design that solves real problems.', '以研究驅動設計，解決真實問題。')}
-          </p>
-          <div className="flex items-center justify-center md:justify-start gap-3 flex-wrap mt-8" style={{ pointerEvents: 'auto' }}>
-            <Link to="/work" className="inline-flex items-center text-white bg-brand-green-button rounded-full px-5 py-2.5 font-mono shadow-md hover:opacity-90 transition-all text-[13px] md:text-[14px]">
-              {t('Explore My Work', '探索作品集')}
-            </Link>
-            <a href="/YunTsai_Resume.pdf" target="_blank" rel="noopener noreferrer" className="border border-text-primary rounded-full px-5 py-2.5 font-mono hover:bg-text-primary hover:text-white transition-all text-[13px] md:text-[14px]">
-              {t('Resume', '履歷')} ↗
-            </a>
-          </div>
-        </div>
 
-        {/* Rings */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div
-            ref={glowRef}
-            className="absolute rounded-full cursor-pointer"
-            style={{ width: 300, height: 300, background: 'radial-gradient(circle, #E2FFAD 0%, #9CAF6C 40%, transparent 70%)', filter: 'blur(55px)', zIndex: 1, willChange: 'transform, opacity', pointerEvents: 'auto', transition: 'transform 0.08s ease-out' }}
-            onMouseDown={e => e.currentTarget.style.transform = 'scale(1.28)'}
-            onMouseUp={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
-            onTouchStart={e => e.currentTarget.style.transform = 'scale(1.28)'}
-            onTouchEnd={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
-          />
-          <img ref={innerRingRef} src="/images/InnerRing.svg" alt="" className="absolute w-[min(320px,82vw)] z-[2] will-change-transform" />
-          <img ref={outerRingRef} src="/images/OuterRing.svg" alt="" className="absolute w-[min(420px,95vw)] z-[3] will-change-transform" />
-        </div>
-
-        {/* Stage 2: Background */}
+        {/* Stage 2: Background — full-width, outside max-w wrapper */}
         <div ref={stage2BgRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 4, backgroundColor: '#FBF9F1', opacity: 0 }}>
           {/* 右上：薄荷藍 */}
           <div style={{ position: 'absolute', top: '-10%', right: '-8%', width: '55%', height: '60%', borderRadius: '50%', background: 'rgba(186,230,253,0.40)', filter: 'blur(90px)', animation: 'floatA 10s ease-in-out infinite' }} />
@@ -197,45 +151,88 @@ function HeroRings() {
           <div style={{ position: 'absolute', bottom: '-8%', left: '-5%', width: '50%', height: '55%', borderRadius: '50%', background: 'rgba(254,243,199,0.60)', filter: 'blur(80px)', animation: 'floatB 13s ease-in-out infinite' }} />
         </div>
 
-        {/* Stage 2: Welcome Content */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-8 md:px-20" style={{ zIndex: 5 }}>
-          <div className="stage2-container flex items-center gap-12 md:gap-16 w-full max-w-5xl">
-            <div ref={welcomeRef} style={{ opacity: 0 }}>
-              <p className="font-mono text-[clamp(28px,5vw,60px)] font-bold leading-[1.1] text-transparent" style={{ WebkitTextStroke: '1.5px #555' }}>WELCOME TO<br />MY WEBSITE</p>
-              <p ref={subtitleRef} className="font-mono text-[14px] md:text-[16px] text-[#666] mt-6 md:mt-9 opacity-0">Designed in Vancouver, built for everywhere.</p>
+        {/* All visual content constrained to 1440px — same layout on all screen sizes */}
+        <div className="max-w-[1440px] mx-auto h-full relative">
+
+          {/* Stage 3: Content */}
+          <div ref={leftColRef} className="absolute inset-0 flex flex-col justify-center items-center md:items-start px-5 md:px-20 z-10 w-full" style={{ paddingTop: '10vh', pointerEvents: 'none' }}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm self-center md:self-start mb-6">
+              <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
+              <span className="font-mono text-[#555555] tracking-wide text-[12px] md:text-[13px]">
+                {t('Open to internships · May 2026', '尋找 2026/5 實習機會')}
+              </span>
             </div>
-            {/* 套用了 photo-filter 和 mobile-photo-color 類別 */}
-            <img
-              ref={photoRef}
-              src="/images/Wanyun_Tsai.png"
-              alt=""
-              className="photo-filter rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto"
-            />
-            {/* Speech Bubble */}
-            <div
-              ref={bubbleRef}
-              style={{
-                position: 'relative',
-                alignSelf: 'center',
-                flexShrink: 0,
-                willChange: 'transform, opacity',
-              }}
-            >
-              <img
-                src="/images/speechbubble.svg"
-                alt="language bubble"
-                style={{ width: '300px', height: 'auto', display: 'block' }}
-              />
+            <h1 className="font-serif leading-none mt-2 text-center md:text-left" style={{ fontSize: 'clamp(64px, 10vw, 108px)' }}>
+              {t('Yun\nTsai', 'Yun\nTsai').split('\n').map((line, i) => (
+                <span key={i} className="block">{line}</span>
+              ))}
+            </h1>
+            <div className="mt-4 flex flex-col items-center md:items-start gap-2">
+              <span className="font-mono text-base md:text-lg uppercase text-[#999] tracking-widest">UX / UI Designer</span>
+            </div>
+            <p className="font-mono text-[14px] md:text-[15px] mt-6 text-center md:text-left max-w-[320px] md:max-w-md" style={{ color: '#555', lineHeight: '1.8' }}>
+              {t('Research-driven design that solves real problems.', '以研究驅動設計，解決真實問題。')}
+            </p>
+            <div className="flex items-center justify-center md:justify-start gap-3 flex-wrap mt-8" style={{ pointerEvents: 'auto' }}>
+              <Link to="/work" className="inline-flex items-center text-white bg-brand-green-button rounded-full px-5 py-2.5 font-mono shadow-md hover:opacity-90 transition-all text-[13px] md:text-[14px]">
+                {t('Explore My Work', '探索作品集')}
+              </Link>
+              <a href="/YunTsai_Resume.pdf" target="_blank" rel="noopener noreferrer" className="border border-text-primary rounded-full px-5 py-2.5 font-mono hover:bg-text-primary hover:text-white transition-all text-[13px] md:text-[14px]">
+                {t('Resume', '履歷')} ↗
+              </a>
             </div>
           </div>
+
+          {/* Rings */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div
+              ref={glowRef}
+              className="absolute rounded-full cursor-pointer"
+              style={{ width: 300, height: 300, background: 'radial-gradient(circle, #E2FFAD 0%, #9CAF6C 40%, transparent 70%)', filter: 'blur(55px)', zIndex: 1, willChange: 'transform, opacity', pointerEvents: 'auto', transition: 'transform 0.08s ease-out' }}
+              onMouseDown={e => e.currentTarget.style.transform = 'scale(1.28)'}
+              onMouseUp={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+              onTouchStart={e => e.currentTarget.style.transform = 'scale(1.28)'}
+              onTouchEnd={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
+            />
+            <img ref={innerRingRef} src="/images/InnerRing.svg" alt="" className="absolute w-[min(320px,82vw)] z-[2] will-change-transform" />
+            <img ref={outerRingRef} src="/images/OuterRing.svg" alt="" className="absolute w-[min(420px,95vw)] z-[3] will-change-transform" />
+          </div>
+
+          {/* Stage 2: Welcome Content */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-8 md:px-20" style={{ zIndex: 5 }}>
+            <div className="stage2-container flex items-center gap-12 md:gap-16 w-full max-w-5xl">
+              <div ref={welcomeRef} style={{ opacity: 0 }}>
+                <p className="font-mono text-[clamp(28px,5vw,60px)] font-bold leading-[1.1] text-transparent" style={{ WebkitTextStroke: '1.5px #555' }}>WELCOME TO<br />MY WEBSITE</p>
+                <p ref={subtitleRef} className="font-mono text-[14px] md:text-[16px] text-[#666] mt-6 md:mt-9 opacity-0">Designed in Vancouver, built for everywhere.</p>
+              </div>
+              <img
+                ref={photoRef}
+                src="/images/Wanyun_Tsai.png"
+                alt=""
+                className="photo-filter rounded-full w-[min(200px,40vw)] h-[min(200px,40vw)] object-cover opacity-0 pointer-events-auto"
+              />
+              {/* Speech Bubble */}
+              <div
+                ref={bubbleRef}
+                style={{ position: 'relative', alignSelf: 'center', flexShrink: 0, willChange: 'transform, opacity' }}
+              >
+                <img
+                  src="/images/speechbubble.svg"
+                  alt="language bubble"
+                  style={{ width: '300px', height: 'auto', display: 'block' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Hint */}
+          <div ref={scrollHintRef} className="absolute bottom-[9%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-[7] pointer-events-none">
+            <div className="w-[1.5px] h-12 bg-gradient-to-b from-[#1a1a1a] to-transparent animate-[scrollBreath_2.2s_ease-in-out_infinite_0.4s]" />
+            <span className="font-mono text-[13px] tracking-[0.3em] text-[#1a1a1a] font-semibold animate-[scrollBreath_2.2s_ease-in-out_infinite]">SCROLL</span>
+          </div>
+
         </div>
-
-        {/* Scroll Hint */}
-<div ref={scrollHintRef} className="absolute bottom-[9%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-[7] pointer-events-none">
-  <div className="w-[1.5px] h-12 bg-gradient-to-b from-[#1a1a1a] to-transparent animate-[scrollBreath_2.2s_ease-in-out_infinite_0.4s]" />
-    <span className="font-mono text-[13px] tracking-[0.3em] text-[#1a1a1a] font-semibold animate-[scrollBreath_2.2s_ease-in-out_infinite]">SCROLL</span>
-
-</div>
       </section>
     </>
   );

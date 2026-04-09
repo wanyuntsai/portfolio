@@ -113,7 +113,7 @@ function Projects() {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-48 md:h-60 object-cover transition-transform duration-300 group-hover:scale-105"
+                                    className="w-full aspect-16/10 object-cover object-top transition-transform duration-300 group-hover:scale-105"
                                 />
                             )}
                         </div>
