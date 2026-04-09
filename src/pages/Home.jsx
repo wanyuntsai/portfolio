@@ -91,7 +91,7 @@ function Home() {
             <span className="text-text-secondary font-mono text-base opacity-40">{t('Coming Soon', '即將推出')}</span>
           </div>
         ) : (
-          <img src={project.image} alt={project.title} className="w-90 h-60 object-cover transition-transform duration-300 group-hover:scale-105" />
+          <img src={project.image} alt={project.title} className="w-full h-48 md:h-60 object-cover transition-transform duration-300 group-hover:scale-105" />
         )}
       </div>
       <div className="flex items-center gap-3 mb-1">
@@ -112,8 +112,13 @@ function Home() {
         ))}
       </div>
       {!project.comingSoon && (
-        <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-          {t('Case Study →', '案例研究 →')}
+        <span className="relative text-brand-green text-base font-mono inline-flex items-center gap-1 w-fit
+          transition-colors duration-300 group-hover:text-brand-green-light
+          after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-brand-green
+          after:transition-[width,background-color] after:duration-300 after:ease-out
+          group-hover:after:w-[calc(100%+4px)] group-hover:after:bg-brand-green-light">
+          {t('Case Study', '案例研究')}
+          <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
         </span>
       )}
     </Link>

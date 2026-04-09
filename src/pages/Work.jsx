@@ -101,12 +101,12 @@ function Projects() {
                         key={project.id}
                         to={project.comingSoon ? '#' : project.link}
                         onClick={project.comingSoon ? e => e.preventDefault() : undefined}
-                        className={`bg-white rounded-lg p-6 block transition-all group h-full ${project.comingSoon ? 'cursor-default' : 'hover:shadow-lg cursor-pointer'}`}
+                        className={`bg-white rounded-lg p-6 block transition-all duration-300 group h-full ${project.comingSoon ? 'cursor-default' : 'hover:shadow-lg cursor-pointer'}`}
                     >
                         {/* img */}
                         <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
                             {project.comingSoon ? (
-                                <div className="w-90 h-60 bg-gray-100 rounded-lg flex items-center justify-center">
+                                <div className="w-full h-48 md:h-60 bg-gray-100 rounded-lg flex items-center justify-center">
                                     <span className="text-text-secondary font-mono text-base opacity-40">Coming Soon</span>
                                 </div>
                             ) : (
@@ -153,8 +153,13 @@ function Projects() {
 
                         {/* link */}
                         {!project.comingSoon && (
-                            <span className="text-brand-green text-base font-mono inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                                {t('Case Study →', '查看案例 →')}
+                            <span className="relative text-brand-green text-base font-mono inline-flex items-center gap-1 w-fit
+                                transition-colors duration-300 group-hover:text-brand-green-light
+                                after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-brand-green
+                                after:transition-[width,background-color] after:duration-300 after:ease-out
+                                group-hover:after:w-[calc(100%+4px)] group-hover:after:bg-brand-green-light">
+                                {t('Case Study', '查看案例')}
+                                <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
                             </span>
                         )}
                     </Link>
