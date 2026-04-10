@@ -136,7 +136,7 @@ function About() {
         <div className="flex-1 pt-20">
 
             {/* h1 */}
-            <section className='px-5 md:px-20 py-12 md:py-16'>
+            <section className='max-w-7xl mx-auto px-5 md:px-20 py-12 md:py-16'>
                 <div className='relative flex flex-col justify-center items-center'
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
@@ -211,7 +211,7 @@ function About() {
 
             {/* Profile Photo */}
             <FadeInSection>
-            <section className="relative px-5 md:px-20 py-6 flex flex-col items-center gap-3">
+            <section className="relative max-w-7xl mx-auto px-5 md:px-20 py-6 flex flex-col items-center gap-3">
                 <div className="relative">
                     {/* Pulsing ring — disappears after first click */}
                     {!hasClickedPhoto && (
@@ -250,14 +250,14 @@ function About() {
 
             {/* h2 */}
             <FadeInSection delay={0.1}>
-            <section className='px-5 md:px-20 py-8 md:py-12 text-center'>
+            <section className='max-w-7xl mx-auto px-5 md:px-20 py-8 md:py-12 text-center'>
                 <h2 className='text-xl text-text-secondary font-mono'>{t('UX/UI Designer | Vancouver', 'UX/UI 設計師 | 溫哥華')}</h2>
             </section>
             </FadeInSection>
 
             {/* Core Values */}
             <FadeInSection>
-            <section className="px-5 md:px-20 pt-8 pb-16 md:pt-10 md:pb-20 min-h-[45vh] md:min-h-[55vh] flex flex-col">
+            <section className="max-w-7xl mx-auto px-5 md:px-20 pt-8 pb-16 md:pt-10 md:pb-20 min-h-[45vh] md:min-h-[55vh] flex flex-col">
                 <div className="max-w-5xl mx-auto w-full flex flex-col flex-1">
                     <p className="font-mono text-xs text-brand-green tracking-widest uppercase">{t('Core Values', '核心價值')}</p>
                     <div className="flex-1" />
@@ -295,7 +295,7 @@ function About() {
 
             {/* Toolkits */}
             <FadeInSection>
-            <section className="px-5 md:px-20 py-8 md:py-12">
+            <section className="max-w-7xl mx-auto px-5 md:px-20 py-8 md:py-12">
                 <div className="max-w-5xl mx-auto">
                     <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-10">{t('Toolkits', '工具包')}</p>
 
@@ -371,7 +371,7 @@ function About() {
             </FadeInSection>
 
             {/* Outside Design Chat */}
-            <section ref={chatRef} className="pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
+            <section ref={chatRef} className="max-w-7xl mx-auto pt-16 md:pt-24 px-5 md:px-20 py-8 md:py-12">
                 {/* Q. - align left */}
                 <div className={`flex justify-start mb-6 max-w-3xl transition-all duration-500 ${chatVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                     <div className="bg-white border border-border px-5 py-3 shadow-sm" style={{ borderRadius: '20px 20px 20px 4px' }}>

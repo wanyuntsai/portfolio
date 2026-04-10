@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
 import { useLanguage } from '../context/LanguageContext';
+import ProjectCard from '../components/ProjectCard';
 
 
 
@@ -70,7 +70,7 @@ function Projects() {
 
     return (
         <PageTransition>
-        <div className="px-5 md:px-20 pt-24 pb-8 bg-brand-cream min-h-screen">
+        <div className="max-w-7xl mx-auto px-5 md:px-20 pt-24 pb-8 bg-brand-cream min-h-screen">
 
             {/* Page Title */}
             <h1 className="font-serif text-3xl md:text-4xl text-text-primary mb-4">{t('My Work', '作品')}</h1>
@@ -96,74 +96,9 @@ function Projects() {
             {/* Projects Cards - 2x2 Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {filteredProjects.map(project => (
-                    <FadeInSection>
-                    <Link
-                        key={project.id}
-                        to={project.comingSoon ? '#' : project.link}
-                        onClick={project.comingSoon ? e => e.preventDefault() : undefined}
-                        className={`bg-white rounded-lg p-6 block transition-all duration-300 group h-full ${project.comingSoon ? 'cursor-default' : 'hover:shadow-lg cursor-pointer'}`}
-                    >
-                        {/* img */}
-                        <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
-                            {project.comingSoon ? (
-                                <div className="w-full h-48 md:h-60 bg-gray-100 rounded-lg flex items-center justify-center">
-                                    <span className="text-text-secondary font-mono text-base opacity-40">Coming Soon</span>
-                                </div>
-                            ) : (
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full aspect-16/10 object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                                />
-                            )}
-                        </div>
-
-                        {/* title */}
-                        <div className="flex items-center gap-3 mb-1">
-                            <h3 className="font-serif text-xl md:text-2xl text-text-primary">{project.title}</h3>
-                            {project.comingSoon && (
-                                <span className="text-base font-mono px-2 py-0.5 rounded-full border border-text-secondary text-text-secondary opacity-60">
-                                    {t('Coming Soon', '即將推出')}
-                                </span>
-                            )}
-                        </div>
-                        <p className="text-text-secondary text-base mb-3 font-serif">{project.subtitle}</p>
-
-                        {/* description - display only on desktop */}
-                        <p className="hidden md:block text-base text-text-secondary mb-3 font-funnel leading-relaxed line-clamp-2">
-                            {project.description}
-                        </p>
-
-                        {/* tags */}
-                        <div className="flex gap-1.5 flex-wrap mb-4">
-                            {project.tags?.map((tag, index) => (
-                                <span
-                                    key={index}
-                                    className="rounded-full px-2 py-0.5 text-xs font-mono"
-                                    style={{
-                                        border: "1px solid #C5DFA0",
-                                        background: "#F0F5E8",
-                                        color: "#4A7A2A"
-                                    }}
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-
-                        {/* link */}
-                        {!project.comingSoon && (
-                            <span className="relative text-brand-green text-base font-mono inline-flex items-center gap-1 w-fit
-                                transition-colors duration-300 group-hover:text-brand-green-light
-                                after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-brand-green
-                                after:transition-[width,background-color] after:duration-300 after:ease-out
-                                group-hover:after:w-[calc(100%+4px)] group-hover:after:bg-brand-green-light">
-                                {t('Case Study', '查看案例')}
-                                <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
-                            </span>
-                        )}
-                    </Link>
-                </FadeInSection>
+                    <FadeInSection key={project.id}>
+                        <ProjectCard project={project} />
+                    </FadeInSection>
                 ))}
             </div>
         </div>

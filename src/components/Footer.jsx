@@ -12,7 +12,8 @@ function Footer() {
     }
 
     return (
-        <footer className="text-brand-green border-t border-border py-8 px-5 md:px-20 w-full mt-auto bg-transparent">
+        <footer className="text-brand-green border-t border-border py-8 w-full mt-auto bg-transparent">
+          <div className="max-w-7xl mx-auto px-5 md:px-20">
             <div className="flex justify-between items-start">
                 <div className="flex flex-col items-start">
                     <p className="font-medium font-mono">{t('Get in Touch!', '歡迎與我聯繫！')}</p>
@@ -33,6 +34,7 @@ function Footer() {
                 <p>&copy; 2026 Yun Tsai. </p>
                 <p>Designed & built with lots of coffee :)</p>
             </div>
+          </div>
         </footer>
     )
 }

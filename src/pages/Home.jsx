@@ -5,6 +5,7 @@ import { Pagination } from 'swiper/modules';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
 import { useLanguage } from '../context/LanguageContext';
 import HeroRings from '../components/HeroRings';
+import ProjectCard from '../components/ProjectCard';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -79,50 +80,6 @@ function Home() {
     'Responsive UI', 'Design Systems',
   ];
 
-  const renderProjectCard = (project) => (
-    <Link
-      to={project.comingSoon ? '#' : project.link}
-      onClick={project.comingSoon ? e => e.preventDefault() : undefined}
-      className={`bg-white rounded-lg p-6 block transition-all group h-full ${project.comingSoon ? 'cursor-default opacity-70' : 'hover:shadow-lg cursor-pointer'}`}
-    >
-      <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
-        {project.comingSoon ? (
-          <div className="w-90 h-60 bg-gray-100 rounded-lg flex items-center justify-center">
-            <span className="text-text-secondary font-mono text-base opacity-40">{t('Coming Soon', '即將推出')}</span>
-          </div>
-        ) : (
-          <img src={project.image} alt={project.title} className="w-full h-48 md:h-60 object-cover transition-transform duration-300 group-hover:scale-105" />
-        )}
-      </div>
-      <div className="flex items-center gap-3 mb-1">
-        <h3 className="font-serif text-xl md:text-2xl text-text-primary">{project.title}</h3>
-        {project.comingSoon && (
-          <span className="text-base font-mono px-2 py-0.5 rounded-full border border-text-secondary text-text-secondary opacity-60">
-            {t('Coming Soon', '即將推出')}
-          </span>
-        )}
-      </div>
-      <p className="text-text-secondary text-base mb-3 font-serif">{project.subtitle}</p>
-      <p className="hidden md:block text-base text-text-secondary mb-3 font-funnel leading-relaxed line-clamp-2">{project.description}</p>
-      <div className="flex gap-1.5 flex-wrap mb-4">
-        {project.tags?.map((tag, index) => (
-          <span key={index} className="rounded-full px-2 py-0.5 text-xs font-mono" style={{ border: "1px solid #C5DFA0", background: "#F0F5E8", color: "#4A7A2A" }}>
-            {tag}
-          </span>
-        ))}
-      </div>
-      {!project.comingSoon && (
-        <span className="relative text-brand-green text-base font-mono inline-flex items-center gap-1 w-fit
-          transition-colors duration-300 group-hover:text-brand-green-light
-          after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-brand-green
-          after:transition-[width,background-color] after:duration-300 after:ease-out
-          group-hover:after:w-[calc(100%+4px)] group-hover:after:bg-brand-green-light">
-          {t('Case Study', '案例研究')}
-          <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
-        </span>
-      )}
-    </Link>
-  );
 
   return (
     <PageTransition>
@@ -154,17 +111,17 @@ function Home() {
 
         {/* ===== PROJECTS ===== */}
         <FadeInSection>
-          <section id="projects" className="px-5 md:px-20 py-12">
+          <section id="projects" className="max-w-7xl mx-auto px-5 md:px-20 py-12">
             <div className="md:hidden">
               <Swiper modules={[Pagination]} pagination={{ clickable: true }} spaceBetween={20} slidesPerView={1} className="pb-12">
                 {projects.map(project => (
-                  <SwiperSlide key={project.id}>{renderProjectCard(project)}</SwiperSlide>
+                  <SwiperSlide key={project.id}>{<ProjectCard project={project} />}</SwiperSlide>
                 ))}
               </Swiper>
             </div>
             <div className="hidden md:grid grid-cols-2 gap-6">
               {projects.map(project => (
-                <div key={project.id} className="h-full">{renderProjectCard(project)}</div>
+                <div key={project.id} className="h-full">{<ProjectCard project={project} />}</div>
               ))}
             </div>
             <div className="mt-8 text-center">
@@ -178,7 +135,7 @@ function Home() {
 
         {/* ===== CONTACT ===== */}
         <FadeInSection>
-          <section className="px-5 md:px-20 py-20 md:py-28">
+          <section className="max-w-7xl mx-auto px-5 md:px-20 py-20 md:py-28">
             <h2 className="text-4xl font-bold text-text-primary text-center font-serif">{t("Let's Connect!", '歡迎聯繫！')}</h2>
             <p className="mt-4 text-text-secondary text-center font-mono">
               {t("I'm always open to new opportunities, conversations, or simply exchanging ideas. Feel free to reach out!", '歡迎任何合作、交流或想法分享！')}

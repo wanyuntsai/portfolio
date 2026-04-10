@@ -34,7 +34,8 @@ function Navbar() {
 
     return (
         <>
-        <nav className={`flex justify-between items-center py-6 px-5 md:px-20 ${bgColor} ${navPosition}`}>
+        <nav className={`${bgColor} ${navPosition}`}>
+        <div className={`max-w-7xl mx-auto flex justify-between items-center py-6 px-5 md:px-20`}>
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="font-serif text-base transition-transform duration-200 hover:scale-110">Yun Tsai</Link>
 
             {/* desktop menu */}
@@ -99,6 +100,7 @@ function Navbar() {
                 <span className="w-6 h-0.5 bg-black"></span>
                 <span className="w-6 h-0.5 bg-black"></span>
             </button>
+        </div>
         </nav>
 
         {/* mobile menu overlay */}
