@@ -257,10 +257,9 @@ function About() {
 
             {/* Core Values */}
             <FadeInSection>
-            <section className="max-w-7xl mx-auto px-5 md:px-20 pt-8 pb-16 md:pt-10 md:pb-20 min-h-[45vh] md:min-h-[55vh] flex flex-col">
-                <div className="max-w-5xl mx-auto w-full flex flex-col flex-1">
-                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase">{t('Core Values', '核心價值')}</p>
-                    <div className="flex-1" />
+            <section className="max-w-7xl mx-auto px-5 md:px-20 py-8 md:py-12">
+                <div className="max-w-5xl mx-auto">
+                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-8">{t('Core Values', '核心價值')}</p>
                     <div className="divide-y divide-border">
 
                         {/* Empathetic */}

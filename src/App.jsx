@@ -15,6 +15,7 @@ import LearnNow from './pages/work/Learnnow'
 import Vanlink from './pages/work/Vanlink'
 import YouTubeMusic from "./pages/work/YouTubeMusic";
 import MindLog from './pages/work/MindLog';
+import YunJam from './pages/work/YunJam';
 
 function AppContent() {
   const location = useLocation();
@@ -37,6 +38,7 @@ function AppContent() {
           <Route path="/work/vanlink" element={<Vanlink />} />
           <Route path="/work/youtubemusic" element={<YouTubeMusic />} />
           <Route path="/work/mindlog" element={<MindLog />} />
+          <Route path="/work/yunjam" element={<YunJam />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

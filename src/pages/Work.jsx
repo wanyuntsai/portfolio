@@ -56,11 +56,20 @@ function Projects() {
             subtitle: t('Mental health app', '心理健康應用程式'),
             description: t('Designed a 0-to-1 mental wellness app for the Canadian market, bridging the gap between daily journaling and accessible mental health resources.',
   '為加拿大市場從零設計心理健康 App，填補日記記錄與心理諮詢資訊管道之間的市場缺口。'),
-
             tags: ["UX/UI", "Figma", "User Research"],
             link: "/work/MindLog",
             category: "UX/UI Design",
             image: "/images/MindLog/MindLog_mkup.png",
+        },
+        {
+            id: "yunjam",
+            title: "YUN JAM",
+            subtitle: t('Interactive music playlist tool', '互動式音樂播放清單工具'),
+            description: t('Turned a class assignment into a shareable music tool — paste any Spotify URL to build and share your own curated playlist, no account required.', '將課堂作業轉化為可分享的音樂工具，貼上任意 Spotify 連結即可建立並分享個人播放清單，無需帳號。'),
+            image: "/images/YunJam/yunjam_mkup.png",
+            tags: ["HTML", "CSS", "JavaScript", "Spotify API"],
+            link: "/work/yunjam",
+            category: "Web Development",
         },
     ]
 
