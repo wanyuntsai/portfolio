@@ -112,7 +112,7 @@ function Home() {
             <div className="flex gap-8 text-text-secondary">
               {[...tools, ...tools, ...tools].map((tool, index) => (
                 <span key={index} className="whitespace-nowrap flex items-center gap-8">
-                  {tool}<span className="text-text-secondary">·</span>
+                  {tool}<span className="text-text-secondary text-2xl">✦</span>
                 </span>
               ))}
             </div>
