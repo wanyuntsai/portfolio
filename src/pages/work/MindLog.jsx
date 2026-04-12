@@ -176,7 +176,7 @@ function MindLog() {
                 <div className="bg-neutral-50 pt-20">
 
                     {/* ===== Breadcrumb ===== */}
-                    <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-3 md:pt-6">
+                    <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
                         <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
                             <Link to="/work" className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
                             <span className="text-text-secondary">{'>'}</span>
@@ -188,18 +188,18 @@ function MindLog() {
                     <section className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 py-4 md:py-10">
                         <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-12">
                             <div className="md:w-1/2 flex flex-col">
-                                <div className="flex flex-col gap-y-1 min-h-[120px] md:min-h-[160px]">
+                                <div className="flex flex-col gap-y-2">
                                     <h1 className="font-serif text-3xl md:text-5xl text-text-primary">MindLog</h1>
                                     <p className="font-serif text-lg md:text-2xl text-text-secondary">
                                         {t('AI-Powered Mental Wellness App', 'AI 心理健康追蹤 App')}
                                     </p>
+                                    <p className="pt-2 text-base text-text-secondary leading-relaxed">
+                                        {t(
+                                            'A mental wellness mobile app designed for the Canadian market — bridging everyday emotional self-care with professional support. Users track moods, journal their thoughts, and receive AI-powered insights, with a clear pathway to counselors when needed.',
+                                            '一款專為加拿大市場設計的心理健康行動 App，架起日常情緒自我照顧與專業支援之間的橋樑。用戶可追蹤情緒、記錄日記，獲得 AI 洞察分析，在需要時直接連結諮商師。'
+                                        )}
+                                    </p>
                                 </div>
-                                <p className="flex-grow pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
-                                    {t(
-                                        'A mental wellness mobile app designed for the Canadian market — bridging everyday emotional self-care with professional support. Users track moods, journal their thoughts, and receive AI-powered insights, with a clear pathway to counselors when needed.',
-                                        '一款專為加拿大市場設計的心理健康行動 App，架起日常情緒自我照顧與專業支援之間的橋樑。用戶可追蹤情緒、記錄日記，獲得 AI 洞察分析，在需要時直接連結諮商師。'
-                                    )}
-                                </p>
                                 <div className="flex gap-8 md:gap-16 pt-4 md:pt-6">
                                     {[
                                         { label: t('Tools', '工具'),     value: 'Figma' },
@@ -234,6 +234,11 @@ function MindLog() {
                             </div>
                         </div>
                     </section>
+
+                    {/* ===== Header / Body divider ===== */}
+                    <div className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
+                        <hr className="border-t border-border" />
+                    </div>
 
                     <div className="lg:flex lg:gap-16 max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
 
@@ -459,6 +464,26 @@ function MindLog() {
                                                 </div>
                                             ))}
                                         </div>
+                                    </div>
+                                </section>
+                            </FadeInSection>
+
+                            {/* ===== WIREFRAMES ===== */}
+                            <FadeInSection>
+                                <section className="py-8 md:py-12">
+                                    <div className="max-w-2xl mx-auto">
+                                        <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-2">
+                                            {t('Wireframes', '低保真原型')}
+                                        </h2>
+                                        <p className="text-sm text-text-secondary mb-6">
+                                            {t('Low-fidelity screens exploring layout and core user flows before visual design.', '在視覺設計之前，以低保真畫面探索版面配置與核心使用者流程。')}
+                                        </p>
+                                        <img
+                                            src="/images/MindLog/mindloglowfi.png"
+                                            alt="MindLog Wireframes"
+                                            className="w-full rounded-lg border border-border cursor-zoom-in"
+                                            onClick={() => setLightboxImg('/images/MindLog/mindloglowfi.png')}
+                                        />
                                     </div>
                                 </section>
                             </FadeInSection>
@@ -712,7 +737,7 @@ function MindLog() {
                                                     <div className="grid grid-cols-2 gap-6 md:gap-10 max-w-sm mx-auto md:max-w-none">
                                                         {group.screens.map((item, i) => (
                                                             <div key={i} className="flex flex-col items-center">
-                                                                <img src={item.src} alt={item.label} className="w-full rounded-2xl cursor-zoom-in border border-border max-w-[160px] mx-auto" onClick={() => setLightboxImg(item.src)} />
+                                                                <img src={item.src} alt={item.label} className="w-full rounded-2xl cursor-zoom-in border border-border max-w-40 mx-auto" onClick={() => setLightboxImg(item.src)} />
                                                                 <p className="text-center text-sm text-text-secondary mt-3 font-mono">{item.label}</p>
                                                             </div>
                                                         ))}

@@ -44,7 +44,7 @@ function Learnnow() {
       h.style.scrollMarginTop = '100px';
       return { id, text: h.textContent.trim() };
     });
-    setTocItems(items);
+    setTimeout(() => setTocItems(items), 0);
   }, []);
 
   // TOC: highlight active section
@@ -69,7 +69,7 @@ function Learnnow() {
 }, [tocItems]);
 
   const finalDesigns = [
-    { src: "/images/CourseDetailed Page.png", alt: "Course Detail" },
+    { src: "/images/LEARNNOW/JP Courses Page.png", alt: "JP Courses Page" },
     { src: "/images/CourseCard.png", alt: "Course Card" },
     { src: "/images/ExploreCourses.png", alt: "Explore" },
     { src: "/images/Saved.png", alt: "Saved" },
@@ -158,9 +158,9 @@ function Learnnow() {
       )}
 
     <PageTransition>
-    <div className="bg-[#FAFAFA] pt-20">
+    <div className="bg-brand-white pt-20">
       {/* ===== Breadcrumb ===== */}
-      <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-3 md:pt-6">
+      <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
         <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
           <Link to="/work" className="text-brand-green hover:underline">
             {t('Work', '作品')}
@@ -176,19 +176,18 @@ function Learnnow() {
 
           {/* left：title & overview */}
           <div className="md:w-1/2 flex flex-col">
-            <div className="flex flex-col gap-y-1 min-h-30 md:min-h-40">
+            <div className="flex flex-col gap-y-2">
               <h1 className="font-serif text-3xl md:text-5xl text-text-primary">LearnNow</h1>
               <p className="font-serif text-lg md:text-2xl text-text-secondary">
                 {t('Designing a Save-for-Later Flow to Support Thoughtful Learning Decisions', '透過「收藏」流程設計，支持使用者進行更謹慎的學習決策。')}
               </p>
-            </div>
-
-            <p className="grow pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
+              <p className="pt-2 text-base text-text-secondary leading-relaxed">
               {t(
                 `LearnNow is an e-learning platform offering a wide range of courses for users with diverse learning goals. This project focuses on simplifying the explore → save → return → enroll journey to reduce cognitive load and support flexible decision-making.`,
                 `LearnNow 是一個線上學習平台，提供多元領域的課程內容。本專案聚焦於簡化「探索 → 收藏 → 回訪 → 報名」的學習決策流程，以降低認知負擔並支援使用者以自己的節奏做出決策。`
               )}
             </p>
+            </div>
 
             {/* Tools & Role */}
             <div className="flex gap-8 md:gap-16 pt-4 md:pt-6">
@@ -234,6 +233,11 @@ function Learnnow() {
           </div>
         </div>
       </section>
+
+      {/* ===== Header / Body divider ===== */}
+      <div className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
+        <hr className="border-t border-border" />
+      </div>
 
       <div className="lg:flex lg:gap-16 max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
 
@@ -466,7 +470,7 @@ function Learnnow() {
               onClick={() => setLightboxImage(img)}
               className="snap-center shrink-0 w-64 cursor-pointer group"
             >
-              <div className="overflow-hidden rounded-lg shadow-md bg-white">
+              <div className="overflow-hidden rounded-lg shadow-md bg-white border border-border">
                 <img
                   src={img.src}
                   alt={img.alt}
@@ -481,27 +485,27 @@ function Learnnow() {
         {/* desktop：Bento Grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-4">
           <div onClick={() => setLightboxImage(finalDesigns[0])} className="col-span-2 group cursor-pointer">
-            <div className="overflow-hidden rounded-lg shadow-md bg-white h-72">
-              <img src="/images/CourseDetailed Page.png" alt="Course Detail" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
+            <div className="overflow-hidden rounded-lg shadow-md bg-white border border-border h-72">
+              <img src="/images/LEARNNOW/JP Courses Page.png" alt="JP Courses Page" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <div onClick={() => setLightboxImage(finalDesigns[1])} className="group cursor-pointer">
-            <div className="overflow-hidden rounded-lg shadow-md bg-white h-72">
+            <div className="overflow-hidden rounded-lg shadow-md bg-white border border-border h-72">
               <img src="/images/CourseCard.png" alt="Course Card" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <div onClick={() => setLightboxImage(finalDesigns[2])} className="group cursor-pointer">
-            <div className="overflow-hidden rounded-lg shadow-md bg-white h-44">
+            <div className="overflow-hidden rounded-lg shadow-md bg-white border border-border h-44">
               <img src="/images/ExploreCourses.png" alt="Explore Courses" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <div onClick={() => setLightboxImage(finalDesigns[3])} className="group cursor-pointer">
-            <div className="overflow-hidden rounded-lg shadow-md bg-white h-44">
+            <div className="overflow-hidden rounded-lg shadow-md bg-white border border-border h-44">
               <img src="/images/Saved.png" alt="Saved" className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
           <div onClick={() => setLightboxImage(finalDesigns[4])} className="group cursor-pointer">
-            <div className="overflow-hidden rounded-lg shadow-md bg-white h-44">
+            <div className="overflow-hidden rounded-lg shadow-md bg-white border border-border h-44">
               <img src="/images/learnnow_dashboard.png" alt="Dashboard" className="w-full h-90 object-cover object-top transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
@@ -691,7 +695,7 @@ function Learnnow() {
           <Link to="/work" className="text-brand-green font-mono text-sm hover:underline">
             {t('← Back to Projects', '← 返回作品集')}
           </Link>
-          <Link to="/home" className="text-brand-green font-mono text-sm hover:underline">
+          <Link to="/work/YoutubeMusic" className="text-brand-green font-mono text-sm hover:underline">
             {t('Next Project →', '下一個專案 →')}
           </Link>
         </div>

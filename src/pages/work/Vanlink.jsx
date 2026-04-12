@@ -10,7 +10,6 @@ import {
     Lightbulb,
     Pencil,
     FlaskConical,
-    Navigation,
     Smartphone,
     Layers,
     Shapes,
@@ -65,7 +64,7 @@ function Vanlink() {
             h.style.scrollMarginTop = '100px';
             return { id, text: h.textContent.trim() };
         });
-        setTocItems(items);
+        setTimeout(() => setTocItems(items), 0);
     }, []);
 
     // TOC: highlight active section
@@ -121,7 +120,7 @@ function Vanlink() {
         <PageTransition>
         <div className="bg-neutral-50 pt-20">
             {/* ===== Breadcrumb ===== */}
-            <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-3 md:pt-6">
+            <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
                 <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
                     <Link to="/work" className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
                     <span className="text-text-secondary">{'>'}</span>
@@ -134,15 +133,15 @@ function Vanlink() {
                 <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-12">
 
                     <div className="md:w-1/2 flex flex-col">
-                        <div className="flex flex-col gap-y-1 min-h-[120px] md:min-h-[160px]">
+                        <div className="flex flex-col gap-y-2">
                             <h1 className="font-serif text-3xl md:text-5xl text-text-primary">VanLink</h1>
                             <p className="font-serif text-lg md:text-2xl text-text-secondary">
                                 {t('Unified Transit App for Metro Vancouver', '大溫地區統一通勤 App')}
                             </p>
+                            <p className="pt-2 text-base text-text-secondary leading-relaxed">
+                                {t('A transit app that integrates Compass Card management, real-time transit tracking, and U-Pass renewal into one seamless mobile experience — eliminating the need to switch between multiple platforms.', '將Compass Card管理、地圖導航與學生月票（U-Pass） 更新等多功能整合於單一行動平台的通勤 App，消除在多個平台間切換的需求，以增加通勤族的便利性。')}
+                            </p>
                         </div>
-                        <p className="flex-grow pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
-                            {t('A transit app that integrates Compass Card management, real-time transit tracking, and U-Pass renewal into one seamless mobile experience — eliminating the need to switch between multiple platforms.', '將Compass Card管理、地圖導航與學生月票（U-Pass） 更新等多功能整合於單一行動平台的通勤 App，消除在多個平台間切換的需求，以增加通勤族的便利性。')}
-                        </p>
                         <div className="flex gap-8 md:gap-16 pt-4 md:pt-6">
                             <div>
                                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Tools', '工具')}</p>
@@ -179,6 +178,11 @@ function Vanlink() {
                     </div>
                 </div>
             </section>
+
+            {/* ===== Header / Body divider ===== */}
+            <div className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
+                <hr className="border-t border-border" />
+            </div>
 
           <div className="lg:flex lg:gap-16 max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
 
@@ -225,7 +229,7 @@ function Vanlink() {
                     <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('The Problem', '問題定義')}</h2>
 
                     <p className="text-base text-text-secondary leading-relaxed mb-6">
-                        {t('There is currently no official mobile app for transit services in Metro Vancouver, so users must switch between multiple platforms to complete everyday commuting tasks. Checking Compass Card balances or purchasing passes requires visiting a physical ticket machine. Students must renew their U-Pass monthly through a website, while route planning and transit schedules are typically accessed through apps like Google Maps.This fragmented experience adds extra effort to everyday commuting and creates unnecessary friction for users.', '目前 VanLink 沒有官方行動 App，使用者必須在不同平台之間切換才能完成日常通勤操作。查詢 Compass Card 餘額或購買月票需要前往實體售票機；學生的 U-Pass 需要每月到官網手動更新；而查看時刻表與規劃路線則要使用 Google Maps 等其他 App。這些未整合的服務增加了使用者的操作負擔，也讓日常通勤流程變得更繁瑣。')}
+                        {t('TransLink currently has no official integrated mobile app, so users must switch between multiple platforms to complete everyday commuting tasks. Checking Compass Card balances or purchasing passes requires visiting a physical ticket machine. Students must renew their U-Pass monthly through a website, while route planning and transit schedules are typically accessed through apps like Google Maps.This fragmented experience adds extra effort to everyday commuting and creates unnecessary friction for users.', 'TransLink 目前沒有官方整合行動 App，使用者必須在不同平台之間切換才能完成日常通勤操作。查詢 Compass Card 餘額或購買月票需要前往實體售票機；學生的 U-Pass 需要每月到官網手動更新；而查看時刻表與規劃路線則要使用 Google Maps 等其他 App。這些未整合的服務增加了使用者的操作負擔，也讓日常通勤流程變得更繁瑣。')}
                     </p>
 
                     <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8">
@@ -246,7 +250,7 @@ function Vanlink() {
                     {/* Design Goal */}
                     <div className="border-l-4 border-[#1a4a8a] pl-5 mt-8">
                         <p className="text-sm text-[#1a4a8a] font-mono uppercase tracking-widest mb-2">{t('Design Goal', '設計目標')}</p>
-                        <p className="font-serif text-xl md:text-2xl text-text-primary mb-6">
+                        <p className="font-serif text-base md:text-lg text-text-primary mb-6">
                             {t(
                                 'How might we consolidate essential transit tasks into one seamless mobile experience?',
                                 '我們如何將核心通勤任務整合為一個流暢的行動端體驗？'
@@ -263,7 +267,7 @@ function Vanlink() {
                             </li>
                             <li className="flex items-center gap-3 text-sm md:text-base text-text-secondary">
                                 <RefreshCw className="w-4 h-4 text-[#1a4a8a] shrink-0" />
-                                {t('Automated U-Pass renewal', '自動化 U-Pass 更新')}
+                                {t('In-app U-Pass activation', 'App 內啟用 U-Pass')}
                             </li>
                         </ul>
                     </div>
@@ -352,19 +356,19 @@ function Vanlink() {
                             </div>
                             <div className="p-4 space-y-3">
                                 {[
-                                    { label: t('Manual monthly pass activation', '手動啟用月票'), count: 14 },
+                                    { label: t('Manual pass activation on website', '需至官網手動啟用月票'), count: 14, highlight: true },
                                     { label: t('Data not real-time', '資料未即時更新'), count: 7 },
                                     { label: t('Too many apps needed', '需要太多 App'), count: 4 },
                                     { label: t('Balance not synced', '餘額未同步'), count: 4 },
                                     { label: t('Hard to find transfers', '轉乘資訊難找'), count: 4 },
                                     { label: t('Reload too complicated', '充值流程複雜'), count: 3 },
-                                ].map(({ label, count }) => (
+                                ].map(({ label, count, highlight }) => (
                                     <div key={label} className="flex items-center gap-2">
-                                        <span className="text-sm text-text-secondary w-32 shrink-0 text-right leading-tight">{label}</span>
+                                        <span className={`text-sm w-32 shrink-0 text-right leading-tight ${highlight ? 'text-[#1a4a8a] font-medium' : 'text-text-secondary'}`}>{label}</span>
                                         <div className="flex-1 bg-gray-100 rounded-full h-2">
-                                            <div className="bg-[#1a4a8a] h-2 rounded-full transition-all" style={{ width: `${(count / 14) * 100}%` }} />
+                                            <div className={`h-2 rounded-full transition-all ${highlight ? 'bg-[#1a4a8a]' : 'bg-[#1a4a8a]/35'}`} style={{ width: `${(count / 14) * 100}%` }} />
                                         </div>
-                                        <span className="text-sm font-mono text-[#1a4a8a] w-4 shrink-0 text-right">{count}</span>
+                                        <span className={`text-sm font-mono w-4 shrink-0 text-right ${highlight ? 'text-[#1a4a8a] font-semibold' : 'text-[#1a4a8a]/50'}`}>{count}</span>
                                     </div>
                                 ))}
                             </div>
@@ -378,19 +382,19 @@ function Vanlink() {
                             </div>
                             <div className="p-4 space-y-3">
                                 {[
-                                    { label: t('Real-time transit tracking', '即時交通追蹤'), count: 15 },
-                                    { label: t('Auto monthly pass activation', '自動啟用月票'), count: 14 },
+                                    { label: t('Real-time transit tracking', '即時交通追蹤'), count: 15, highlight: true },
+                                    { label: t('In-app pass activation', 'App 內啟用月票'), count: 14, highlight: true },
                                     { label: t('Card balance display', '顯示卡片餘額'), count: 12 },
                                     { label: t('In-app top-up / renewal', 'App 內充值／更新'), count: 10 },
                                     { label: t('Low-balance reminders', '低餘額提醒'), count: 10 },
                                     { label: t('Smart route suggestions', '智慧路線建議'), count: 7 },
-                                ].map(({ label, count }) => (
+                                ].map(({ label, count, highlight }) => (
                                     <div key={label} className="flex items-center gap-2">
-                                        <span className="text-sm text-text-secondary w-32 shrink-0 text-right leading-tight">{label}</span>
+                                        <span className={`text-sm w-32 shrink-0 text-right leading-tight ${highlight ? 'text-[#1a4a8a] font-medium' : 'text-text-secondary'}`}>{label}</span>
                                         <div className="flex-1 bg-gray-100 rounded-full h-2">
-                                            <div className="bg-[#1a4a8a] h-2 rounded-full transition-all" style={{ width: `${(count / 15) * 100}%` }} />
+                                            <div className={`h-2 rounded-full transition-all ${highlight ? 'bg-[#1a4a8a]' : 'bg-[#1a4a8a]/35'}`} style={{ width: `${(count / 15) * 100}%` }} />
                                         </div>
-                                        <span className="text-sm font-mono text-[#1a4a8a] w-4 shrink-0 text-right">{count}</span>
+                                        <span className={`text-sm font-mono w-4 shrink-0 text-right ${highlight ? 'text-[#1a4a8a] font-semibold' : 'text-[#1a4a8a]/50'}`}>{count}</span>
                                     </div>
                                 ))}
                             </div>
@@ -402,7 +406,7 @@ function Vanlink() {
 
             {/* ===== UX Artifacts ===== */}
             <FadeInSection>
-            <section className="py-8 md:py-12 bg-gray-50">
+            <section className="py-8 md:py-12">
                 <div className="max-w-2xl mx-auto">
                     <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-4">{t('UX Artifacts', 'UX 產出物')}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -454,18 +458,28 @@ function Vanlink() {
                         </div>
                         <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6 text-center">
                             <Smartphone className="text-[#1a4a8a] w-7 h-7 md:w-8 md:h-8 mx-auto mb-3" />
-                            <h3 className="font-serif text-sm md:text-sm text-text-primary mb-2">{t('Lack of Mobile Management', '缺乏行動端管理')}</h3>
-                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('No unified solution for card balance, top-up, or pass renewal on mobile.', '行動端沒有統一的解決方案來查餘額、充值或更新通行證。')}</p>
+                            <h3 className="font-serif text-sm md:text-sm text-text-primary mb-2">{t('No Mobile Card Management', '缺乏行動端票卡管理')}</h3>
+                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Users can only check balance or top up at physical ticket machines — no mobile option exists.', '使用者只能到實體售票機查詢餘額或加值，行動端完全無法操作。')}</p>
                         </div>
                         <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6 text-center">
                             <RefreshCw className="text-[#1a4a8a] w-7 h-7 md:w-8 md:h-8 mx-auto mb-3" />
-                            <h3 className="font-serif text-sm md:text-sm text-text-primary mb-2">{t('Renewal Friction', '更新摩擦')}</h3>
-                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Monthly U-Pass renewal is tedious and easy to forget.', '每月手動更新 U-Pass 既繁瑣又容易忘記。')}</p>
+                            <h3 className="font-serif text-sm md:text-sm text-text-primary mb-2">{t('Manual Pass Renewal', '手動月票更新')}</h3>
+                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Students must log into a website every month to activate their U-Pass — a separate, forgettable step.', '學生每月需登入官網手動啟用 U-Pass，流程獨立且容易忘記。')}</p>
                         </div>
                     </div>
                 </div>
             </section>
             </FadeInSection>
+
+            {/* ===== Research → Design bridge ===== */}
+            <div className="max-w-2xl mx-auto px-5 md:px-0 flex flex-col items-center gap-1 py-2">
+                <div className="w-px h-6 bg-border" />
+                <span className="font-mono text-xs text-text-secondary tracking-widest uppercase px-3 py-1 border border-border rounded-full bg-white">
+                    {t('led to design decisions', '導出設計決策')}
+                </span>
+                <div className="w-px h-6 bg-border" />
+                <span className="text-text-secondary text-sm">↓</span>
+            </div>
 
             {/* ===== Design Decisions ===== */}
             <FadeInSection>
@@ -482,14 +496,14 @@ function Vanlink() {
                         <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6 text-center">
                             <CreditCard className="w-7 h-7 md:w-8 md:h-8 mx-auto mb-3 text-[#1a4a8a]" />
                             <p className="text-[#1a4a8a] font-mono text-sm mb-2">02</p>
-                            <h3 className="font-serif text-base md:text-sm text-text-primary mb-2">{t('Visible Balance', '即時餘額顯示')}</h3>
-                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Card balance prominently displayed on the home screen — no digging required.', '卡片餘額顯眼地呈現在主頁，無需多餘操作即可查閱。')}</p>
+                            <h3 className="font-serif text-base md:text-sm text-text-primary mb-2">{t('Visible Balance & Top-up', '主頁餘額顯示與加值')}</h3>
+                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Card balance prominently displayed on the home screen with in-app top-up — no machines needed.', '卡片餘額顯眼呈現於主頁，並支援 App 內直接加值，無需前往實體機器。')}</p>
                         </div>
                         <div className="bg-[#c5dff5]/30 rounded-lg p-4 md:p-6 text-center">
-                            <Navigation className="w-7 h-7 md:w-8 md:h-8 mx-auto mb-3 text-[#1a4a8a]" />
+                            <RefreshCw className="w-7 h-7 md:w-8 md:h-8 mx-auto mb-3 text-[#1a4a8a]" />
                             <p className="text-[#1a4a8a] font-mono text-sm mb-2">03</p>
-                            <h3 className="font-serif text-base md:text-sm text-text-primary mb-2">{t('Smart Route', '智慧路線')}</h3>
-                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Dual-path trip planning — quick shortcut for frequent routes and full search for custom journeys.', '雙路徑行程規劃，常用路線快速捷徑 + 自訂搜尋完整流程。')}</p>
+                            <h3 className="font-serif text-base md:text-sm text-text-primary mb-2">{t('In-app U-Pass Activation', 'App 內啟用 U-Pass')}</h3>
+                            <p className="text-sm md:text-sm text-text-secondary leading-relaxed">{t('Activate your monthly U-Pass directly in the app — no website login, no forgotten renewals.', '直接在 App 內啟用當月 U-Pass，無需登入官網，告別忘記更新的困擾。')}</p>
                         </div>
                     </div>
                 </div>
@@ -498,7 +512,7 @@ function Vanlink() {
 
             {/* Design System */}
             <FadeInSection>
-<section className="py-8 md:py-12 bg-gray-200">
+<section className="py-8 md:py-12 bg-neutral-100">
     <div className="max-w-2xl mx-auto">
         <h2 className="font-serif text-xl md:text-2xl text-text-primary mb-6">Design System</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -536,14 +550,14 @@ function Vanlink() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
                         {/* Task 1 */}
-                        <div className="border border-border rounded-lg overflow-hidden">
-                            <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border">
-                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 1: Reload Card', '任務一：充值')}</h3>
+                        <div className="border border-border rounded-lg overflow-hidden flex flex-col">
+<div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border md:min-h-[5rem] md:flex md:flex-col md:justify-center">
+                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Reload Card', '充值卡片')}</h3>
                                 <p className="text-sm text-text-secondary mt-0.5">{t('Add $10 to your card', '將卡片充值 $10')}</p>
                             </div>
-                            <div className="p-4">
+                            <div className="p-4 flex-1 flex flex-col justify-between">
                                 <div className="flex justify-between mb-4">
                                     <div className="text-center">
                                         <p className="text-xl md:text-2xl font-bold text-brand-green">100%</p>
@@ -556,18 +570,18 @@ function Vanlink() {
                                 </div>
                                 <div className="flex items-start gap-2 text-sm text-text-secondary">
                                     <span className="text-[#1a4a8a]/60 mt-0.5 shrink-0">•</span>
-                                    <p>{t('Buttons felt small → resized from 95×40px to 112×47px', '按鈕偏小 → 從 95×40px 調整為 112×47px')}</p>
+                                    <p>{t('Buttons felt small → resized from 95×40px to 400×48px', '按鈕偏小 → 從 95×40px 調整為 400×48px')}</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Task 2 */}
-                        <div className="border border-border rounded-lg overflow-hidden">
-                            <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border">
-                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 2: Activate U-Pass', '任務二：啟用學生月票')}</h3>
-                                <p className="text-sm text-text-secondary mt-0.5">{t("Activate next month's U-Pass", '啟用下個月的月票')}</p>
+                        <div className="border border-border rounded-lg overflow-hidden flex flex-col">
+                            <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border md:min-h-[5rem] md:flex md:flex-col md:justify-center">
+                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Activate U-Pass', '啟用學生月票')}</h3>
+                                <p className="text-sm text-text-secondary mt-0.5">{t("Activate U-Pass", '啟用學生月票')}</p>
                             </div>
-                            <div className="p-4">
+                            <div className="p-4 flex-1 flex flex-col justify-between">
                                 <div className="flex justify-between mb-4">
                                     <div className="text-center">
                                         <p className="text-xl md:text-2xl font-bold text-brand-green">100%</p>
@@ -586,12 +600,12 @@ function Vanlink() {
                         </div>
 
                         {/* Task 3 */}
-                        <div className="border border-border rounded-lg overflow-hidden">
-                            <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border">
-                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Task 3: Plan a Route', '任務三：規劃路線')}</h3>
-                                <p className="text-sm text-text-secondary mt-0.5">{t('Route to BCIT Downtown Campus', '前往 BCIT 市中心校區的路線')}</p>
+                        <div className="border border-border rounded-lg overflow-hidden flex flex-col">
+                            <div className="bg-[#c5dff5]/30 px-4 py-3 border-b border-border md:min-h-[5rem] md:flex md:flex-col md:justify-center">
+                                <h3 className="font-serif text-sm md:text-base text-text-primary">{t('Plan a Route', '規劃路線')}</h3>
+                                <p className="text-sm text-text-secondary mt-0.5">{t('Route to BCIT', '前往 BCIT 的路線')}</p>
                             </div>
-                            <div className="p-4">
+                            <div className="p-4 flex-1 flex flex-col justify-between">
                                 <div className="flex justify-between mb-4">
                                     <div className="text-center">
                                         <p className="text-xl md:text-2xl font-bold text-brand-green">100%</p>
@@ -754,20 +768,12 @@ function Vanlink() {
                             },
                             {
                                 icon: <CreditCard className="w-4 h-4 text-[#1a4a8a]" />,
-                                label: t('Card Management', '卡片管理'),
-                                desc: t('Mobile Compass Card top-up and balance overview, accessible from the dashboard.', '行動端 Compass Card 儲值與餘額總覽，從主頁直接進入。'),
+                                label: t('Card Management & U-Pass', '卡片管理與 U-Pass'),
+                                desc: t('Mobile Compass Card top-up, balance overview, and in-app U-Pass activation — all accessible from the dashboard.', '行動端 Compass Card 儲值、餘額總覽與 App 內 U-Pass 啟用，從主頁直接進入。'),
                                 screens: [
                                     { src: '/images/Vanlink/Dashboard1.png', label: t('Dashboard', '主頁') },
                                     { src: '/images/Vanlink/Refill.png',     label: t('Card Refill', '儲值') },
-                                ],
-                            },
-                            {
-                                icon: <RefreshCw className="w-4 h-4 text-[#1a4a8a]" />,
-                                label: t('Pass Renewal', '月票更新'),
-                                desc: t('Automated U-Pass renewal with clear status and one-tap confirmation.', '自動化 U-Pass 更新，清楚的狀態顯示與一步確認。'),
-                                screens: [
-                                    { src: '/images/Vanlink/Renew.png',  label: t('Pass Renewal', '月票更新') },
-                                    { src: '/images/Vanlink/Launch.png', label: t('Launch Screen', '啟動畫面') },
+                                    { src: '/images/Vanlink/Renew.png',      label: t('U-Pass Activation', 'U-Pass 啟用') },
                                 ],
                             },
                         ].map((group, gi) => (
@@ -777,7 +783,7 @@ function Vanlink() {
                                     <span className="text-sm font-mono text-[#1a4a8a]">{group.label}</span>
                                 </div>
                                 <p className="text-sm text-text-secondary mb-6">{group.desc}</p>
-                                <div className="grid grid-cols-2 gap-6 md:gap-10">
+                                <div className={`grid gap-6 md:gap-8 ${group.screens.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
                                     {group.screens.map((item, i) => (
                                         <div key={i} className="flex flex-col items-center">
 
@@ -812,14 +818,8 @@ function Vanlink() {
                         </p>
                         <p className="text-sm md:text-base text-text-secondary leading-relaxed">
                             {t(
-                                'One of the biggest lessons was learning how to scope the project realistically. Our team initially considered building a fully functional app, but we realized the scope was too large for the timeline. Focusing on key user pain points and defining an MVP helped us stay focused on the most meaningful problems.',
-                                '這個專案最大的學習之一是如何更實際地設定專案範圍。團隊一開始曾考慮開發一個完整功能的 app，但很快發現這樣的範圍超出了專案時間。將重點放在核心使用者痛點並定義 MVP，讓我們能更專注於最重要的問題。'
-                            )}
-                        </p>
-                        <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-                            {t(
-                                'This project also helped me strengthen my wireframing and prototyping skills. If I had more time, I would run A/B tests and continue refining the experience through additional rounds of user feedback.',
-                                '這個專案也讓我加強了 wireframing 和 prototyping 的能力。如果有更多時間，我會進行 A/B testing，並透過更多使用者回饋持續優化整體體驗。'
+                                'If I were to continue this project, I would run more rounds of usability testing with a broader range of users — not just students — to see how the app holds up for other commuter types. I would also explore adding low-balance notifications and testing whether the dual-path route flow actually reduces confusion, or if one path could be simplified further.',
+                                '如果有機會繼續這個專案，我會針對更多元的使用者群體（不只是學生）進行更多輪的可用性測試，看看 App 對其他通勤族的適用程度。我也想加入低餘額通知功能，並進一步測試雙路徑路線流程是否真的能降低使用困惑，或者其中一條路徑是否可以再簡化。'
                             )}
                         </p>
                     </div>

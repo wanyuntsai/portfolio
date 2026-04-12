@@ -91,20 +91,31 @@ function Home() {
 
         {/* ===== TOOLS MARQUEE ===== */}
         <section
-          className="py-4 border-y border-border overflow-hidden relative z-20 bg-[#FAF7F2]"
+          className="py-4 border-y border-border overflow-hidden relative z-20 bg-brand-cream"
           onMouseEnter={() => setMarqueeHovered(true)}
           onMouseLeave={() => setMarqueeHovered(false)}
         >
+          <style>{`
+            @keyframes marqueeScroll {
+              from { transform: translateX(0); }
+              to   { transform: translateX(-33.333%); }
+            }
+          `}</style>
           <div
-            className="flex gap-8 text-text-secondary animate-marquee"
-            style={{ animationPlayState: marqueeHovered ? 'paused' : 'running' }}
+            style={{
+              display: 'flex',
+              width: 'max-content',
+              animation: 'marqueeScroll 20s linear infinite',
+              animationPlayState: marqueeHovered ? 'paused' : 'running',
+            }}
           >
-            {tools.map((tool, index) => (
-              <span key={index} className="whitespace-nowrap flex items-center gap-8">{tool}<span className="text-text-secondary">·</span></span>
-            ))}
-            {tools.map((tool, index) => (
-              <span key={`repeat-${index}`} className="whitespace-nowrap flex items-center gap-8">{tool}<span className="text-text-secondary">·</span></span>
-            ))}
+            <div className="flex gap-8 text-text-secondary">
+              {[...tools, ...tools, ...tools].map((tool, index) => (
+                <span key={index} className="whitespace-nowrap flex items-center gap-8">
+                  {tool}<span className="text-text-secondary">·</span>
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 

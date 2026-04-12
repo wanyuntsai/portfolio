@@ -8,12 +8,13 @@ function ProjectCard({ project }) {
     <Link
       to={project.comingSoon ? '#' : project.link}
       onClick={project.comingSoon ? e => e.preventDefault() : undefined}
-      className={`bg-white rounded-lg p-6 flex flex-col transition-all duration-300 group h-full ${
-        project.comingSoon ? 'cursor-default opacity-70' : 'hover:shadow-lg cursor-pointer'
+      className={`rounded-lg p-6 flex flex-col transition-all duration-300 group h-full ${
+        project.comingSoon ? 'cursor-default opacity-70' : 'hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] cursor-pointer'
       }`}
+      style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.06)' }}
     >
       {/* Image */}
-      <div className="rounded-lg p-4 mb-4 overflow-hidden flex justify-center items-center">
+      <div className="rounded-lg mb-4 overflow-hidden flex justify-center items-center">
         {project.comingSoon ? (
           <div className="w-full h-48 md:h-60 bg-gray-100 rounded-lg flex items-center justify-center">
             <span className="text-text-secondary font-mono text-base opacity-40">{t('Coming Soon', '即將推出')}</span>
@@ -51,7 +52,7 @@ function ProjectCard({ project }) {
           <span
             key={index}
             className="rounded-full px-2 py-0.5 text-xs font-mono"
-            style={{ border: '1px solid #C5DFA0', background: '#F0F5E8', color: '#4A7A2A' }}
+            style={{ border: '1px solid #A8C878', background: '#E4EED4', color: '#3A6020' }}
           >
             {tag}
           </span>

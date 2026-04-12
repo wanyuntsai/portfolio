@@ -65,21 +65,20 @@ function YouTubeMusic() {
             <section className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 py-4 md:py-10">
                 <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-12">
                     <div className="md:w-1/2 flex flex-col">
-                        <div className="flex flex-col gap-y-1 min-h-30 md:min-h-40">
+                        <div className="flex flex-col gap-y-2">
                             <h1 className="font-serif text-3xl md:text-5xl text-text-primary">
                                 {t('YouTube Music Redesign', 'YouTube Music 重新設計')}
                             </h1>
                             <p className="font-serif text-lg md:text-2xl text-text-secondary">
                                 {t('Reducing friction in browsing & discovery', '降低瀏覽與探索流程的操作摩擦')}
                             </p>
+                            <p className="pt-2 text-base text-text-secondary leading-relaxed">
+                                {t(
+                                    "Based on informal interviews with active YouTube Music users, I identified 3 key friction points. The Home was simplified from 20+ sections to 4, the action bar was redesigned into 5 fixed controls, and the Samples experience was redesigned to restore user control.",
+                                    "本研究透過非正式使用者訪談（informal interviews），找出 3 個主要摩擦點。將首頁從 20 多個區塊簡化為 4 個，播放頁操作列固定為 5 個核心功能，並重新設計 Samples 體驗，讓使用者重新掌握控制權。"
+                                )}
+                            </p>
                         </div>
-                        {/* ── hero description ── */}
-<p className="pt-4 md:pt-6 text-base text-text-secondary leading-relaxed">
-    {t(
-        "Based on informal interviews with active YouTube Music users, I identified 3 key friction points. The Home was simplified from 20+ sections to 4, the action bar was redesigned into 5 fixed controls, and the Samples experience was redesigned to restore user control.",
-        "本研究透過非正式使用者訪談（informal interviews），找出 3 個主要摩擦點。將首頁從 20 多個區塊簡化為 4 個，播放頁操作列固定為 5 個核心功能，並重新設計 Samples 體驗，讓使用者重新掌握控制權。"
-    )}
-</p>
                         <div className="flex justify-between pt-3 md:pt-4">
                             <div>
                                 <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{t('Tools', '工具')}</p>
@@ -105,6 +104,11 @@ function YouTubeMusic() {
                     </div>
                 </div>
             </section>
+
+            {/* ===== Header / Body divider ===== */}
+            <div className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
+                <hr className="border-t border-border" />
+            </div>
 
             <div className="lg:flex lg:gap-16 max-w-7xl mx-auto px-5 md:px-16 xl:px-20">
 
@@ -271,7 +275,7 @@ function YouTubeMusic() {
                                         </tr>
                                     ))}
                                     {showTooltip && (
-  <div className="fixed z-[999] w-56 rounded-xl overflow-hidden shadow-xl border border-gray-200 pointer-events-none"
+  <div className="fixed z-999 w-56 rounded-xl overflow-hidden shadow-xl border border-gray-200 pointer-events-none"
        style={{ left: tooltipPos.x, top: tooltipPos.y, transform: 'translateY(-50%)' }}>
     <img src={hoverImg} alt="screenshot" className="w-full h-auto" />
   </div>

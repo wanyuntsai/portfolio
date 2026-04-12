@@ -146,7 +146,7 @@ function YunJam() {
       <div style={{ background: C.bg, color: C.text, fontFamily: '"DM Sans", sans-serif' }} className="min-h-screen pt-20">
 
         {/* ── Breadcrumb ─────────────────────────────────────────────── */}
-        <div className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-4 md:pt-6">
+        <div className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
           <div className="flex items-center gap-2 text-sm font-mono" style={{ color: C.muted }}>
             <Link to="/work" className="hover:underline" style={{ color: C.accent }}>Work</Link>
             <span>›</span>
