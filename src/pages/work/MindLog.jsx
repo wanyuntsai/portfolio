@@ -204,7 +204,7 @@ function MindLog() {
                                     {[
                                         { label: t('Tools', '工具'),     value: 'Figma' },
                                         { label: t('My Role', '職位'),   value: 'UX/UI Designer' },
-                                        { label: t('Timeline', '時間軸'), value: '1 Week' },
+                                        { label: t('Timeline', '時間軸'), value: t('2 Weeks', '2 週') },
                                     ].map(({ label, value }) => (
                                         <div key={label}>
                                             <p className="font-serif text-sm md:text-lg text-text-primary mb-1">{label}</p>
