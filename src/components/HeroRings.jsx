@@ -267,8 +267,9 @@ function HeroRings() {
           className="absolute inset-0 flex items-center justify-center pointer-events-none px-8 md:px-20 xl:px-32 2xl:px-48"
           style={{ zIndex: 5 }}
         >
-          <div className="stage2-container flex items-center gap-12 md:gap-16 w-full max-w-7xl mx-auto justify-center">
-            <div ref={welcomeRef} style={{ opacity: 0 }}>
+          <div className="stage2-container flex items-center w-full max-w-7xl mx-auto">
+            {/* Left: WELCOME text */}
+            <div ref={welcomeRef} style={{ opacity: 0, flex: 1 }}>
               <p
                 className="font-mono text-[clamp(28px,5vw,80px)] font-bold leading-[1.1] text-transparent"
                 style={{ WebkitTextStroke: '1.5px #555' }}
@@ -279,39 +280,41 @@ function HeroRings() {
                 ref={subtitleRef}
                 className="font-mono text-[14px] md:text-[20px] text-[#666] mt-6 md:mt-9 opacity-0"
               >
-                Designed in Vancouver, built for everywhere.
+                Designed in Vancouver,<br /> built for everywhere.
               </p>
             </div>
-<div
-  ref={photoRef}
-  style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '16px',
-    flexShrink: 0,
-    opacity: 0
-  }}
->
-  {/* 👇 關鍵：container 控制比例 */}
-  <div className="photo-filter w-[180px] h-[260px] md:w-[240px] md:h-[340px] rounded-[36px] overflow-hidden shadow-xl">
-    <img
-      src="/images/Wanyun_Tsai.png"
-      alt=""
-      className="w-full h-full object-cover pointer-events-auto"
-    />
-  </div>
 
-  <Typewriter
-    phrases={["Hi! I'm Yun.", 'こんにちは！ユンです。', '嗨！我是蔡宛芸。']}
-    speed={90}
-    deleteSpeed={45}
-    delay={1800}
-  />
-</div>
+            {/* Centre: Photo + Typewriter */}
+            <div
+              ref={photoRef}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '16px',
+                flexShrink: 0,
+                opacity: 0
+              }}
+            >
+              <div className="photo-filter w-45 h-65 md:w-60 md:h-85 rounded-[36px] overflow-hidden shadow-xl">
+                <img
+                  src="/images/Wanyun_Tsai.png"
+                  alt=""
+                  className="w-full h-full object-cover pointer-events-auto"
+                />
+              </div>
+              <Typewriter
+                phrases={["Hi! I'm Yun.", 'こんにちは！ユンです。', '嗨！我是蔡宛芸。']}
+                speed={90}
+                deleteSpeed={45}
+                delay={1800}
+              />
+            </div>
+
+            {/* Right: Speech bubble */}
             <div
               ref={bubbleRef}
-              style={{ position: 'relative', alignSelf: 'center', flexShrink: 0, willChange: 'transform, opacity' }}
+              style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignSelf: 'center', willChange: 'transform, opacity' }}
             >
               <img
                 src="/images/speechbubble.svg"

@@ -39,8 +39,8 @@ export function getIssues(t) {
             title: t('Cluttered Action Bar', '播放頁 Action Bar 雜亂'),
             insight: t('3 of 5 users reported accidental taps due to inconsistent layout', '3/5 使用者因按鈕位置不固定而誤觸'),
             problem: t(
-                'Fixed five core music management functions (like, dislike, share, save, download) within a single view, removing the need for horizontal scrolling. Lyrics were redesigned as a swipe-up interaction to align with user expectations.',
-                '固定五個核心音樂管理功能（like、dislike、share、save、download），取消橫向滑動，讓所有操作維持在單一視野內。歌詞功能改為上滑顯示，建立更符合使用者直覺的互動方式。'
+                "The playback page's Action Bar is small and requires horizontal scrolling. Music management and social interaction functions are mixed, making it hard to navigate.",
+                '播放頁的操作列範圍小，需要水平滑動才能看到全部功能，音樂管理與社群互動混合，操作不直覺。'
             ),
             hmw: t(
                 'How might we make high-frequency actions always visible and visually distinct?',
