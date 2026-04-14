@@ -16,14 +16,14 @@ function Projects() {
     const filters = [
         { value: "All", label: t("All", "全部") },
         { value: "UX/UI Design", label: t("UX/UI Design", "UX/UI 設計") },
-        { value: "Web Development", label: t("Web Development", "網頁開發") },
+        { value: "AI Implementation", label: t("AI Implementation", "AI 實作") },
     ];
 
     const projects = [
         {
             id: "VanLink",
             title: "VANLINK",
-            subtitle: t('Transit app', '交通應用程式'),
+            subtitle: t('Vancouver transit app', '交通應用程式'),
             description: t('Unified fragmented transit services into one mobile app, achieving 100% task success rate across 13 tested users.', '將碎片化的交通服務整合為單一行動 App，13 位測試者達成 100% 任務成功率。'),
             image: "/images/Vanlink/Vanlink_mkup.png",
             tags: ["UX/UI", "Figma", "Usability Testing"],
@@ -43,7 +43,7 @@ function Projects() {
         {
             id: "youtubemusic",
             title: "YOUTUBE MUSIC",
-            subtitle: t('YouTube Music App Redesign', '重新設計 YouTube Music App'),
+            subtitle: t('YouTube music app redesign', '重新設計 YouTube Music App'),
             description: t('Redesigned 3 key UX pain points across YouTube Music\'s homepage, player, and Samples flow to reduce friction and improve clarity.','針對 YouTube Music 的 3 個核心體驗痛點進行重新設計，涵蓋首頁編排、播放頁 Action Bar 與 Samples 流程，降低操作摩擦並提升導覽清晰度。'),
             image: "/images/YouTubeMusic/youtubemkup.png",
             tags: ["UX/UI", "Figma", "User Research"],
@@ -69,7 +69,7 @@ function Projects() {
         //     image: "/images/YunJam/yunjam_mkup.png",
         //     tags: ["HTML", "CSS", "JavaScript", "Spotify API"],
         //     link: "/work/yunjam",
-        //     category: "Web Development",
+        //     category: "AI Implementation",
         // },
     ]
 

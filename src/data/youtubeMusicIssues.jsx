@@ -50,13 +50,14 @@ export function getIssues(t) {
 competitive: [
   {
     app: 'YouTube Music',
-    logic: t('Horizontal scroll bar, position shifts', '橫向滑動列，位置不固定'),
-    eval: t('Easy to miss, not persistent', '容易被忽略，非固定可見'),
+    logic: t('Actions in a horizontal scroll bar', '操作集中在橫向滑動列'),
+    eval: t('Requires swiping — easy to miss', '需滑動才能找到，容易被忽略'),
     highlight: false,
+    hoverImg: '/images/YouTubeMusic/ytmsave.png',
   },
   {
     app: 'Spotify',
-    logic: t('Save button "＋" fixed next to song title', '加入歌單按鈕 “＋” 固定在歌名旁'),
+    logic: t('Core actions fixed on playback page', '核心操作固定在播放頁'),
     eval: t('Consistent position, but icon meaning unclear', '位置一致，但圖示語意不直覺'),
     highlight: true,
     hoverImg: '/images/YouTubeMusic/Spotify.png', 
@@ -64,9 +65,10 @@ competitive: [
   },
   {
     app: 'Apple Music',
-    logic: t('Fixed position on playback page', '固定在播放頁固定位置'),
-    eval: t('Always visible, low search cost', '固定可見，尋找成本低'),
+    logic: t('Two paths: "Liked Songs" fixed on playback page; adding to custom playlist buried under "More"', '兩條路徑：Liked Songs 按鈕固定在播放頁；加入自訂歌單需進入 More，多一層級多一個動作'),
+    eval: t('Liked always visible; custom playlist requires extra step', 'Liked 固定可見；加入自訂歌單需額外操作'),
     highlight: false,
+    hoverImg: '/images/YouTubeMusic/applesave.png',
   },
 ],
 competitiveSummary: t(

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Krona+One&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 
@@ -50,8 +51,6 @@ body {
 }
 
 /* font */
-.font-mono {
-}
 
 .font-funnel {
   font-family: "Funnel Sans", sans-serif;
@@ -264,6 +263,12 @@ body {
 .fill-btn > * {
   position: relative;
   z-index: 1;
+}
+
+/* Mini waveform player */
+@keyframes waveform {
+  0%, 100% { height: 3px; }
+  50%       { height: 13px; }
 }
 
 .photo-filter {

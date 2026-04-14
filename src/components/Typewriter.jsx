@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Typewriter = ({ phrases, speed = 100, deleteSpeed = 50, delay = 2000 }) => {
+const Typewriter = ({ phrases, speed = 100, deleteSpeed = 50, delay = 2000, className = 'font-mono text-[14px] md:text-[15px] text-[#555]' }) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
@@ -22,7 +22,7 @@ const Typewriter = ({ phrases, speed = 100, deleteSpeed = 50, delay = 2000 }) =>
   }, [subIndex, index, reverse, phrases, speed, deleteSpeed, delay]);
 
   return (
-    <span className="font-mono text-[14px] md:text-[15px] text-[#555]">
+    <span className={className}>
       {phrases[index].substring(0, subIndex)}
       <span className="animate-pulse ml-0.5 font-bold">|</span>
     </span>

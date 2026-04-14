@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ProjectNav from '../../components/ProjectNav';
 import { FadeInSection, PageTransition } from "../../components/AnimatedSection";
 import { useLanguage } from '../../context/LanguageContext';
 import {
@@ -829,16 +830,10 @@ function Vanlink() {
 
             {/* ===== Navigation ===== */}
             <FadeInSection>
-            <section className="py-8 md:py-12">
-                <div className="flex justify-between items-center w-full">
-                    <Link to="/work" className="text-brand-green font-mono text-sm hover:underline">
-                        {t('← Back to Projects', '← 返回作品集')}
-                    </Link>
-                    <Link to="/work/learnnow" className="text-brand-green font-mono text-sm hover:underline">
-                        {t('Next Project →', '下一個專案 →')}
-                    </Link>
-                </div>
-            </section>
+                <ProjectNav
+                    prev={{ href: '/work/MindLog', name: 'MindLog', subtitle: t('Mental health app', '心理健康應用程式'), image: '/images/MindLog/MindLog_mkup.png' }}
+                    next={{ href: '/work/learnnow', name: 'LearnNow', subtitle: t('E-learning platform', '線上學習平台'), image: '/images/learnnow_mkup1.png', imageClass: 'object-cover object-center' }}
+                />
             </FadeInSection>
 
           </div>{/* end main content */}

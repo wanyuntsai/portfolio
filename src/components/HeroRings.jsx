@@ -118,15 +118,15 @@ function HeroRings() {
 
         /* ── Glow: 手機版預設（不在任何 media query 裡）── */
         .hero-glow {
-          width: min(280px, 75vw, 35vh);
-          height: min(280px, 75vw, 35vh);
+          width: min(350px, 88vw, 42vh);
+          height: min(350px, 88vw, 42vh);
         }
 
         /* ── 桌機版覆蓋 ── */
         @media (min-width: 769px) {
           .hero-glow {
-            width: min(460px, 32vw, 52vh) !important;
-            height: min(460px, 32vw, 52vh) !important;
+            width: min(520px, 36vw, 57vh) !important;
+            height: min(520px, 36vw, 57vh) !important;
           }
           .photo-filter {
             transition: transform 0.4s ease;
@@ -181,7 +181,7 @@ function HeroRings() {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm self-center md:self-start mb-6">
                 <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
                 <span className="font-mono text-[#555555] tracking-wide text-[12px] md:text-[13px]">
-                  {t('Open to internships · May 2026', '尋找 2026/5 實習機會')}
+                  {t('Available for internships · May 2026', '尋找 2026/5 實習機會')}
                 </span>
               </div>
               <h1 className="font-serif leading-none mt-2 text-center md:text-left" style={{ fontSize: 'clamp(64px, 10vw, 140px)' }}>
@@ -220,32 +220,26 @@ function HeroRings() {
             <div className="absolute inset-0 flex items-center justify-center pt-18 pb-16">
               <div
                 ref={glowRef}
-                className="absolute rounded-full cursor-pointer hero-glow"
+                className="absolute rounded-full hero-glow"
                 style={{
                   background: 'radial-gradient(circle, #E2FFAD 0%, #9CAF6C 40%, transparent 70%)',
                   filter: 'blur(55px)',
                   zIndex: 1,
                   willChange: 'transform, opacity',
-                  pointerEvents: 'auto',
-                  transition: 'transform 0.08s ease-out',
+                  pointerEvents: 'none',
                 }}
-                onMouseDown={e => e.currentTarget.style.transform = 'scale(1.28)'}
-                onMouseUp={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
-                onTouchStart={e => e.currentTarget.style.transform = 'scale(1.28)'}
-                onTouchEnd={e => { e.currentTarget.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; e.currentTarget.style.transform = 'scale(1)'; }}
               />
               <img
                 ref={innerRingRef}
                 src="/images/InnerRing.svg"
                 alt=""
-                className="absolute w-[min(320px,82vw)] md:w-[min(480px,33vw,55vh)] z-2 will-change-transform"
+                className="absolute w-[min(350px,88vw)] md:w-[min(520px,36vw,57vh)] z-2 will-change-transform"
               />
               <img
                 ref={outerRingRef}
                 src="/images/OuterRing.svg"
                 alt=""
-                className="absolute w-[min(420px,95vw)] md:w-[min(620px,43vw,68vh)] z-3 will-change-transform"
+                className="absolute w-[min(425px,96vw)] md:w-[min(608px,42vw,67vh)] z-3 will-change-transform"
               />
             </div>
 
@@ -271,8 +265,8 @@ function HeroRings() {
             {/* Left: WELCOME text */}
             <div ref={welcomeRef} style={{ opacity: 0, flex: 1 }}>
               <p
-                className="font-mono text-[clamp(28px,5vw,80px)] font-bold leading-[1.1] text-transparent"
-                style={{ WebkitTextStroke: '1.5px #555' }}
+                className="text-[clamp(28px,5vw,80px)] font-bold leading-[1.1] text-transparent"
+                style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace', WebkitTextStroke: '1.5px #555' }}
               >
                 WELCOME<br /> TO MY <br />WEBSITE
               </p>

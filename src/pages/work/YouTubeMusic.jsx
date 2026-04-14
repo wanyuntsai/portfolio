@@ -7,6 +7,7 @@ import { CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { getIssues } from '../../data/youtubeMusicIssues';
 import { useToc } from '../../hooks/useToc';
 import Lightbox from '../../components/Lightbox';
+import ProjectNav from '../../components/ProjectNav';
 
 const RED = '#CC0000';
 
@@ -243,7 +244,7 @@ function YouTubeMusic() {
                                 <thead>
                                     <tr className="bg-gray-50 border-b border-gray-200">
                                         <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('App', 'App')}</th>
-                                        <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Where is Save', 'Save 位置')}</th>
+                                        <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Action Bar Design (Save as a high-frequency example)', 'Action Bar 形式（以高頻操作 Save 為例）')}</th>
                                         <th className="text-left px-4 py-3 font-mono text-xs text-text-secondary font-normal">{t('Always Visible', '是否固定可見')}</th>
                                     </tr>
                                 </thead>
@@ -342,7 +343,7 @@ function YouTubeMusic() {
                                         <div>
                                             <p className="font-mono text-xs mb-3" style={{ color: RED }}>After</p>
                                             <div className="rounded-xl overflow-hidden bg-gray-100 border border-gray-200 aspect-9/19 flex items-center justify-center cursor-zoom-in"
-                                                 onClick={() => issue.afterImg && setLightboxImg(issue.afterImg)}>
+                                                 onClick={() => issue.afterImg && setLightboxImg(issue.afterImg)}> 
                                                 {issue.afterImg
                                                     ? <img src={issue.afterImg} alt="After" className="w-full h-full object-cover" />
                                                     : <p className="text-xs text-text-secondary font-mono text-center px-4">{t('Add Figma redesign screenshot', '加入 Figma 重設計截圖')}</p>
@@ -404,16 +405,10 @@ function YouTubeMusic() {
 
                 {/* Navigation */}
                 <FadeInSection>
-                <section className="py-8 md:py-12">
-                    <div className="flex justify-between items-center w-full">
-                        <Link to="/work" className="text-brand-green font-mono text-sm hover:underline">
-                            {t('← Back to Projects', '← 返回作品集')}
-                        </Link>
-                        <Link to="/work/MindLog" className="text-brand-green font-mono text-sm hover:underline">
-                            {t('Next Project →', '下一個專案 →')}
-                        </Link>
-                    </div>
-                </section>
+                    <ProjectNav
+                        prev={{ href: '/work/learnnow', name: 'LearnNow', subtitle: t('E-learning platform', '線上學習平台'), image: '/images/learnnow_mkup1.png', imageClass: 'object-cover object-center' }}
+                        next={{ href: '/work/MindLog', name: 'MindLog', subtitle: t('Mental health app', '心理健康應用程式'), image: '/images/MindLog/MindLog_mkup.png' }}
+                    />
                 </FadeInSection>
 
             </div>

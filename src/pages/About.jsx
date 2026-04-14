@@ -1,56 +1,114 @@
 import { useState, useRef, useEffect } from 'react';
 import { FadeInSection, PageTransition } from '../components/AnimatedSection';
+import Typewriter from '../components/Typewriter';
 import { useLanguage } from '../context/LanguageContext';
 
-// ── Language flip cell (mobile tap + desktop hover) ────────────────────────
+// ── Language flip card ─────────────────────────────────────────────────────
 function LangFlipCell({ front, greeting }) {
     const [flipped, setFlipped] = useState(false);
     return (
-        <div
-            style={{ perspective: '600px', width: '148px', height: '64px', cursor: 'pointer' }}
+        <div className="cursor-pointer w-full" style={{ perspective: '600px', height: '52px' }}
             onMouseEnter={() => setFlipped(true)}
             onMouseLeave={() => setFlipped(false)}
-            onClick={() => setFlipped(f => !f)}
-        >
+            onClick={() => setFlipped(f => !f)}>
             <div style={{
-                position: 'relative',
-                width: '100%',
-                height: '100%',
+                position: 'relative', width: '100%', height: '100%',
                 transformStyle: 'preserve-3d',
                 transition: 'transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                willChange: 'transform',
             }}>
-                {/* Front */}
                 <div style={{
-                    position: 'absolute', inset: 0,
-                    backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    border: '0.5px solid #ccc', borderRadius: '10px',
-                    background: 'transparent',
+                    position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                    display: 'flex', alignItems: 'center',
+                    border: '0.5px solid #ccc', borderRadius: '10px', background: 'transparent',
+                    paddingLeft: 14,
                 }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '16px', color: '#666' }}>
-                        {front}
-                    </span>
+                    <span className="font-mono text-sm text-text-secondary">{front}</span>
                 </div>
-                {/* Back */}
                 <div style={{
-                    position: 'absolute', inset: 0,
-                    backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
+                    position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    border: '0.5px solid #9CAF6C', borderRadius: '10px',
-                    background: '#FAFAFA',
+                    display: 'flex', alignItems: 'center',
+                    border: '0.5px solid #9CAF6C', borderRadius: '10px', background: '#FAFAFA',
+                    paddingLeft: 14,
                 }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '18px', fontWeight: 400, color: '#3a5f1a' }}>
-                        {greeting}
-                    </span>
+                    <span className="font-mono text-base text-brand-green">{greeting}</span>
                 </div>
             </div>
         </div>
     );
 }
 
+// ── Icon + label ───────────────────────────────────────────────────────────
+function ToolIcon({ src, name, extraScale = 1 }) {
+    return (
+        <div className="flex flex-col items-center gap-1.5 cursor-default group">
+            <div className="transition-transform duration-200 group-hover:-translate-y-1">
+                <img src={src} alt={name} title={name}
+                    className="w-8 h-8 object-contain"
+                    style={extraScale !== 1 ? { transform: `scale(${extraScale})` } : undefined} />
+            </div>
+            <span className="text-[11px] text-text-secondary text-center leading-tight">{name}</span>
+        </div>
+    );
+}
+
+
+// ── Mini pill music player ─────────────────────────────────────────────────
+function MiniPlayer({ src, title, artist }) {
+    const [playing, setPlaying] = useState(false);
+    const audioRef = useRef(null);
+
+    const toggle = () => {
+        if (!audioRef.current) return;
+        if (playing) { audioRef.current.pause(); }
+        else { audioRef.current.play(); }
+        setPlaying(p => !p);
+    };
+
+    const bars = [0.0, 0.15, 0.3, 0.1, 0.25];
+
+    return (
+        <div className="flex items-center gap-2.5 bg-white rounded-full px-3 py-2 border border-border shadow-sm w-full">
+            <button
+                onClick={toggle}
+                className="w-6 h-6 flex items-center justify-center rounded-full bg-brand-green text-white shrink-0 transition-transform active:scale-90"
+            >
+                {playing ? (
+                    <svg width="8" height="9" viewBox="0 0 8 9" fill="currentColor">
+                        <rect x="0" y="0" width="3" height="9" rx="1"/>
+                        <rect x="5" y="0" width="3" height="9" rx="1"/>
+                    </svg>
+                ) : (
+                    <svg width="8" height="10" viewBox="0 0 8 10" fill="currentColor">
+                        <path d="M1 0.5 L7.5 5 L1 9.5 Z"/>
+                    </svg>
+                )}
+            </button>
+
+            {/* Waveform bars */}
+            <div className="flex items-center gap-[2.5px]" style={{ height: '16px' }}>
+                {bars.map((delay, i) => (
+                    <div key={i} style={{
+                        width: '2px',
+                        height: playing ? undefined : '3px',
+                        borderRadius: '1px',
+                        backgroundColor: '#3F6B2A',
+                        animation: playing ? `waveform 0.75s ease-in-out ${delay}s infinite` : 'none',
+                    }} />
+                ))}
+            </div>
+
+            {/* Title + Artist */}
+            <div className="flex flex-col min-w-0 flex-1">
+                <span className="font-mono text-[10px] text-text-primary truncate font-medium">{title}</span>
+                {artist && <span className="font-mono text-[9px] text-text-secondary/60 truncate">{artist}</span>}
+            </div>
+
+            <audio ref={audioRef} src={src} onEnded={() => setPlaying(false)} />
+        </div>
+    );
+}
 
 function About() {
     useEffect(() => {
@@ -85,18 +143,51 @@ function About() {
     }, [mousePosition]);
     const [isPhotoRevealed, setIsPhotoRevealed] = useState(false);
     const [hasClickedPhoto, setHasClickedPhoto] = useState(false);
+    const [revealed, setRevealed] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => setRevealed(true), 150);
+        return () => clearTimeout(timer);
+    }, []);
+
+
+
+    // toolkit data
+    const designTools = [
+        { src: '/images/icons/figma.svg',        name: 'Figma' },
+        { src: '/images/Canva.png',              name: 'Canva',         extraScale: 1.5 },
+        { src: '/images/icons/wordpress.svg',    name: 'WordPress' },
+        { src: '/images/icons/miro.svg',         name: 'Miro' },
+        { src: '/images/icons/photoshop.svg',    name: 'Photoshop' },
+        { src: '/images/icons/illustrator.svg',  name: 'Illustrator' },
+        { src: '/images/icons/indesign.svg',     name: 'InDesign' },
+        { src: '/images/icons/premiere.svg',     name: 'Premiere Pro' },
+        { src: '/images/icons/aftereffects.svg', name: 'After Effects' },
+        { src: '/images/dimension.png',          name: 'Dimension' },
+    ];
+    const technicalSkills = [
+        { src: '/images/icons/html.svg',        name: 'HTML5' },
+        { src: '/images/icons/css.svg',         name: 'CSS3' },
+        { src: '/images/icons/javascript.svg',  name: 'JavaScript' },
+        { src: '/images/icons/react.svg',       name: 'React.js' },
+        { src: '/images/icons/tailwind.svg',    name: 'Tailwind' },
+    ];
 
     // photo with descriptions
     const photos = [
-        { src: 'images/about1.webp', desc: 'Grampians National Park, Australia — 2024' },
-        { src: 'images/star.webp', desc: 'Great Ocean Rd, Australia — 2024' },
         { src: 'images/about2.webp', desc: 'Joffre Lakes, Canada — 2023' },
+        { src: 'images/star.webp', desc: 'Great Ocean Rd, Australia — 2024' },
+        { src: 'images/about1.webp', desc: 'Grampians National Park, Australia — 2024' },
         { src: 'images/about4.webp', desc: 'Krimml Waterfalls, Austria — 2024' },
         { src: 'images/sunset.webp', desc: 'White Rock, Canada — 2025' },
-
+        { src: 'images/nanaimo.png', desc: 'Nanaimo, Canada — 2025' },
+        { src: 'images/Chilliwack.JPG', desc: 'Chilliwack, Canada — 2025' },
+        { src: 'images/hollowcoves.jpg', desc: 'Hollow Coves Concert, Canada — 2025' },
+        { src: 'images/mountain.jpg', desc: 'Mount Aso, Japan — 2025' },
+ 
     ]
 
     const [activeCaptionIndex, setActiveCaptionIndex] = useState(null);
+    const [bioExpanded, setBioExpanded] = useState(false);
 
     // Chat messages
     const chatRef = useRef(null);
@@ -135,123 +226,162 @@ function About() {
         <PageTransition>
         <div className="flex-1 pt-20">
 
-            {/* h1 */}
-            <section className='max-w-7xl mx-auto px-5 md:px-20 py-12 md:py-16'>
-                <div className='relative flex flex-col justify-center items-center'
+            {/* Hero */}
+            <FadeInSection>
+            <section className="max-w-7xl mx-auto px-5 md:px-20 pt-12 md:pt-16 pb-8">
+
+                {/* h1 — left-aligned */}
+                <div className="relative w-fit mb-8 md:mb-10"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                    <h1 className='font-serif text-4xl text-text-primary cursor-default' style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>{t("Hi! I'm Yun", '嗨！我是 Yun')}</h1>
-
-                    {/* desktop - hover me message */}
-                    <span className={`hidden md:block text-xs font-mono text-brand-green/50 mt-3 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
+                    <h1 className="font-serif text-4xl text-text-primary cursor-default" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>
+                        {t("Hi! I'm Yun", '嗨！我是 Yun')}
+                    </h1>
+                    <span className={`hidden md:block text-xs font-mono text-brand-green/50 mt-1 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
                         {t('✨ hover me ✨', '✨ hover me ✨')}
                     </span>
-
-                    {/* desktop: appear when hover */}
-                    <span
-                        className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out
-                            ${isHovered
-                                ? 'opacity-100 -top-6 left-[35%] -rotate-12'
-                                : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
-                            }`}
-                    >
-                        coffee
-                    </span>
-
-                    <span
-                        className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-75
-                            ${isHovered
-                                ? 'opacity-100 -top-4 right-[35%] rotate-6'
-                                : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
-                            }`}
-                    >
-                        music
-                    </span>
-
-                    <span
-                        className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-100
-                            ${isHovered
-                                ? 'opacity-100 top-1/2 left-[30%] -translate-y-1/2 -rotate-6'
-                                : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
-                            }`}
-                    >
-                        design
-                    </span>
-
-                    <span
-                        className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-150
-                            ${isHovered
-                                ? 'opacity-100 top-1/2 right-[30%] -translate-y-1/2 rotate-12'
-                                : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
-                            }`}
-                    >
-                        nature
-                    </span>
-
-                    <span
-                        className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-200
-                            ${isHovered
-                                ? 'opacity-100 -bottom-4 left-1/2 -translate-x-1/2 rotate-3'
-                                : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'
-                            }`}
-                    >
-                        language
-                    </span>
-
-                    {/* mobile - default display */}
-                    <div className="md:hidden absolute -bottom-12 flex gap-3">
-                        <span className="font-hand text-sm text-brand-green">design</span>
-                        <span className="text-brand-green">•</span>
-                        <span className="font-hand text-sm text-brand-green">music</span>
-                        <span className="text-brand-green">•</span>
-                        <span className="font-hand text-sm text-brand-green">nature</span>
-                    </div>
+                    <span className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out
+                        ${isHovered ? 'opacity-100 -top-6 left-1/4 -rotate-12' : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'}`}>coffee</span>
+                    <span className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-75
+                        ${isHovered ? 'opacity-100 -top-4 right-0 rotate-6' : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'}`}>music</span>
+                    <span className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-100
+                        ${isHovered ? 'opacity-100 top-1/2 -left-16 -translate-y-1/2 -rotate-6' : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'}`}>design</span>
+                    <span className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-150
+                        ${isHovered ? 'opacity-100 top-1/2 -right-16 -translate-y-1/2 rotate-12' : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'}`}>nature</span>
+                    <span className={`hidden md:block absolute font-hand text-lg text-brand-green transition-all duration-500 ease-out delay-200
+                        ${isHovered ? 'opacity-100 -bottom-6 left-1/2 -translate-x-1/2 rotate-3' : 'opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0'}`}>language</span>
                 </div>
-            </section>
 
-            {/* Profile Photo */}
-            <FadeInSection>
-            <section className="relative max-w-7xl mx-auto px-5 md:px-20 py-6 flex flex-col items-center gap-3">
-                <div className="relative">
-                    {/* Pulsing ring — disappears after first click */}
-                    {!hasClickedPhoto && (
-                        <span className="absolute -inset-1 rounded-xl border-2 border-brand-green/40 animate-pulse pointer-events-none" />
-                    )}
+                {/* ── Upper: Photo | Bio ── */}
+                <div
+                    className="flex flex-col md:flex-row items-start md:items-stretch mb-8 md:mb-10"
+                    style={{ gap: 'clamp(24px, 4vw, 56px)' }}
+                >
+                    {/* Left: Photo */}
                     <div
-                        className="relative w-48 h-60 md:w-64 md:h-80 rounded-lg overflow-hidden cursor-pointer group"
-                        onClick={() => {
-                            setIsPhotoRevealed(v => !v);
-                            setHasClickedPhoto(true);
-                        }}
+                        className={`md:h-full transition-all duration-700 ease-out ${revealed ? 'opacity-100 translate-x-0' : 'opacity-0 md:-translate-x-10'}`}
+                        style={{ flex: '0 0 auto', width: 'clamp(200px, 28%, 320px)' }}
                     >
-                        <img
-                            src="images/about3.webp"
-                            alt="Yun"
-                            className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isPhotoRevealed ? 'brightness-40 scale-105' : 'brightness-100'}`}
-                        />
-                        <div className={`absolute inset-0 flex flex-col items-center justify-center px-5 text-center transition-all duration-500 ${isPhotoRevealed ? 'opacity-100' : 'opacity-0'}`}>
-                            <p className="font-hand text-white text-lg md:text-xl leading-relaxed">
-                                {t('thanks for stopping by!', '謝謝你來逛逛！')}
+                        <div className="flex flex-col gap-2 md:h-full">
+                            <div className="relative md:flex-1">
+                                {!hasClickedPhoto && (
+                                    <span className="absolute -inset-1 rounded-xl border-2 border-brand-green/40 animate-pulse pointer-events-none" />
+                                )}
+                                <div
+                                    className="relative w-full aspect-4/5 md:aspect-auto md:h-full rounded-lg overflow-hidden cursor-pointer group"
+                                    onClick={() => { setIsPhotoRevealed(v => !v); setHasClickedPhoto(true); }}
+                                >
+                                    <img src="images/about3.webp" alt="Yun"
+                                        className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isPhotoRevealed ? 'brightness-40 scale-105' : 'brightness-100'}`}
+                                    />
+                                    <div className={`absolute inset-0 flex flex-col items-center justify-center px-5 text-center transition-all duration-500 ${isPhotoRevealed ? 'opacity-100' : 'opacity-0'}`}>
+                                        <p className="font-hand text-white text-lg leading-relaxed">{t('thanks for stopping by!', '謝謝你來逛逛！')}</p>
+                                        <p className="font-hand text-white/80 text-base mt-2 leading-relaxed">{t('you will get to know me more here :)', '在這裡，你可以更認識我一點 :)')}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span className="text-xs font-mono text-brand-green/50">
+                                <span className="hidden md:inline">{t('✨ click me ✨', '✨ 點我 ✨')}</span>
+                                <span className="md:hidden">{t('✨ tap me ✨', '✨ 點我 ✨')}</span>
+                            </span>
+                            <div className="inline-flex self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
+                                <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
+                                <span className="font-mono text-[#555555] tracking-wide text-[11px]">
+                                    {t('Available for Internships', '尋找實習機會')}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right: Bio */}
+                    <div
+                        className={`flex-1 flex flex-col items-start gap-4 transition-all duration-700 ease-out delay-100
+                        ${revealed ? 'opacity-100 translate-x-0' : 'opacity-0 md:translate-x-10'}`}
+                    >
+                        <div className="flex flex-col gap-1">
+                            <Typewriter
+                                phrases={language === 'zh'
+                                    ? ['UX/UI 設計師', '使用者研究員']
+                                    : ['UX/UI Designer', 'Design Researcher']}
+                                speed={80}
+                                deleteSpeed={40}
+                                delay={2200}
+                                className="font-mono text-sm text-brand-green tracking-widest uppercase"
+                            />
+                            <span className="font-mono text-sm text-text-secondary/60 flex items-center gap-1">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                {t('Vancouver, BC', '溫哥華，加拿大')}
+                            </span>
+                        </div>
+
+                        <div style={{
+                            maxHeight: bioExpanded ? '1200px' : '9rem',
+                            overflow: 'hidden',
+                            transition: 'max-height 0.4s ease-in-out',
+                        }}>
+                            <p className="text-base text-text-secondary" style={{ lineHeight: '1.8' }}>
+                                {t(
+                                    "I've always been the kind of person who notices people. What they need, where they struggle, what would make their day a little less frustrating. My multicultural background has taught me to pay attention beyond words, and Japanese design showed me that real thoughtfulness lives in the smallest details. Settling in Vancouver added a new layer to that — a more diverse, multicultural context to keep practicing the same instinct. For me, UX/UI is where empathy becomes something tangible, where how something feels to use is just as important as whether it works. As AI changes how fast everything moves, I find myself more certain that keeping people at the center of design decisions is exactly where I want to be. I'm looking for an environment where design genuinely shapes the product, alongside people who believe there's always more to learn. If any of this resonates, let's build something together.",
+                                "我一直是那種以人為本的人。在意他們需要什麼、在哪裡卡關、什麼樣的改變能讓他們的生活輕鬆一點。浸潤在日文語言與東京生活裡，讓我學會在語言之外觀察，而日本設計告訴我，真正的體貼往往藏在最小的細節裡。落腳溫哥華之後，這個習慣沒有消失，只是換了一個更多元的場景繼續練習。接觸 UX/UI 是自然而然的事。這是科技裡最靠近人的位置，讓同理心變得具體可見，讓使用起來的感受和功能本身一樣重要。AI 加速改變一切的今天，我反而更確定：以人為本的設計思維，只會越來越重要。我想在一個設計真正影響產品決策的環境裡工作，和一群相信自己還有更多可以成長的人一起前進。如果你也有同樣的想法，歡迎聯繫我。"
+                                )}
                             </p>
-                            <p className="font-hand text-white/80 text-base md:text-lg mt-2 leading-relaxed">
-                                {t('you will get to know me more here :)', '在這裡，你可以更認識我一點 :)')}
-                            </p>
+                        </div>
+                        {!bioExpanded && (
+                            <div style={{ borderBottom: '1px dashed rgba(92, 92, 92, 0.3)', width: '100%' }} />
+                        )}
+                        <button
+                            onClick={() => setBioExpanded(e => !e)}
+                            className="font-mono text-xs text-text-secondary/60 flex items-center gap-1"
+                            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                        >
+                            {bioExpanded ? 'Read less ↑' : 'Read more ↓'}
+                        </button>
+
+                        {/* Currently — vertical, full width of right column */}
+                        <div className="w-full">
+                            <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-2">Currently</p>
+                            <div className="flex flex-col md:flex-row" style={{ gap: 'clamp(8px, 1.5vw, 16px)' }}>
+
+                                <div className="flex-1 rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-3.5"
+                                    style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-secondary/40 block md:text-[11px] md:tracking-[0.12em] md:text-text-secondary/60 mb-4">designing</span>
+                                    <p className="font-mono text-[11px] text-text-secondary leading-snug">
+                                        {t('a client project — rebranding & web design for a local coffee shop ☕️', '客戶專案 — 在地咖啡廳品牌重塑與網頁設計')}
+                                    </p>
+                                </div>
+
+                                <div className="flex-1 rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-3.5 flex gap-3 items-center"
+                                    style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                                    <img
+                                        src="/images/determined.jpg"
+                                        alt="Determined"
+                                        className="w-10 h-14 object-cover rounded-md shadow-sm shrink-0"
+                                    />
+                                    <div className="flex flex-col gap-0.5">
+                                        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-secondary/40 block mb-1 md:text-[11px] md:tracking-[0.12em] md:text-text-secondary/60">slowly reading</span>
+                                        <span className="font-mono text-[11px] text-text-secondary font-medium leading-snug">Determined</span>
+                                        <span className="font-mono text-[10px] text-text-secondary/60 leading-snug">— Robert M. Sapolsky</span>
+                                    </div>
+                                </div>
+
+                                <div className="flex-1 rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-3.5"
+                                    style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-secondary/40 block mb-2 md:text-[11px] md:tracking-[0.12em] md:text-text-secondary/60">listening to</span>
+                                    <MiniPlayer
+                                        src="/audio/Hollow Coves - Purple.mp3"
+                                        title="Purple"
+                                        artist="Hollow Coves"
+                                    />
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div className="md:hidden flex gap-3">
                         </div>
                     </div>
                 </div>
 
-                {/* Hint text — desktop: click me / mobile: tap me — disappears after first click */}
-                <span className={`text-xs font-mono text-brand-green/50 transition-opacity duration-500 ${hasClickedPhoto ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <span className="hidden md:inline">{t('✨ click me ✨', '✨ 點我 ✨')}</span>
-                    <span className="md:hidden">{t('✨ tap me ✨', '✨ 點我 ✨')}</span>
-                </span>
-            </section>
-            </FadeInSection>
-
-            {/* h2 */}
-            <FadeInSection delay={0.1}>
-            <section className='max-w-7xl mx-auto px-5 md:px-20 py-8 md:py-12 text-center'>
-                <h2 className='text-xl text-text-secondary font-mono'>{t('UX/UI Designer | Vancouver', 'UX/UI 設計師 | 溫哥華')}</h2>
             </section>
             </FadeInSection>
 
@@ -296,75 +426,57 @@ function About() {
             <FadeInSection>
             <section className="max-w-7xl mx-auto px-5 md:px-20 py-8 md:py-12">
                 <div className="max-w-5xl mx-auto">
-                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-10">{t('Toolkits', '工具包')}</p>
+                    <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-8">
+                        {t('Toolkits', '工具包')}
+                    </p>
 
-                    {/* Design & Prototyping */}
-                    <div className="mb-10">
-                        <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">{t('Design & Prototyping', '設計與原型')}</p>
-                        <div className="flex flex-wrap gap-3">
-                            {[
-                                { src: '/images/icons/figma.svg',        name: 'Figma' },
-                                { src: '/images/icons/photoshop.svg',    name: 'Photoshop' },
-                                { src: '/images/icons/illustrator.svg',  name: 'Illustrator' },
-                                { src: '/images/icons/indesign.svg',     name: 'InDesign' },
-                                { src: '/images/icons/premiere.svg',     name: 'Premiere Pro' },
-                                { src: '/images/icons/aftereffects.svg', name: 'After Effects' },
-                                { src: '/images/dimension.png',          name: 'Adobe Dimension' },
-                                { src: '/images/Canva.png',              name: 'Canva' },
-                                { src: '/images/icons/wordpress.svg',    name: 'WordPress' },
-                            ].map(({ src, name }) => (
-                                <img
-                                    key={name}
-                                    src={src}
-                                    alt={name}
-                                    title={name}
-                                    className="w-15 h-9 object-contain transition-all duration-200 cursor-default hover:-translate-y-0.75"
-                                    style={{ filter: 'saturate(80%)' }}
-                                    onMouseEnter={e => e.currentTarget.style.filter = 'saturate(100%) brightness(1.05)'}
-                                    onMouseLeave={e => e.currentTarget.style.filter = 'saturate(80%)'}
-                                />
-                            ))}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                        {/* Design & Prototyping */}
+                        <div className="rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-5"
+                            style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                            <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">
+                                {t('Design & Prototyping', '設計與原型')}
+                            </p>
+                            <div className="grid grid-cols-5 gap-x-2 gap-y-4">
+                                {designTools.map(({ src, name, extraScale = 1 }) => (
+                                    <ToolIcon key={name} src={src} name={name} extraScale={extraScale} />
+                                ))}
+                            </div>
                         </div>
+
+                        {/* Technical Familiarity */}
+                        <div className="rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-5"
+                            style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                            <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">
+                                {t('Technical Familiarity', '技術工具')}
+                            </p>
+                            <div className="flex flex-wrap gap-x-3 gap-y-4">
+                                {technicalSkills.map(({ src, name }) => (
+                                    <ToolIcon key={name} src={src} name={name} />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Languages */}
+                        <div className="rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-5 flex flex-col"
+                            style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                            <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-4">
+                                {t('Languages', '語言')}
+                            </p>
+                            <div className="flex-1 flex flex-col justify-around gap-3">
+                                {[
+                                    { front: 'English',  greeting: 'Hi!' },
+                                    { front: 'Japanese', greeting: 'こんにちは！' },
+                                    { front: 'Mandarin', greeting: '嗨！' },
+                                ].map(({ front, greeting }) => (
+                                    <LangFlipCell key={front} front={front} greeting={greeting} />
+                                ))}
+                            </div>
+                        </div>
+
                     </div>
 
-                    {/* Technical Familiarity */}
-                    <div className="mb-10">
-                        <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">{t('Technical Familiarity', '技術工具')}</p>
-                        <div className="flex flex-wrap gap-3">
-                            {[
-                                { src: '/images/icons/html.svg',        name: 'HTML5' },
-                                { src: '/images/icons/css.svg',         name: 'CSS3' },
-                                { src: '/images/icons/javascript.svg',  name: 'JavaScript' },
-                                { src: '/images/icons/react.svg',       name: 'React.js' },
-                                { src: '/images/icons/tailwind.svg',    name: 'Tailwind CSS' },
-                            ].map(({ src, name }) => (
-                                <img
-                                    key={name}
-                                    src={src}
-                                    alt={name}
-                                    title={name}
-                                    className="w-9 h-9 transition-all duration-200 cursor-default hover:-translate-y-0.75"
-                                    style={{ filter: 'saturate(80%)' }}
-                                    onMouseEnter={e => e.currentTarget.style.filter = 'saturate(100%) brightness(1.05)'}
-                                    onMouseLeave={e => e.currentTarget.style.filter = 'saturate(80%)'}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Languages — 3D greeting flip cells */}
-                    <div>
-                        <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">{t('Languages', '語言')}</p>
-                        <div className="flex flex-wrap gap-3">
-                            {[
-                                { front: 'English',  greeting: 'Hi!'       },
-                                { front: 'Japanese', greeting: 'こんにちは！' },
-                                { front: 'Mandarin', greeting: '嗨！'       },
-                            ].map(({ front, greeting }) => (
-                                <LangFlipCell key={front} front={front} greeting={greeting} />
-                            ))}
-                        </div>
-                    </div>
                 </div>
             </section>
             </FadeInSection>
@@ -452,6 +564,7 @@ function About() {
             </section>
             </FadeInSection>
         </div>
+
     </PageTransition>
     )
 }

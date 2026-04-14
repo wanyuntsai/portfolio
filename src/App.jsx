@@ -4,6 +4,8 @@ import { LanguageProvider } from './context/LanguageContext';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import PortfolioChat from './components/PortfolioChat';
+
 
 import Home from './pages/Home';
 import Work from './pages/Work';
@@ -16,6 +18,7 @@ import Vanlink from './pages/work/Vanlink'
 import YouTubeMusic from "./pages/work/YouTubeMusic";
 import MindLog from './pages/work/MindLog';
 import YunJam from './pages/work/YunJam';
+
 
 function AppContent() {
   const location = useLocation();
@@ -45,6 +48,7 @@ function AppContent() {
       <div className={isWorkSubPage ? 'bg-neutral-50' : ''}>
         <Footer/>
       </div>
+      <PortfolioChat />
     </div>
   );
 }

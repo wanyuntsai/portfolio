@@ -47,7 +47,7 @@ function Home() {
     {
       id: "VanLink",
       title: "VANLINK",
-      subtitle: t('Transit app', '大溫地區統一通勤 App'),
+      subtitle: t('Vancouver transit app', '大溫地區統一通勤 App'),
       description: t('Unified fragmented transit services into one mobile app, achieving 100% task success rate across 13 tested users.', '將碎片化的交通服務整合為單一行動 App，13 位測試者達成 100% 任務成功率。'),
       image: "/images/Vanlink/Vanlink_mkup.png",
       tags: ["UX/UI", "Figma", "Usability Testing"],

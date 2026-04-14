@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ProjectNav from '../../components/ProjectNav';
 import { FadeInSection, PageTransition } from "../../components/AnimatedSection";
 import { useLanguage } from '../../context/LanguageContext';
 import {
@@ -690,16 +691,10 @@ function Learnnow() {
 
       {/* ===== Navigation ===== */}
       <FadeInSection>
-      <section className="py-8 md:py-12">
-        <div className="flex justify-between items-center w-full">
-          <Link to="/work" className="text-brand-green font-mono text-sm hover:underline">
-            {t('← Back to Projects', '← 返回作品集')}
-          </Link>
-          <Link to="/work/YoutubeMusic" className="text-brand-green font-mono text-sm hover:underline">
-            {t('Next Project →', '下一個專案 →')}
-          </Link>
-        </div>
-      </section>
+          <ProjectNav
+            prev={{ href: '/work/vanlink', name: 'VanLink', subtitle: t('Vancouver transit app', '交通應用程式'), image: '/images/Vanlink/Vanlink_mkup.png' }}
+            next={{ href: '/work/youtubemusic', name: 'YouTube Music', subtitle: t('App redesign', 'App 重新設計'), image: '/images/YouTubeMusic/youtubemkup.png' }}
+          />
       </FadeInSection>
 
       </div>{/* end main content */}
