@@ -276,3 +276,14 @@ body {
   object-fit: cover;
   transition: transform 0.4s ease;
 }
+
+/*  */
+::selection {
+    background-color: #9BBF6A;
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background-color: #9BBF6A;
+    color: #FFFFFF;
+}
