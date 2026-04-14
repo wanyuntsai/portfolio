@@ -31,7 +31,7 @@ function Footer() {
                 </a>
             </div>
             <div className="text-center text-xs font-mono mt-5">
-                <p>&copy; 2026 Yun Tsai. </p>
+                <p>&copy; 2026 Yun Tsai </p>
                 <p>Designed & built with lots of coffee :)</p>
             </div>
           </div>
