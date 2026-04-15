@@ -315,7 +315,7 @@ function About() {
                         </div>
 
                         <div style={{
-                            maxHeight: bioExpanded ? '1200px' : '9rem',
+                            maxHeight: bioExpanded ? '1200px' : '10rem',
                             overflow: 'hidden',
                             transition: 'max-height 0.4s ease-in-out',
                         }}>
@@ -343,14 +343,22 @@ function About() {
                         )}
                         <button
                             onClick={() => setBioExpanded(e => !e)}
-                            className="font-mono text-xs text-text-secondary/60 flex items-center gap-1"
-                            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                            className="font-mono text-xs text-text-secondary/70 flex items-center gap-1 transition-colors hover:text-text-secondary"
+                            style={{
+                                background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+                            }}
                         >
-                            {bioExpanded ? 'Read less ↑' : 'Read more ↓'}
+                            <span style={{
+                                backgroundColor: 'rgba(123, 232, 73, 0.35)',
+                                borderRadius: '3px',
+                                padding: '12px 24px',
+                            }}>
+                                {bioExpanded ? 'Read less ↑' : 'Read more ↓'}
+                            </span>
                         </button>
 
                         {/* Currently — vertical, full width of right column */}
-                        <div className="w-full">
+                        <div className="w-full mt-6">
                             <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-2">Currently</p>
                             <div className="flex flex-col md:flex-row" style={{ gap: 'clamp(8px, 1.5vw, 16px)' }}>
 

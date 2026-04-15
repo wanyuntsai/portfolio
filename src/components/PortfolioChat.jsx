@@ -884,6 +884,19 @@ setMessages(prev => [...prev, {
                 </svg>
               </button>
             </div>
+
+            {/* Disclaimer */}
+            <p style={{
+              textAlign: 'center',
+              fontSize: '9px',
+              fontFamily: "'JetBrains Mono', monospace",
+              color: '#bbb',
+              padding: '6px 12px 8px',
+              letterSpacing: '0.03em',
+              borderTop: '1px solid #f0ede7',
+            }}>
+              AI-powered · Curated by Yun · May not be 100% perfect
+            </p>
           </div>
         )}
 

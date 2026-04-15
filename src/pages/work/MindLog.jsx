@@ -391,14 +391,17 @@ function MindLog() {
                                         </div>
                                         <div className="flex justify-center gap-4 flex-wrap">
                                             {[
-                                                {
-    stat: '1 in 5',
-    label: t('Canadians experience a mental health problem in any given year', '加拿大人每年經歷心理健康問題'),
-    source: 'CMHA / CIHI, 2025',
-    url: 'https://cmha.ca/brochure/fast-facts-about-mental-illness/',
+{
+    stat: '9.4%',
+    label: t(
+        'Rate of unmet mental health care needs in BC — higher than the national average of 7.8%',
+        'BC 省心理健康服務需求未被滿足的比例，高於全國平均 7.8%'
+    ),
+    source: 'CMHA State of Mental Health in Canada, 2024',
+    url: 'https://bc.cmha.ca/news/state-of-mental-health-in-canada/',
 },
 {
-    stat: '4 months+',
+    stat: '4 mo+',
     label: t(
     'Of Canadians referred to community mental health counselling, 1 in 10 waited more than 4 months for their first appointment',
     '在被轉介至社區心理健康諮詢的加拿大人中，1/10 等待超過 4 個月才獲得首次預約'
