@@ -319,12 +319,24 @@ function About() {
                             overflow: 'hidden',
                             transition: 'max-height 0.4s ease-in-out',
                         }}>
-                            <p className="text-base text-text-secondary" style={{ lineHeight: '1.8' }}>
-                                {t(
-                                    "I've always been the kind of person who notices people. What they need, where they struggle, what would make their day a little less frustrating. My multicultural background has taught me to pay attention beyond words, and Japanese design showed me that real thoughtfulness lives in the smallest details. Settling in Vancouver added a new layer to that — a more diverse, multicultural context to keep practicing the same instinct. For me, UX/UI is where empathy becomes something tangible, where how something feels to use is just as important as whether it works. As AI changes how fast everything moves, I find myself more certain that keeping people at the center of design decisions is exactly where I want to be. I'm looking for an environment where design genuinely shapes the product, alongside people who believe there's always more to learn. If any of this resonates, let's build something together.",
-                                "我一直是那種以人為本的人。在意他們需要什麼、在哪裡卡關、什麼樣的改變能讓他們的生活輕鬆一點。浸潤在日文語言與東京生活裡，讓我學會在語言之外觀察，而日本設計告訴我，真正的體貼往往藏在最小的細節裡。落腳溫哥華之後，這個習慣沒有消失，只是換了一個更多元的場景繼續練習。接觸 UX/UI 是自然而然的事。這是科技裡最靠近人的位置，讓同理心變得具體可見，讓使用起來的感受和功能本身一樣重要。AI 加速改變一切的今天，我反而更確定：以人為本的設計思維，只會越來越重要。我想在一個設計真正影響產品決策的環境裡工作，和一群相信自己還有更多可以成長的人一起前進。如果你也有同樣的想法，歡迎聯繫我。"
-                                )}
-                            </p>
+                            <div className="flex flex-col gap-4 text-base text-text-secondary" style={{ lineHeight: '1.6' }}>
+                                <p>{t(
+                                    "My perspective on human behavior is deeply shaped by my experience living in Japan, where I observed how intentional details can elevate everyday experiences and make interactions feel seamless. Japanese design principles—particularly minimalism and the purposeful use of negative space—have taught me to prioritize clarity and intentionality in every decision.",
+                                    "過去在日本生活的經驗，讓我學會觀察那些『看不見的細節』是如何讓生活更流暢。這份對細節的執著，也延續到了我的設計理念中。"
+                                )}</p>
+                                <p>{t(
+                                    "I see UX/UI as a way to understand the deeper context behind human experience. It's where empathy becomes tangible and how a product feels is as vital as how it functions.",
+                                    "我偏好簡潔、有呼吸感的設計風格，並相信好的設計應該是直覺且溫暖的。不只要好用，更要讓人用起來感覺很自然順暢。"
+                                )}</p>
+                                <p>{t(
+                                    "As AI continues to change how fast everything moves, I find myself even more certain that keeping people at the center of design decisions is exactly where I want to be.",
+                                    "雖然 AI 加速一切並改變設計的方式，但我始終相信設計的核心是「人」。"
+                                )}</p>
+                                <p>{t(
+                                    "I'm looking forward to joining a team where design meaningfully shapes the product, alongside people who believe there's always more to learn.",
+                                    "我很期待能加入一個重視設計、並讓設計真正發揮影響力的團隊，和一群願意持續學習的夥伴一起合作。"
+                                )}</p>
+                            </div>
                         </div>
                         {!bioExpanded && (
                             <div style={{ borderBottom: '1px dashed rgba(92, 92, 92, 0.3)', width: '100%' }} />

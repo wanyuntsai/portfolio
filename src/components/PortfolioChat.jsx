@@ -326,13 +326,13 @@ const PROJECTS = [
     long: "Problem: Friction in browsing and music discovery. Buttons too small or unnoticed, reducing action visibility. Playback page lacked clear interaction affordances.\n\nSolution: Redesigned the Home section layout, improved action visibility across key interactions, and clarified the playback page hierarchy.\n\nKey takeaway: Small UI details — button size, placement, and visual weight — have a disproportionate impact on usability and engagement.\n\nTools: Figma",
     url: "/work/youtubemusic",
   },
-  {
-    name: "Yun Jam",
-    short: "Personal creative project — a turntable UI music playlist tool built with AI collaboration.\nAdd any Spotify song, share your playlist via URL. Live and usable now.",
-    long: "What it is: A browser-based music playlist tool with a spinning vinyl turntable UI. Paste any Spotify URL and the song appears instantly. Playlist is encoded into a single shareable URL. Persistent storage keeps your playlist between sessions.\n\nProblem with V1: Cards linked out to Spotify breaking the in-page experience, no actual playback, only hardcoded songs — no one else could use it.\n\nSolution: Rebuilt with real in-page Spotify embed playback. Any user can add songs, rename their playlist, and share it.\n\nKey takeaway: Used AI as a creative collaborator to focus on concept, feel, and user experience — and shipped something real.\n\nTools: HTML, CSS, JavaScript, Spotify API, Claude Code",
-    url: "/work/yunjam",
-    liveUrl: "https://wanyuntsai.github.io/yunjam/",
-  },
+  // {
+  //   name: "Yun Jam",
+  //   short: "Personal creative project — a turntable UI music playlist tool built with AI collaboration.\nAdd any Spotify song, share your playlist via URL. Live and usable now.",
+  //   long: "What it is: A browser-based music playlist tool with a spinning vinyl turntable UI. Paste any Spotify URL and the song appears instantly. Playlist is encoded into a single shareable URL. Persistent storage keeps your playlist between sessions.\n\nProblem with V1: Cards linked out to Spotify breaking the in-page experience, no actual playback, only hardcoded songs — no one else could use it.\n\nSolution: Rebuilt with real in-page Spotify embed playback. Any user can add songs, rename their playlist, and share it.\n\nKey takeaway: Used AI as a creative collaborator to focus on concept, feel, and user experience — and shipped something real.\n\nTools: HTML, CSS, JavaScript, Spotify API, Claude Code",
+  //   url: "/work/yunjam",
+  //   liveUrl: "https://wanyuntsai.github.io/yunjam/",
+  // },
 ];
 
 const CONTACT_CTA_TOKEN = "SHOW_CONTACT_CTA";

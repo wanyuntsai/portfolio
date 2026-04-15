@@ -391,13 +391,40 @@ function MindLog() {
                                         </div>
                                         <div className="flex justify-center gap-4 flex-wrap">
                                             {[
-                                                { stat: '1 in 5', label: t('Canadians experience mental illness yearly', '加拿大人每年有心理健康問題') },
-                                                { stat: '16–28',  label: t('Weeks avg. wait for mental health services', '週平均等待心理健康服務') },
-                                                { stat: '75%',    label: t('Would use a unified wellness app', '願意使用整合式健康 App') },
-                                            ].map(({ stat, label }) => (
-                                                <div key={stat} className="bg-[#FDFCE8] rounded-lg p-4 text-center w-36">
-                                                    <p className="font-serif text-2xl md:text-3xl text-[#E07A65] font-bold">{stat}</p>
-                                                    <p className="text-sm text-text-secondary mt-1">{label}</p>
+                                                {
+    stat: '1 in 5',
+    label: t('Canadians experience a mental health problem in any given year', '加拿大人每年經歷心理健康問題'),
+    source: 'CMHA / CIHI, 2025',
+    url: 'https://cmha.ca/brochure/fast-facts-about-mental-illness/',
+},
+{
+    stat: '4 months+',
+    label: t(
+    'Of Canadians referred to community mental health counselling, 1 in 10 waited more than 4 months for their first appointment',
+    '在被轉介至社區心理健康諮詢的加拿大人中，1/10 等待超過 4 個月才獲得首次預約'
+),    source: 'CIHI, 2024–2025',
+    url: 'https://www.cihi.ca/en/taking-the-pulse-measuring-shared-priorities-for-canadian-health-care-2025/mental-health-and-substance-use-services-2025/community-services-are-important-for',
+},
+{
+    stat: '4 mo+',
+    label: t('Wait time for psychiatry in Ontario — sometimes exceeding 1 year', '安大略省精神科等待時間，有時超過 1 年'),
+    source: 'Statistics Canada / Resolvve, 2023',
+    url: 'https://resolvve.ca/blog/psychiatry-wait-times-in-ontario',
+},
+                                            ].map(({ stat, label, source, url }) => (
+                                                <div key={stat} className="flex items-start gap-4 bg-[#FDFCE8] rounded-xl px-5 py-4">
+                                                    <p className="font-serif text-2xl text-[#E07A65] font-bold shrink-0 w-16 pt-0.5">{stat}</p>
+                                                    <div>
+                                                        <p className="text-sm text-text-secondary leading-relaxed">{label}</p>
+                                                        <a
+                                                            href={url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-[10px] font-mono text-[#8A7A72] hover:text-[#E07A65] transition-colors mt-1 inline-block"
+                                                        >
+                                                            {source} ↗
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             ))}
                                         </div>
