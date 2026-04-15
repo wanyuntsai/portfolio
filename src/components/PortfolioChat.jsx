@@ -421,6 +421,9 @@ export default function PortfolioChat() {
         }),
       });
       const data = await response.json();
+      if (!response.ok) {
+        console.error('Anthropic API error:', data);
+      }
       const raw = data.content?.[0]?.text || "Sorry, something went wrong — try again!";
       const showCTA = raw.includes(CONTACT_CTA_TOKEN);
 
