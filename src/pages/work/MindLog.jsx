@@ -389,7 +389,7 @@ function MindLog() {
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="flex justify-center gap-4 flex-wrap">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             {[
 {
     stat: '9.4%',
@@ -403,20 +403,14 @@ function MindLog() {
 {
     stat: '4 mo+',
     label: t(
-    'Of Canadians referred to community mental health counselling, 1 in 10 waited more than 4 months for their first appointment',
-    '在被轉介至社區心理健康諮詢的加拿大人中，1/10 等待超過 4 個月才獲得首次預約'
-),    source: 'CIHI, 2024–2025',
+        'Minimum wait for community mental health counselling in Canada — 1 in 10 people waited this long just to be seen for the first time',
+        '加拿大社區心理健康諮詢的最低等待門檻——每 10 人就有 1 人等超過 4 個月，才能完成第一次預約'
+    ),    source: 'CIHI, 2024–2025',
     url: 'https://www.cihi.ca/en/taking-the-pulse-measuring-shared-priorities-for-canadian-health-care-2025/mental-health-and-substance-use-services-2025/community-services-are-important-for',
 },
-{
-    stat: '4 mo+',
-    label: t('Wait time for psychiatry in Ontario — sometimes exceeding 1 year', '安大略省精神科等待時間，有時超過 1 年'),
-    source: 'Statistics Canada / Resolvve, 2023',
-    url: 'https://resolvve.ca/blog/psychiatry-wait-times-in-ontario',
-},
                                             ].map(({ stat, label, source, url }) => (
-                                                <div key={stat} className="flex items-start gap-4 bg-[#FDFCE8] rounded-xl px-5 py-4">
-                                                    <p className="font-serif text-2xl text-[#E07A65] font-bold shrink-0 w-16 pt-0.5">{stat}</p>
+                                                <div key={stat} className="flex items-start gap-4 bg-[#FDFCE8] rounded-xl px-5 py-4 h-full">
+                                                    <p className="font-serif text-lg text-[#E07A65] font-bold shrink-0 w-12 pt-0.5">{stat}</p>
                                                     <div>
                                                         <p className="text-sm text-text-secondary leading-relaxed">{label}</p>
                                                         <a
@@ -457,7 +451,7 @@ function MindLog() {
                                                 <tbody>
                                                     {[
                                                         { app: 'Daylio',    s: t('Excellent mood tracking, clear charts', '情緒追蹤出色，圖表清晰'), g: t('No safety layer, no counselor access', '無安全機制，無諮商師連結') },
-                                                        { app: 'DailyBean', s: t('Mindfulness exercises, breathing tools', '正念練習，呼吸工具'), g: t('Not journal-focused, complex interface', '非日記導向，介面複雜') },
+                                                        { app: 'DailyBean', s: t('Cute visual design, daily diary with emoji stickers', '可愛視覺設計，以 emoji 貼紙為主的日記功能'), g: t('No AI insights, no professional support pathway', '無 AI 洞察，無連結專業支援的管道') },
                                                         { app: 'Headspace', s: t('Meditation, sleep, stress programs', '冥想、睡眠、壓力療程'), g: t('Content-driven, not a daily mood journal', '內容導向，非日常情緒日記') },
                                                     ].map((row, i) => (
                                                         <tr key={row.app} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
