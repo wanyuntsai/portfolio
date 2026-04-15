@@ -286,8 +286,8 @@ function MindLog() {
                                         </h2>
                                         <p className="text-base text-text-secondary leading-relaxed mb-6">
                                             {t(
-                                                "In Canada, mental health professional wait times stretch 16–28 weeks. People experience stress and low mood but lack tools to track patterns over time — and don't know when those patterns become serious enough to seek help. Existing apps offer mood logging and charts, but leave users to interpret data alone with no bridge to professional support.",
-                                                '在加拿大，心理健康等待時間長達 16–28 週。許多人長期承受壓力，卻缺乏追蹤情緒模式的工具，也不知道何時該求助。現有 App 雖有圖表，卻讓使用者自行解讀，沒有連結專業支援的途徑。'
+                                                "In BC, 9.4% of people have unmet mental health care needs — above the national average of 7.8%. For those who do seek help, 1 in 10 wait more than 4 months just for their first community counselling appointment. People experience stress and low mood but lack tools to track patterns over time — and don't know when those patterns become serious enough to seek help. Existing apps offer mood logging and charts, but leave users to interpret data alone with no bridge to professional support.",
+                                                '在 BC 省，9.4% 的人有未被滿足的心理健康需求，高於全國平均 7.8%。即使鼓起勇氣求助，每 10 人中就有 1 人等待超過 4 個月才能完成首次社區諮詢預約。許多人長期承受壓力，卻缺乏追蹤情緒模式的工具，也不知道何時該正式求助。現有 App 雖有圖表，卻讓使用者自行解讀，沒有連結專業支援的途徑。'
                                             )}
                                         </p>
                                         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8">

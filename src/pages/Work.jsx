@@ -16,7 +16,8 @@ function Projects() {
     const filters = [
         { value: "All", label: t("All", "全部") },
         { value: "UX/UI Design", label: t("UX/UI Design", "UX/UI 設計") },
-        { value: "AI Implementation", label: t("AI Implementation", "AI 實作") },
+        // { value: "AI Implementation", label: t("AI Implementation", "AI 實作") },
+        { value: "Creative Coding", label: t("Creative Coding", "創意開發") },
     ];
 
     const projects = [
@@ -61,16 +62,16 @@ function Projects() {
             category: "UX/UI Design",
             image: "/images/MindLog/MindLog_mkup.png",
         },
-        // {
-        //     id: "yunjam",
-        //     title: "YUN JAM",
-        //     subtitle: t('Interactive music playlist tool', '互動式音樂播放清單工具'),
-        //     description: t('Turned a class assignment into a shareable music tool — paste any Spotify URL to build and share your own curated playlist, no account required.', '將課堂作業轉化為可分享的音樂工具，貼上任意 Spotify 連結即可建立並分享個人播放清單，無需帳號。'),
-        //     image: "/images/YunJam/yunjam_mkup.png",
-        //     tags: ["HTML", "CSS", "JavaScript", "Spotify API"],
-        //     link: "/work/yunjam",
-        //     category: "AI Implementation",
-        // },
+        {
+            id: "yunjam",
+            title: "YUN JAM",
+            subtitle: t('Interactive music playlist tool', '互動式音樂播放清單工具'),
+            description: t('Turned a class assignment into a shareable music tool — paste any Spotify URL to build and share your own curated playlist, no account required.', '將課堂作業轉化為可分享的音樂工具，貼上任意 Spotify 連結即可建立並分享個人播放清單，無需帳號。'),
+            image: "/images/YunJam/yunjam_mkup.png",
+            tags: ["HTML", "CSS", "JavaScript", "Spotify API"],
+            liveUrl: "https://wanyuntsai.github.io/yunjam/",
+            category: "Creative Coding",
+        },
     ]
 
     const filteredProjects = activeFilter === "All"
