@@ -25,6 +25,8 @@ function Learnnow() {
     window.scrollTo({ top, behavior: 'smooth' });
   };
 
+  useEffect(() => { document.title = 'LearnNow | Yun Tsai'; }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;

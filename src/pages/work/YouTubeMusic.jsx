@@ -22,6 +22,8 @@ function YouTubeMusic() {
     const [showTooltip, setShowTooltip] = useState(false);
     const [hoverImg, setHoverImg] = useState(null);
 
+    useEffect(() => { document.title = 'YouTube Music | Yun Tsai'; }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const scrolled = window.scrollY;
@@ -96,12 +98,7 @@ function YouTubeMusic() {
                         </div>
                     </div>
                     <div className="md:w-1/2 mt-2 md:mt-0">
-                        <img src="/images/YouTubeMusic/cover.png" alt="YouTube Music Redesign Preview"
-                             className="w-full h-auto"
-                             onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
-                        <div className="w-full aspect-video rounded-2xl items-center justify-center">
-                            <img src="/images/YouTubeMusic/youtubemkup.png" alt="YouTubeMusic Mockup" className="w-full h-auto" />
-                        </div>
+                        <img src="/images/YouTubeMusic/youtubemkup.png" alt="YouTube Music Redesign Preview" className="w-full h-auto" />
                     </div>
                 </div>
             </section>

@@ -152,6 +152,12 @@ function About() {
 
 
     // toolkit data
+    const aiTools = [
+        { src: '/images/icons/claude.svg',   name: 'Claude' },
+        { src: '/images/icons/chatgpt.png',  name: 'ChatGPT' },
+        { src: '/images/icons/gemini.svg',   name: 'Gemini' },
+        { src: '/images/icons/copilot.svg',  name: 'GitHub Copilot' },
+    ];
     const designTools = [
         { src: '/images/icons/figma.svg',        name: 'Figma' },
         { src: '/images/Canva.png',              name: 'Canva',         extraScale: 1.5 },
@@ -230,8 +236,8 @@ function About() {
             <FadeInSection>
             <section className="max-w-7xl mx-auto px-5 md:px-20 pt-12 md:pt-16 pb-8">
 
-                {/* h1 — left-aligned */}
-                <div className="relative w-fit mb-8 md:mb-10"
+                {/* h1 */}
+                <div className="relative w-fit mb-8 md:mb-10 mx-auto md:mx-0"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
                     <h1 className="font-serif text-4xl text-text-primary cursor-default" style={language === 'zh' ? { fontFamily: '"Noto Serif TC", serif' } : undefined}>
@@ -254,7 +260,7 @@ function About() {
 
                 {/* ── Upper: Photo | Bio ── */}
                 <div
-                    className="flex flex-col md:flex-row items-start md:items-stretch mb-8 md:mb-10"
+                    className="flex flex-col md:flex-row items-center md:items-stretch mb-8 md:mb-10"
                     style={{ gap: 'clamp(24px, 4vw, 56px)' }}
                 >
                     {/* Left: Photo */}
@@ -280,13 +286,13 @@ function About() {
                                     </div>
                                 </div>
                             </div>
-                            <span className="text-xs font-mono text-brand-green/50">
+                            <span className="text-xs font-mono text-brand-green/50 text-center md:text-left">
                                 <span className="hidden md:inline">{t('✨ click me ✨', '✨ 點我 ✨')}</span>
                                 <span className="md:hidden">{t('✨ tap me ✨', '✨ 點我 ✨')}</span>
                             </span>
-                            <div className="inline-flex self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
+                            <div className="inline-flex self-center md:self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
                                 <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
-                                <span className="font-mono text-[#555555] tracking-wide text-[11px]">
+                                <span className="font-mono text-[#555555] tracking-wide text-[11px] whitespace-nowrap">
                                     {t('Available for Internships', '尋找實習機會')}
                                 </span>
                             </div>
@@ -295,10 +301,10 @@ function About() {
 
                     {/* Right: Bio */}
                     <div
-                        className={`flex-1 flex flex-col items-start gap-4 transition-all duration-700 ease-out delay-100
+                        className={`flex-1 flex flex-col items-center md:items-start gap-4 transition-all duration-700 ease-out delay-100
                         ${revealed ? 'opacity-100 translate-x-0' : 'opacity-0 md:translate-x-10'}`}
                     >
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-1 items-center md:items-start">
                             <Typewriter
                                 phrases={language === 'zh'
                                     ? ['UX/UI 設計師', '使用者研究員']
@@ -314,7 +320,7 @@ function About() {
                             </span>
                         </div>
 
-                        <div style={{
+                        <div className="w-full" style={{
                             maxHeight: bioExpanded ? '1200px' : '10rem',
                             overflow: 'hidden',
                             transition: 'max-height 0.4s ease-in-out',
@@ -450,7 +456,7 @@ function About() {
                         {t('Toolkits', '工具包')}
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                         {/* Design & Prototyping */}
                         <div className="rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-5"
@@ -473,6 +479,19 @@ function About() {
                             </p>
                             <div className="flex flex-wrap gap-x-3 gap-y-4">
                                 {technicalSkills.map(({ src, name }) => (
+                                    <ToolIcon key={name} src={src} name={name} />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* AI Tools */}
+                        <div className="rounded-2xl border border-white/50 bg-white/20 backdrop-blur-xl p-5"
+                            style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)' }}>
+                            <p className="font-mono text-xs text-text-secondary tracking-widest uppercase mb-5">
+                                {t('AI Tools', 'AI 工具')}
+                            </p>
+                            <div className="flex flex-wrap gap-x-3 gap-y-4">
+                                {aiTools.map(({ src, name }) => (
                                     <ToolIcon key={name} src={src} name={name} />
                                 ))}
                             </div>

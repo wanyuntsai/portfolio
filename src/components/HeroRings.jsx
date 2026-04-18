@@ -293,7 +293,7 @@ function HeroRings() {
               <div className="photo-filter w-45 h-65 md:w-60 md:h-85 rounded-[36px] overflow-hidden shadow-xl">
                 <img
                   src="/images/Wanyun_Tsai.png"
-                  alt=""
+                  alt="Yun Tsai"
                   className="w-full h-full object-cover pointer-events-auto"
                 />
               </div>

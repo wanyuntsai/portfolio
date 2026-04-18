@@ -37,6 +37,8 @@ function Vanlink() {
         window.scrollTo({ top, behavior: 'smooth' });
     };
 
+    useEffect(() => { document.title = 'VanLink | Yun Tsai'; }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const scrolled = window.scrollY;
