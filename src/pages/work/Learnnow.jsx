@@ -396,14 +396,14 @@ function Learnnow() {
           <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory">
             {[
               { src: '/images/LEARNNOW/Home.png', alt: 'Home' },
-              { src: '/images/LEARNNOW/3-tiers Menu.png', alt: '3-tiers Menu' },
-              { src: '/images/LEARNNOW/Japanese Language Course.png', alt: 'Japanese Language Course' },
-              { src: '/images/LEARNNOW/Japanese Email Course-Detail Page.png', alt: 'Course Detail Page' },
-              { src: '/images/LEARNNOW/Business Japanese Course.png', alt: 'Business Japanese Course' },
-              { src: '/images/LEARNNOW/Saved Course.png', alt: 'Saved Course' },
-              { src: '/images/LEARNNOW/My Learning.png', alt: 'My Learning' },
+              { src: '/images/LEARNNOW/3-tiers-Menu.png', alt: '3-tiers Menu' },
+              { src: '/images/LEARNNOW/Japanese-Language-Course.png', alt: 'Japanese Language Course' },
+              { src: '/images/LEARNNOW/Course-Detail-Page.png', alt: 'Course Detail Page' },
+              { src: '/images/LEARNNOW/Business-Japanese-Course.png', alt: 'Business Japanese Course' },
+              { src: '/images/LEARNNOW/Saved-Course.png', alt: 'Saved Course' },
+              { src: '/images/LEARNNOW/My-Learning.png', alt: 'My Learning' },
               { src: '/images/LEARNNOW/Checkout.png', alt: 'Checkout' },
-              { src: '/images/LEARNNOW/Payment Success.png', alt: 'Payment Success' },
+              { src: '/images/LEARNNOW/Payment-Success.png', alt: 'Payment Success' },
             ].map((img, i) => (
               <div
                 key={i}
