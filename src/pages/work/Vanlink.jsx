@@ -21,7 +21,7 @@ import {
 
 
 function Vanlink() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [flowView, setFlowView] = useState('before');
     const [lightboxImg, setLightboxImg] = useState(null);
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -123,7 +123,7 @@ function Vanlink() {
             {/* ===== Breadcrumb ===== */}
             <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
                 <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
-                    <Link to="/work" className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
+                    <Link to={`/${language}/work`} className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
                     <span className="text-text-secondary">{'>'}</span>
                     <span className="text-text-primary">VanLink</span>
                 </div>
@@ -213,7 +213,7 @@ function Vanlink() {
               <div className="bg-neutral-100 rounded-xl p-4 mt-8 mb-5">
                 <p className="text-base font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
                 <p className="text-sm text-neutral-500 mb-3">{t('View other case studies.', '瀏覽其他作品。')}</p>
-                <Link to="/work" className="inline-flex items-center gap-1 text-xs font-mono text-[#1a4a8a] hover:underline">
+                <Link to={`/${language}/work`} className="inline-flex items-center gap-1 text-xs font-mono text-[#1a4a8a] hover:underline">
                   {t('View all work', '查看所有作品')} →
                 </Link>
               </div>
@@ -538,7 +538,7 @@ function Vanlink() {
 </section>
 </FadeInSection>
 
-            {/* ==ｚ=== Usability Testing ===== */}
+            {/* ===== Usability Testing ===== */}
             <FadeInSection>
             <section className="py-8 md:py-12">
                 <div className="max-w-2xl mx-auto">
@@ -549,6 +549,12 @@ function Vanlink() {
                             <span className="font-medium text-text-primary">{t('Testing Scope: ', '測試範圍：')}</span>
                             {t('Conducted moderated & unmoderated usability testing with 13 participants using Maze, focusing on three core tasks.', '使用 Maze 進行 13 位使用者的有主持與無主持可用性測試，聚焦於三個核心任務。')}
                         </p>
+                        <p>Page Navigation</p>
+                        <p>Page Navigation</p>
+                        <p>Page Navigation</p>
+
+
+
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
@@ -831,8 +837,8 @@ function Vanlink() {
             {/* ===== Navigation ===== */}
             <FadeInSection>
                 <ProjectNav
-                    prev={{ href: '/work/MindLog', name: 'MindLog', subtitle: t('Mental health app', '心理健康應用程式'), image: '/images/MindLog/MindLog_mkup.png' }}
-                    next={{ href: '/work/learnnow', name: 'LearnNow', subtitle: t('E-learning platform', '線上學習平台'), image: '/images/learnnow_mkup1.png', imageClass: 'object-cover object-center' }}
+                    prev={{ href: `/${language}/work/MindLog`, name: 'MindLog', subtitle: t('Mental health app', '心理健康應用程式'), image: '/images/MindLog/MindLog_mkup.png' }}
+                    next={{ href: `/${language}/work/learnnow`, name: 'LearnNow', subtitle: t('E-learning platform', '線上學習平台'), image: '/images/learnnow_mkup1.png', imageClass: 'object-cover object-center' }}
                 />
             </FadeInSection>
 

@@ -174,15 +174,15 @@ function About() {
 
     // photo with descriptions
     const photos = [
-        { src: 'images/about2.webp', desc: 'Joffre Lakes, Canada — 2023' },
-        { src: 'images/star.webp', desc: 'Great Ocean Rd, Australia — 2024' },
-        { src: 'images/about1.webp', desc: 'Grampians National Park, Australia — 2024' },
-        { src: 'images/about4.webp', desc: 'Krimml Waterfalls, Austria — 2024' },
-        { src: 'images/sunset.webp', desc: 'White Rock, Canada — 2025' },
-        { src: 'images/nanaimo.png', desc: 'Nanaimo, Canada — 2025' },
-        { src: 'images/Chilliwack.JPG', desc: 'Chilliwack, Canada — 2025' },
-        { src: 'images/hollowcoves.jpg', desc: 'Hollow Coves Concert, Canada — 2025' },
-        { src: 'images/mountain.jpg', desc: 'Mount Aso, Japan — 2025' },
+        { src: '/images/about2.webp', desc: 'Joffre Lakes, Canada — 2023' },
+        { src: '/images/star.webp', desc: 'Great Ocean Rd, Australia — 2024' },
+        { src: '/images/about1.webp', desc: 'Grampians National Park, Australia — 2024' },
+        { src: '/images/about4.webp', desc: 'Krimml Waterfalls, Austria — 2024' },
+        { src: '/images/sunset.webp', desc: 'White Rock, Canada — 2025' },
+        { src: '/images/nanaimo.png', desc: 'Nanaimo, Canada — 2025' },
+        { src: '/images/Chilliwack.JPG', desc: 'Chilliwack, Canada — 2025' },
+        { src: '/images/hollowcoves.jpg', desc: 'Hollow Coves Concert, Canada — 2025' },
+        { src: '/images/mountain.jpg', desc: 'Mount Aso, Japan — 2025' },
  
     ]
 
@@ -271,7 +271,7 @@ function About() {
                                     className="relative w-full aspect-4/5 md:aspect-auto md:h-full rounded-lg overflow-hidden cursor-pointer group"
                                     onClick={() => { setIsPhotoRevealed(v => !v); setHasClickedPhoto(true); }}
                                 >
-                                    <img src="images/about3.webp" alt="Yun"
+                                    <img src="/images/about3.webp" alt="Yun"
                                         className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isPhotoRevealed ? 'brightness-40 scale-105' : 'brightness-100'}`}
                                     />
                                     <div className={`absolute inset-0 flex flex-col items-center justify-center px-5 text-center transition-all duration-500 ${isPhotoRevealed ? 'opacity-100' : 'opacity-0'}`}>
@@ -287,7 +287,7 @@ function About() {
                             <div className="inline-flex self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
                                 <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
                                 <span className="font-mono text-[#555555] tracking-wide text-[11px]">
-                                    {t('Available for Internships', '尋找實習機會')}
+                                    {t('Available for Work', '尋找工作機會')}
                                 </span>
                             </div>
                         </div>
@@ -310,7 +310,7 @@ function About() {
                             />
                             <span className="font-mono text-sm text-text-secondary/60 flex items-center gap-1">
                                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                {t('Vancouver, BC', '溫哥華，加拿大')}
+                                {t('Kaohsiung, Taiwan', '高雄，台灣')}
                             </span>
                         </div>
 

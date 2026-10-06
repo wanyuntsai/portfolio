@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 function Learnnow() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [lightboxImage, setLightboxImage] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -163,7 +163,7 @@ function Learnnow() {
       {/* ===== Breadcrumb ===== */}
       <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
         <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
-          <Link to="/work" className="text-brand-green hover:underline">
+          <Link to={`/${language}/work`} className="text-brand-green hover:underline">
             {t('Work', '作品')}
           </Link>
           <span className="text-text-secondary">{'>'}</span>
@@ -266,7 +266,7 @@ function Learnnow() {
           <div className="bg-neutral-100 rounded-xl p-4 mt-8 mb-5">
             <p className="text-sm font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
             <p className="text-sm text-neutral-500 mb-3">{t('Explore other case studies.', '瀏覽其他作品。')}</p>
-            <Link to="/work" className="inline-flex items-center gap-1 text-sm font-mono text-[#305E9A] hover:underline">
+            <Link to={`/${language}/work`} className="inline-flex items-center gap-1 text-sm font-mono text-[#305E9A] hover:underline">
               {t('View all work', '查看所有作品')} →
             </Link>
           </div>
@@ -393,14 +393,14 @@ function Learnnow() {
           <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory">
             {[
               { src: '/images/LEARNNOW/Home.png', alt: 'Home' },
-              { src: '/images/LEARNNOW/3-tiers Menu.png', alt: '3-tiers Menu' },
-              { src: '/images/LEARNNOW/Japanese Language Course.png', alt: 'Japanese Language Course' },
-              { src: '/images/LEARNNOW/Japanese Email Course-Detail Page.png', alt: 'Course Detail Page' },
-              { src: '/images/LEARNNOW/Business Japanese Course.png', alt: 'Business Japanese Course' },
-              { src: '/images/LEARNNOW/Saved Course.png', alt: 'Saved Course' },
-              { src: '/images/LEARNNOW/My Learning.png', alt: 'My Learning' },
+              { src: '/images/LEARNNOW/3-tiers-Menu.png', alt: '3-tiers Menu' },
+              { src: '/images/LEARNNOW/Japanese-Language-Course.png', alt: 'Japanese Language Course' },
+              { src: '/images/LEARNNOW/Japanese-Email-Course-Detail-Page.png', alt: 'Course Detail Page' },
+              { src: '/images/LEARNNOW/Business-Japanese-Course.png', alt: 'Business Japanese Course' },
+              { src: '/images/LEARNNOW/Saved-Course.png', alt: 'Saved Course' },
+              { src: '/images/LEARNNOW/My-Learning.png', alt: 'My Learning' },
               { src: '/images/LEARNNOW/Checkout.png', alt: 'Checkout' },
-              { src: '/images/LEARNNOW/Payment Success.png', alt: 'Payment Success' },
+              { src: '/images/LEARNNOW/Payment-Success.png', alt: 'Payment Success' },
             ].map((img, i) => (
               <div
                 key={i}
@@ -692,8 +692,8 @@ function Learnnow() {
       {/* ===== Navigation ===== */}
       <FadeInSection>
           <ProjectNav
-            prev={{ href: '/work/vanlink', name: 'VanLink', subtitle: t('Vancouver transit app', '交通應用程式'), image: '/images/Vanlink/Vanlink_mkup.png' }}
-            next={{ href: '/work/youtubemusic', name: 'YouTube Music', subtitle: t('App redesign', 'App 重新設計'), image: '/images/YouTubeMusic/youtubemkup.png' }}
+            prev={{ href: `/${language}/work/vanlink`, name: 'VanLink', subtitle: t('Vancouver transit app', '交通應用程式'), image: '/images/Vanlink/Vanlink_mkup.png' }}
+            next={{ href: `/${language}/work/youtubemusic`, name: 'YouTube Music', subtitle: t('App redesign', 'App 重新設計'), image: '/images/YouTubeMusic/youtubemkup.png' }}
           />
       </FadeInSection>
 

@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 function MindLog() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [lightboxImg, setLightboxImg] = useState(null);
     const [scrollProgress, setScrollProgress] = useState(0);
     const [showBackToTop, setShowBackToTop] = useState(false);
@@ -179,7 +179,7 @@ function MindLog() {
                     {/* ===== Breadcrumb ===== */}
                     <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-8 md:pt-14">
                         <div className="flex items-center gap-2 text-sm md:text-sm font-mono">
-                            <Link to="/work" className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
+                            <Link to={`/${language}/work`} className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
                             <span className="text-text-secondary">{'>'}</span>
                             <span className="text-text-primary">MindLog</span>
                         </div>
@@ -267,7 +267,7 @@ function MindLog() {
                                 <div className="bg-neutral-100 rounded-xl p-4 mt-8 mb-5">
                                     <p className="text-base font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
                                     <p className="text-sm text-neutral-500 mb-3">{t('View other case studies.', '瀏覽其他作品。')}</p>
-                                    <Link to="/work" className="inline-flex items-center gap-1 text-xs font-mono text-[#E07A65] hover:underline">
+                                    <Link to={`/${language}/work`} className="inline-flex items-center gap-1 text-xs font-mono text-[#E07A65] hover:underline">
                                         {t('View all work', '查看所有作品')} →
                                     </Link>
                                 </div>
@@ -840,8 +840,8 @@ function MindLog() {
                             {/* ===== Navigation ===== */}
                             <FadeInSection>
                                 <ProjectNav
-                                    prev={{ href: '/work/youtubemusic', name: 'YouTube Music', subtitle: t('App redesign', 'App 重新設計'), image: '/images/YouTubeMusic/youtubemkup.png' }}
-                                    next={{ href: '/work/vanlink', name: 'VanLink', subtitle: t('Vancouver transit app', '交通應用程式'), image: '/images/Vanlink/Vanlink_mkup.png' }}
+                                    prev={{ href: `/${language}/work/youtubemusic`, name: 'YouTube Music', subtitle: t('App redesign', 'App 重新設計'), image: '/images/YouTubeMusic/youtubemkup.png' }}
+                                    next={{ href: `/${language}/work/vanlink`, name: 'VanLink', subtitle: t('Vancouver transit app', '交通應用程式'), image: '/images/Vanlink/Vanlink_mkup.png' }}
                                 />
                             </FadeInSection>
 

@@ -17,7 +17,7 @@ function Projects() {
         { value: "All", label: t("All", "全部") },
         { value: "UX/UI Design", label: t("UX/UI Design", "UX/UI 設計") },
         // { value: "AI Implementation", label: t("AI Implementation", "AI 實作") },
-        { value: "Creative Coding", label: t("Creative Coding", "創意開發") },
+        // { value: "Creative Coding", label: t("Creative Coding", "創意開發") },
     ];
 
     const projects = [
@@ -62,16 +62,16 @@ function Projects() {
             category: "UX/UI Design",
             image: "/images/MindLog/MindLog_mkup.png",
         },
-        {
-            id: "yunjam",
-            title: "YUN JAM",
-            subtitle: t('Interactive music playlist tool', '互動式音樂播放清單工具'),
-            description: t('A turntable-style playlist builder — drop in any Spotify track, and share your entire playlist with a single URL.', '黑膠唱盤風格的播放清單工具 — 加入任意 Spotify 歌曲，用一個連結分享你的完整播放清單。'),
-            image: "/images/YunJam/yunjam_mkup.png",
-            tags: ["HTML", "CSS", "JavaScript", "Spotify API","Claude"],
-            liveUrl: "https://wanyuntsai.github.io/yunjam/",
-            category: "Creative Coding",
-        },
+        // {
+        //     id: "yunjam",
+        //     title: "YUN JAM",
+        //     subtitle: t('Interactive music playlist tool', '互動式音樂播放清單工具'),
+        //     description: t('A turntable-style playlist builder — drop in any Spotify track, and share your entire playlist with a single URL.', '黑膠唱盤風格的播放清單工具 — 加入任意 Spotify 歌曲，用一個連結分享你的完整播放清單。'),
+        //     image: "/images/YunJam/yunjam_mkup.png",
+        //     tags: ["HTML", "CSS", "JavaScript", "Spotify API","Claude"],
+        //     liveUrl: "https://wanyuntsai.github.io/yunjam/",
+        //     category: "Creative Coding",
+        // },
     ]
 
     const filteredProjects = activeFilter === "All"

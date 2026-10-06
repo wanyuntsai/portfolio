@@ -12,7 +12,7 @@ import ProjectNav from '../../components/ProjectNav';
 const RED = '#CC0000';
 
 function YouTubeMusic() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [lightboxImg, setLightboxImg] = useState(null);
     const { tocItems, activeId, showToc, scrollToSection } = useToc();
     const issues = getIssues(t);
@@ -56,7 +56,7 @@ function YouTubeMusic() {
             {/* Breadcrumb */}
             <nav className="max-w-7xl mx-auto px-5 md:px-16 xl:px-20 pt-3 md:pt-6">
                 <div className="flex items-center gap-2 text-xs md:text-base font-mono">
-                    <Link to="/work" className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
+                    <Link to={`/${language}/work`} className="text-brand-green hover:underline">{t('Work', '作品')}</Link>
                     <span className="text-text-secondary">{'>'}</span>
                     <span className="text-text-primary">YouTube Music Redesign</span>
                 </div>
@@ -96,9 +96,6 @@ function YouTubeMusic() {
                         </div>
                     </div>
                     <div className="md:w-1/2 mt-2 md:mt-0">
-                        <img src="/images/YouTubeMusic/cover.png" alt="YouTube Music Redesign Preview"
-                             className="w-full h-auto"
-                             onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
                         <div className="w-full aspect-video rounded-2xl items-center justify-center">
                             <img src="/images/YouTubeMusic/youtubemkup.png" alt="YouTubeMusic Mockup" className="w-full h-auto" />
                         </div>
@@ -135,7 +132,7 @@ function YouTubeMusic() {
                     <div className="bg-neutral-100 rounded-xl p-4 mt-8">
                         <p className="text-base font-medium text-neutral-800 mb-1">{t('More Work', '更多作品')}</p>
                         <p className="text-sm text-neutral-500 mb-3">{t('Explore other case studies.', '瀏覽其他作品。')}</p>
-                        <Link to="/work" className="inline-flex items-center gap-1 text-sm font-mono text-[#CC0000] hover:underline">
+                        <Link to={`/${language}/work`} className="inline-flex items-center gap-1 text-sm font-mono text-[#CC0000] hover:underline">
                             {t('View all work', '查看所有作品')} →
                         </Link>
                     </div>
@@ -406,8 +403,8 @@ function YouTubeMusic() {
                 {/* Navigation */}
                 <FadeInSection>
                     <ProjectNav
-                        prev={{ href: '/work/learnnow', name: 'LearnNow', subtitle: t('E-learning platform', '線上學習平台'), image: '/images/learnnow_mkup1.png', imageClass: 'object-cover object-center' }}
-                        next={{ href: '/work/MindLog', name: 'MindLog', subtitle: t('Mental health app', '心理健康應用程式'), image: '/images/MindLog/MindLog_mkup.png' }}
+                        prev={{ href: `/${language}/work/learnnow`, name: 'LearnNow', subtitle: t('E-learning platform', '線上學習平台'), image: '/images/learnnow_mkup1.png', imageClass: 'object-cover object-center' }}
+                        next={{ href: `/${language}/work/MindLog`, name: 'MindLog', subtitle: t('Mental health app', '心理健康應用程式'), image: '/images/MindLog/MindLog_mkup.png' }}
                     />
                 </FadeInSection>
 

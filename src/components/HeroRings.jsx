@@ -8,7 +8,7 @@ import Typewriter from './Typewriter';
 gsap.registerPlugin(ScrollTrigger);
 
 function HeroRings() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const sectionRef    = useRef(null);
   const leftColRef    = useRef(null);
   const innerRingRef  = useRef(null);
@@ -181,7 +181,7 @@ function HeroRings() {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm self-center md:self-start mb-6">
                 <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
                 <span className="font-mono text-[#555555] tracking-wide text-[12px] md:text-[13px]">
-                  {t('Available for internships · May 2026', '尋找 2026/5 實習機會')}
+                  {t('Available for work', '尋找工作機會')}
                 </span>
               </div>
               <h1 className="font-serif leading-none mt-2 text-center md:text-left" style={{ fontSize: 'clamp(64px, 10vw, 140px)' }}>
@@ -200,7 +200,7 @@ function HeroRings() {
               </p>
               <div className="flex items-center justify-center md:justify-start gap-3 flex-wrap mt-8" style={{ pointerEvents: 'auto' }}>
                 <Link
-                  to="/work"
+                  to={`/${language}/work`}
                   className="inline-flex items-center text-white bg-brand-green-button rounded-full px-6 py-3 font-mono shadow-md hover:opacity-90 transition-all text-[13px] md:text-[15px]"
                 >
                   {t('Explore My Work', '探索作品集')}

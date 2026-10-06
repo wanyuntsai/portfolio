@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 function ProjectCard({ project }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const isLiveOnly = !project.link && project.liveUrl;
 
@@ -69,7 +69,7 @@ function ProjectCard({ project }) {
   }
 
   return (
-    <Link to={project.link} className={cardClass} style={cardStyle}>
+    <Link to={`/${language}${project.link}`} className={cardClass} style={cardStyle}>
       {cardContent}
     </Link>
   );

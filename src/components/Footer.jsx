@@ -6,7 +6,7 @@ function Footer() {
     const [copied, setCopied] = useState(false);
 
     const copyEmail = () => {
-        navigator.clipboard.writeText('yuntsaica@gmail.com');
+        navigator.clipboard.writeText('yuntsaiintw@gmail.com');
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     }
@@ -17,16 +17,16 @@ function Footer() {
             <div className="flex justify-between items-start">
                 <div className="flex flex-col items-start">
                     <p className="font-medium font-mono">{t('Get in Touch!', '歡迎與我聯繫！')}</p>
-                    <button onClick={copyEmail} className="text-sm mt-1 font-mono flex gap-2 cursor-pointer hover:opacity-80 transition-opacity">{copied ? t('Email copied! ☻', '已複製! ☻') : 'yuntsaica@gmail.com'}
+                    <button onClick={copyEmail} className="text-sm mt-1 font-mono flex gap-2 cursor-pointer hover:opacity-80 transition-opacity">{copied ? t('Email copied! ☻', '已複製! ☻') : 'yuntsaiintw@gmail.com'}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <rect x="9" y="9" width="13" height="13" rx="2" strokeWidth="2"/>
                         <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" strokeWidth="2"/>
                     </svg>
                     </button>
                 </div>
-                <a href="https://linkedin.com/in/yun-tsai" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile" >
-                    <svg className="w-6 h-6 fill-brand-green" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=yuntsaiintw@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send me an email via Gmail">
+                    <svg className="w-6 h-6 stroke-brand-green" fill="none" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
                     </svg>
                 </a>
             </div>
