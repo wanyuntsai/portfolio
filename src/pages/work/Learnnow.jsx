@@ -25,6 +25,8 @@ function Learnnow() {
     window.scrollTo({ top, behavior: 'smooth' });
   };
 
+  useEffect(() => { document.title = 'LearnNow | Yun Tsai'; }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
@@ -187,6 +189,7 @@ function Learnnow() {
                 `LearnNow is an e-learning platform offering a wide range of courses for users with diverse learning goals. This project focuses on simplifying the explore → save → return → enroll journey to reduce cognitive load and support flexible decision-making.`,
                 `LearnNow 是一個線上學習平台，提供多元領域的課程內容。本專案聚焦於簡化「探索 → 收藏 → 回訪 → 報名」的學習決策流程，以降低認知負擔並支援使用者以自己的節奏做出決策。`
               )}
+            
             </p>
             </div>
 
@@ -395,7 +398,7 @@ function Learnnow() {
               { src: '/images/LEARNNOW/Home.png', alt: 'Home' },
               { src: '/images/LEARNNOW/3-tiers-Menu.png', alt: '3-tiers Menu' },
               { src: '/images/LEARNNOW/Japanese-Language-Course.png', alt: 'Japanese Language Course' },
-              { src: '/images/LEARNNOW/Japanese-Email-Course-Detail-Page.png', alt: 'Course Detail Page' },
+              { src: '/images/LEARNNOW/Course-Detail-Page.png', alt: 'Course Detail Page' },
               { src: '/images/LEARNNOW/Business-Japanese-Course.png', alt: 'Business Japanese Course' },
               { src: '/images/LEARNNOW/Saved-Course.png', alt: 'Saved Course' },
               { src: '/images/LEARNNOW/My-Learning.png', alt: 'My Learning' },

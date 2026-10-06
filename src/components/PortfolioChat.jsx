@@ -663,6 +663,13 @@ export default function PortfolioChat() {
           transform-origin: bottom right;
           animation: yun-open 0.25s cubic-bezier(0.34,1.56,0.64,1) forwards;
         }
+        @media (max-width: 480px) {
+          .yun-panel {
+            position: fixed; bottom: 80px; right: 12px; left: 12px;
+            width: auto; border-radius: 16px;
+          }
+          .yun-input { font-size: 16px; }
+        }
         @keyframes yun-open {
           from { opacity: 0; transform: scale(0.85); }
           to   { opacity: 1; transform: scale(1); }

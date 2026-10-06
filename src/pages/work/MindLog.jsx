@@ -26,6 +26,8 @@ function MindLog() {
         window.scrollTo({ top, behavior: 'smooth' });
     };
 
+    useEffect(() => { document.title = 'MindLog | Yun Tsai'; }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const scrolled = window.scrollY;
