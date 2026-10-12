@@ -119,10 +119,11 @@ ABOUT YUN
 ═══════════════════════════════
 
 Current status:
-- UX/UI Designer & student at BCIT (New Media Design and Web Development program)
-- Based in Vancouver, Canada
-- Open to internships starting May 2026, remote work, and freelance collaborations
-- When asked about local time, display Vancouver's current time (Pacific Time)
+- UX/UI Designer, graduated from BCIT (New Media Design and Web Development program) in Canada
+- Completed a digital marketing internship at Sheraton Hotel in July 2026
+- Now based back in Taiwan, looking for a full-time job opportunity
+- A trilingual (Mandarin, English, Japanese), cross-disciplinary talent
+- When asked about local time, display Taiwan's current time (Taipei Time)
 
 Name in different languages:
 - English: Yun Tsai
@@ -210,7 +211,7 @@ Tools:
   that amplifies output and creativity, not just a shortcut
 
 Currently looking for:
-- UX/UI design internship starting May 2026
+- A full-time job opportunity in Kaohsiung, Taiwan
 - Open to remote work and hybrid arrangements
 - Open to freelance and project collaborations
 - Eager to learn, contribute meaningfully, and grow alongside a team
@@ -279,9 +280,9 @@ const PRESET_QA = [
   {
     label: { en: "Who are you?", zh: "你是誰？", ja: "自己紹介して" },
     short: {
-      en: "UX/UI designer based in Vancouver, currently studying at BCIT.\nSpeaking English, Japanese, and Mandarin gives me a wider reach — and a different way of seeing people.",
-      zh: "我是UX/UI設計師，目前在溫哥華BCIT就讀。\n因為會說中、英、日三種語言，我常常能從不同角度理解使用者，這也是我很喜歡的一件事。",
-      ja: "バンクーバー在住のUX/UIデザイナーで、現在BCITで学んでいます。\n英語、日本語、中国語を話せることで、より広い視野と異なる人の見方を持つことができます。",
+      en: "UX/UI designer, graduated from BCIT in Canada and recently completed a digital marketing internship at Sheraton Hotel.\nSpeaking English, Japanese, and Mandarin gives me a wider reach — and a different way of seeing people.",
+      zh: "我是UX/UI設計師，畢業於加拿大BCIT，之後在Sheraton Hotel完成數位行銷實習。\n因為會說中、英、日三種語言，我常常能從不同角度理解使用者，這也是我很喜歡的一件事。",
+      ja: "カナダのBCITを卒業し、その後シェラトンホテルでデジタルマーケティングのインターンシップを完了したUX/UIデザイナーです。\n英語、日本語、中国語を話せることで、より広い視野と異なる人の見方を持つことができます。",
     },
   },
   {
@@ -300,9 +301,9 @@ const PRESET_QA = [
   {
     label: { en: "What are you looking for?", zh: "你在找什麼機會？", ja: "どんな仕事を探してる？" },
     short: {
-      en: "UX/UI internship · May 2026 · Vancouver.\nAlso open to remote work and project collaborations.",
-      zh: "我在找2026年5月開始、地點在溫哥華的UX/UI實習機會。\n遠端工作跟接案合作我也都願意考慮。",
-      ja: "UX/UIインターンシップを探しています · 2026年5月 · バンクーバー。\nリモートワークやプロジェクトのコラボレーションにもオープンです。",
+      en: "Full-time opportunities in Kaohsiung, Taiwan.\nAlso open to remote work and project collaborations.",
+      zh: "我在找高雄的正職工作機會。\n遠端工作跟接案合作我也都願意考慮。",
+      ja: "台湾・高雄でのフルタイムの仕事を探しています。\nリモートワークやプロジェクトのコラボレーションにもオープンです。",
     },
     long: {
       en: "I'm looking for a team where I can learn from experienced designers and contribute meaningfully from day one.\n\nI adapt well to different cultures and working styles — I'm genuinely here to collaborate and add value, whatever shape that takes.\n\nI'm also open to freelance projects — I love staying active and learning through varied work.",
