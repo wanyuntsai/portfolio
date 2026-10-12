@@ -844,7 +844,7 @@ export default function PortfolioChat() {
                   <div className="yun-header-name">{t('Ask me anything ✦', '問我任何問題 ✦')}</div>
                   <div className="yun-header-status">
                     <span className="yun-status-dot" />
-                    {t('Available now', '現在有空')}
+                    {t('Available now', '上線中')}
                   </div>
                 </div>
               </div>
