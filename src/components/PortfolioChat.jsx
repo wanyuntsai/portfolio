@@ -489,7 +489,7 @@ export default function PortfolioChat() {
       if (!response.ok) {
         console.error('Anthropic API error:', data);
       }
-      const raw = data.content?.[0]?.text || t("Sorry, something went wrong — try again!", "抱歉，出了點問題——請再試一次！");
+      const raw = data.content?.find(block => block.type === 'text')?.text || t("Sorry, something went wrong — try again!", "抱歉，出了點問題——請再試一次！");
       const showCTA = raw.includes(CONTACT_CTA_TOKEN);
 
       const fullText = raw
