@@ -364,7 +364,7 @@ function About() {
                             </span>
                         </button>
 
-                        {/* Currently — vertical, full width of right column */}
+                        {/* Currently — vertical, full width of right column
                         <div className="w-full mt-6">
                             <p className="font-mono text-xs text-brand-green tracking-widest uppercase mb-2">Currently</p>
                             <div className="flex flex-col md:flex-row" style={{ gap: 'clamp(8px, 1.5vw, 16px)' }}>
@@ -403,6 +403,7 @@ function About() {
 
                             </div>
                         </div>
+                        */}
 
                         <div className="md:hidden flex gap-3">
                         </div>
