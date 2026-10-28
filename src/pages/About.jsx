@@ -169,6 +169,7 @@ function About() {
         { src: '/images/icons/premiere.svg',     name: 'Premiere Pro' },
         { src: '/images/icons/aftereffects.svg', name: 'After Effects' },
         { src: '/images/dimension.png',          name: 'Dimension' },
+        { src: '/images/blender.png',            name: 'Blender' },
     ];
     const technicalSkills = [
         { src: '/images/icons/html.svg',        name: 'HTML5' },
