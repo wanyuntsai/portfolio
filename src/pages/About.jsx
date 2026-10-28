@@ -293,7 +293,7 @@ function About() {
                             <div className="inline-flex self-center md:self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
                                 <span className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ backgroundColor: '#7BE849' }} />
                                 <span className="font-mono text-[#555555] tracking-wide text-[11px] whitespace-nowrap">
-                                    {t('Available for Internships', '尋找實習機會')}
+                                    {t('Available for Full-time Roles', '尋找正職機會')}
                                 </span>
                             </div>
                         </div>
