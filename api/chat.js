@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   }
 
   // model 和 max_tokens 不讓前端決定，後端寫死，避免被竄改濫用額度
-  const FIXED_MODEL = 'claude-sonnet-4-20250514';
+  const FIXED_MODEL = 'claude-sonnet-5';
   const FIXED_MAX_TOKENS = 1000;
 
   try {
